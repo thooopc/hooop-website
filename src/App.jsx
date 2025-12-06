@@ -17,7 +17,7 @@ const SITE_CONTENT = {
     defaultTitle: "HOOOP | Growth Re-Imagined",
     defaultDescription: "We align customer behaviour with sustainable choices, designing for impact and business growth.",
     ogImage: "https://placehold.co/1200x630?text=HOOOP+Collective", // Ideally replace with a real URL
-    googleAnalyticsId: "" // ENTER GA MEASUREMENT ID HERE (e.g., G-XXXXXXXXXX)
+    googleAnalyticsId: "G-EY41XQ0YH2" // ENTER GA MEASUREMENT ID HERE (e.g., G-XXXXXXXXXX)
   },
   hero: {
     titleLine1: "Growth",
@@ -1110,7 +1110,7 @@ const App = React.forwardRef((props, ref) => {
              <section className="relative min-h-screen py-10 lg:py-24 animate-fade-in-up">
                 <PrvaahWave />
                 <div className="hidden xl:flex fixed right-10 top-1/2 -translate-y-1/2 flex-col gap-4 z-30">
-                    {['Intro', 'Pillars', 'Compliance', 'Markets', 'Pilots'].map((item) => (
+                    {['Intro', 'Pillars'].map((item) => (
                         <button key={item} onClick={() => scrollToPrvaahSection(`prvaah-${item.toLowerCase()}`)} className="text-xs font-bold uppercase tracking-widest text-right hover:text-teal-600 transition-colors bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
                             {item}
                         </button>
@@ -1150,70 +1150,6 @@ const App = React.forwardRef((props, ref) => {
                                 </ScrollReveal>
                             )})}
                         </div>
-                    </div>
-
-                    <div className="space-y-24">
-                        <ScrollReveal id="prvaah-compliance">
-                            <div className="flex flex-col lg:flex-row gap-12 items-start">
-                                <div className="lg:w-1/3">
-                                    <h3 className="text-4xl font-bold text-[#313b4e] mb-4">Compliance & Capability</h3>
-                                    <div className="h-1 w-20 bg-teal-500 rounded-full"></div>
-                                </div>
-                                <div className="lg:w-2/3">
-                                    <p className="text-lg text-gray-500 leading-relaxed mb-6">
-                                        This offering is sector-agnostic, supporting enterprises across clean energy, green tech, sustainable fashion, agriculture, wellness, and consumer goods. We ensure you enter new markets with credibility.
-                                    </p>
-                                </div>
-                            </div>
-                        </ScrollReveal>
-
-                        <ScrollReveal id="prvaah-markets">
-                            <div className="flex flex-col lg:flex-row gap-12 items-start">
-                                <div className="lg:w-1/3">
-                                    <h3 className="text-4xl font-bold text-[#313b4e] mb-4">Navigate Newer Markets</h3>
-                                    <div className="h-1 w-20 bg-blue-500 rounded-full"></div>
-                                </div>
-                                <div className="lg:w-2/3">
-                                    <p className="text-lg text-gray-500 leading-relaxed mb-6">
-                                        We provide market intelligence, cultural insights, and curated access to investors, helping businesses understand local contexts and build credible, long-term presence.
-                                    </p>
-                                </div>
-                            </div>
-                        </ScrollReveal>
-
-                        <ScrollReveal id="prvaah-pilots">
-                            <div className="flex flex-col lg:flex-row gap-12 items-start">
-                                <div className="lg:w-1/3">
-                                    <h3 className="text-4xl font-bold text-[#313b4e] mb-4">Pilots & Scale</h3>
-                                    <div className="h-1 w-20 bg-indigo-500 rounded-full"></div>
-                                </div>
-                                <div className="lg:w-2/3">
-                                    <p className="text-lg text-gray-500 leading-relaxed mb-12">
-                                        Circular product validation and green media strategies are key components of our scale-up methodology.
-                                    </p>
-                                    
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        {SITE_CONTENT.prvaah.testimonials.map((t, idx) => (
-                                            <SoftCard key={idx} className="p-8 relative overflow-hidden group">
-                                                <div className={`absolute top-0 left-0 w-2 h-full ${idx === 0 ? 'bg-teal-500' : 'bg-blue-500'}`}></div>
-                                                <p className="italic text-gray-600 mb-6 relative z-10 text-sm leading-relaxed">
-                                                    "{t.text}"
-                                                </p>
-                                                <div className="flex items-center gap-4">
-                                                    <div className="w-12 h-12 bg-gray-300 rounded-full overflow-hidden">
-                                                        <ImageWithFallback src={t.image} fallbackSrc={t.fallbackImage} className="w-full h-full object-cover" alt={t.name} />
-                                                    </div>
-                                                    <div>
-                                                        <div className="font-bold text-sm">{t.name}</div>
-                                                        <div className="text-xs text-gray-400 uppercase">{t.role}</div>
-                                                    </div>
-                                                </div>
-                                            </SoftCard>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </ScrollReveal>
                     </div>
                 </div>
              </section>
