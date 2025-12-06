@@ -20,6 +20,25 @@ const SITE_CONTENT = {
     buttonText: "Our Offerings",
     linkText: "Read our manifesto"
   },
+  // NEW: Featured & Partners Section
+  featured: {
+    title: "As Featured In",
+    logos: [
+      { name: "Brand Equity", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Economic_Times_logo.svg/2560px-Economic_Times_logo.svg.png", link: "https://brandequity.economictimes.indiatimes.com/news/research/advertising/ad-spends-go-green-as-the-hooop-collective-and-the-goodnet-to-launch-indias-first-esg-media-index/120510972", style: { height: '30px' } },
+      { name: "e4m", img: "https://www.exchange4media.com/assets/images/e4m-logo.png", link: "https://www.exchange4media.com/advertising-news/former-mirum-wpp-leaders-create-the-hooop-collective-142001.html", style: { height: '40px' } }
+    ]
+  },
+  partners: {
+    title: "Our Knowledge Partners",
+    logos: [
+      { name: "Ellen MacArthur Foundation", img: "https://upload.wikimedia.org/wikipedia/commons/4/43/Ellen_MacArthur_Foundation_logo.png" },
+      { name: "Danish Design Centre", img: "https://ddc.dk/wp-content/uploads/2021/11/DDC_Sort_Logo.png" },
+      { name: "The GoodNet", img: "https://thegoodnet.com/wp-content/uploads/2023/06/The-Good-Net-Logo-Blue.png" },
+      { name: "TERI", img: "https://www.teriin.org/sites/default/files/2017-11/teri-logo.png" },
+      { name: "Everloop", img: "https://images.squarespace-cdn.com/content/v1/6464a6d31f27177866128523/86f13679-4938-4e30-9744-57476541103c/Everloop_Logo_Teal_RGB.png" },
+      { name: "Green Hosting", img: "https://www.thegreenwebfoundation.org/images/green-web-foundation-logo.svg" } // Placeholder for Green Hosting badge
+    ]
+  },
   // SENSE SECTION (The Tool)
   sense: {
     headline: "Does it make",
@@ -169,6 +188,13 @@ const SITE_CONTENT = {
       linkedin: "https://www.linkedin.com/in/arvindbnair/"
     },
     {
+      name: "Radhika Sharda",
+      role: "Stakeholder Engagemnt, PR and Communications",
+      desc: "With 15+ years of experience in brand and communications, Radhika specializes in translating sustainability visions into execution-ready frameworks, driving organizational excellence and scalable growth.",
+      img: "/radhika.jpg",
+      linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
+    },
+    {
       name: "Maya D'Souza",
       role: "Circular Economy Policy",
       desc: "Expert on circular economy policy and practice. Focused on systems design and policy frameworks for sustainable impact.",
@@ -183,25 +209,18 @@ const SITE_CONTENT = {
       linkedin: "https://www.linkedin.com/in/paromita-mukhopadhyay-nair-bb24447/"
     },
     {
-      name: "Rachana Lokhande",
-      role: "Sustainable Media Strategy",
-      desc: "25+ years leadership in media & tech. Former Co-CEO of Kinetic Worldwide. Advancing the concept of sustainable media to drive climate-positive impact.",
-      img: "/Rachna.jpg",
-      linkedin: "https://www.linkedin.com/in/rachanadlokhande/"
-    },
-    {
-      name: "Radhika Sharda",
-      role: "Stakeholder Engagemnt, PR and Communications",
-      desc: "With 15+ years of experience in brand and communications, Radhika specializes in translating sustainability visions into execution-ready frameworks, driving organizational excellence and scalable growth.",
-      img: "/radhika.jpg",
-      linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
-    },
-    {
       name: "Shujoy Dutta",
       role: "Brand Strategy",
       desc: "Blending brand with sustainability to craft  impactful brand strategies.",
       img: "/shujoy.jpg",
       linkedin: "https://www.linkedin.com/in/shujoy-dutta-05599219/"
+    },
+    {
+      name: "Rachana Lokhande",
+      role: "Sustainable Media Strategy",
+      desc: "25+ years leadership in media & tech. Former Co-CEO of Kinetic Worldwide. Advancing the concept of sustainable media to drive climate-positive impact.",
+      img: "/Rachna.jpg",
+      linkedin: "https://www.linkedin.com/in/rachanadlokhande/"
     }
   ],
   models: [
@@ -1220,6 +1239,12 @@ const App = React.forwardRef((props, ref) => {
                           </div>
                        </SoftCard>
                    ))}
+                </div>
+                 {/* Join the Collective CTA */}
+                <div className="mt-16 text-center">
+                    <p className="text-gray-600 text-lg">
+                        If our purpose resonates with you, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a> to join the collective.
+                    </p>
                 </div>
              </section>
           )}
