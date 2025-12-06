@@ -11,6 +11,13 @@ const SITE_CONTENT = {
     est: "Est. 2025",
     logoImage: "/THE-HOOO-COLLECTIVEP_without-shadow.png",
     contactEmail: "hello@hooop.in",
+    contactPhone: "+91 98765 43210"
+  },
+  seo: {
+    defaultTitle: "HOOOP | Growth Re-Imagined",
+    defaultDescription: "We align customer behaviour with sustainable choices, designing for impact and business growth.",
+    ogImage: "https://placehold.co/1200x630?text=HOOOP+Collective", // Ideally replace with a real URL
+    googleAnalyticsId: "" // ENTER GA MEASUREMENT ID HERE (e.g., G-XXXXXXXXXX)
   },
   hero: {
     titleLine1: "Growth",
@@ -59,7 +66,7 @@ const SITE_CONTENT = {
     subtitle: "Essays on the intersection of climate, capital, and culture.",
     featuredTool: {
         title: "Sense by HOOOP",
-        desc: "Use our logic based brand narrative tool to stress-test your claims against greenwashing risks.",
+        desc: "Use our AI-powered brand narrative insurance tool to stress-test your claims against greenwashing risks.",
         cta: "Run Analysis"
     },
     posts: [
@@ -269,11 +276,11 @@ const iconMap = {
 const getIconComponent = (name) => iconMap[name] || Users;
 
 // --- Utility: Image Fallback ---
-const ImageWithFallback = ({ src, alt, className }) => {
+const ImageWithFallback = ({ src, alt, className, fallbackSrc }) => {
   const [imgSrc, setImgSrc] = useState(src);
   
   const handleError = () => {
-    setImgSrc("https://placehold.co/400x400?text=Image+Not+Found"); 
+    setImgSrc(fallbackSrc || "https://placehold.co/400x400?text=HOOOP+Collective"); 
   };
   
   return <img src={imgSrc} alt={alt} className={className} onError={handleError} />;
@@ -385,6 +392,97 @@ const SinCard = ({ number, title, description, icon: Icon }) => (
     </div>
 );
 
+// --- SEO & Analytics Components ---
+
+const GoogleAnalytics = ({ trackingId }) => {
+  useEffect(() => {
+    if (!trackingId) return;
+
+    // Load standard GA4 script
+    const script = document.createElement('script');
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${trackingId}`;
+    script.async = true;
+    document.head.appendChild(script);
+
+    // Initial configuration
+    const inlineScript = document.createElement('script');
+    inlineScript.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${trackingId}');
+    `;
+    document.head.appendChild(inlineScript);
+
+    return () => {
+        // Cleanup if necessary (usually not needed for global scripts, but good practice)
+        if (document.head.contains(script)) document.head.removeChild(script);
+        if (document.head.contains(inlineScript)) document.head.removeChild(inlineScript);
+    }
+  }, [trackingId]);
+
+  return null;
+};
+
+const SEO = ({ activeSection }) => {
+  useEffect(() => {
+    const sectionTitles = {
+      home: "HOOOP | Growth Re-Imagined",
+      manifesto: "HOOOP | Our Manifesto",
+      sense: "HOOOP | Sense Tool",
+      prvaah: "HOOOP | Prvaah",
+      offerings: "HOOOP | What We Do",
+      thinking: "HOOOP | Our Thinking",
+      contact: "HOOOP | Contact Us",
+      greenwashing: "HOOOP | Greenwashing Playbook"
+    };
+
+    const sectionDescriptions = {
+      home: SITE_CONTENT.seo.defaultDescription,
+      sense: "Sense stress-tests your environmental claims before you publish to protect reputation and ensure compliance.",
+      prvaah: "Prvaah is a gateway for enterprises expanding across India, EU and the UK.",
+      greenwashing: "Green is the new lie. A playbook on navigating the gap between perception and reality.",
+    };
+
+    const title = sectionTitles[activeSection] || SITE_CONTENT.seo.defaultTitle;
+    const description = sectionDescriptions[activeSection] || SITE_CONTENT.seo.defaultDescription;
+
+    // Update Title
+    document.title = title;
+
+    // Helper to update or create meta tags
+    const updateMeta = (name, content) => {
+        let element = document.querySelector(`meta[name="${name}"]`);
+        if (!element) {
+            element = document.createElement('meta');
+            element.setAttribute('name', name);
+            document.head.appendChild(element);
+        }
+        element.setAttribute('content', content);
+    };
+
+    // Helper to update or create OG tags (using property instead of name)
+    const updateOg = (property, content) => {
+        let element = document.querySelector(`meta[property="${property}"]`);
+        if (!element) {
+            element = document.createElement('meta');
+            element.setAttribute('property', property);
+            document.head.appendChild(element);
+        }
+        element.setAttribute('content', content);
+    };
+
+    updateMeta('description', description);
+    updateOg('og:title', title);
+    updateOg('og:description', description);
+    updateOg('og:image', SITE_CONTENT.seo.ogImage);
+    updateOg('og:type', 'website');
+
+  }, [activeSection]);
+
+  return null;
+};
+
 // --- Main App ---
 const App = React.forwardRef((props, ref) => {
   const [activeSection, setActiveSection] = useState('home');
@@ -442,6 +540,10 @@ const App = React.forwardRef((props, ref) => {
 
   return (
     <div className="min-h-screen bg-[#E0E5EC] font-sans text-[#4A5568] selection:bg-black selection:text-white overflow-x-hidden relative">
+      {/* --- INFRASTRUCTURE: SEO & ANALYTICS --- */}
+      <SEO activeSection={activeSection} />
+      <GoogleAnalytics trackingId={SITE_CONTENT.seo.googleAnalyticsId} />
+
       <ConcentricCircles />
 
       {/* --- DESKTOP SIDEBAR --- */}
@@ -874,11 +976,12 @@ const App = React.forwardRef((props, ref) => {
             </section>
           )}
 
-          {/* RESEARCH SECTION (Reports Only) */}
+          {/* RESEARCH SECTION (Placeholder - hidden/inactive based on Nav) */}
           {activeSection === 'research' && (
             <section className="relative min-h-screen py-24 animate-fade-in-up">
                 <div className="max-w-6xl mx-auto px-6">
-                    {/* ... (Keep rest of Research section same) */}
+                    <h2 className="text-4xl font-bold mb-8">Research Reports</h2>
+                    <p className="text-gray-500">Coming soon.</p>
                 </div>
             </section>
           )}
@@ -886,7 +989,6 @@ const App = React.forwardRef((props, ref) => {
           {/* GREENWASHING (Playbook Only) */}
           {activeSection === 'greenwashing' && (
             <div className="w-full animate-fade-in-up py-16">
-                {/* ... (Keep rest of Greenwashing section same) */}
                 <div className="relative overflow-hidden mb-24 min-h-[70vh] flex flex-col justify-center">
                     <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-6">
                         <div className="z-10 order-2 lg:order-1 pt-10 md:pt-0">
@@ -1003,7 +1105,7 @@ const App = React.forwardRef((props, ref) => {
             </div>
           )}
 
-          {/* ... Rest of sections (Offerings, Contact) ... */}
+          {/* PRVAAH SECTION */}
           {activeSection === 'prvaah' && (
              <section className="relative min-h-screen py-10 lg:py-24 animate-fade-in-up">
                 <PrvaahWave />
@@ -1123,11 +1225,11 @@ const App = React.forwardRef((props, ref) => {
               {/* Part 1: What We Do (Services) */}
               <div className="max-w-6xl mx-auto px-6 mb-32">
                   <div className="flex flex-col lg:flex-row justify-between items-end mb-20">
-                     <div>
-                         <h2 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">What We Do</h2>
-                         <p className="text-gray-500">Soft interventions for hard problems.</p>
-                     </div>
-                     <VerticalPill height="h-2" className="w-32 !rotate-0 hidden lg:block" />
+                      <div>
+                          <h2 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">What We Do</h2>
+                          <p className="text-gray-500">Soft interventions for hard problems.</p>
+                      </div>
+                      <VerticalPill height="h-2" className="w-32 !rotate-0 hidden lg:block" />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                      {SITE_CONTENT.offerings.map((card, idx) => (
