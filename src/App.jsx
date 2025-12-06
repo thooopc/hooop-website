@@ -9,7 +9,7 @@ const SITE_CONTENT = {
   brand: {
     name: "HOOOP",
     est: "Est. 2025",
-    logoImage: "THE-HOOO-COLLECTIVEP_without-shadow.png",
+    logoImage: "/THE-HOOO-COLLECTIVEP_without-shadow.png", // Added leading slash
     contactEmail: "hello@hooop.in",
     contactPhone: "+91 98765 43210"
   },
@@ -20,7 +20,7 @@ const SITE_CONTENT = {
     buttonText: "Our Offerings",
     linkText: "Read our manifesto"
   },
-  // SENSE SECTION (The Tool)
+  // SENSE SECTION CONTENT
   sense: {
     headline: "Does it make",
     headlineAccent: "Sense?",
@@ -41,8 +41,10 @@ const SITE_CONTENT = {
         { term: "Biodegradable", def: "Capable of being decomposed by bacteria or other living organisms. Note: Everything is biodegradable eventually; look for timeframes." },
         { term: "Carbon Neutral", def: "Balancing carbon emissions with carbon removal (often via offsets). Aim for 'Net Zero' (reduction first) instead." },
         { term: "Circularity", def: "A model where products are designed to be reused, repaired, or recycled, eliminating waste and pollution." },
+        { term: "Eco-anxiety", def: "Chronic fear of environmental doom. Action and education are the best antidotes." },
         { term: "Greenwashing", def: "Making misleading or unsubstantiated claims about the environmental benefits of a product, service, or practice." },
         { term: "Net Zero", def: "Reducing greenhouse gas emissions to as close to zero as possible, with any remaining emissions re-absorbed from the atmosphere." },
+        { term: "Organic", def: "Grown without the use of synthetic pesticides, fertilizers, or GMOs. Look for certified labels." },
         { term: "Traceability", def: "Using tech to track a product's journey from raw material to you. Proof, not just promises." }, 
         { term: "Upcycling", def: "Transforming by-products, waste materials, or unwanted products into new materials or products of better quality." },
     ],
@@ -57,6 +59,11 @@ const SITE_CONTENT = {
   thinking: {
     title: "Our Thinking",
     subtitle: "Essays on the intersection of climate, capital, and culture.",
+    featuredTool: {
+        title: "Sense by HOOOP",
+        desc: "Use our AI-powered brand narrative insurance tool to stress-test your claims against greenwashing risks.",
+        cta: "Run Analysis"
+    },
     posts: [
       { 
           title: "The Alpha in Authenticity: Why Greenwashing Kills Valuation", 
@@ -100,6 +107,7 @@ const SITE_CONTENT = {
     title: "prvaah",
     sanskritMeaning: "flow",
     description1: "Prvaah is a gateway for enterprises expanding across India, EU and the UK.",
+    logo: "/Prvaah Logo.png", // Updated filename with leading slash
     pillars: [
       { icon: "shield", label: "Compliance", desc: "Enter with credibility: ESG disclosure mapping, anti-greenwashing assessment." },
       { icon: "zap", label: "Capability", desc: "Equip your team: Sustainability training, leadership workshops & industry playbooks." },
@@ -112,13 +120,13 @@ const SITE_CONTENT = {
         text: "At Everloop, we see Pravah as a continuum — not just an entry point but a journey. From ESG alignment to market pilots and long-term resilience, this platform helps sustainable enterprises flow between the UK and India with confidence, purpose, and accountability.",
         name: "Marina Bradford",
         role: "Director, Everloop.Agency",
-        image: "576A5828 (1).jpg"
+        image: "/Marina Bradford.jpg" // Updated filename with leading slash
       },
       {
         text: "The India–UK agreement creates a genuine opportunity for sustainable enterprises to expand into new markets. It also strengthens digital trade, supports sustainability goals, and empowers MSMEs and inclusive enterprises to expand globally.",
         name: "Arvind Nair",
         role: "Founding Partner, HOOOP",
-        image: "Arvind.jpg"
+        image: "/Arvind.jpg" // Added leading slash
       }
     ]
   },
@@ -159,37 +167,37 @@ const SITE_CONTENT = {
       name: "Arvind Nair",
       role: "Growth & Sustainability",
       desc: "Helping build marketing as a force for sustainable business to help narrow the value action gap. Formerly Global VP at Mirum India.",
-      img: "Arvind.jpg"
+      img: "/Arvind.jpg" // Added leading slash
     },
     {
       name: "Maya D'Souza",
       role: "Circular Economy Policy",
       desc: "Expert on circular economy policy and practice. Focused on systems design and policy frameworks for sustainable impact.",
-      img: "MayaF.png"
+      img: "/MayaF.png" // Added leading slash
     },
     {
       name: "Paromita Mukhopadhyay",
       role: "Environmental Law & Policy",
       desc: "Leads environmental law and policy thinking at HOOOP with 20+ years of experience. Consultant for funds monitoring regulatory and policy developments.",
-      img: "Paromita.jpg"
+      img: "/Paromita.jpg" // Added leading slash
     },
     {
       name: "Rachana Lokhande",
       role: "Sustainable Media Strategy",
       desc: "25+ years leadership in media & tech. Former Co-CEO of Kinetic Worldwide. Advancing the concept of sustainable media to drive climate-positive impact.",
-      img: "Rachna.jpg"
+      img: "/Rachna.jpg" // Added leading slash
     },
     {
       name: "Radhika",
       role: "Strategy & Operations",
       desc: "Driving operational excellence and strategic initiatives within the collective to foster sustainable growth.",
-      img: "radhika.jpg"
+      img: "/radhika.jpg" // Added leading slash
     },
     {
       name: "Shujoy Dutta",
       role: "Creative Strategy",
       desc: "Blending creativity with sustainability to craft compelling narratives and impactful brand strategies.",
-      img: "shujoy.jpg"
+      img: "/shujoy.jpg" // Added leading slash
     }
   ],
   models: [
@@ -215,7 +223,7 @@ const SITE_CONTENT = {
 };
 
 // ==========================================
-// ⚙️ SENSE TOOL LOGIC
+// ⚙️ SENSE TOOL LOGIC (Greenwashing Detection)
 // ==========================================
 const SENSE_TERMS = [
     { word: "eco-friendly", risk: "High", tip: "Vague. Banned under CCPA Clause 5(a) without specific proof." },
@@ -232,6 +240,7 @@ const SENSE_TERMS = [
 // ⚙️ SYSTEM CODE
 // ==========================================
 
+// --- Icon Mapping Strategy ---
 const iconMap = {
   coins: Coins,
   briefcase: Briefcase,
@@ -256,12 +265,19 @@ const iconMap = {
 
 const getIconComponent = (name) => iconMap[name] || Users;
 
+// --- Utility: Image Fallback ---
 const ImageWithFallback = ({ src, alt, className }) => {
   const [imgSrc, setImgSrc] = useState(src);
-  const handleError = () => setImgSrc("/api/placeholder/200/200");
+  
+  const handleError = () => {
+    // Updated to a more reliable fallback service
+    setImgSrc("https://placehold.co/400x400?text=Image+Not+Found"); 
+  };
+  
   return <img src={imgSrc} alt={alt} className={className} onError={handleError} />;
 };
 
+// --- Components ---
 const ConcentricCircles = () => (
   <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center">
     <div className="absolute w-[800px] h-[800px] border border-white/40 rounded-full" />
@@ -371,6 +387,7 @@ const SinCard = ({ number, title, description, icon: Icon }) => (
 const App = React.forwardRef((props, ref) => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showSenseTool, setShowSenseTool] = useState(false);
   const [senseTab, setSenseTab] = useState('analyzer');
 
   // Sense State
@@ -408,6 +425,7 @@ const App = React.forwardRef((props, ref) => {
     { id: 'sense', label: 'Sense' },
     { id: 'offerings', label: 'What We Do' },
     { id: 'collective', label: 'Collective' },
+    // Removed 'Contact' and 'Manifesto' from nav items to clear up the menu
   ];
 
   const navigateTo = (id) => {
@@ -481,7 +499,7 @@ const App = React.forwardRef((props, ref) => {
       {/* Main Content */}
       <main className="lg:pl-64 w-full min-h-screen relative z-10 px-6 lg:px-20 py-32 lg:py-0">
         
-        {/* Floating "Let's Talk" Button */}
+        {/* Floating "Let's Talk" Button - Positioned for Desktop Top Right and Mobile Bottom Right */}
         <div className="fixed bottom-6 right-6 lg:top-10 lg:right-10 lg:bottom-auto z-40">
             <button onClick={() => navigateTo('contact')} className="bg-black text-white px-6 py-3 lg:px-8 lg:py-4 rounded-full font-bold text-xs lg:text-sm tracking-wider shadow-[5px_5px_15px_rgba(0,0,0,0.2)] hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                 Let's Talk
@@ -583,6 +601,31 @@ const App = React.forwardRef((props, ref) => {
                         <p className="text-xl text-gray-500 max-w-2xl font-light leading-relaxed">
                             {SITE_CONTENT.thinking.subtitle}
                         </p>
+                    </div>
+
+                    {/* Featured Tool: SENSE */}
+                    <div className="mb-20">
+                         <div className="bg-gray-900 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-xl group cursor-pointer" onClick={() => { setShowSenseTool(true); navigateTo('sense'); }}>
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-green-500 to-transparent opacity-20 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
+                            <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
+                                <div>
+                                    <div className="flex items-center gap-2 mb-4">
+                                        <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                                        <span className="text-xs font-bold tracking-widest uppercase text-green-400">Featured Intelligence</span>
+                                    </div>
+                                    <h3 className="text-3xl font-bold mb-3">{SITE_CONTENT.thinking.featuredTool.title}</h3>
+                                    <p className="text-gray-400 max-w-md text-sm leading-relaxed mb-6">
+                                        {SITE_CONTENT.thinking.featuredTool.desc}
+                                    </p>
+                                    <span className="inline-flex items-center gap-2 text-sm font-bold border-b border-green-500 pb-1 hover:text-green-400 transition-colors">
+                                        {SITE_CONTENT.thinking.featuredTool.cta} <ArrowRight size={16} />
+                                    </span>
+                                </div>
+                                <div className="bg-white/10 p-4 rounded-2xl border border-white/10 backdrop-blur-sm">
+                                    <ScanLine size={48} className="text-green-400" />
+                                </div>
+                            </div>
+                         </div>
                     </div>
 
                     {/* Blog List - Collab Fund Style */}
@@ -830,9 +873,19 @@ const App = React.forwardRef((props, ref) => {
             </section>
           )}
 
+          {/* RESEARCH SECTION (Reports Only) */}
+          {activeSection === 'research' && (
+            <section className="relative min-h-screen py-24 animate-fade-in-up">
+                <div className="max-w-6xl mx-auto px-6">
+                    {/* ... (Keep rest of Research section same) */}
+                </div>
+            </section>
+          )}
+
           {/* GREENWASHING (Playbook Only) */}
           {activeSection === 'greenwashing' && (
             <div className="w-full animate-fade-in-up py-16">
+                {/* ... (Keep rest of Greenwashing section same) */}
                 <div className="relative overflow-hidden mb-24 min-h-[70vh] flex flex-col justify-center">
                     <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-6">
                         <div className="z-10 order-2 lg:order-1 pt-10 md:pt-0">
