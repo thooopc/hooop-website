@@ -11,7 +11,7 @@ const SITE_CONTENT = {
     est: "Est. 2025",
     logoImage: "/THE-HOOO-COLLECTIVEP_without-shadow.png", // Added leading slash
     contactEmail: "hello@hooop.in",
-    contactPhone: "+91 98765 43210"
+
   },
   hero: {
     titleLine1: "Growth",
@@ -183,20 +183,20 @@ const SITE_CONTENT = {
     },
     {
       name: "Rachana Lokhande",
-      role: "Sustainable Media Strategy",
+      role: "Sustainable Media ",
       desc: "25+ years leadership in media & tech. Former Co-CEO of Kinetic Worldwide. Advancing the concept of sustainable media to drive climate-positive impact.",
       img: "/Rachna.jpg" // Added leading slash
     },
     {
-      name: "Radhika",
-      role: "Strategy & Operations",
+      name: "Radhika Sharda",
+      role: "Stakeholder, PR and Communication",
       desc: "Driving operational excellence and strategic initiatives within the collective to foster sustainable growth.",
       img: "/radhika.jpg" // Added leading slash
     },
     {
       name: "Shujoy Dutta",
-      role: "Creative Strategy",
-      desc: "Blending creativity with sustainability to craft compelling narratives and impactful brand strategies.",
+      role: "Brand Strategy",
+      desc: "Blending brand thinking with sustainability to craft impactful brand strategies.",
       img: "/shujoy.jpg" // Added leading slash
     }
   ],
