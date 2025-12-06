@@ -20,25 +20,6 @@ const SITE_CONTENT = {
     buttonText: "Our Offerings",
     linkText: "Read our manifesto"
   },
-  // NEW: Featured & Partners Section
-  featured: {
-    title: "As Featured In",
-    logos: [
-      { name: "Brand Equity", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Economic_Times_logo.svg/2560px-Economic_Times_logo.svg.png", link: "https://brandequity.economictimes.indiatimes.com/news/research/advertising/ad-spends-go-green-as-the-hooop-collective-and-the-goodnet-to-launch-indias-first-esg-media-index/120510972", style: { height: '30px' } },
-      { name: "e4m", img: "https://www.exchange4media.com/assets/images/e4m-logo.png", link: "https://www.exchange4media.com/advertising-news/former-mirum-wpp-leaders-create-the-hooop-collective-142001.html", style: { height: '40px' } }
-    ]
-  },
-  partners: {
-    title: "Our Knowledge Partners",
-    logos: [
-      { name: "Ellen MacArthur Foundation", img: "https://upload.wikimedia.org/wikipedia/commons/4/43/Ellen_MacArthur_Foundation_logo.png" },
-      { name: "Danish Design Centre", img: "https://ddc.dk/wp-content/uploads/2021/11/DDC_Sort_Logo.png" },
-      { name: "The GoodNet", img: "https://thegoodnet.com/wp-content/uploads/2023/06/The-Good-Net-Logo-Blue.png" },
-      { name: "TERI", img: "https://www.teriin.org/sites/default/files/2017-11/teri-logo.png" },
-      { name: "Everloop", img: "https://images.squarespace-cdn.com/content/v1/6464a6d31f27177866128523/86f13679-4938-4e30-9744-57476541103c/Everloop_Logo_Teal_RGB.png" },
-      { name: "Green Hosting", img: "https://www.thegreenwebfoundation.org/images/green-web-foundation-logo.svg" } // Placeholder for Green Hosting badge
-    ]
-  },
   // SENSE SECTION (The Tool)
   sense: {
     headline: "Does it make",
@@ -441,13 +422,12 @@ const App = React.forwardRef((props, ref) => {
 
   const navItems = [
     { id: 'home', label: 'Home' },
-    { id: 'prvaah', label: 'Prvaah' },
-    { id: 'thinking', label: 'Our Thinking' },
-    { id: 'greenwashing', label: 'Greenwashing' },
     { id: 'sense', label: 'Sense' },
+    { id: 'prvaah', label: 'Prvaah' },
+    { id: 'greenwashing', label: 'Greenwashing' },
     { id: 'offerings', label: 'What We Do' },
+    { id: 'thinking', label: 'Our Thinking' },
     { id: 'collective', label: 'Collective' },
-    // Removed 'Contact' and 'Manifesto' from nav items to clear up the menu
   ];
 
   const navigateTo = (id) => {
@@ -899,7 +879,34 @@ const App = React.forwardRef((props, ref) => {
           {activeSection === 'research' && (
             <section className="relative min-h-screen py-24 animate-fade-in-up">
                 <div className="max-w-6xl mx-auto px-6">
-                    {/* ... (Keep rest of Research section same) */}
+                    <div className="text-center mb-20">
+                        <h2 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">{SITE_CONTENT.research.title}</h2>
+                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">{SITE_CONTENT.research.subtitle}</p>
+                        <p className="text-md text-gray-400 mt-2 max-w-2xl mx-auto">{SITE_CONTENT.research.intro}</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {SITE_CONTENT.research.reports.map((item, idx) => {
+                            const Icon = getIconComponent('chart');
+                            return (
+                            <SoftCard key={idx} className="p-8 flex flex-col justify-between h-80 group hover:-translate-y-2">
+                                <div>
+                                    <div className="flex justify-between items-start mb-6">
+                                        <div className="p-3 rounded-2xl bg-[#E0E5EC] shadow-[inset_3px_3px_6px_#bebebe,inset_-3px_-3px_6px_#ffffff]">
+                                            <Icon size={24} className="text-gray-600" />
+                                        </div>
+                                        <span className="text-xs font-bold uppercase tracking-widest text-teal-600 bg-teal-50 px-3 py-1 rounded-full">{item.category}</span>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h3>
+                                    <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                                </div>
+                                <div className="mt-6 pt-6 border-t border-gray-200/50 flex items-center justify-between text-gray-400 group-hover:text-teal-600 transition-colors cursor-pointer">
+                                    <span className="text-xs font-bold uppercase tracking-widest">Download</span>
+                                    <Download size={18} />
+                                </div>
+                            </SoftCard>
+                        )})}
+                    </div>
                 </div>
             </section>
           )}
