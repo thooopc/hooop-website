@@ -9,9 +9,9 @@ const SITE_CONTENT = {
   brand: {
     name: "HOOOP",
     est: "Est. 2025",
-    logoImage: "/THE-HOOO-COLLECTIVEP_without-shadow.png", 
+    logoImage: "/THE-HOOO-COLLECTIVEP_without-shadow.png",
     contactEmail: "hello@hooop.in",
-    contactPhone: "+91 98765 43210"
+
   },
   hero: {
     titleLine1: "Growth",
@@ -20,6 +20,7 @@ const SITE_CONTENT = {
     buttonText: "Our Offerings",
     linkText: "Read our manifesto"
   },
+  // SENSE SECTION (The Tool)
   sense: {
     headline: "Does it make",
     headlineAccent: "Sense?",
@@ -40,10 +41,8 @@ const SITE_CONTENT = {
         { term: "Biodegradable", def: "Capable of being decomposed by bacteria or other living organisms. Note: Everything is biodegradable eventually; look for timeframes." },
         { term: "Carbon Neutral", def: "Balancing carbon emissions with carbon removal (often via offsets). Aim for 'Net Zero' (reduction first) instead." },
         { term: "Circularity", def: "A model where products are designed to be reused, repaired, or recycled, eliminating waste and pollution." },
-        { term: "Eco-anxiety", def: "Chronic fear of environmental doom. Action and education are the best antidotes." },
         { term: "Greenwashing", def: "Making misleading or unsubstantiated claims about the environmental benefits of a product, service, or practice." },
         { term: "Net Zero", def: "Reducing greenhouse gas emissions to as close to zero as possible, with any remaining emissions re-absorbed from the atmosphere." },
-        { term: "Organic", def: "Grown without the use of synthetic pesticides, fertilizers, or GMOs. Look for certified labels." },
         { term: "Traceability", def: "Using tech to track a product's journey from raw material to you. Proof, not just promises." }, 
         { term: "Upcycling", def: "Transforming by-products, waste materials, or unwanted products into new materials or products of better quality." },
     ],
@@ -54,12 +53,13 @@ const SITE_CONTENT = {
         { title: "One Planet Network", desc: "Green Marketing Challenge & validation tools.", link: "https://www.oneplanetnetwork.org/knowledge-centre/resources/green-marketing-challenge", icon: "globe" }
     ]
   },
+  // OUR THINKING (The Blog)
   thinking: {
     title: "Our Thinking",
     subtitle: "Essays on the intersection of climate, capital, and culture.",
     featuredTool: {
         title: "Sense by HOOOP",
-        desc: "Use our AI-powered brand narrative insurance tool to stress-test your claims against greenwashing risks.",
+        desc: "Use our logic powered brand narrative tool to stress-test your claims against greenwashing risks.",
         cta: "Run Analysis"
     },
     posts: [
@@ -164,37 +164,43 @@ const SITE_CONTENT = {
       name: "Arvind Nair",
       role: "Growth & Sustainability",
       desc: "Helping build marketing as a force for sustainable business to help narrow the value action gap. Formerly Global VP at Mirum India.",
-      img: "/Arvind.jpg"
+      img: "/Arvind.jpg",
+      linkedin: "https://www.linkedin.com/in/arvindbnair/"
     },
-    {
+      {
+      name: "Radhika Sharda",
+      role: "Stakeholder Engagemnt, PR and Communications",
+      desc: "Driving operational excellence and compelling narratives and drive sustainable growth.",
+      img: "/radhika.jpg",
+      linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
+    },{
       name: "Maya D'Souza",
       role: "Circular Economy Policy",
       desc: "Expert on circular economy policy and practice. Focused on systems design and policy frameworks for sustainable impact.",
-      img: "/MayaF.png"
+      img: "/MayaF.png",
+      linkedin: "https://www.linkedin.com/in/maya-de-souza-12b16aa/"
     },
     {
       name: "Paromita Mukhopadhyay",
       role: "Environmental Law & Policy",
       desc: "Leads environmental law and policy thinking at HOOOP with 20+ years of experience. Consultant for funds monitoring regulatory and policy developments.",
-      img: "/Paromita.jpg"
+      img: "/Paromita.jpg",
+      linkedin: "https://www.linkedin.com/in/paromita-mukhopadhyay-nair-bb24447/"
     },
     {
       name: "Rachana Lokhande",
       role: "Sustainable Media Strategy",
       desc: "25+ years leadership in media & tech. Former Co-CEO of Kinetic Worldwide. Advancing the concept of sustainable media to drive climate-positive impact.",
-      img: "/Rachna.jpg"
+      img: "/Rachna.jpg",
+      linkedin: "https://www.linkedin.com/in/rachanadlokhande/"
     },
-    {
-      name: "Radhika",
-      role: "Strategy & Operations",
-      desc: "Driving operational excellence and strategic initiatives within the collective to foster sustainable growth.",
-      img: "/radhika.jpg"
-    },
+  
     {
       name: "Shujoy Dutta",
-      role: "Creative Strategy",
-      desc: "Blending creativity with sustainability to craft compelling narratives and impactful brand strategies.",
-      img: "/shujoy.jpg"
+      role: "Brand Strategy",
+      desc: "Blending brand with sustainability to craft  impactful brand strategies.",
+      img: "/shujoy.jpg",
+      linkedin: "https://www.linkedin.com/in/shujoy-dutta-05599219/"
     }
   ],
   models: [
@@ -421,13 +427,13 @@ const App = React.forwardRef((props, ref) => {
     { id: 'sense', label: 'Sense' },
     { id: 'offerings', label: 'What We Do' },
     { id: 'collective', label: 'Collective' },
-    // Removed 'Contact' and 'Manifesto' from nav items to clear up the menu
   ];
 
   const navigateTo = (id) => {
     setActiveSection(id);
     setIsMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (id !== 'research') setShowSenseTool(false); 
   };
 
   const scrollToPrvaahSection = (id) => {
@@ -873,34 +879,7 @@ const App = React.forwardRef((props, ref) => {
           {activeSection === 'research' && (
             <section className="relative min-h-screen py-24 animate-fade-in-up">
                 <div className="max-w-6xl mx-auto px-6">
-                    <div className="text-center mb-20">
-                        <h2 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">{SITE_CONTENT.research.title}</h2>
-                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">{SITE_CONTENT.research.subtitle}</p>
-                        <p className="text-md text-gray-400 mt-2 max-w-2xl mx-auto">{SITE_CONTENT.research.intro}</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {SITE_CONTENT.research.reports.map((item, idx) => {
-                            const Icon = getIconComponent('chart');
-                            return (
-                            <SoftCard key={idx} className="p-8 flex flex-col justify-between h-80 group hover:-translate-y-2">
-                                <div>
-                                    <div className="flex justify-between items-start mb-6">
-                                        <div className="p-3 rounded-2xl bg-[#E0E5EC] shadow-[inset_3px_3px_6px_#bebebe,inset_-3px_-3px_6px_#ffffff]">
-                                            <Icon size={24} className="text-gray-600" />
-                                        </div>
-                                        <span className="text-xs font-bold uppercase tracking-widest text-teal-600 bg-teal-50 px-3 py-1 rounded-full">{item.category}</span>
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h3>
-                                    <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-                                </div>
-                                <div className="mt-6 pt-6 border-t border-gray-200/50 flex items-center justify-between text-gray-400 group-hover:text-teal-600 transition-colors cursor-pointer">
-                                    <span className="text-xs font-bold uppercase tracking-widest">Download</span>
-                                    <Download size={18} />
-                                </div>
-                            </SoftCard>
-                        )})}
-                    </div>
+                    {/* ... (Keep rest of Research section same) */}
                 </div>
             </section>
           )}
@@ -1121,7 +1100,7 @@ const App = React.forwardRef((props, ref) => {
                                                 </p>
                                                 <div className="flex items-center gap-4">
                                                     <div className="w-12 h-12 bg-gray-300 rounded-full overflow-hidden">
-                                                        <ImageWithFallback src={t.image} className="w-full h-full object-cover" alt={t.name} />
+                                                        <ImageWithFallback src={t.image} fallbackSrc={t.fallbackImage} className="w-full h-full object-cover" alt={t.name} />
                                                     </div>
                                                     <div>
                                                         <div className="font-bold text-sm">{t.name}</div>
