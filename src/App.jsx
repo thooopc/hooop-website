@@ -11,7 +11,7 @@ const SITE_CONTENT = {
     est: "Est. 2025",
     logoImage: "/THE-HOOO-COLLECTIVEP_without-shadow.png",
     contactEmail: "hello@hooop.in",
-
+    contactPhone: "+91 98765 43210"
   },
   hero: {
     titleLine1: "Growth",
@@ -43,6 +43,7 @@ const SITE_CONTENT = {
         { term: "Circularity", def: "A model where products are designed to be reused, repaired, or recycled, eliminating waste and pollution." },
         { term: "Greenwashing", def: "Making misleading or unsubstantiated claims about the environmental benefits of a product, service, or practice." },
         { term: "Net Zero", def: "Reducing greenhouse gas emissions to as close to zero as possible, with any remaining emissions re-absorbed from the atmosphere." },
+        { term: "Organic", def: "Grown without the use of synthetic pesticides, fertilizers, or GMOs. Look for certified labels." },
         { term: "Traceability", def: "Using tech to track a product's journey from raw material to you. Proof, not just promises." }, 
         { term: "Upcycling", def: "Transforming by-products, waste materials, or unwanted products into new materials or products of better quality." },
     ],
@@ -59,7 +60,7 @@ const SITE_CONTENT = {
     subtitle: "Essays on the intersection of climate, capital, and culture.",
     featuredTool: {
         title: "Sense by HOOOP",
-        desc: "Use our logic powered brand narrative tool to stress-test your claims against greenwashing risks.",
+        desc: "Use our AI-powered brand narrative insurance tool to stress-test your claims against greenwashing risks.",
         cta: "Run Analysis"
     },
     posts: [
@@ -167,13 +168,7 @@ const SITE_CONTENT = {
       img: "/Arvind.jpg",
       linkedin: "https://www.linkedin.com/in/arvindbnair/"
     },
-      {
-      name: "Radhika Sharda",
-      role: "Stakeholder Engagemnt, PR and Communications",
-      desc: "Driving operational excellence and compelling narratives and drive sustainable growth.",
-      img: "/radhika.jpg",
-      linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
-    },{
+    {
       name: "Maya D'Souza",
       role: "Circular Economy Policy",
       desc: "Expert on circular economy policy and practice. Focused on systems design and policy frameworks for sustainable impact.",
@@ -194,7 +189,13 @@ const SITE_CONTENT = {
       img: "/Rachna.jpg",
       linkedin: "https://www.linkedin.com/in/rachanadlokhande/"
     },
-  
+    {
+      name: "Radhika Sharda",
+      role: "Stakeholder Engagemnt, PR and Communications",
+      desc: "With 15+ years of experience in brand and communications, Radhika specializes in translating sustainability visions into execution-ready frameworks, driving organizational excellence and scalable growth.",
+      img: "/radhika.jpg",
+      linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
+    },
     {
       name: "Shujoy Dutta",
       role: "Brand Strategy",
@@ -427,13 +428,13 @@ const App = React.forwardRef((props, ref) => {
     { id: 'sense', label: 'Sense' },
     { id: 'offerings', label: 'What We Do' },
     { id: 'collective', label: 'Collective' },
+    // Removed 'Contact' and 'Manifesto' from nav items to clear up the menu
   ];
 
   const navigateTo = (id) => {
     setActiveSection(id);
     setIsMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (id !== 'research') setShowSenseTool(false); 
   };
 
   const scrollToPrvaahSection = (id) => {
@@ -1209,7 +1210,11 @@ const App = React.forwardRef((props, ref) => {
                              <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-4 mt-2 h-8">{member.role}</p>
                              <p className="text-gray-500 text-xs leading-relaxed mb-6 h-20 overflow-hidden">{member.desc}</p>
                              <div className="flex justify-center gap-4">
-                                <Linkedin size={18} className="text-gray-400 hover:text-black cursor-pointer transition-colors"/>
+                                {member.linkedin && (
+                                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="relative z-20">
+                                    <Linkedin size={18} className="text-gray-400 hover:text-black cursor-pointer transition-colors"/>
+                                </a>
+                                )}
                                 <Globe size={18} className="text-gray-400 hover:text-black cursor-pointer transition-colors"/>
                              </div>
                           </div>
