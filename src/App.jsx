@@ -61,7 +61,7 @@ const SITE_CONTENT = {
     subtitle: "Essays on the intersection of climate, capital, and culture.",
     featuredTool: {
         title: "Sense by HOOOP",
-        desc: "Use our AI-powered brand narrative insurance tool to stress-test your claims against greenwashing risks.",
+        desc: "Use our AI-powered brand narrative tool to stress-test your claims against greenwashing risks.",
         cta: "Run Analysis"
     },
     posts: [
@@ -107,7 +107,7 @@ const SITE_CONTENT = {
     title: "prvaah",
     sanskritMeaning: "flow",
     description1: "Prvaah is a gateway for enterprises expanding across India, EU and the UK.",
-    logo: "/Prvaah Logo.png", // Updated filename with leading slash
+    logo: "/Prvaah Logo.png"
     pillars: [
       { icon: "shield", label: "Compliance", desc: "Enter with credibility: ESG disclosure mapping, anti-greenwashing assessment." },
       { icon: "zap", label: "Capability", desc: "Equip your team: Sustainability training, leadership workshops & industry playbooks." },
@@ -120,13 +120,13 @@ const SITE_CONTENT = {
         text: "At Everloop, we see Pravah as a continuum — not just an entry point but a journey. From ESG alignment to market pilots and long-term resilience, this platform helps sustainable enterprises flow between the UK and India with confidence, purpose, and accountability.",
         name: "Marina Bradford",
         role: "Director, Everloop.Agency",
-        image: "/Marina Bradford.jpg" // Updated filename with leading slash
+        image: "/Marina Bradford.jpg" 
       },
       {
         text: "The India–UK agreement creates a genuine opportunity for sustainable enterprises to expand into new markets. It also strengthens digital trade, supports sustainability goals, and empowers MSMEs and inclusive enterprises to expand globally.",
         name: "Arvind Nair",
         role: "Founding Partner, HOOOP",
-        image: "/Arvind.jpg" // Added leading slash
+        image: "/Arvind.jpg" 
       }
     ]
   },
