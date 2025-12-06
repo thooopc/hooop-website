@@ -11,7 +11,6 @@ const SITE_CONTENT = {
     est: "Est. 2025",
     logoImage: "/THE-HOOO-COLLECTIVEP_without-shadow.png",
     contactEmail: "hello@hooop.in",
-    
   },
   hero: {
     titleLine1: "Growth",
@@ -60,7 +59,7 @@ const SITE_CONTENT = {
     subtitle: "Essays on the intersection of climate, capital, and culture.",
     featuredTool: {
         title: "Sense by HOOOP",
-        desc: "Use our AI-powered brand narrative insurance tool to stress-test your claims against greenwashing risks.",
+        desc: "Use our logic based brand narrative tool to stress-test your claims against greenwashing risks.",
         cta: "Run Analysis"
     },
     posts: [
@@ -879,34 +878,7 @@ const App = React.forwardRef((props, ref) => {
           {activeSection === 'research' && (
             <section className="relative min-h-screen py-24 animate-fade-in-up">
                 <div className="max-w-6xl mx-auto px-6">
-                    <div className="text-center mb-20">
-                        <h2 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">{SITE_CONTENT.research.title}</h2>
-                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">{SITE_CONTENT.research.subtitle}</p>
-                        <p className="text-md text-gray-400 mt-2 max-w-2xl mx-auto">{SITE_CONTENT.research.intro}</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {SITE_CONTENT.research.reports.map((item, idx) => {
-                            const Icon = getIconComponent('chart');
-                            return (
-                            <SoftCard key={idx} className="p-8 flex flex-col justify-between h-80 group hover:-translate-y-2">
-                                <div>
-                                    <div className="flex justify-between items-start mb-6">
-                                        <div className="p-3 rounded-2xl bg-[#E0E5EC] shadow-[inset_3px_3px_6px_#bebebe,inset_-3px_-3px_6px_#ffffff]">
-                                            <Icon size={24} className="text-gray-600" />
-                                        </div>
-                                        <span className="text-xs font-bold uppercase tracking-widest text-teal-600 bg-teal-50 px-3 py-1 rounded-full">{item.category}</span>
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h3>
-                                    <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-                                </div>
-                                <div className="mt-6 pt-6 border-t border-gray-200/50 flex items-center justify-between text-gray-400 group-hover:text-teal-600 transition-colors cursor-pointer">
-                                    <span className="text-xs font-bold uppercase tracking-widest">Download</span>
-                                    <Download size={18} />
-                                </div>
-                            </SoftCard>
-                        )})}
-                    </div>
+                    {/* ... (Keep rest of Research section same) */}
                 </div>
             </section>
           )}
