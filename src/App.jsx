@@ -11,7 +11,7 @@ const SITE_CONTENT = {
     est: "Est. 2025",
     logoImage: "/THE-HOOO-COLLECTIVEP_without-shadow.png",
     contactEmail: "hello@hooop.in",
-    contactPhone: "+91 98765 43210"
+    
   },
   hero: {
     titleLine1: "Growth",
