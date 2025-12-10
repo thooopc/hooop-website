@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, ArrowLeft, Globe, Shield, Zap, TrendingUp, FileText, Anchor, Linkedin, ExternalLink, Users, Coins, Briefcase, ScanLine, BarChart3, Download, AlertCircle, Check, Leaf, Info, Scale, BookOpen, ChevronDown, ChevronUp, Tag, ShieldCheck, Wind, Gavel, MicOff, Lock, HelpCircle, Eye, AlertTriangle, CheckCircle, Mail } from 'lucide-react';
+import { Menu, X, ArrowRight, ArrowLeft, Globe, Shield, Zap, TrendingUp, FileText, Anchor, Linkedin, ExternalLink, Users, Coins, Briefcase, ScanLine, BarChart3, Download, AlertCircle, Check, Leaf, Info, Scale, BookOpen, ChevronDown, ChevronUp, Tag, ShieldCheck, Wind, Gavel, MicOff, Lock, HelpCircle, Eye, AlertTriangle, CheckCircle, Mail, Copy, RefreshCw } from 'lucide-react';
 
 // ==========================================
 // 🛠️ EASY EDIT SECTION - CHANGE CONTENT HERE
@@ -11,6 +11,7 @@ const SITE_CONTENT = {
     est: "Est. 2025",
     logoImage: "/THE-HOOO-COLLECTIVEP_without-shadow.png",
     contactEmail: "hello@hooop.in",
+    contactPhone: "+91 98765 43210"
   },
   hero: {
     titleLine1: "Growth",
@@ -192,35 +193,129 @@ const SITE_CONTENT = {
 };
 
 // ==========================================
-// ⚙️ SENSE TOOL LOGIC (NEW IMPLEMENTATION)
+// ⚙️ SENSE TOOL LOGIC (INTEGRATED)
 // ==========================================
-const SENSE_TERMS = [
-    { word: "eco-friendly", risk: "High", tip: "Vague. Banned under CCPA Clause 5(a) without specific proof." },
-    { word: "eco friendly", risk: "High", tip: "Vague. Banned under CCPA Clause 5(a) without specific proof." },
-    { word: "good for the planet", risk: "Critical", tip: "Hyperbole. Implies net positive impact which is rarely true." },
-    { word: "green product", risk: "High", tip: "Meaningless. 'Green' has no legal definition." },
-    { word: "planet-safe", risk: "Critical", tip: "Absolute claim. Nothing is 100% safe for the planet." },
-    { word: "sustainable choice", risk: "Medium", tip: "Generic. Verify against specific lifecycle data." },
-    { word: "zero environmental impact", risk: "Critical", tip: "Impossible. All production has some impact." },
-    { word: "fully recyclable", risk: "High", tip: "Only valid if local infrastructure exists for the consumer." },
+const TERMS = [
+    // 1. VAGUE ENVIRONMENTAL CLAIMS
+    { word: "eco-friendly", risk: "High", category: "Vague Claim", reference: "CCPA Clause 5(a)", tip: "Vague. Banned under CCPA Clause 5(a) without specific proof. Use specific metrics like 'biodegradable in 28 days'." },
+    { word: "eco friendly", risk: "High", category: "Vague Claim", reference: "CCPA Clause 5(a)", tip: "Vague. Banned under CCPA Clause 5(a) without specific proof. Use specific metrics." },
+    { word: "good for the planet", risk: "Critical", category: "Hyperbole", reference: "CCPA Clause 5(a)", tip: "Hyperbole. Implies net positive impact which is rarely true." },
+    { word: "green product", risk: "High", category: "Vague Claim", reference: "FTC Green Guides", tip: "Meaningless. 'Green' has no legal definition." },
+    { word: "planet-safe", risk: "Critical", category: "Absolute Claim", reference: "CCPA Clause 6(5)", tip: "Absolute claim. Nothing is 100% safe for the planet." },
+    { word: "sustainable choice", risk: "Medium", category: "Generic Claim", reference: "ASCI Guidelines", tip: "Generic. Verify against specific lifecycle data." },
+    { word: "better for the earth", risk: "High", category: "Comparative Claim", reference: "CCPA Clause 6(4)", tip: "Better than what? Needs a clear baseline comparison." },
+    { word: "clean alternative", risk: "Medium", category: "Undefined Term", tip: "Undefined term. 'Clean' how? Energy? Waste? Toxins?" },
+    { word: "nature-approved", risk: "High", category: "Puffery", tip: "Marketing fluff. Nature doesn't approve products." },
+    { word: "earth-positive", risk: "High", category: "Regenerative Claim", tip: "Requires proof of regenerative impact, not just 'less bad'." },
+    { word: "made responsibly", risk: "Medium", category: "Undefined Term", tip: "Define 'responsibly'. Look for SA8000 or Fair Trade." },
+    { word: "good for the earth", risk: "High", category: "Vague Claim", tip: "Vague and hyperbolic. Does it regenerate the earth or just damage it less?" }, 
+    { word: "good for nature", risk: "High", category: "Vague Claim", tip: "Similar to 'Good for the Earth'. Too broad to be legally substantiated." }, 
+
+    // 2. SELF-DECLARED ATTRIBUTES
+    { word: "ethically sourced", risk: "Medium", category: "Verification Needed", tip: "Is this self-declared or 3rd-party certified?" },
+    { word: "green-certified", risk: "High", category: "Misleading Label", reference: "CCPA Guidance Note 6", tip: "By whom? Watch out for fake or self-made labels." },
+    { word: "climate-approved", risk: "High", category: "Misleading Label", tip: "Meaningless without a recognized governing body." },
+    { word: "certified sustainable", risk: "High", category: "Misleading Label", tip: "Check the certifier. Is it independent and recognized?" },
+    { word: "industry-leading", risk: "Medium", category: "Puffery", tip: "Puffery unless backed by comparative data." },
+    { word: "verified low-impact", risk: "Medium", category: "Verification Needed", tip: "Verified by whom? Link to the audit report." },
+    { word: "climate safe", risk: "Critical", category: "Absolute Claim", tip: "Scientifically unrealistic claim." },
+    { word: "responsible materials", risk: "Medium", category: "Vague Claim", tip: "Which materials? What percentage?" },
+
+    // 3. FUTURE PROMISES (Greenwishing)
+    { word: "net zero by 2050", risk: "Medium", category: "Future Claim", reference: "CCPA Clause 7", tip: "Distant target. Show interim KPIs and immediate roadmaps." },
+    { word: "journey to sustainability", risk: "High", category: "Future Claim", tip: "Often used to delay action. What are you doing NOW?" },
+    { word: "working towards", risk: "Medium", category: "Future Claim", tip: "Intention ≠ Action. Show current progress." },
+    { word: "committed to", risk: "Medium", category: "Future Claim", tip: "Commitment is easy. Execution is hard. Show the data." },
+    { word: "transitioning to", risk: "Medium", category: "Future Claim", tip: "Vague timeline. When does the transition end?" },
+    { word: "soon-to-be", risk: "High", category: "Future Claim", tip: "Vague timeline. Commit to a date." },
+    { word: "moving towards", risk: "Medium", category: "Future Claim", tip: "Vague progress indicator." },
+
+    // 4. OVERSTATED / ABSOLUTIST
+    { word: "zero environmental impact", risk: "Critical", category: "Absolute Claim", tip: "Impossible. All production has some impact." },
+    { word: "completely carbon neutral", risk: "High", category: "Absolute Claim", tip: "Likely relies heavily on offsets rather than reduction." },
+    { word: "100% sustainable", risk: "Critical", category: "Absolute Claim", tip: "Scientifically impossible claim for a manufactured product." },
+    { word: "fully recyclable", risk: "High", category: "infrastructure Check", reference: "FTC Green Guides", tip: "Only valid if local infrastructure exists for the consumer." },
+    { word: "waste-free", risk: "High", category: "Absolute Claim", tip: "Did you account for supply chain and manufacturing waste?" },
+    { word: "zero emissions", risk: "High", category: "Absolute Claim", tip: "Scope 1, 2, or 3? Often excludes supply chain (Scope 3)." },
+
+    // 5. HIDDEN TRADE-OFFS
+    { word: "made with recycled materials", risk: "Medium", category: "Hidden Trade-off", reference: "CCPA Guidance Note 4", tip: "What %? 1% or 100%? Does the product itself harm the environment?" },
+    { word: "plastic-free packaging", risk: "Medium", category: "Hidden Trade-off", tip: "Good step, but is the *product* inside toxic or harmful?" },
+    { word: "plant-based ingredients", risk: "Medium", category: "Hidden Trade-off", tip: "Plant-based can still be intensively farmed or processed." },
+    { word: "solar-powered operations", risk: "Medium", category: "Hidden Trade-off", tip: "Great, but what about raw material sourcing and transport?" },
+
+    // 6. NATURE-FLAVOURED LANGUAGE
+    { word: "inspired by nature", risk: "High", category: "Puffery", tip: "Greenwashing fluff. No legal meaning." },
+    { word: "pure and natural", risk: "High", category: "Puffery", tip: "Arsenic is natural. Doesn't mean safe or sustainable." },
+    { word: "green living", risk: "High", category: "Lifestyle Claim", tip: "Vague lifestyle marketing term." },
+    { word: "nature's goodness", risk: "High", category: "Puffery", tip: "Marketing puffery substituting for proof." },
+    { word: "conscious design", risk: "High", category: "Subjective Claim", tip: "Subjective. Define 'conscious' with metrics." },
+
+    // 7. CARBON WITHOUT METHODOLOGY
+    { word: "carbon smart", risk: "High", category: "Undefined Term", tip: "Undefined marketing term." },
+    { word: "climate friendly", risk: "High", category: "Vague Claim", tip: "Too broad to be substantiated." },
+    { word: "reduced carbon footprint", risk: "Medium", category: "Comparative Claim", tip: "Reduced by how much? Compared to what baseline?" },
+    { word: "low carbon product", risk: "Medium", category: "Comparative Claim", tip: "Define the threshold for 'low'." },
+    { word: "offset-backed", risk: "High", category: "Offset Claim", tip: "Offsets are a last resort, not a primary solution." },
+
+    // 8. CIRCULARITY WITHOUT SYSTEM
+    { word: "designed for reuse", risk: "Medium", category: "System Claim", tip: "Is there actually a take-back system in place?" },
+    { word: "built for circularity", risk: "Medium", category: "System Claim", tip: "Circular requires a system, not just a product attribute." },
+    { word: "circular product", risk: "High", category: "System Claim", tip: "A product cannot be circular alone; it needs a system." },
+    { word: "closed-loop", risk: "High", category: "System Claim", tip: "Is the loop actually closed, or is it a theoretical promise?" },
+
+    // 9. MISLEADING QUANTIFICATION
+    { word: "more sustainable", risk: "High", category: "Comparative Claim", tip: "More than what? A competitor? Last year? Be specific." },
+    { word: "greener", risk: "High", category: "Comparative Claim", tip: "Greener is subjective. Define the metric." },
+    { word: "cleaner for the planet", risk: "High", category: "Comparative Claim", tip: "Vague comparison. Needs data." },
+    { word: "new sustainability formula", risk: "High", category: "Marketing Spin", tip: "Marketing spin unless methodology is disclosed." },
+    { word: "improved eco performance", risk: "Medium", category: "Vague Metric", tip: "Show the performance data." },
+
+    // 10. BUZZWORDS
+    { word: "regenerative", risk: "Medium", category: "Buzzword", tip: "High bar. Requires specific soil/carbon data." },
+    { word: "conscious consumption", risk: "High", category: "Buzzword", tip: "Vague. Often shifts blame to consumer." },
+    { word: "earth-first", risk: "High", category: "Buzzword", tip: "Marketing slogan." },
+    { word: "impact-led", risk: "Medium", category: "Buzzword", tip: "Show the impact report." },
+    { word: "climate-positive", risk: "High", category: "Buzzword", tip: "Requires removing more carbon than emitted. Rare." },
+    { word: "better choices", risk: "Medium", category: "Buzzword", tip: "Vague." },
+    
+    // Legacy/Specifics
+    { word: "save the planet", risk: "Critical", category: "Hyperbole", tip: "Hyperbole. No single product saves the planet." },
+    { word: "farm fresh", risk: "High", category: "Puffery", tip: "Vague green-sounding language with no legal meaning." }, 
+    { word: "conscious", risk: "High", category: "Subjective Claim", tip: "Subjective. 'Conscious' collection implies others are unconscious?" },
 ];
 
-const GLOSSARY_ITEMS = [
+const GLOSSARY = [
     { term: "Accountability", def: "Being transparent about exactly how you affect the environment, good and bad." }, 
     { term: "Accreditation", def: "Third-party audit or certification. Don't just take a brand's word for it." }, 
     { term: "B Corp", def: "Certification for companies meeting high standards of social and environmental performance, accountability, and transparency." },
     { term: "Biodegradable", def: "Capable of being decomposed by bacteria or other living organisms. Note: Everything is biodegradable eventually; look for timeframes." },
     { term: "Carbon Neutral", def: "Balancing carbon emissions with carbon removal (often via offsets). Aim for 'Net Zero' (reduction first) instead." },
     { term: "Circularity", def: "A model where products are designed to be reused, repaired, or recycled, eliminating waste and pollution." },
+    { term: "Eco-anxiety", def: "Chronic fear of environmental doom. Action and education are the best antidotes." },
     { term: "Greenwashing", def: "Making misleading or unsubstantiated claims about the environmental benefits of a product, service, or practice." },
     { term: "Net Zero", def: "Reducing greenhouse gas emissions to as close to zero as possible, with any remaining emissions re-absorbed from the atmosphere." },
+    { term: "Organic", def: "Grown without the use of synthetic pesticides, fertilizers, or GMOs. Look for certified labels." },
     { term: "Traceability", def: "Using tech to track a product's journey from raw material to you. Proof, not just promises." }, 
     { term: "Upcycling", def: "Transforming by-products, waste materials, or unwanted products into new materials or products of better quality." },
 ];
 
+const RISK_ORDER = { Low: 1, Medium: 2, High: 3, Critical: 4 };
+
+const getOverallRisk = (findings) => {
+    if (!findings || findings.length === 0) return "Low";
+    const max = findings.reduce(
+        (acc, f) => (RISK_ORDER[f.risk] > acc ? RISK_ORDER[f.risk] : acc),
+        0
+    );
+    return Object.entries(RISK_ORDER).find(([, v]) => v === max)?.[0] || "Low";
+};
+
 // ==========================================
 // ⚙️ SYSTEM CODE
 // ==========================================
+
+const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 // --- Icon Mapping Strategy ---
 const iconMap = {
@@ -357,37 +452,47 @@ const SinCard = ({ number, title, description, icon: Icon }) => (
     </div>
 );
 
-// --- NEW SENSE PAGE COMPONENTS ---
-const SensePage = () => {
+// --- NEW SENSE PAGE COMPONENTS (INTEGRATED FROM USER CODE) ---
+const SenseAnalysisView = () => {
     const [text, setText] = useState("");
     const [result, setResult] = useState(null);
-    const [checklistItems, setChecklistItems] = useState([
-        { id: 1, text: "Are we using green/brown colors just to look 'natural' without changing the product?", checked: false }, 
-        { id: 2, text: "Do we have a specific webpage backing these claims?", checked: false },
-        { id: 3, text: "Is the packaging claiming '100% Recycled' when it's just 1%?", checked: false }, 
-        { id: 4, text: "Are we ignoring the supply chain impact?", checked: false },
-        { id: 5, text: "Is the 'Recyclable' logo prominent on non-recyclable packaging?", checked: false },
-        { id: 6, text: "Are we making a big noise about a tiny feature (e.g. CFC-free) to hide bigger harms?", checked: false }, 
-    ]);
-    const [openGlossaryIndex, setOpenGlossaryIndex] = useState(null);
-    const [activeTab, setActiveTab] = useState('analyzer');
+    const [error, setError] = useState("");
 
     const analyze = () => {
-        if (!text) return;
-        const findings = SENSE_TERMS.filter(t => text.toLowerCase().includes(t.word));
-        setResult(findings);
-    };
+        const trimmed = text.trim();
+        
+        if (!trimmed) {
+            setError("Please paste a claim or paragraph to analyze.");
+            setResult(null);
+            return;
+        }
+        
+        setError("");
+        
+        const hitsMap = new Map();
+        TERMS.forEach((term) => {
+            const pattern = new RegExp(`\\b${escapeRegExp(term.word)}\\b`, "i");
+            if (pattern.test(trimmed) && !hitsMap.has(term.word)) {
+                    hitsMap.set(term.word, term);
+            } else if (term.word.split(' ').length > 1 && trimmed.toLowerCase().includes(term.word) && !hitsMap.has(term.word)) {
+                    hitsMap.set(term.word, term);
+            }
+        });
 
-    const toggleChecklist = (id) => {
-        setChecklistItems(checklistItems.map(i => i.id === id ? {...i, checked: !i.checked} : i));
+        setResult(Array.from(hitsMap.values()));
     };
-
-    const toggleGlossary = (index) => {
-        setOpenGlossaryIndex(openGlossaryIndex === index ? null : index);
+    
+    const copyFindings = () => {
+        if (!result) return;
+        const summary = result
+            .map((r) => `"${r.word}" – ${r.risk} risk: ${r.tip}`)
+            .join("\n");
+        navigator.clipboard.writeText(summary);
+        alert("Findings copied to clipboard!");
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto animate-fade-in-up">
+        <div className="w-full max-w-4xl mx-auto animate-fade">
             
             {/* VALUE PROP SECTION (INSURANCE) */}
             <div className="mb-12 md:mb-16 grid md:grid-cols-2 gap-8 items-center">
@@ -415,8 +520,8 @@ const SensePage = () => {
                     <div className="absolute w-64 h-64 border border-green-100 rounded-full flex items-center justify-center">
                         <div className="absolute w-48 h-48 border border-green-200 rounded-full"></div>
                         <div className="absolute w-32 h-32 border border-green-300 rounded-full bg-green-50/30"></div>
-                        <div className="absolute w-32 h-32 rounded-full border-2 border-green-400 radar-circle animate-ping opacity-20"></div>
-                        <div className="z-10 bg-white p-4 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center animate-bounce">
+                        <div className="absolute w-32 h-32 rounded-full border-2 border-green-400 radar-circle"></div>
+                        <div className="z-10 bg-white p-4 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center">
                             <ScanLine size={32} className="text-green-600 mb-2" />
                             <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Detection Active</span>
                         </div>
@@ -424,152 +529,128 @@ const SensePage = () => {
                 </div>
             </div>
 
-             {/* TABS FOR SENSE TOOLS */}
-             <div className="mb-8 flex gap-4 overflow-x-auto no-scrollbar pb-2">
-                {[
-                    { id: 'analyzer', label: 'Analyzer', icon: ScanLine },
-                    { id: 'checklist', label: 'Visual Audit', icon: Check },
-                    { id: 'learn', label: 'Learn', icon: BookOpen }
-                ].map(tab => (
-                    <button
-                        key={tab.id}
-                        onClick={() => setActiveTab(tab.id)}
-                        className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold transition-all whitespace-nowrap ${
-                            activeTab === tab.id 
-                            ? 'bg-gray-900 text-white shadow-lg' 
-                            : 'bg-white text-gray-500 hover:bg-gray-100 border border-gray-200'
-                        }`}
+            {/* ANALYZER TOOL */}
+            <div className="relative mb-8 group">
+                    <label htmlFor="sense-textarea" className="block text-xs font-bold text-gray-400 mb-2 pl-1 uppercase tracking-widest">
+                    Paste your claim or paragraph
+                </label>
+                <textarea 
+                    id="sense-textarea"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    placeholder="e.g., 'Our eco friendly washing powder uses 100% natural ingredients...'"
+                    className={`soft-input w-full h-48 p-6 text-base text-gray-700 outline-none resize-none transition-all focus:ring-2 focus:ring-gray-200 ${error ? 'input-error' : ''}`}
+                ></textarea>
+                    {error && (
+                    <p className="mt-3 text-xs font-bold text-red-500 pl-1 flex items-center gap-1">
+                        <AlertTriangle size={12}/> {error}
+                    </p>
+                )}
+                <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
+                    <button 
+                        type="button"
+                        onClick={analyze}
+                        className="soft-btn-primary px-8 py-3 flex items-center gap-2 font-bold tracking-wide text-sm shadow-lg hover:shadow-xl transition-all"
                     >
-                        <tab.icon size={16} />
-                        {tab.label}
+                        Test Your Claims <ArrowRight size={16} />
                     </button>
-                ))}
-             </div>
+                </div>
+            </div>
 
-            {/* TAB CONTENT: ANALYZER */}
-            {activeTab === 'analyzer' && (
-                <div className="animate-fade-in-up">
-                    <div className="relative mb-8 group">
-                        <textarea 
-                            value={text}
-                            onChange={(e) => setText(e.target.value)}
-                            placeholder="e.g., 'Our eco friendly washing powder uses 100% natural ingredients...'"
-                            className="w-full h-48 bg-[#F5F5F7] rounded-3xl p-6 border-none outline-none text-xl text-gray-700 resize-none focus:ring-2 focus:ring-gray-200 transition-all shadow-inner"
-                        />
-                        <div className="absolute bottom-6 right-6">
-                            <button 
-                                onClick={analyze}
-                                className="bg-black text-white px-8 py-3 rounded-full flex items-center gap-2 font-bold tracking-wide text-sm shadow-lg hover:transform hover:-translate-y-1 transition-all"
-                            >
-                                Test Your Claim <ArrowRight size={16} />
-                            </button>
+            {/* Scroll Indicator Element (Only show if no results yet to encourage scrolling) */}
+            {!result && (
+                <div className="flex justify-center mt-8 mb-16 animate-bounce opacity-80">
+                    <a href="#philosophy" className="w-10 h-10 bg-white rounded-full shadow-lg shadow-gray-200/50 flex items-center justify-center text-green-600 border border-green-50 cursor-pointer hover:bg-green-50 transition-colors">
+                        <Leaf size={18} />
+                    </a>
+                </div>
+            )}
+
+            <div aria-live="polite">
+            {result && (
+                <div className="animate-fade mb-20">
+                    {result.length === 0 ? (
+                        <div className="soft-card p-6 md:p-8 flex items-center gap-5 text-left">
+                            <div className="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0">
+                                <Check size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-gray-900">Clean Language</h3>
+                                <p className="text-gray-500 mt-1 text-sm">We didn't find any obvious exaggerations. Ensure you have data to back up your story.</p>
+                            </div>
                         </div>
-                    </div>
-
-                    {result && (
-                        <div className="animate-fade-in-up mb-20">
-                            {result.length === 0 ? (
-                                <div className="bg-white rounded-3xl p-8 border border-green-100 shadow-sm flex items-center gap-5 text-left">
-                                    <div className="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0">
-                                        <Check size={24} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-bold text-gray-900">Clean Language</h3>
-                                        <p className="text-gray-500 mt-1 text-sm">We didn't find any obvious exaggerations. Ensure you have data to back up your story.</p>
-                                    </div>
+                    ) : (
+                        <div className="space-y-5">
+                            {/* Overall Risk Badge */}
+                            <div className="soft-card p-5 mb-6 flex items-center justify-between bg-white border border-gray-100">
+                                <div>
+                                    <p className="text-[10px] uppercase tracking-wide text-gray-400 font-bold mb-1">
+                                    Overall Language Risk
+                                    </p>
+                                    <p className="text-sm font-bold text-gray-800">
+                                    {getOverallRisk(result)} – review your claims before publishing.
+                                    </p>
                                 </div>
-                            ) : (
-                                <div className="space-y-4">
-                                    <div className="flex items-baseline justify-between px-2">
-                                        <h3 className="text-xl font-bold text-gray-900">Reflection Points</h3>
-                                        <span className="text-[10px] font-bold text-red-500 px-3 py-1 rounded-full bg-red-50 border border-red-100 uppercase tracking-wide">
-                                            {result.length} Issues
+                                <div
+                                    className={`px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm
+                                    ${
+                                        getOverallRisk(result) === "Critical"
+                                        ? "bg-red-100 text-red-700 border border-red-200"
+                                        : getOverallRisk(result) === "High"
+                                        ? "bg-orange-100 text-orange-700 border border-orange-200"
+                                        : "bg-yellow-100 text-yellow-700 border border-yellow-200"
+                                    }`}
+                                >
+                                    {getOverallRisk(result)} Risk
+                                </div>
+                            </div>
+
+                            <div className="flex items-baseline justify-between px-2">
+                                <h3 className="text-xl font-bold text-gray-900">Reflection Points</h3>
+                                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wide">
+                                    {result.length} Issues Found
+                                </span>
+                            </div>
+
+                            {result.map((item, i) => (
+                                <div key={i} className="soft-card p-6 transition-all hover:scale-[1.01]">
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-2">
+                                        <div className="flex items-center gap-3">
+                                            <AlertCircle className="text-red-400 shrink-0" size={18} />
+                                            <h4 className="font-bold text-base text-gray-900">"{item.word}"</h4>
+                                        </div>
+                                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wide bg-gray-100 px-2 py-1 rounded self-start md:self-auto">
+                                            {item.category}
                                         </span>
                                     </div>
-                                    {result.map((item, i) => (
-                                        <div key={i} className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm transition-all hover:scale-[1.01]">
-                                            <div className="flex items-center gap-3 mb-2">
-                                                <AlertCircle className="text-red-400 shrink-0" size={18} />
-                                                <h4 className="font-bold text-base text-gray-900">"{item.word}"</h4>
-                                            </div>
-                                            <p className="text-gray-500 pl-8 leading-relaxed text-sm">
-                                                <span className="font-bold text-gray-700">Rethink this:</span> {item.tip}
-                                            </p>
-                                        </div>
-                                    ))}
+                                    <p className="text-gray-500 pl-0 md:pl-8 leading-relaxed text-sm">
+                                        <span className="font-bold text-gray-700">Rethink this:</span> {item.tip}
+                                    </p>
+                                        {item.reference && (
+                                        <p className="pl-0 md:pl-8 mt-3 text-[10px] text-gray-400 flex items-center gap-1">
+                                            <BookOpen size={10} /> Ref: {item.reference}
+                                        </p>
+                                    )}
                                 </div>
-                            )}
+                            ))}
+                            
+                            <div className="text-center mt-6">
+                                <button
+                                    type="button"
+                                    className="text-xs font-bold text-gray-500 hover:text-green-600 underline underline-offset-4 transition-colors flex items-center justify-center gap-2 mx-auto"
+                                    onClick={copyFindings}
+                                >
+                                    <Copy size={12}/> Copy findings to clipboard
+                                </button>
+                            </div>
                         </div>
                     )}
                 </div>
             )}
+            </div>
 
-            {/* TAB CONTENT: VISUAL AUDIT */}
-            {activeTab === 'checklist' && (
-                <div className="w-full max-w-2xl mx-auto animate-fade-in-up pb-12">
-                    <div className="mb-8 text-center">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-2">Visual Audit</h2>
-                        <p className="text-gray-500 text-sm">Pause and look at your product packaging or website.</p>
-                    </div>
-                    
-                    <div className="space-y-4">
-                        {checklistItems.map(item => (
-                            <button 
-                                key={item.id}
-                                onClick={() => toggleChecklist(item.id)}
-                                className={`w-full bg-white rounded-3xl p-5 flex items-center justify-between transition-all duration-300 text-left shadow-sm border border-gray-100 ${
-                                    item.checked ? 'opacity-50 grayscale' : 'hover:scale-[1.01]'
-                                }`}
-                            >
-                                <span className={`text-sm md:text-base font-medium mr-4 ${item.checked ? 'line-through text-gray-400' : 'text-gray-800'}`}>
-                                    {item.text}
-                                </span>
-                                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors shrink-0 ${
-                                    item.checked ? 'bg-gray-900 border-gray-900 text-white' : 'border-gray-300'
-                                }`}>
-                                    {item.checked && <Check size={12} />}
-                                </div>
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            )}
-
-            {/* TAB CONTENT: LEARN */}
-            {activeTab === 'learn' && (
-                <div className="w-full animate-fade-in-up pb-12">
-                     {/* Green Glossary Section */}
-                     <div className="mb-12">
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="w-8 h-8 rounded-lg bg-gray-900 text-white flex items-center justify-center">
-                                <BookOpen size={16} />
-                            </div>
-                            <h2 className="text-2xl font-bold text-gray-900">Green Glossary</h2>
-                        </div>
-                        
-                        <div className="space-y-3">
-                            {GLOSSARY_ITEMS.map((item, index) => (
-                                <div key={index} className="bg-white rounded-2xl shadow-sm border border-transparent hover:border-gray-200 transition-all overflow-hidden">
-                                    <button 
-                                        onClick={() => toggleGlossary(index)}
-                                        className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                                    >
-                                        <span className="font-bold text-gray-800 text-sm md:text-base">{item.term}</span>
-                                        {openGlossaryIndex === index ? <ChevronUp size={18} className="text-gray-400" /> : <ChevronDown size={18} className="text-gray-400" />}
-                                    </button>
-                                    
-                                    <div className={`px-5 pb-5 text-xs md:text-sm text-gray-500 leading-relaxed transition-all duration-300 ${openGlossaryIndex === index ? 'block' : 'hidden'}`}>
-                                        {item.def}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            {/* Philosophy Section (Always Visible at bottom) */}
-            <div id="philosophy" className="pt-12 border-t border-gray-200/60 pb-12 mt-12">
+            {/* Scroll Down: Philosophy & Disclaimer Section */}
+            <div id="philosophy" className="pt-12 border-t border-gray-200/60 pb-12">
                 <div className="max-w-2xl mx-auto text-center mb-8">
                     <h3 className="text-2xl font-bold mb-3 text-gray-900">The Sense Philosophy</h3>
                     <p className="text-gray-500 leading-relaxed text-sm md:text-base">
@@ -579,12 +660,12 @@ const SensePage = () => {
                 </div>
                 
                 <div className="grid md:grid-cols-2 gap-5 mb-8">
-                    <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+                    <div className="soft-card p-6">
                         <ScanLine className="mb-3 text-green-600" size={24} />
                         <h4 className="font-bold text-gray-900 text-lg">Traceability</h4>
                         <p className="text-xs text-gray-500 mt-2 leading-relaxed">Tech-enabled tracking beats promises. Know exactly where your product comes from.</p>
                     </div>
-                    <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+                    <div className="soft-card p-6">
                         <Tag className="mb-3 text-green-600" size={24} />
                         <h4 className="font-bold text-gray-900 text-lg">Clear Labeling</h4>
                         <p className="text-xs text-gray-500 mt-2 leading-relaxed">Simple language labels. No 'farm fresh' fluff. Just exactly what is in the product.</p>
@@ -592,7 +673,7 @@ const SensePage = () => {
                 </div>
 
                 {/* Disclaimer Box */}
-                <div className="bg-gray-100/50 rounded-3xl p-6 md:p-8 border border-gray-200">
+                <div className="soft-card bg-gray-100/50 p-6 md:p-8 border border-gray-200">
                     <div className="flex flex-col gap-4">
                         <div>
                             <h4 className="font-bold text-gray-900 flex items-center gap-2 text-[10px] uppercase tracking-wide mb-1">
@@ -617,11 +698,158 @@ const SensePage = () => {
     );
 };
 
+const ChecklistView = () => {
+    const [items, setItems] = useState([
+        { id: 1, text: "Are we using green/brown colors just to look 'natural' without changing the product?", checked: false }, 
+        { id: 2, text: "Do we have a specific webpage backing these claims?", checked: false },
+        { id: 3, text: "Is the packaging claiming '100% Recycled' when it's just 1%?", checked: false }, 
+        { id: 4, text: "Are we ignoring the supply chain impact?", checked: false },
+        { id: 5, text: "Is the 'Recyclable' logo prominent on non-recyclable packaging?", checked: false },
+        { id: 6, text: "Are we making a big noise about a tiny feature (e.g. CFC-free) to hide bigger harms?", checked: false }, 
+    ]);
+
+    const toggle = (id) => {
+        setItems(items.map(i => i.id === id ? {...i, checked: !i.checked} : i));
+    };
+
+    return (
+        <div className="w-full max-w-2xl mx-auto animate-fade pb-20 md:pb-0 px-6 pt-8 md:pt-12">
+            <div className="mb-10 text-center md:text-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Visual Audit</h2>
+                <p className="text-gray-500 text-base md:text-lg">Pause and look at your product packaging or website.</p>
+            </div>
+            
+            <div className="space-y-4">
+                {items.map(item => (
+                    <button 
+                        key={item.id}
+                        type="button"
+                        onClick={() => toggle(item.id)}
+                        className={`w-full soft-card p-5 md:p-6 flex items-center justify-between transition-all duration-300 text-left ${
+                            item.checked ? 'opacity-50 grayscale' : 'hover:scale-[1.01]'
+                        }`}
+                    >
+                        <span className={`text-sm md:text-base font-medium mr-4 ${item.checked ? 'line-through text-gray-400' : 'text-gray-800'}`}>
+                            {item.text}
+                        </span>
+                        <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors shrink-0 ${
+                            item.checked ? 'bg-gray-900 border-gray-900 text-white' : 'border-gray-300'
+                        }`}>
+                            {item.checked && <Check size={12} />}
+                        </div>
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+const ResourcesView = () => {
+    const [openIndex, setOpenIndex] = useState(null);
+
+    const toggle = (index) => {
+        setOpenIndex(openIndex === index ? null : index);
+    };
+
+    return (
+        <div className="w-full max-w-4xl mx-auto animate-fade pb-20 md:pb-0 px-6">
+            <div className="mb-10 text-center md:text-left">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Further Resources</h2>
+                <p className="text-sm md:text-base text-gray-500 leading-relaxed max-w-2xl">
+                    Dive deeper into the regulations and best practices shaping the future of honest environmental communication.
+                </p>
+            </div>
+            
+            {/* Resource Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+                <a href="https://consumeraffairs.nic.in/" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center">
+                            <Scale size={18} />
+                        </div>
+                        <ExternalLink size={16} className="text-gray-300 group-hover:text-gray-600 transition-colors" />
+                    </div>
+                    <h4 className="font-bold text-lg text-gray-900 mb-1">CCPA Guidelines</h4>
+                    <p className="text-xs text-gray-500">Official Indian regulations on misleading environmental claims.</p>
+                </a>
+                
+                <a href="https://www.ascionline.in/" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                            <AlertCircle size={18} />
+                        </div>
+                        <ExternalLink size={16} className="text-gray-300 group-hover:text-gray-600 transition-colors" />
+                    </div>
+                    <h4 className="font-bold text-lg text-gray-900 mb-1">ASCI Code</h4>
+                    <p className="text-xs text-gray-500">Advertising Standards Council of India's rules on honesty.</p>
+                </a>
+
+                <a href="https://www.wwf.org.uk/learn/environment/guide-to-greenwashing" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center">
+                            <Leaf size={18} />
+                        </div>
+                        <ExternalLink size={16} className="text-gray-300 group-hover:text-gray-600 transition-colors" />
+                    </div>
+                    <h4 className="font-bold text-lg text-gray-900 mb-1">WWF Guide</h4>
+                    <p className="text-xs text-gray-500">Global best practices on identifying greenwashing traps.</p>
+                </a>
+
+                <a href="https://www.oneplanetnetwork.org/knowledge-centre/resources/green-marketing-challenge" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
+                            <Globe size={18} />
+                        </div>
+                        <ExternalLink size={16} className="text-gray-300 group-hover:text-gray-600 transition-colors" />
+                    </div>
+                    <h4 className="font-bold text-lg text-gray-900 mb-1">One Planet Network</h4>
+                    <p className="text-xs text-gray-500">Green Marketing Challenge & validation tools.</p>
+                </a>
+            </div>
+
+            {/* Green Glossary Section */}
+            <div className="mb-8 pt-8 border-t border-gray-200/60">
+                <div className="flex items-center gap-3 mb-6">
+                    <div className="w-8 h-8 rounded-lg bg-gray-900 text-white flex items-center justify-center">
+                        <BookOpen size={16} />
+                    </div>
+                    <h2 className="text-2xl font-bold text-gray-900">Green Glossary</h2>
+                </div>
+                
+                <div className="space-y-3">
+                    {GLOSSARY.map((item, index) => (
+                        <div key={index} className="soft-card overflow-hidden transition-all duration-300">
+                            <button 
+                                type="button"
+                                onClick={() => toggle(index)}
+                                className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                            >
+                                <span className="font-bold text-gray-800 text-sm md:text-base">{item.term}</span>
+                                {openIndex === index ? <ChevronUp size={18} className="text-gray-400" /> : <ChevronDown size={18} className="text-gray-400" />}
+                            </button>
+                            
+                            <div className={`px-5 pb-5 text-xs md:text-sm text-gray-500 leading-relaxed transition-all duration-300 ${openIndex === index ? 'block' : 'hidden'}`}>
+                                {item.def}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <p className="mt-8 text-[10px] text-gray-400 text-center">
+                    Sense pattern library last updated: Oct 2025. For complex claims, get professional legal review.
+                </p>
+            </div>
+        </div>
+    );
+};
+
+
 // --- Main App ---
 const App = React.forwardRef((props, ref) => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+  const [showSenseTool, setShowSenseTool] = useState(false);
+  const [senseTab, setSenseTab] = useState('analyzer');
+
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'sense', label: 'Sense' },
@@ -636,6 +864,7 @@ const App = React.forwardRef((props, ref) => {
     setActiveSection(id);
     setIsMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (id !== 'research') setShowSenseTool(false); 
   };
 
   const scrollToPrvaahSection = (id) => {
@@ -809,7 +1038,7 @@ const App = React.forwardRef((props, ref) => {
 
                     {/* Featured Tool: SENSE */}
                     <div className="mb-20">
-                         <div className="bg-gray-900 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-xl group cursor-pointer" onClick={() => { navigateTo('sense'); }}>
+                         <div className="bg-gray-900 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-xl group cursor-pointer" onClick={() => { setShowSenseTool(true); navigateTo('sense'); }}>
                             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-green-500 to-transparent opacity-20 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
                             <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
                                 <div>
@@ -856,7 +1085,34 @@ const App = React.forwardRef((props, ref) => {
           {/* SENSE SECTION (New Dedicated Section - Uses new HTML structure) */}
           {activeSection === 'sense' && (
             <section className="relative min-h-screen py-24 animate-fade-in-up">
-                <SensePage />
+                {/* TABS FOR SENSE TOOLS */}
+                <div className="max-w-6xl mx-auto px-6 mb-12">
+                     <div className="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+                        {[
+                            { id: 'analyzer', label: 'Analyzer', icon: ScanLine },
+                            { id: 'checklist', label: 'Visual Audit', icon: Check },
+                            { id: 'learn', label: 'Learn', icon: BookOpen }
+                        ].map(tab => (
+                            <button
+                                key={tab.id}
+                                onClick={() => setSenseTab(tab.id)}
+                                className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold transition-all whitespace-nowrap ${
+                                    senseTab === tab.id 
+                                    ? 'bg-gray-900 text-white shadow-lg' 
+                                    : 'bg-white text-gray-500 hover:bg-gray-100 border border-gray-200'
+                                }`}
+                            >
+                                <tab.icon size={16} />
+                                {tab.label}
+                            </button>
+                        ))}
+                     </div>
+                </div>
+
+                {/* Sub-Views based on Tab */}
+                {senseTab === 'analyzer' && <SenseAnalysisView />}
+                {senseTab === 'checklist' && <ChecklistView />}
+                {senseTab === 'learn' && <ResourcesView />}
             </section>
           )}
 
@@ -1292,6 +1548,32 @@ const App = React.forwardRef((props, ref) => {
         .transform-style-3d { transform-style: preserve-3d; }
         .backface-hidden { backface-visibility: hidden; }
         .rotate-y-180 { transform: rotateY(180deg); }
+        
+        /* New Styles for Sense */
+        .soft-input {
+            background: #F5F5F7;
+            box-shadow: inset 4px 4px 8px #d1d4d9, inset -4px -4px 8px #ffffff;
+        }
+        .input-error {
+            box-shadow: inset 4px 4px 8px #fecaca, inset -4px -4px 8px #ffffff;
+            border: 1px solid #f87171;
+        }
+        .soft-btn-primary {
+            background: #1a1a1a;
+            color: white;
+            box-shadow: 5px 5px 12px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+        .soft-btn-primary:hover {
+            transform: translateY(-2px);
+        }
+        .radar-circle {
+            animation: radar-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        @keyframes radar-ping {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(2); opacity: 0; }
+        }
       `}</style>
     </div>
   );
