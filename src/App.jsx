@@ -162,7 +162,19 @@ const SITE_CONTENT = {
       desc: "Think of us like a lab. We are a collective of thinkers, technologists, communicators, creatives, designers, planners, and policy folks working to accelerate change.",
       iconType: "users"
     }
-  ]
+  ],
+  research: {
+    title: "Research & Reports",
+    subtitle: "Intelligence for the modern sustainable marketing agency.",
+    intro: "Our reports combine rigorous data analysis with actionable insights on Circular Economy India, Sustainable Media, and Greenwashing in Marketing.",
+    reports: [
+        { title: "The State of Greenwashing in Marketing: India 2025", category: "Compliance", desc: "A comprehensive audit of 500+ Indian D2C brands. We analyze how greenwashing in marketing is evolving under new CCPA guidelines and what it means for your brand." },
+        { title: "Sustainable Marketing in India: The Consumer Paradox", category: "Consumer Behavior", desc: "Decoding the value-action gap. Why 78% of Indians want sustainable products but only 12% buy. A guide for sustainability marketing professionals." },
+        { title: "Circular Economy India: The Fashion Playbook", category: "Operations", desc: "Moving beyond recycling. Case studies on how shifting to a circular economy in India impacts the bottom line for mid-sized apparel brands." },
+        { title: "Sustainable Media: Decarbonizing Digital Ads", category: "Digital Impact", desc: "The unseen carbon footprint of your ad spend. Benchmarks and best practices for implementing a sustainable media strategy." },
+        { title: "The Future of the Sustainable Marketing Agency", category: "Industry Trends", desc: "How agencies are evolving from 'selling green' to 'designing growth'. What CMOs need to look for in their next partner." }
+    ]
+  }
 };
 
 // ==========================================
@@ -365,7 +377,7 @@ const SenseAnalysisView = () => {
         setError("");
         
         const hitsMap = new Map();
-        TERMS.forEach((term) => {
+        SENSE_TERMS.forEach((term) => {
             const pattern = new RegExp(`\\b${escapeRegExp(term.word)}\\b`, "i");
             if (pattern.test(trimmed) && !hitsMap.has(term.word)) {
                     hitsMap.set(term.word, term);
@@ -1386,6 +1398,69 @@ const App = React.forwardRef((props, ref) => {
                 {senseTab === 'analyzer' && <SenseAnalysisView />}
                 {senseTab === 'checklist' && <ChecklistView />}
                 {senseTab === 'learn' && <ResourcesView />}
+            </section>
+          )}
+
+          {/* PRVAAH SECTION (Restored) */}
+          {activeSection === 'prvaah' && (
+            <section className="min-h-screen py-24 animate-fade-in-up">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="text-center mb-20">
+                         <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-blue-50 rounded-full text-blue-600 font-bold text-xs uppercase tracking-widest border border-blue-100">
+                            <Globe size={14} /> Global Expansion
+                         </div>
+                         <h2 className="text-5xl lg:text-7xl font-black text-[#313b4e] mb-4 tracking-tighter">
+                            {SITE_CONTENT.prvaah.title}
+                         </h2>
+                         <p className="text-lg text-gray-400 italic mb-6">"{SITE_CONTENT.prvaah.sanskritMeaning}"</p>
+                         <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                            {SITE_CONTENT.prvaah.description1}
+                         </p>
+                    </div>
+
+                    {/* PILLARS GRID */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+                        {SITE_CONTENT.prvaah.pillars.map((pillar, idx) => {
+                             const Icon = getIconComponent(pillar.icon);
+                             return (
+                                <SoftCard key={idx} className="p-8 group hover:-translate-y-1 transition-transform">
+                                    <div className="w-14 h-14 rounded-2xl bg-[#E0E5EC] shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] flex items-center justify-center mb-6 text-blue-600 group-hover:scale-110 transition-transform">
+                                        <Icon size={28} />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-gray-800 mb-3">{pillar.label}</h3>
+                                    <p className="text-sm text-gray-500 leading-relaxed">{pillar.desc}</p>
+                                </SoftCard>
+                             );
+                        })}
+                    </div>
+
+                    {/* TESTIMONIALS */}
+                    <div className="bg-gray-100/50 rounded-[3rem] p-8 md:p-16 border border-white/50 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                        <h3 className="text-3xl font-bold text-center mb-12 relative z-10">Voices from the Corridor</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            {SITE_CONTENT.prvaah.testimonials.map((testi, idx) => (
+                                <div key={idx} className="relative z-10">
+                                    <div className="bg-[#E0E5EC] p-8 rounded-[2rem] shadow-[9px_9px_16px_rgb(163,177,198,0.5),-9px_-9px_16px_rgba(255,255,255,0.5)] h-full flex flex-col">
+                                        <div className="mb-6 text-blue-500">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.054 15.331 14.686 16.673 13.925C17.702 13.34 18.528 12.57 18.913 11.666C19.299 10.762 19.143 9.715 18.496 8.941C17.971 8.312 17.152 7.95 16.281 7.95C15.364 7.95 14.502 8.358 13.913 9.066L13.567 9.482L13.567 21L14.017 21ZM4.983 21L4.983 18C4.983 16.054 6.297 14.686 7.639 13.925C8.668 13.34 9.494 12.57 9.879 11.666C10.265 10.762 10.109 9.715 9.462 8.941C8.937 8.312 8.118 7.95 7.247 7.95C6.33 7.95 5.468 8.358 4.879 9.066L4.533 9.482L4.533 21L4.983 21Z"></path></svg>
+                                        </div>
+                                        <p className="text-gray-600 italic mb-6 text-sm leading-loose flex-1">"{testi.text}"</p>
+                                        <div className="flex items-center gap-4 mt-auto border-t border-gray-200/50 pt-4">
+                                            <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-300">
+                                                <ImageWithFallback src={testi.image} alt={testi.name} className="w-full h-full object-cover" />
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-gray-900 text-sm">{testi.name}</h4>
+                                                <p className="text-xs text-gray-500">{testi.role}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </section>
           )}
 
