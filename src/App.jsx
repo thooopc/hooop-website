@@ -641,7 +641,7 @@ const PillButton = ({ children, primary = false, onClick }) => (
     </button>
 );
 
-const GreenwashingView = () => {
+const GreenwashingView = ({ navigateTo }) => {
    const scrollToId = (id) => {
         const element = document.getElementById(id);
         if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -1114,7 +1114,7 @@ const GreenwashingView = () => {
                         <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg relative z-10 leading-relaxed">
                             If you've been silent, start talking. If you've overstated, course-correct. Authenticity is your greatest competitive advantage.
                         </p>
-                        <button onClick={() => window.open('https://sense.hooop.in', '_blank')} className="relative z-10 bg-green-500 hover:bg-green-400 text-black px-12 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(74,222,128,0.4)]">
+                        <button onClick={() => navigateTo('sense')} className="relative z-10 bg-green-500 hover:bg-green-400 text-black px-12 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(74,222,128,0.4)]">
                             Start The Journey
                         </button>
                     </div>
@@ -1135,6 +1135,28 @@ const App = React.forwardRef((props, ref) => {
   const [showSenseTool, setShowSenseTool] = useState(false);
   const [senseTab, setSenseTab] = useState('analyzer');
 
+  // New useEffect to handle hash based navigation on load and on hash change
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1); // remove the '#'
+      if (hash && navItems.some(item => item.id === hash)) {
+        setActiveSection(hash);
+        if (hash === 'sense') setShowSenseTool(true); // Ensure sense tool state is correct
+      } else {
+        // Optional: fallback to home if hash is invalid or empty, 
+        // but often better to leave state alone if user is just navigating back
+        if(!hash) setActiveSection('home');
+      }
+    };
+
+    // Check initial hash
+    handleHashChange();
+
+    // Listen for hash changes (browser back/forward buttons)
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'sense', label: 'Sense' },
@@ -1143,11 +1165,18 @@ const App = React.forwardRef((props, ref) => {
     { id: 'offerings', label: 'What We Do' },
     { id: 'thinking', label: 'Our Thinking' },
     { id: 'collective', label: 'Collective' },
+    { id: 'contact', label: 'Contact' }, // Added contact to navItems logic for hash checking
+    { id: 'manifesto', label: 'Manifesto' }, // Added manifesto
+    { id: 'research', label: 'Research' } // Added research
   ];
 
   const navigateTo = (id) => {
     setActiveSection(id);
     setIsMenuOpen(false);
+    
+    // Update the URL hash
+    window.location.hash = id;
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (id !== 'research') setShowSenseTool(false); 
   };
@@ -1169,7 +1198,7 @@ const App = React.forwardRef((props, ref) => {
              </SoftCard>
          </div>
          <div className="flex flex-col gap-6 pointer-events-auto w-full">
-            {navItems.map((item) => (
+            {navItems.slice(0, 7).map((item) => ( // Only show main nav items in sidebar
                 <button key={item.id} onClick={() => navigateTo(item.id)} className="group flex items-center gap-4 w-full text-left focus:outline-none">
                     <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-black scale-125' : 'bg-gray-300 group-hover:bg-gray-400'}`} />
                     <span className={`text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 ${activeSection === item.id ? 'text-black translate-x-1' : 'text-gray-400 group-hover:text-gray-600'}`}>
@@ -1195,7 +1224,7 @@ const App = React.forwardRef((props, ref) => {
             </button>
           </div>
           <div className="lg:hidden bg-[#E0E5EC]/95 backdrop-blur-md border-b border-white/20 overflow-x-auto flex items-center gap-6 px-6 py-3 no-scrollbar shadow-inner">
-             {navItems.map(item => (
+             {navItems.slice(0, 7).map(item => (
                  <button key={item.id} onClick={() => navigateTo(item.id)} className={`whitespace-nowrap text-[10px] font-bold uppercase tracking-widest flex-shrink-0 transition-colors ${activeSection === item.id ? 'text-teal-600' : 'text-gray-500'}`}>{item.label}</button>
              ))}
           </div>
@@ -1206,7 +1235,7 @@ const App = React.forwardRef((props, ref) => {
           <button onClick={() => setIsMenuOpen(false)} className="absolute top-6 right-6 p-4 rounded-full bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-black">
             <X size={24} />
           </button>
-          {navItems.map((item) => (
+          {navItems.slice(0, 7).map((item) => (
             <button key={item.id} onClick={() => { navigateTo(item.id); setIsMenuOpen(false); }} className={`text-2xl font-bold tracking-tight ${activeSection === item.id ? 'text-black' : 'text-gray-500'}`}>
               {item.label}
             </button>
@@ -1501,7 +1530,7 @@ const App = React.forwardRef((props, ref) => {
           )}
 
           {/* GREENWASHING (Playbook Only) */}
-          {activeSection === 'greenwashing' && <GreenwashingView />}
+          {activeSection === 'greenwashing' && <GreenwashingView navigateTo={navigateTo} />}
 
           {/* COMBINED OFFERINGS & MODELS SECTION */}
           {activeSection === 'offerings' && (
