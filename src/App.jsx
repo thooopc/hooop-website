@@ -68,8 +68,7 @@ const SITE_CONTENT = {
     ]
   },
   prvaah: {
-    title: "prvaah",
-    sanskritMeaning: "flow",
+    sanskritMeaning: "flow in Sanskrit",
     description1: "Prvaah is a gateway for enterprises expanding across India, EU and the UK.",
     pillars: [
       { icon: "shield", label: "Compliance", desc: "Enter with credibility: ESG disclosure mapping, anti-greenwashing assessment." },
