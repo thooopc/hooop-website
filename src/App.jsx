@@ -1435,8 +1435,9 @@ const App = React.forwardRef((props, ref) => {
             <section className="min-h-screen py-24 animate-fade-in-up">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-20">
-                         <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-blue-50 rounded-full text-blue-600 font-bold text-xs uppercase tracking-widest border border-blue-100">
-                            <Globe size={14} /> Global Expansion
+                         <div className="flex justify-center mb-6">
+                            {/* Placeholder for Prvaah Logo - upload image as 'prvaah_logo.png' or update src */}
+                            <ImageWithFallback src="/prvaah_logo.png" alt="Prvaah Logo" className="h-24 w-auto object-contain" />
                          </div>
                          <h2 className="text-5xl lg:text-7xl font-black text-[#313b4e] mb-4 tracking-tighter">
                             {SITE_CONTENT.prvaah.title}
