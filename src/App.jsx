@@ -68,8 +68,13 @@ const SITE_CONTENT = {
     ]
   },
   prvaah: {
-    sanskritMeaning: "flow in Sanskrit",
-    description1: "Created by Everloop.Agency and HOOOP Collective, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.",
+    title: "prvaah",
+    sanskritMeaning: "flow",
+    description1: (
+      <span>
+        Created by <a href="https://www.everloop.agency/" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">Everloop.Agency</a> and <a href="https://www.hooop.in" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">HOOOP Collective</a>, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.
+      </span>
+    ),
     pillars: [
       { icon: "shield", label: "Compliance", desc: "Enter with credibility: ESG disclosure mapping, anti-greenwashing assessment." },
       { icon: "zap", label: "Capability", desc: "Equip your team: Sustainability training, leadership workshops & industry playbooks." },
@@ -1435,8 +1440,8 @@ const App = React.forwardRef((props, ref) => {
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-20">
                          <div className="flex justify-center mb-6">
-                            {/* Placeholder for Prvaah Logo - upload image as 'Prvaah Logo.png' or update src */}
-                            <ImageWithFallback src="/Prvaah Logo.png" alt="Prvaah Logo" className="h-24 w-auto object-contain" />
+                            {/* Placeholder for Prvaah Logo - upload image as 'prvaah_logo.png' or update src */}
+                            <ImageWithFallback src="/prvaah_logo.png" alt="Prvaah Logo" className="h-24 w-auto object-contain" />
                          </div>
                          <h2 className="text-5xl lg:text-7xl font-black text-[#313b4e] mb-4 tracking-tighter">
                             {SITE_CONTENT.prvaah.title}
