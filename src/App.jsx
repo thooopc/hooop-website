@@ -69,7 +69,7 @@ const SITE_CONTENT = {
   },
   prvaah: {
     sanskritMeaning: "flow in Sanskrit",
-    description1: "Prvaah is a gateway for enterprises expanding across India, EU and the UK.",
+    description1: "Prvaah is a gateway for enterprises expanding across India, EU and the UK. Created by Everloop and HOOOP Collective, Prvaah helps businesses navigate ESG compliance, build internal capability, and access new markets responsibly.",
     pillars: [
       { icon: "shield", label: "Compliance", desc: "Enter with credibility: ESG disclosure mapping, anti-greenwashing assessment." },
       { icon: "zap", label: "Capability", desc: "Equip your team: Sustainability training, leadership workshops & industry playbooks." },
