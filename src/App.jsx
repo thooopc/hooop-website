@@ -1220,7 +1220,8 @@ const App = React.forwardRef((props, ref) => {
       <div className="fixed top-0 left-0 right-0 z-50">
           <div className="h-20 flex items-center justify-between px-6 lg:hidden bg-[#E0E5EC]/90 backdrop-blur-md shadow-sm border-b border-white/50">
             <div className="font-bold text-2xl tracking-tighter flex items-center gap-3">
-                <HooopLogo className="w-8 h-8" />
+                {/* Increased logo size from w-8 h-8 to w-12 h-12 to fix size/cutting issues */}
+                <HooopLogo className="w-12 h-12" />
                 <span className="text-black">{SITE_CONTENT.brand.name}</span>
             </div>
             <button onClick={() => setIsMenuOpen(true)} className="p-3 rounded-xl bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-black active:shadow-inner">
