@@ -42,10 +42,10 @@ const SITE_CONTENT = {
           desc: "How to build a narrative that survives the scrutiny of Gen Z. It's not about being perfect; it's about being transparent about your imperfections." 
       },
       { 
-          title: "The End of 'Green' Media Buying", 
+          title: "The Era of 'Green' Media Buying", 
           category: "Sustainable Media", 
           date: "September 15, 2025", 
-          desc: "Why CPM is a flawed metric for sustainable brands. We propose a new framework for measuring the carbon footprint of your digital ad spend." 
+          desc: "Why CPM is a flawed metric for sustainable brands. A new framework for measuring the carbon footprint of your digital ad spend." 
       },
       { 
           title: "Decoding the India-UK Climate Corridor", 
@@ -68,8 +68,7 @@ const SITE_CONTENT = {
     ]
   },
   prvaah: {
-    title: "prvaah",
-    sanskritMeaning: "flow",
+    sanskritMeaning: "Sanskrit for flow",
     description1: (
       <span>
         Created by <a href="https://www.everloop.agency/" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">Everloop.Agency</a> and <a href="https://www.hooop.in" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">HOOOP Collective</a>, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.
