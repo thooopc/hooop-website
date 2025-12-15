@@ -25,7 +25,7 @@ const SITE_CONTENT = {
     subtitle: "Essays on the intersection of climate, capital, and culture.",
     featuredTool: {
         title: "Sense by HOOOP",
-        desc: "Use our AI-powered brand narrative insurance tool to stress-test your claims against greenwashing risks.",
+        desc: "Use our logic based brand narrative tool to stress-test your claims against greenwashing risks.",
         cta: "Run Analysis"
     },
     posts: [
