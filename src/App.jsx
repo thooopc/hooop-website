@@ -68,7 +68,8 @@ const SITE_CONTENT = {
     ]
   },
   prvaah: {
-    sanskritMeaning: "Sanskrit for flow",
+    title: "prvaah",
+    sanskritMeaning: "flow",
     description1: (
       <span>
         Created by <a href="https://www.everloop.agency/" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">Everloop.Agency</a> and <a href="https://www.hooop.in" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">HOOOP Collective</a>, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.
@@ -1200,7 +1201,7 @@ const GreenwashingView = ({ navigateTo }) => {
                         <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg relative z-10 leading-relaxed">
                             If you've been silent, start talking. If you've overstated, course-correct. Authenticity is your greatest competitive advantage.
                         </p>
-                        <button onClick={() => navigateTo('sense')} className="relative z-10 bg-green-500 hover:bg-green-400 text-black px-12 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(74,222,128,0.4)]">
+                        <button onClick={() => window.open('https://www.hooop.in/g', '_blank')} className="relative z-10 bg-green-500 hover:bg-green-400 text-black px-12 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(74,222,128,0.4)]">
                             Start The Journey
                         </button>
                     </div>
