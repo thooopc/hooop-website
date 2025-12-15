@@ -68,7 +68,7 @@ const SITE_CONTENT = {
     ]
   },
   prvaah: {
-    sanskritMeaning: "Sanskrit for flow",
+    sanskritMeaning: "Meaning flow in Sanskrit",
     description1: (
       <span>
         Created by <a href="https://www.everloop.agency/" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">Everloop.Agency</a> and <a href="https://www.hooop.in" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">HOOOP Collective</a>, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.
@@ -1259,6 +1259,17 @@ const App = React.forwardRef((props, ref) => {
     // Listen for hash changes (browser back/forward buttons)
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // NEW: Effect to force viewport meta tag for mobile responsiveness if missing
+  useEffect(() => {
+    let meta = document.querySelector('meta[name="viewport"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1.0';
+      document.head.appendChild(meta);
+    }
   }, []);
 
   const navItems = [
