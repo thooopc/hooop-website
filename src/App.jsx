@@ -683,7 +683,7 @@ const GreenwashingView = ({ navigateTo }) => {
                     </ScrollReveal>
                     
                     <ScrollReveal delay={200}>
-                        <h1 className="text-5xl md:text-7xl xl:text-8xl font-black text-gray-900 leading-[0.9] tracking-tighter mb-8">
+                        <h1 className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl font-black text-gray-900 leading-[0.9] tracking-tighter mb-8">
                         Green <br/>
                         Is The <br/>
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">New Lie.</span>
@@ -944,7 +944,7 @@ const GreenwashingView = ({ navigateTo }) => {
             </section>
 
              {/* SECTION: 7 SINS */}
-             <section id="gw-sins" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 bg-green-50/50">
+             <section id="gw-sins" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 bg-green-50/50 overflow-x-hidden">
                 <div className="max-w-6xl mx-auto w-full">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
                         <div>
@@ -957,7 +957,7 @@ const GreenwashingView = ({ navigateTo }) => {
                         </div>
                     </div>
 
-                    <div className="overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0 flex snap-x snap-mandatory scroll-smooth no-scrollbar">
+                    <div className="overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0 flex snap-x snap-mandatory scroll-smooth no-scrollbar w-full max-w-full">
                         <SinCard 
                             number="01" 
                             title="Hidden Trade-off" 
@@ -1360,7 +1360,7 @@ const App = React.forwardRef((props, ref) => {
       )}
 
       {/* Main Content */}
-      <main className="lg:pl-64 w-full min-h-screen relative z-10 px-6 lg:px-20 py-32 lg:py-0">
+      <main className="lg:pl-64 w-full min-h-screen relative z-10 px-4 sm:px-6 lg:px-20 pt-28 lg:pt-0 pb-16">
         
         {/* Floating "Let's Talk" Button - Positioned for Desktop Top Right and Mobile Bottom Right */}
         <div className="fixed bottom-6 right-6 lg:top-10 lg:right-10 lg:bottom-auto z-40">
@@ -1381,7 +1381,7 @@ const App = React.forwardRef((props, ref) => {
               <div className="w-full lg:w-1/2 z-10 flex flex-col justify-center items-start space-y-10 pl-4 lg:pl-12">
                 <div className="flex flex-col">
                     <span className="text-xs font-bold tracking-[0.3em] uppercase text-gray-400 mb-4">{SITE_CONTENT.brand.est}</span>
-                    <h1 className="text-5xl lg:text-8xl font-black text-[#313b4e] leading-[0.9] tracking-tight">
+                    <h1 className="text-4xl sm:text-5xl lg:text-8xl font-black text-[#313b4e] leading-[0.9] tracking-tight">
                       {SITE_CONTENT.hero.titleLine1} <br/>
                       <span className="text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-600">{SITE_CONTENT.hero.titleLine2}</span>
                     </h1>
@@ -1458,7 +1458,7 @@ const App = React.forwardRef((props, ref) => {
                 <div className="max-w-4xl mx-auto px-6">
                     {/* Header */}
                     <div className="mb-20 text-center md:text-left">
-                        <h2 className="text-5xl lg:text-7xl font-black text-[#313b4e] mb-6 tracking-tighter">
+                        <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black text-[#313b4e] mb-6 tracking-tighter">
                             {SITE_CONTENT.thinking.title}
                         </h2>
                         <p className="text-xl text-gray-500 max-w-2xl font-light leading-relaxed">
@@ -1555,7 +1555,7 @@ const App = React.forwardRef((props, ref) => {
                             {/* Placeholder for Prvaah Logo - upload image as 'Prvaah logo.png' or update src */}
                             <ImageWithFallback src="/Prvaah Logo.png" alt="Prvaah Logo" className="h-24 w-auto object-contain" />
                          </div>
-                         <h2 className="text-5xl lg:text-7xl font-black text-[#313b4e] mb-4 tracking-tighter">
+                         <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black text-[#313b4e] mb-4 tracking-tighter">
                             {SITE_CONTENT.prvaah.title}
                          </h2>
                          <p className="text-lg text-gray-400 italic mb-6">"{SITE_CONTENT.prvaah.sanskritMeaning}"</p>
@@ -1765,7 +1765,7 @@ const App = React.forwardRef((props, ref) => {
             <section className="py-24 min-h-screen flex items-center justify-center animate-fade-in-up">
                <div className="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16">
                   <div>
-                     <h2 className="text-5xl font-black text-[#313b4e] mb-8">Let's Talk.</h2>
+                     <h2 className="text-4xl sm:text-5xl font-black text-[#313b4e] mb-8">Let's Talk.</h2>
                      <p className="text-gray-500 mb-8 text-lg">Ready to reimagine growth?</p>
                      <div className="space-y-6">
                         <SoftCard className="p-4 flex items-center gap-4 w-fit" hoverEffect={false}>
@@ -1846,6 +1846,12 @@ const App = React.forwardRef((props, ref) => {
         @keyframes radar-ping {
             0% { transform: scale(0.8); opacity: 0.8; }
             100% { transform: scale(2); opacity: 0; }
+        }
+        /* Mobile fixes */
+        html, body, #root {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
         }
       `}</style>
     </div>
