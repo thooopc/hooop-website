@@ -1,1727 +1,33 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, ArrowLeft, Globe, Shield, Zap, TrendingUp, FileText, Anchor, Linkedin, ExternalLink, Users, Coins, Briefcase, ScanLine, BarChart3, Download, AlertCircle, Check, Leaf, Info, Scale, BookOpen, ChevronDown, ChevronUp, Tag, ShieldCheck, Wind, Gavel, MicOff, Lock, HelpCircle, Eye, AlertTriangle, CheckCircle, Mail, Copy, RefreshCw, ShieldAlert, Search } from 'lucide-react';
-
-// ==========================================
-// 🛠️ EASY EDIT SECTION - CHANGE CONTENT HERE
-// ==========================================
-
-const SITE_CONTENT = {
-  brand: {
-    name: "HOOOP",
-    est: "Est. 2025",
-    logoImage: "/THE-HOOO-COLLECTIVEP_without-shadow.png",
-    contactEmail: "hello@hooop.in",
-  },
-  hero: {
-    titleLine1: "Growth",
-    titleLine2: "Re-Imagined",
-    subtitle: "We align customer behaviour with sustainable choices, designing for impact and business growth.",
-    buttonText: "Our Offerings",
-    linkText: "Read our manifesto"
-  },
-  // OUR THINKING (The Blog)
-  thinking: {
-    title: "Our Thinking",
-    subtitle: "Essays on the intersection of climate, capital, and culture.",
-    featuredTool: {
-        title: "Sense by HOOOP",
-        desc: "Use our AI-powered brand narrative insurance tool to stress-test your claims against greenwashing risks.",
-        cta: "Run Analysis"
-    },
-    posts: [
-      { 
-          title: "The Alpha in Authenticity: Why Greenwashing Kills Valuation", 
-          category: "Climate Finance", 
-          date: "October 12, 2025", 
-          desc: "Investors are no longer just looking at returns; they are looking at risk. Misleading environmental claims are becoming a primary liability in climate funding rounds." 
-      },
-      { 
-          title: "Brand Strategy in the Age of the Cynical Consumer", 
-          category: "Brand Strategy", 
-          date: "September 28, 2025", 
-          desc: "How to build a narrative that survives the scrutiny of Gen Z. It's not about being perfect; it's about being transparent about your imperfections." 
-      },
-      { 
-          title: "The End of 'Green' Media Buying", 
-          category: "Sustainable Media", 
-          date: "September 15, 2025", 
-          desc: "Why CPM is a flawed metric for sustainable brands. We propose a new framework for measuring the carbon footprint of your digital ad spend." 
-      },
-      { 
-          title: "Decoding the India-UK Climate Corridor", 
-          category: "Climate Funding", 
-          date: "August 30, 2025", 
-          desc: "Analyzing the flow of capital and compliance between two major economies. How Prvaah is bridging the gap for MSMEs." 
-      },
-      { 
-          title: "From Storytelling to Storydoing", 
-          category: "Climate Communication", 
-          date: "August 10, 2025", 
-          desc: "Moving beyond 'raising awareness'. How effective climate communication drives measurable behavioral change in the global south." 
-      },
-      { 
-          title: "The Circular Economy Playbook for Fashion", 
-          category: "Sustainable Marketing", 
-          date: "July 22, 2025", 
-          desc: "A practical guide to shifting from linear extraction to circular value creation without alienating your core customer base." 
-      }
-    ]
-  },
-  prvaah: {
-    title: "prvaah",
-    sanskritMeaning: "flow",
-    description1: (
-      <span>
-        Created by <a href="https://www.everloop.agency/" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">Everloop.Agency</a> and <a href="https://www.hooop.in" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">HOOOP Collective</a>, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.
-      </span>
-    ),
-    pillars: [
-      { icon: "shield", label: "Compliance", desc: "Enter with credibility: ESG disclosure mapping, anti-greenwashing assessment." },
-      { icon: "zap", label: "Capability", desc: "Equip your team: Sustainability training, leadership workshops & industry playbooks." },
-      { icon: "globe", label: "Access", desc: "Navigate new markets: Market intelligence, cultural insights & investor introductions." },
-      { icon: "file", label: "Pilots", desc: "Test & adapt: Go-to-market pilots, product validation & circular supply-chains." },
-      { icon: "trending", label: "Scale", desc: "Expand responsibly: Long-term ESG integration, green media & impact measurement." }
-    ],
-    testimonials: [
-      {
-        text: "At Everloop, we see Pravah as a continuum — not just an entry point but a journey. From ESG alignment to market pilots and long-term resilience, this platform helps sustainable enterprises flow between the UK and India with confidence, purpose, and accountability.",
-        name: "Marina Bradford",
-        role: "Director, Everloop.Agency",
-        image: "/Marina Bradford.jpg"
-      },
-      {
-        text: "The India–UK agreement creates a genuine opportunity for sustainable enterprises to expand into new markets. It also strengthens digital trade, supports sustainability goals, and empowers MSMEs and inclusive enterprises to expand globally.",
-        name: "Arvind Nair",
-        role: "Founding Partner, HOOOP",
-        image: "/Arvind.jpg"
-      }
-    ]
-  },
-  offerings: [
-    { title: "Strategy & Creative", desc: "Refining marketing strategy by embedding sustainability into the core of brand transformation." },
-    { title: "Journey Interventions", desc: "Embedding sustainability-driven nudges into customer, partner, and employee journeys." },
-    { title: "Media & Intelligence", desc: "Tools enabling audience tracking to benchmark against ESG metrics and reduce carbon footprint." },
-    { title: "Digital Sustainability", desc: "Optimising digital experiences for minimal environmental impact while maximising influence." }
-  ],
-  collective: [
-    {
-      name: "Arvind Nair",
-      role: "Growth & Sustainability",
-      desc: "Helping build marketing as a force for sustainable business to help narrow the value action gap. Formerly Global VP at Mirum India.",
-      img: "/Arvind.jpg",
-      linkedin: "https://www.linkedin.com/in/arvindbnair/"
-    },
-    {
-      name: "Radhika Sharda",
-      role: "Stakeholder Engagemnt, PR and Communications",
-      desc: "With 15+ years of experience in brand and communications, Radhika specializes in translating sustainability visions into execution-ready frameworks, driving organizational excellence and scalable growth.",
-      img: "/radhika.jpg",
-      linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
-    },
-    {
-      name: "Maya D'Souza",
-      role: "Circular Economy Policy",
-      desc: "Expert on circular economy policy and practice. Focused on systems design and policy frameworks for sustainable impact.",
-      img: "/MayaF.png",
-      linkedin: "https://www.linkedin.com/in/maya-de-souza-12b16aa/"
-    },
-    {
-      name: "Paromita Mukhopadhyay",
-      role: "Environmental Law & Policy",
-      desc: "Leads environmental law and policy thinking at HOOOP with 20+ years of experience. Consultant for funds monitoring regulatory and policy developments.",
-      img: "/Paromita.jpg",
-      linkedin: "https://www.linkedin.com/in/paromita-mukhopadhyay-nair-bb24447/"
-    },
-    {
-      name: "Shujoy Dutta",
-      role: "Brand Strategy",
-      desc: "Blending brand with sustainability to craft  impactful brand strategies.",
-      img: "/shujoy.jpg",
-      linkedin: "https://www.linkedin.com/in/shujoy-dutta-05599219/"
-    },
-    {
-      name: "Rachana Lokhande",
-      role: "Sustainable Media Strategy",
-      desc: "25+ years leadership in media & tech. Former Co-CEO of Kinetic Worldwide. Advancing the concept of sustainable media to drive climate-positive impact.",
-      img: "/Rachna.jpg",
-      linkedin: "https://www.linkedin.com/in/rachanadlokhande/"
-    }
-  ],
-  models: [
-    {
-      title: "CONSULT",
-      headline: "We help grow businesses that work with conscious consumers.",
-      desc: "Our consulting model is designed for brands looking to integrate sustainability deeply into their marketing DNA, moving beyond compliance to customer connection.",
-      iconType: "briefcase"
-    },
-    {
-      title: "INVEST",
-      headline: "We invest our expertise as a form of capital.",
-      desc: "For high-potential sustainable startups, we offer a sweat-equity model, aligning our success directly with your growth and impact.",
-      iconType: "coins"
-    },
-    {
-      title: "COLLECTIVE",
-      headline: "Bringing together an ecosystem focused on sustainability.",
-      desc: "Think of us like a lab. We are a collective of thinkers, technologists, communicators, creatives, designers, planners, and policy folks working to accelerate change.",
-      iconType: "users"
-    }
-  ],
-  research: {
-    title: "Research & Reports",
-    subtitle: "Intelligence for the modern sustainable marketing agency.",
-    intro: "Our reports combine rigorous data analysis with actionable insights on Circular Economy India, Sustainable Media, and Greenwashing in Marketing.",
-    reports: [
-        { title: "The State of Greenwashing in Marketing: India 2025", category: "Compliance", desc: "A comprehensive audit of 500+ Indian D2C brands. We analyze how greenwashing in marketing is evolving under new CCPA guidelines and what it means for your brand." },
-        { title: "Sustainable Marketing in India: The Consumer Paradox", category: "Consumer Behavior", desc: "Decoding the value-action gap. Why 78% of Indians want sustainable products but only 12% buy. A guide for sustainability marketing professionals." },
-        { title: "Circular Economy India: The Fashion Playbook", category: "Operations", desc: "Moving beyond recycling. Case studies on how shifting to a circular economy in India impacts the bottom line for mid-sized apparel brands." },
-        { title: "Sustainable Media: Decarbonizing Digital Ads", category: "Digital Impact", desc: "The unseen carbon footprint of your ad spend. Benchmarks and best practices for implementing a sustainable media strategy." },
-        { title: "The Future of the Sustainable Marketing Agency", category: "Industry Trends", desc: "How agencies are evolving from 'selling green' to 'designing growth'. What CMOs need to look for in their next partner." }
-    ]
-  }
-};
-
-// ==========================================
-// ⚙️ SENSE TOOL LOGIC (Greenwashing Detection)
-// ==========================================
-const SENSE_TERMS = [
-    { word: "eco-friendly", risk: "High", category: "Vague Claim", reference: "CCPA Clause 5(a)", tip: "Vague. Banned under CCPA Clause 5(a) without specific proof. Use specific metrics like 'biodegradable in 28 days'." },
-    { word: "eco friendly", risk: "High", category: "Vague Claim", reference: "CCPA Clause 5(a)", tip: "Vague. Banned under CCPA Clause 5(a) without specific proof. Use specific metrics." },
-    { word: "good for the planet", risk: "Critical", category: "Hyperbole", reference: "CCPA Clause 5(a)", tip: "Hyperbole. Implies net positive impact which is rarely true." },
-    { word: "green product", risk: "High", category: "Vague Claim", reference: "FTC Green Guides", tip: "Meaningless. 'Green' has no legal definition." },
-    { word: "planet-safe", risk: "Critical", category: "Absolute Claim", reference: "CCPA Clause 6(5)", tip: "Absolute claim. Nothing is 100% safe for the planet." },
-    { word: "sustainable choice", risk: "Medium", category: "Generic Claim", reference: "ASCI Guidelines", tip: "Generic. Verify against specific lifecycle data." },
-    { word: "better for the earth", risk: "High", category: "Comparative Claim", reference: "CCPA Clause 6(4)", tip: "Better than what? Needs a clear baseline comparison." },
-    { word: "clean alternative", risk: "Medium", category: "Undefined Term", tip: "Undefined term. 'Clean' how? Energy? Waste? Toxins?" },
-    { word: "nature-approved", risk: "High", category: "Puffery", tip: "Marketing fluff. Nature doesn't approve products." },
-    { word: "earth-positive", risk: "High", category: "Regenerative Claim", tip: "Requires proof of regenerative impact, not just 'less bad'." },
-    { word: "made responsibly", risk: "Medium", category: "Undefined Term", tip: "Define 'responsibly'. Look for SA8000 or Fair Trade." },
-    { word: "good for the earth", risk: "High", category: "Vague Claim", tip: "Vague and hyperbolic. Does it regenerate the earth or just damage it less?" }, 
-    { word: "good for nature", risk: "High", category: "Vague Claim", tip: "Similar to 'Good for the Earth'. Too broad to be legally substantiated." }, 
-    // ... [Rest of TERMS from user code] ...
-];
-
-const GLOSSARY = [
-    { term: "Accountability", def: "Being transparent about exactly how you affect the environment, good and bad." }, 
-    { term: "Accreditation", def: "Third-party audit or certification. Don't just take a brand's word for it." }, 
-    { term: "B Corp", def: "Certification for companies meeting high standards of social and environmental performance, accountability, and transparency." },
-    { term: "Biodegradable", def: "Capable of being decomposed by bacteria or other living organisms. Note: Everything is biodegradable eventually; look for timeframes." },
-    { term: "Carbon Neutral", def: "Balancing carbon emissions with carbon removal (often via offsets). Aim for 'Net Zero' (reduction first) instead." },
-    { term: "Circularity", def: "A model where products are designed to be reused, repaired, or recycled, eliminating waste and pollution." },
-    { term: "Greenwashing", def: "Making misleading or unsubstantiated claims about the environmental benefits of a product, service, or practice." },
-    { term: "Net Zero", def: "Reducing greenhouse gas emissions to as close to zero as possible, with any remaining emissions re-absorbed from the atmosphere." },
-    { term: "Organic", def: "Grown without the use of synthetic pesticides, fertilizers, or GMOs. Look for certified labels." },
-    { term: "Traceability", def: "Using tech to track a product's journey from raw material to you. Proof, not just promises." }, 
-    { term: "Upcycling", def: "Transforming by-products, waste materials, or unwanted products into new materials or products of better quality." },
-];
-
-const RISK_ORDER = { Low: 1, Medium: 2, High: 3, Critical: 4 };
-const getOverallRisk = (findings) => {
-    if (!findings || findings.length === 0) return "Low";
-    const max = findings.reduce(
-        (acc, f) => (RISK_ORDER[f.risk] > acc ? RISK_ORDER[f.risk] : acc),
-        0
-    );
-    return Object.entries(RISK_ORDER).find(([, v]) => v === max)?.[0] || "Low";
-};
-const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-// ==========================================
-// ⚙️ SYSTEM CODE
-// ==========================================
-
-// --- Icon Mapping Strategy ---
-const iconMap = {
-  coins: Coins,
-  briefcase: Briefcase,
-  scan: ScanLine,
-  shield: Shield,
-  file: FileText,
-  micoff: MicOff,
-  check: CheckCircle,
-  eye: Eye,
-  alert: AlertTriangle,
-  info: Info,
-  zap: Zap,
-  chart: BarChart3,
-  x: X,
-  users: Users,
-  globe: Globe,
-  trending: TrendingUp,
-  leaf: Leaf,
-  scale: Scale,
-  tag: Tag
-};
-
-const getIconComponent = (name) => iconMap[name] || Users;
-
-// --- Utility: Image Fallback ---
-const ImageWithFallback = ({ src, alt, className }) => {
-  const [imgSrc, setImgSrc] = useState(src);
-  
-  const handleError = () => {
-    setImgSrc("https://placehold.co/400x400?text=Image+Not+Found"); 
-  };
-  
-  return <img src={imgSrc} alt={alt} className={className} onError={handleError} />;
-};
-
-// --- Components ---
-const ConcentricCircles = () => (
-  <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center">
-    <div className="absolute w-[800px] h-[800px] border border-white/40 rounded-full" />
-    <div className="absolute w-[1200px] h-[1200px] border border-white/30 rounded-full" />
-    <div className="absolute w-[1600px] h-[1600px] border border-white/20 rounded-full" />
-    <div className="absolute -right-[20%] -top-[20%] w-[1000px] h-[1000px] border border-white/20 rounded-full opacity-50" />
-  </div>
-);
-
-const HooopLogo = ({ className = "w-10 h-10" }) => (
-  <ImageWithFallback src={SITE_CONTENT.brand.logoImage} alt="HOOOP Logo" className={`object-contain ${className}`} />
-);
-
-const SoftCard = ({ children, className = "", onClick, hoverEffect = true, id = "" }) => (
-  <div id={id} onClick={onClick} className={`bg-[#E0E5EC] rounded-[30px] shadow-[9px_9px_16px_rgb(163,177,198,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] ${hoverEffect ? 'hover:shadow-[inset_9px_9px_16px_rgb(163,177,198,0.6),inset_-9px_-9px_16px_rgba(255,255,255,0.5)] cursor-pointer' : ''} transition-all duration-300 ease-in-out ${className}`}>
-    {children}
-  </div>
-);
-
-const VerticalPill = ({ height = "h-64", className = "" }) => (
-  <div className={`w-16 ${height} bg-[#E0E5EC] rounded-full shadow-[9px_9px_16px_rgb(163,177,198,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] ${className}`} />
-);
-
-const ScrollReveal = ({ children, className = "", delay = 0 }) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const domRef = useRef();
-    useEffect(() => {
-        const observer = new IntersectionObserver(entries => entries.forEach(entry => setIsVisible(entry.isIntersecting)));
-        const currentRef = domRef.current;
-        if (currentRef) observer.observe(currentRef);
-        return () => { if (currentRef) observer.unobserve(currentRef); };
-    }, []);
-    return <div ref={domRef} style={{ transitionDelay: `${delay}ms` }} className={`transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} ${className}`}>{children}</div>;
-};
-
-// --- RESTORED COMPONENTS FOR GREENWASHING VIEW ---
-const StatBar = ({ label, percentage, color }) => (
-    <div className="mb-4">
-        <div className="flex justify-between items-end mb-1">
-            <span className="text-sm font-medium text-gray-600">{label}</span>
-            <span className="text-sm font-bold text-gray-900">{percentage}%</span>
-        </div>
-        <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
-            <div className="h-full rounded-full transition-all duration-1000 ease-out" style={{ width: `${percentage}%`, backgroundColor: color }}></div>
-        </div>
-    </div>
-);
-
-const FlipCard = ({ frontTitle, frontIcon: FrontIcon, backText, backStat, color }) => {
-    const [isFlipped, setIsFlipped] = useState(false);
-    return (
-        <div className="relative w-full h-64 perspective-1000 cursor-pointer group" onClick={() => setIsFlipped(!isFlipped)} onMouseEnter={() => setIsFlipped(true)} onMouseLeave={() => setIsFlipped(false)}>
-            <div className={`w-full h-full relative preserve-3d transition-all duration-700 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
-                <div className="absolute inset-0 backface-hidden bg-[#F0F0F3] rounded-2xl shadow-[-5px_-5px_10px_#FFFFFF,5px_5px_10px_#AEAEC040] flex flex-col items-center justify-center p-6 text-center border-2 border-transparent hover:border-gray-200 transition-colors">
-                    <div className={`p-4 rounded-full mb-4 text-white shadow-lg`} style={{backgroundColor: color}}><FrontIcon size={32} /></div>
-                    <h3 className="text-lg font-bold text-gray-800">{frontTitle}</h3>
-                    <p className="text-xs text-gray-400 mt-2 uppercase tracking-widest flex items-center gap-1">Tap to Reveal <ArrowRight size={12} /></p>
-                </div>
-                <div className="absolute inset-0 backface-hidden rotate-y-180 bg-gray-900 rounded-2xl shadow-xl flex flex-col items-center justify-center p-6 text-center text-white">
-                    <p className="text-3xl font-bold text-green-400 mb-2">{backStat}</p>
-                    <p className="text-sm text-gray-300 leading-relaxed">{backText}</p>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const ArchetypeCard = ({ title, type, icon: Icon, description, color, subtext, stat }) => (
-    <div className="relative w-full h-full min-h-[420px] bg-[#F0F0F3] rounded-[2.5rem] p-8 shadow-[-10px_-10px_30px_#FFFFFF,10px_10px_30px_#AEAEC040] flex flex-col justify-between items-start transition-all duration-500 hover:shadow-xl border border-transparent" style={{ borderColor: color }}>
-        <div className="w-full flex flex-col h-full">
-            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg shrink-0`} style={{ backgroundColor: color }}><Icon size={24} /></div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">{title}</h3>
-            <p className="text-xs font-bold tracking-wider uppercase text-gray-400 mb-4">{type}</p>
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">{description}</p>
-            {stat && (
-                <div className="bg-white/60 backdrop-blur-sm p-3 rounded-xl border border-white/50 mb-4 shadow-sm mt-auto">
-                    <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wide mb-1">Reality Check</p>
-                    <p className="text-xs font-bold text-gray-800 leading-tight">{stat}</p>
-                </div>
-            )}
-        </div>
-        <div className="w-full pt-6 border-t border-gray-200 mt-auto">
-            <span className="text-xs font-semibold block" style={{ color: color }}>{subtext}</span>
-        </div>
-    </div>
-);
-
-const SinCard = ({ number, title, description, icon: Icon }) => (
-    <div className="min-w-[300px] md:min-w-[350px] bg-white/60 backdrop-blur-sm p-8 rounded-[2rem] mr-6 border border-white/50 shadow-sm hover:shadow-md transition-all flex-shrink-0">
-        <div className="flex justify-between items-start mb-6">
-            <div className="bg-red-50 p-3 rounded-2xl text-red-500"><Icon size={24} /></div>
-            <span className="text-6xl font-black text-gray-100 font-serif -mt-4 opacity-50">{number}</span>
-        </div>
-        <h4 className="text-xl font-bold text-gray-800 mb-3">{title}</h4>
-        <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
-    </div>
-);
-
-// --- NEW SENSE PAGE COMPONENTS ---
-const SenseAnalysisView = () => {
-    const [text, setText] = useState("");
-    const [result, setResult] = useState(null);
-    const [error, setError] = useState("");
-
-    const analyze = () => {
-        const trimmed = text.trim();
-        if (!trimmed) {
-            setError("Please paste a claim or paragraph to analyze.");
-            setResult(null);
-            return;
-        }
-        setError("");
-        
-        const hitsMap = new Map();
-        SENSE_TERMS.forEach((term) => {
-            const pattern = new RegExp(`\\b${escapeRegExp(term.word)}\\b`, "i");
-            if (pattern.test(trimmed) && !hitsMap.has(term.word)) {
-                    hitsMap.set(term.word, term);
-            } else if (term.word.split(' ').length > 1 && trimmed.toLowerCase().includes(term.word) && !hitsMap.has(term.word)) {
-                    hitsMap.set(term.word, term);
-            }
-        });
-        setResult(Array.from(hitsMap.values()));
-    };
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenwashing Playbook</title>
+    <meta name="description" content="A strategic greenwashing playbook for marketers: risks, laws, archetypes, and a practical action plan to go from spin to substance.">
     
-    const copyFindings = () => {
-        if (!result) return;
-        const summary = result.map((r) => `"${r.word}" – ${r.risk} risk: ${r.tip}`).join("\n");
-        navigator.clipboard.writeText(summary);
-        alert("Findings copied to clipboard!");
-    };
-
-    return (
-        <div className="w-full max-w-4xl mx-auto animate-fade">
-            <div className="mb-12 md:mb-16 grid md:grid-cols-2 gap-8 items-center">
-                <div className="text-left pl-2">
-                    <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                        Does it make <br/><span className="text-gray-400">Sense?</span>
-                    </h2>
-                    <p className="text-gray-500 text-sm md:text-base font-medium mb-6 leading-relaxed">
-                        Protect your reputation, ensure legal compliance, and build investor trust. 
-                        <strong className="text-gray-800 ml-1">Sense</strong> stress-tests your environmental claims before you publish.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-2">
-                        {["Reputation", "Legal Compliance", "Trust", "ESG Credibility"].map((v, i) => (
-                            <span key={i} className="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-bold text-gray-600 shadow-sm flex items-center gap-1">
-                                <ShieldCheck size={12} className="text-green-600" /> {v}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-                <div className="hidden md:flex justify-center items-center h-64 relative">
-                    <div className="absolute w-64 h-64 border border-green-100 rounded-full flex items-center justify-center">
-                        <div className="absolute w-48 h-48 border border-green-200 rounded-full"></div>
-                        <div className="absolute w-32 h-32 border border-green-300 rounded-full bg-green-50/30"></div>
-                        <div className="absolute w-32 h-32 rounded-full border-2 border-green-400 radar-circle"></div>
-                        <div className="z-10 bg-white p-4 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center">
-                            <ScanLine size={32} className="text-green-600 mb-2" />
-                            <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Detection Active</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="relative mb-8 group">
-                <label htmlFor="sense-textarea" className="block text-xs font-bold text-gray-400 mb-2 pl-1 uppercase tracking-widest">
-                    Paste your claim or paragraph
-                </label>
-                <textarea 
-                    id="sense-textarea"
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                    placeholder="e.g., 'Our eco friendly washing powder uses 100% natural ingredients...'"
-                    className={`soft-input w-full h-48 p-6 text-base text-gray-700 outline-none resize-none transition-all focus:ring-2 focus:ring-gray-200 ${error ? 'input-error' : ''}`}
-                ></textarea>
-                    {error && (
-                    <p className="mt-3 text-xs font-bold text-red-500 pl-1 flex items-center gap-1">
-                        <AlertTriangle size={12}/> {error}
-                    </p>
-                )}
-                <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
-                    <button type="button" onClick={analyze} className="soft-btn-primary px-8 py-3 flex items-center gap-2 font-bold tracking-wide text-sm shadow-lg hover:shadow-xl transition-all">
-                        Test Your Claims <ArrowRight size={16} />
-                    </button>
-                </div>
-            </div>
-
-            {!result && (
-                <div className="flex justify-center mt-8 mb-16 animate-bounce opacity-80">
-                    <a href="#philosophy" className="w-10 h-10 bg-white rounded-full shadow-lg shadow-gray-200/50 flex items-center justify-center text-green-600 border border-green-50 cursor-pointer hover:bg-green-50 transition-colors">
-                        <Leaf size={18} />
-                    </a>
-                </div>
-            )}
-
-            <div aria-live="polite">
-            {result && (
-                <div className="animate-fade mb-20">
-                    {result.length === 0 ? (
-                        <div className="soft-card p-6 md:p-8 flex items-center gap-5 text-left">
-                            <div className="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0">
-                                <Check size={24} />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-gray-900">Clean Language</h3>
-                                <p className="text-gray-500 mt-1 text-sm">We didn't find any obvious exaggerations. Ensure you have data to back up your story.</p>
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="space-y-5">
-                            <div className="soft-card p-5 mb-6 flex items-center justify-between bg-white border border-gray-100">
-                                <div>
-                                    <p className="text-[10px] uppercase tracking-wide text-gray-400 font-bold mb-1">Overall Language Risk</p>
-                                    <p className="text-sm font-bold text-gray-800">{getOverallRisk(result)} – review your claims before publishing.</p>
-                                </div>
-                                <div className={`px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm ${getOverallRisk(result) === "Critical" ? "bg-red-100 text-red-700 border border-red-200" : getOverallRisk(result) === "High" ? "bg-orange-100 text-orange-700 border border-orange-200" : "bg-yellow-100 text-yellow-700 border border-yellow-200"}`}>
-                                    {getOverallRisk(result)} Risk
-                                </div>
-                            </div>
-                            <div className="flex items-baseline justify-between px-2">
-                                <h3 className="text-xl font-bold text-gray-900">Reflection Points</h3>
-                                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wide">{result.length} Issues Found</span>
-                            </div>
-                            {result.map((item, i) => (
-                                <div key={i} className="soft-card p-6 transition-all hover:scale-[1.01]">
-                                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-2">
-                                        <div className="flex items-center gap-3">
-                                            <AlertCircle className="text-red-400 shrink-0" size={18} />
-                                            <h4 className="font-bold text-base text-gray-900">"{item.word}"</h4>
-                                        </div>
-                                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wide bg-gray-100 px-2 py-1 rounded self-start md:self-auto">{item.category}</span>
-                                    </div>
-                                    <p className="text-gray-500 pl-0 md:pl-8 leading-relaxed text-sm"><span className="font-bold text-gray-700">Rethink this:</span> {item.tip}</p>
-                                        {item.reference && (<p className="pl-0 md:pl-8 mt-3 text-[10px] text-gray-400 flex items-center gap-1"><BookOpen size={10} /> Ref: {item.reference}</p>)}
-                                </div>
-                            ))}
-                            <div className="text-center mt-6">
-                                <button type="button" className="text-xs font-bold text-gray-500 hover:text-green-600 underline underline-offset-4 transition-colors flex items-center justify-center gap-2 mx-auto" onClick={copyFindings}>
-                                    <Copy size={12}/> Copy findings to clipboard
-                                </button>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            )}
-            </div>
-
-            <div id="philosophy" className="pt-12 border-t border-gray-200/60 pb-12">
-                <div className="max-w-2xl mx-auto text-center mb-8">
-                    <h3 className="text-2xl font-bold mb-3 text-gray-900">The Sense Philosophy</h3>
-                    <p className="text-gray-500 leading-relaxed text-sm md:text-base">
-                        True sustainability isn't about the right buzzwords. It's about honesty, transparency, and impact.
-                        <strong className="text-gray-900 ml-1">Sense</strong> helps you refine your message, stripping away the hype to reveal the truth.
-                    </p>
-                </div>
-                <div className="grid md:grid-cols-2 gap-5 mb-8">
-                    <div className="soft-card p-6">
-                        <ScanLine className="mb-3 text-green-600" size={24} />
-                        <h4 className="font-bold text-gray-900 text-lg">Traceability</h4>
-                        <p className="text-xs text-gray-500 mt-2 leading-relaxed">Tech-enabled tracking beats promises. Know exactly where your product comes from.</p>
-                    </div>
-                    <div className="soft-card p-6">
-                        <Tag className="mb-3 text-green-600" size={24} />
-                        <h4 className="font-bold text-gray-900 text-lg">Clear Labeling</h4>
-                        <p className="text-xs text-gray-500 mt-2 leading-relaxed">Simple language labels. No 'farm fresh' fluff. Just exactly what is in the product.</p>
-                    </div>
-                </div>
-                <div className="soft-card bg-gray-100/50 p-6 md:p-8 border border-gray-200">
-                    <div className="flex flex-col gap-4">
-                        <div>
-                            <h4 className="font-bold text-gray-900 flex items-center gap-2 text-[10px] uppercase tracking-wide mb-1"><Info size={14} /> Sense Disclaimer</h4>
-                            <p className="text-xs text-gray-500 leading-relaxed">This tool is designed to help rethink messaging before pushing it out and should only be looked at like a guiding light. It does not constitute legal advice.</p>
-                        </div>
-                        <div className="pt-4 border-t border-gray-200">
-                            <p className="text-xs text-gray-500 mb-1">Need to understand deeper and get trained on greenwashing further?</p>
-                            <a href="mailto:hello@hooop.in" className="inline-flex items-center gap-1.5 font-bold text-gray-900 hover:text-green-600 transition-colors text-sm"><Mail size={14} /> hello@hooop.in</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const ChecklistView = () => {
-    const [items, setItems] = useState([
-        { id: 1, text: "Are we using green/brown colors just to look 'natural' without changing the product?", checked: false }, 
-        { id: 2, text: "Do we have a specific webpage backing these claims?", checked: false },
-        { id: 3, text: "Is the packaging claiming '100% Recycled' when it's just 1%?", checked: false }, 
-        { id: 4, text: "Are we ignoring the supply chain impact?", checked: false },
-        { id: 5, text: "Is the 'Recyclable' logo prominent on non-recyclable packaging?", checked: false },
-        { id: 6, text: "Are we making a big noise about a tiny feature (e.g. CFC-free) to hide bigger harms?", checked: false }, 
-    ]);
-    const toggle = (id) => { setItems(items.map(i => i.id === id ? {...i, checked: !i.checked} : i)); };
-
-    return (
-        <div className="w-full max-w-2xl mx-auto animate-fade pb-20 md:pb-0 px-6 pt-8 md:pt-12">
-            <div className="mb-10 text-center md:text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Visual Audit</h2>
-                <p className="text-gray-500 text-base md:text-lg">Pause and look at your product packaging or website.</p>
-            </div>
-            <div className="space-y-4">
-                {items.map(item => (
-                    <button key={item.id} type="button" onClick={() => toggle(item.id)} className={`w-full soft-card p-5 md:p-6 flex items-center justify-between transition-all duration-300 text-left ${item.checked ? 'opacity-50 grayscale' : 'hover:scale-[1.01]'}`}>
-                        <span className={`text-sm md:text-base font-medium mr-4 ${item.checked ? 'line-through text-gray-400' : 'text-gray-800'}`}>{item.text}</span>
-                        <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors shrink-0 ${item.checked ? 'bg-gray-900 border-gray-900 text-white' : 'border-gray-300'}`}>
-                            {item.checked && <Check size={12} />}
-                        </div>
-                    </button>
-                ))}
-            </div>
-        </div>
-    );
-};
-
-const ResourcesView = () => {
-    const [openIndex, setOpenIndex] = useState(null);
-    const toggle = (index) => { setOpenIndex(openIndex === index ? null : index); };
-
-    return (
-        <div className="w-full max-w-4xl mx-auto animate-fade pb-20 md:pb-0 px-6">
-            <div className="mb-10 text-center md:text-left">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Further Resources</h2>
-                <p className="text-sm md:text-base text-gray-500 leading-relaxed max-w-2xl">Dive deeper into the regulations and best practices shaping the future of honest environmental communication.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
-                <a href="https://consumeraffairs.nic.in/" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
-                    <div className="flex justify-between items-start mb-4"><div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center"><Scale size={18} /></div><ExternalLink size={16} className="text-gray-300 group-hover:text-gray-600 transition-colors" /></div>
-                    <h4 className="font-bold text-lg text-gray-900 mb-1">CCPA Guidelines</h4><p className="text-xs text-gray-500">Official Indian regulations on misleading environmental claims.</p>
-                </a>
-                <a href="https://www.ascionline.in/" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
-                    <div className="flex justify-between items-start mb-4"><div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center"><AlertCircle size={18} /></div><ExternalLink size={16} className="text-gray-300 group-hover:text-gray-600 transition-colors" /></div>
-                    <h4 className="font-bold text-lg text-gray-900 mb-1">ASCI Code</h4><p className="text-xs text-gray-500">Advertising Standards Council of India's rules on honesty.</p>
-                </a>
-                <a href="https://www.wwf.org.uk/learn/environment/guide-to-greenwashing" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
-                    <div className="flex justify-between items-start mb-4"><div className="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center"><Leaf size={18} /></div><ExternalLink size={16} className="text-gray-300 group-hover:text-gray-600 transition-colors" /></div>
-                    <h4 className="font-bold text-lg text-gray-900 mb-1">WWF Guide</h4><p className="text-xs text-gray-500">Global best practices on identifying greenwashing traps.</p>
-                </a>
-                <a href="https://www.oneplanetnetwork.org/knowledge-centre/resources/green-marketing-challenge" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
-                    <div className="flex justify-between items-start mb-4"><div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center"><Globe size={18} /></div><ExternalLink size={16} className="text-gray-300 group-hover:text-gray-600 transition-colors" /></div>
-                    <h4 className="font-bold text-lg text-gray-900 mb-1">One Planet Network</h4><p className="text-xs text-gray-500">Green Marketing Challenge & validation tools.</p>
-                </a>
-            </div>
-            <div className="mb-8 pt-8 border-t border-gray-200/60">
-                <div className="flex items-center gap-3 mb-6"><div className="w-8 h-8 rounded-lg bg-gray-900 text-white flex items-center justify-center"><BookOpen size={16} /></div><h2 className="text-2xl font-bold text-gray-900">Green Glossary</h2></div>
-                <div className="space-y-3">
-                    {GLOSSARY.map((item, index) => (
-                        <div key={index} className="soft-card overflow-hidden transition-all duration-300">
-                            <button type="button" onClick={() => toggle(index)} className="w-full flex items-center justify-between p-5 text-left focus:outline-none">
-                                <span className="font-bold text-gray-800 text-sm md:text-base">{item.term}</span>
-                                {openIndex === index ? <ChevronUp size={18} className="text-gray-400" /> : <ChevronDown size={18} className="text-gray-400" />}
-                            </button>
-                            <div className={`px-5 pb-5 text-xs md:text-sm text-gray-500 leading-relaxed transition-all duration-300 ${openIndex === index ? 'block' : 'hidden'}`}>{item.def}</div>
-                        </div>
-                    ))}
-                </div>
-                <p className="mt-8 text-[10px] text-gray-400 text-center">Sense pattern library last updated: Oct 2025. For complex claims, get professional legal review.</p>
-            </div>
-        </div>
-    );
-};
-
-// --- NEW GREENWASHING PLAYBOOK COMPONENTS (INTEGRATED) ---
-const PillButton = ({ children, primary = false, onClick }) => (
-    <button
-        onClick={onClick}
-        className={`
-        flex items-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1
-        ${primary 
-            ? 'bg-black text-white shadow-lg hover:shadow-xl' 
-            : 'bg-[#F0F0F3] text-gray-700 shadow-[-5px_-5px_10px_#FFFFFF,5px_5px_10px_#AEAEC040] hover:shadow-[-2px_-2px_5px_#FFFFFF,2px_2px_5px_#AEAEC040]'
-        }
-        `}
-    >
-        {children}
-    </button>
-);
-
-const GreenwashingView = ({ navigateTo }) => {
-   const scrollToId = (id) => {
-        const element = document.getElementById(id);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-    };
-
-   return (
-     <div className="w-full">
-            {/* SECTION 1: HERO */}
-            <section id="gw-home" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-gradient-to-bl from-green-300/30 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-                
-                <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="z-10 order-2 lg:order-1 pt-10 md:pt-0">
-                    <ScrollReveal>
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/50 rounded-full mb-8 backdrop-blur-sm border border-white/50 shadow-sm">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-xs font-bold tracking-widest uppercase text-gray-600">Strategic Briefing for Marketers</span>
-                        </div>
-                    </ScrollReveal>
-                    
-                    <ScrollReveal delay={200}>
-                        <h1 className="text-5xl md:text-7xl xl:text-8xl font-black text-gray-900 leading-[0.9] tracking-tighter mb-8">
-                        Green <br/>
-                        Is The <br/>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">New Lie.</span>
-                        </h1>
-                    </ScrollReveal>
-                    
-                    <ScrollReveal delay={400}>
-                        <p className="text-lg md:text-xl text-gray-600 max-w-md mb-10 leading-relaxed font-medium">
-                        In an era of conscious consumers, sustainability is a make-or-break brand pillar.
-                        <br/><br/>
-                        We bridge the critical gap between <span className="font-bold text-gray-900">reality</span> and <span className="font-bold text-gray-900">perception</span>.
-                        </p>
-                    </ScrollReveal>
-
-                    <ScrollReveal delay={600}>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                        <PillButton primary onClick={() => scrollToId('gw-gap')}>
-                            Mind The Gap <ArrowRight size={18} />
-                        </PillButton>
-                        <PillButton onClick={() => scrollToId('gw-risks')}>
-                            Calculate Risks
-                        </PillButton>
-                        </div>
-                    </ScrollReveal>
-                </div>
-
-                <div className="order-1 lg:order-2 flex justify-center lg:justify-end relative h-[300px] lg:h-auto">
-                    <div className="relative w-full h-full flex items-center justify-center">
-                        <div className="absolute top-1/2 left-1/2 -translate-x-3/4 -translate-y-1/2 w-48 h-48 md:w-80 md:h-80 bg-[#E0E5EC] rounded-full shadow-[inset_-10px_-10px_30px_#FFFFFF,inset_10px_10px_30px_#AEAEC040] flex items-center justify-center z-10"><span className="text-gray-400 font-bold text-lg md:text-xl">Perception</span></div>
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/2 w-48 h-48 md:w-80 md:h-80 bg-green-500 rounded-full shadow-2xl flex items-center justify-center opacity-90 z-20 mix-blend-multiply transition-all duration-1000 hover:translate-x-[-30%] cursor-pointer"><span className="text-white font-bold text-lg md:text-xl">Reality</span></div>
-                    </div>
-                </div>
-                </div>
-            </section>
-
-            {/* SECTION 2: THE GAP & VERIFICATION DATA */}
-            <section id="gw-gap" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20">
-                <div className="max-w-6xl mx-auto w-full">
-                    <div className="mb-12">
-                        <ScrollReveal>
-                            <h2 className="text-4xl md:text-5xl font-bold mb-6">The Central Challenge</h2>
-                            <div className="w-20 h-2 bg-green-500 rounded-full mb-8"></div>
-                            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mb-8">
-                                The result is a <span className="font-bold text-gray-800">'Sustainability Gap'</span>—a critical disconnect between a brand's actual performance and public perception.
-                            </p>
-                        </ScrollReveal>
-                    </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                        {/* New Data Viz: How Claims Are Verified */}
-                        <ScrollReveal delay={200}>
-                            <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-lg border border-gray-100 h-full">
-                                <div className="flex items-center gap-3 mb-6">
-                                    <Search className="text-green-600" size={28} />
-                                    <h3 className="text-2xl font-bold text-gray-800">The Verification Gap</h3>
-                                </div>
-                                <p className="text-sm text-gray-500 mb-6">
-                                    Survey of Indian marketing professionals: <br/>"How are your sustainability claims usually verified?"
-                                </p>
-                                
-                                <div className="space-y-1">
-                                    <StatBar label="Third-party Certifications" percentage={30} color="#4ADE80" />
-                                    <StatBar label="Legal Team Approval" percentage={22} color="#9CA3AF" />
-                                    <StatBar label="Internal Team Assessment" percentage={20} color="#D1D5DB" />
-                                    <StatBar label="We Don't Verify Them" percentage={15} color="#EF4444" />
-                                    <StatBar label="Supplier Data" percentage={13} color="#E5E7EB" />
-                                </div>
-                                
-                                <div className="mt-6 p-4 bg-red-50 rounded-xl border border-red-100 flex gap-3">
-                                    <AlertTriangle className="text-red-500 shrink-0" size={20} />
-                                    <p className="text-xs text-red-600 font-semibold">
-                                        15% of claims go live with zero verification. This is a massive legal liability.
-                                    </p>
-                                </div>
-                            </div>
-                        </ScrollReveal>
-
-                        <div className="flex flex-col gap-6">
-                            <ScrollReveal delay={300}>
-                                <SoftCard className="flex-1 flex flex-col justify-center">
-                                    <div className="flex justify-between items-center mb-4">
-                                        <h3 className="text-xl font-bold">SPV (Perception)</h3>
-                                        <span className="text-green-600 font-bold text-[10px] bg-green-100 px-2 py-1 rounded-full uppercase">Asset</span>
-                                    </div>
-                                    <p className="text-gray-500 text-sm">
-                                        The financial value stakeholders assign to your perceived commitment. High SPV is only valuable when earned.
-                                    </p>
-                                </SoftCard>
-                            </ScrollReveal>
-
-                            <ScrollReveal delay={400}>
-                                <SoftCard className="flex-1 flex flex-col justify-center">
-                                    <div className="flex justify-between items-center mb-4">
-                                        <h3 className="text-xl font-bold">SGV (Gap Risk)</h3>
-                                        <span className="text-red-500 font-bold text-[10px] bg-red-100 px-2 py-1 rounded-full uppercase">Liability</span>
-                                    </div>
-                                    <p className="text-gray-500 text-sm">
-                                        The difference between reality and perception. A large gap means you are either greenwashing or greenhushing.
-                                    </p>
-                                </SoftCard>
-                            </ScrollReveal>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* SECTION 3: RISKS */}
-            <section id="gw-risks" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 bg-[#D1D5DB]/30">
-                <div className="max-w-6xl mx-auto w-full">
-                    <ScrollReveal>
-                        <div className="mb-12 text-center md:text-left">
-                            <h2 className="text-4xl md:text-5xl font-bold mb-4">The High Price</h2>
-                            <p className="text-xl text-gray-600">The industry is balanced on a tightrope between two dangerous extremes.</p>
-                        </div>
-                    </ScrollReveal>
-
-                    {/* The Narrative Flow - Items reveal one by one */}
-                    <div className="space-y-8">
-                        
-                        {/* 1. The Shocking Stat */}
-                        <ScrollReveal delay={100}>
-                            <div className="bg-red-50/80 rounded-[2rem] p-8 border-l-8 border-red-500 shadow-md">
-                                <div className="flex items-start gap-4">
-                                    <Users className="text-red-500 shrink-0 mt-1" size={32} />
-                                    <div>
-                                        <h4 className="text-2xl font-bold text-gray-800 mb-2">Trust Fallout</h4>
-                                        <p className="text-lg text-gray-700">
-                                            <span className="font-black text-red-600 text-2xl">77%</span> of consumers would stop buying if caught greenwashing. 
-                                            <br/>A single exposé can shatter brand credibility instantly.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </ScrollReveal>
-
-                        {/* 2. The Financial Penalty */}
-                        <ScrollReveal delay={400}>
-                            <div className="bg-orange-50/80 rounded-[2rem] p-8 border-l-8 border-orange-500 shadow-md ml-0 md:ml-12">
-                                <div className="flex items-start gap-4">
-                                    <Gavel className="text-orange-500 shrink-0 mt-1" size={32} />
-                                    <div>
-                                        <h4 className="text-2xl font-bold text-gray-800 mb-2">Legal Reality</h4>
-                                        <p className="text-lg text-gray-700">
-                                            Misleading claims are now illegal. 
-                                            <br/>CCPA fines up to <span className="font-bold text-orange-600">₹50 Lakhs</span> for repeat offenses. Ignorance is no longer a defense.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </ScrollReveal>
-
-                        {/* 3. The Silent Cost */}
-                        <ScrollReveal delay={700}>
-                            <div className="bg-gray-100 rounded-[2rem] p-8 border-l-8 border-gray-500 shadow-md ml-0 md:ml-24">
-                                <div className="flex items-start gap-4">
-                                    <MicOff className="text-gray-500 shrink-0 mt-1" size={32} />
-                                    <div>
-                                        <h4 className="text-2xl font-bold text-gray-800 mb-2">The Cost of Silence</h4>
-                                        <p className="text-lg text-gray-700">
-                                            Greenhushing leaves value on the table. 
-                                            <br/>Competitors own the narrative while you stay quiet. Investors assume you have something to hide.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </ScrollReveal>
-
-                    </div>
-                </div>
-            </section>
-
-             {/* SECTION: INTERACTIVE FLIP CARDS */}
-             <section id="gw-interactive" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20">
-                <div className="max-w-6xl mx-auto w-full">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">Why Are We Silent?</h2>
-                        <p className="text-gray-500">Tap cards to reveal the reality behind the fear.</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <FlipCard 
-                            frontTitle="Fear of Scrutiny" 
-                            frontIcon={Eye} 
-                            color="#EF4444"
-                            backStat="70%"
-                            backText="of companies with strong credentials engage in greenhushing to avoid criticism."
-                        />
-                        <FlipCard 
-                            frontTitle="Uncertainty" 
-                            frontIcon={HelpCircle} 
-                            color="#F59E0B"
-                            backStat="No Data"
-                            backText="Lack of reliable data is the #1 cited barrier to honest messaging."
-                        />
-                        <FlipCard 
-                            frontTitle="Perfectionism" 
-                            frontIcon={Lock} 
-                            color="#607D8B"
-                            backStat="Progress > Perfection"
-                            backText="Stakeholders reward transparency about the journey, not just the destination."
-                        />
-                    </div>
-                </div>
-            </section>
-
-             {/* SECTION: ARCHETYPES */}
-             <section id="gw-archetypes" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20">
-                <div className="max-w-7xl mx-auto w-full">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">Which one is your brand?</h2>
-                        <p className="text-gray-500 text-lg">Four Brand Archetypes defined by Performance vs. Communication</p>
-                    </div>
-                    
-                    <div className="flex flex-wrap justify-center gap-6">
-                        <ArchetypeCard 
-                            title="Silent Green"
-                            type="High Performance / Low Talk"
-                            icon={MicOff}
-                            description="Doing good in silence. Often driven by fear of scrutiny or perfectionism."
-                            stat="70% of companies with strong credentials engage in this."
-                            subtext="RISK: Missed Opportunities"
-                            color="#607D8B"
-                        />
-                        <ArchetypeCard 
-                            title="Vocal Green"
-                            type="High Performance / High Talk"
-                            icon={CheckCircle}
-                            description="The Gold Standard. They walk the talk and communicate it openly. Authenticity builds trust."
-                            subtext="ASSET: High SPV & Trust"
-                            color="#4ADE80"
-                        />
-                        <ArchetypeCard 
-                            title="Opaque Brown"
-                            type="Low Performance / Low Talk"
-                            icon={Eye}
-                            description="Neither green nor transparent. Doing little and saying little. Breeds mistrust."
-                            subtext="RISK: Irrelevance"
-                            color="#795548"
-                        />
-                        <ArchetypeCard 
-                            title="Vocal Brown"
-                            type="Low Performance / High Talk"
-                            icon={ShieldAlert}
-                            description="The Greenwashers. All talk, no walk. Making false claims to appear friendly."
-                            subtext="RISK: Legal Action"
-                            color="#EF4444"
-                        />
-                    </div>
-                </div>
-            </section>
-
-             {/* SECTION: 7 SINS */}
-             <section id="gw-sins" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 bg-green-50/50">
-                <div className="max-w-6xl mx-auto w-full">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-                        <div>
-                            <h2 className="text-4xl md:text-5xl font-bold mb-4">The 7 Sins</h2>
-                            <p className="text-xl text-gray-600 max-w-lg">The Anatomy of Deception: 42% of green claims globally are exaggerated, false, or deceptive.</p>
-                        </div>
-                        <div className="hidden md:flex items-center gap-2 text-gray-400">
-                        <span className="text-sm uppercase tracking-widest">Scroll</span>
-                        <ArrowRight size={16} />
-                        </div>
-                    </div>
-
-                    <div className="overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0 flex snap-x snap-mandatory scroll-smooth no-scrollbar">
-                        <SinCard 
-                            number="01" 
-                            title="Hidden Trade-off" 
-                            icon={AlertTriangle}
-                            description="Highlighting one green attribute while ignoring other, more significant environmental harms." 
-                        />
-                        <SinCard 
-                            number="02" 
-                            title="No Proof" 
-                            icon={FileText}
-                            description="A claim that cannot be substantiated by easily accessible supporting information or third-party certification." 
-                        />
-                        <SinCard 
-                            number="03" 
-                            title="Vagueness" 
-                            icon={Info}
-                            description="Using terms so poorly defined or broad that their real meaning is likely to be misunderstood (e.g., 'all-natural')." 
-                        />
-                        <SinCard 
-                            number="04" 
-                            title="False Labels" 
-                            icon={ShieldAlert}
-                            description="Creating a false impression of third-party endorsement through fake or self-created 'certifications'." 
-                        />
-                        <SinCard 
-                            number="05" 
-                            title="Irrelevance" 
-                            icon={Zap}
-                            description="An environmental claim that may be truthful but is unimportant or unhelpful (e.g., 'CFC-free' when legally banned)." 
-                        />
-                        <SinCard 
-                            number="06" 
-                            title="Lesser of Two Evils" 
-                            icon={BarChart3}
-                            description="True within the product category but distracting from the greater environmental impacts of the category." 
-                        />
-                        <SinCard 
-                            number="07" 
-                            title="Fibbing" 
-                            icon={X}
-                            description="Making environmental claims that are simply false. The most direct and dangerous form of deception." 
-                        />
-                    </div>
-                </div>
-            </section>
-
-             {/* SECTION: LAWS */}
-             <section id="gw-regulations" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20">
-                <div className="max-w-5xl mx-auto w-full">
-                    <div className="mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6">Playing by the Rules</h2>
-                        <p className="text-xl text-gray-600 max-w-3xl">
-                            India has implemented one of the world's strictest legal frameworks. Ignorance is no longer a defense.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                        {/* CCPA Card */}
-                        <div className="bg-white rounded-[2rem] p-8 border border-gray-200 shadow-sm hover:shadow-md transition-all">
-                            <div className="flex items-center gap-3 mb-6">
-                                <Scale className="text-green-600" size={32} />
-                                <h3 className="text-2xl font-bold">CCPA Guidelines (2024)</h3>
-                            </div>
-                            
-                            <ul className="space-y-4 text-sm text-gray-700">
-                                <li className="flex items-start gap-3">
-                                    <span className="mt-1 w-2 h-2 bg-green-500 rounded-full shrink-0"></span>
-                                    <strong>Legal Definition:</strong> Greenwashing is now classified as a "misleading practice".
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="mt-1 w-2 h-2 bg-green-500 rounded-full shrink-0"></span>
-                                    <strong>Liability:</strong> Extends to the brand, the ad agency, and the endorser.
-                                </li>
-                                <li className="bg-red-50 p-3 rounded-lg border border-red-100 mt-2">
-                                    <div className="flex items-center gap-2 mb-1">
-                                        <Gavel className="text-red-500" size={16}/>
-                                        <span className="font-bold text-red-700">Financial Penalties</span>
-                                    </div>
-                                    <div className="flex justify-between items-center text-red-800 font-mono text-sm">
-                                        <span>First Offense:</span>
-                                        <strong>₹10,00,000</strong>
-                                    </div>
-                                    <div className="flex justify-between items-center text-red-800 font-mono text-sm mt-1">
-                                        <span>Repeat Offense:</span>
-                                        <strong>₹50,00,000</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* ASCI Card */}
-                        <div className="bg-white rounded-[2rem] p-8 border border-gray-200 shadow-sm hover:shadow-md transition-all">
-                            <div className="flex items-center gap-3 mb-6">
-                                <Lock className="text-blue-600" size={32} />
-                                <h3 className="text-2xl font-bold">ASCI Guidelines</h3>
-                            </div>
-                            <ul className="space-y-4 text-sm text-gray-700">
-                                <li className="flex items-start gap-3">
-                                    <span className="mt-1 w-2 h-2 bg-blue-500 rounded-full shrink-0"></span>
-                                    Mandates honesty and clarity; scope of claims must be defined (product vs packaging).
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="mt-1 w-2 h-2 bg-blue-500 rounded-full shrink-0"></span>
-                                    Prohibits misleading visuals that falsely imply green attributes.
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="mt-1 w-2 h-2 bg-blue-500 rounded-full shrink-0"></span>
-                                    Requires claims to be substantiated by verifiable, independent evidence.
-                                </li>
-                            </ul>
-                            
-                            <div className="mt-6 p-4 bg-gray-50 rounded-xl">
-                                <p className="font-bold text-gray-800 text-xs uppercase tracking-wide mb-1">Also Scrutinizing:</p>
-                                <p className="text-sm text-gray-600"><strong>SEBI</strong> is now scrutinizing ESG claims in investor reports (BRSR), linking marketing to accountability.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-             {/* SECTION: PLAYBOOK */}
-             <section id="gw-playbook" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 bg-black text-white rounded-t-[3rem] mt-10">
-                <div className="max-w-5xl mx-auto w-full py-10">
-                    <div className="text-center mb-16">
-                        <div className="inline-block px-4 py-1 rounded-full border border-green-500/50 text-green-400 text-xs font-bold uppercase tracking-widest mb-4">
-                            Action Plan
-                        </div>
-                        <h2 className="text-4xl md:text-6xl font-bold mb-4">The Playbook</h2>
-                        <p className="text-gray-400">Executing with Excellence</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-20">
-                        <div>
-                            <div className="mb-12">
-                                <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-8 h-8 rounded-full bg-green-500 text-black flex items-center justify-center font-bold">1</div>
-                                    <h3 className="text-2xl font-bold">Set the Tone & Policy</h3>
-                                </div>
-                                <p className="text-gray-400 leading-relaxed pl-12">
-                                    Establish clear, non-negotiable guidelines. Create an internal <strong>"Green Review Checklist"</strong> to vet every claim against the 7 Sins and legal requirements before it goes out.
-                                </p>
-                            </div>
-
-                            <div className="mb-12">
-                                <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-8 h-8 rounded-full bg-green-500 text-black flex items-center justify-center font-bold">2</div>
-                                    <h3 className="text-2xl font-bold">Champion Alignment</h3>
-                                </div>
-                                <p className="text-gray-400 leading-relaxed pl-12">
-                                    Tear down silos. Convene regular meetings between marketing, sustainability, R&D, and legal. Authenticity is a shared responsibility, not just a marketing task.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div className="mb-12">
-                                <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-8 h-8 rounded-full bg-green-500 text-black flex items-center justify-center font-bold">3</div>
-                                    <h3 className="text-2xl font-bold">Lead with Transparency</h3>
-                                </div>
-                                <p className="text-gray-400 leading-relaxed pl-12">
-                                    Be publicly accountable for progress and challenges. When leadership is transparent about the journey, it cascades down, valuing integrity over marketing spin.
-                                </p>
-                            </div>
-
-                            <div className="mb-12">
-                                <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-8 h-8 rounded-full bg-green-500 text-black flex items-center justify-center font-bold">4</div>
-                                    <h3 className="text-2xl font-bold">Integrate to Core Strategy</h3>
-                                </div>
-                                <p className="text-gray-400 leading-relaxed pl-12">
-                                    Move sustainability from a PR topic to the brand's DNA. Embed it in brand values, campaign briefs, and business KPIs to ensure messaging is durable.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mt-12 p-8 md:p-16 bg-white/5 rounded-[3rem] backdrop-blur-md border border-white/10 text-center relative overflow-hidden group">
-                        <div className="absolute inset-0 bg-green-500/10 blur-3xl rounded-full transform scale-0 group-hover:scale-150 transition-transform duration-1000"></div>
-                        
-                        <h4 className="text-3xl md:text-5xl font-black mb-6 relative z-10">"Honesty is the new green."</h4>
-                        <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg relative z-10 leading-relaxed">
-                            If you've been silent, start talking. If you've overstated, course-correct. Authenticity is your greatest competitive advantage.
-                        </p>
-                        <button onClick={() => navigateTo('sense')} className="relative z-10 bg-green-500 hover:bg-green-400 text-black px-12 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(74,222,128,0.4)]">
-                            Start The Journey
-                        </button>
-                    </div>
-                    
-                    <footer className="mt-20 text-center text-gray-500 text-xs pb-10">
-                        <p className="mb-2">Sense App Design • HOOOP</p>
-                    </footer>
-                </div>
-            </section>
-        </div>
-    );
-};
-
-// --- Main App ---
-const App = React.forwardRef((props, ref) => {
-  const [activeSection, setActiveSection] = useState('home');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showSenseTool, setShowSenseTool] = useState(false);
-  const [senseTab, setSenseTab] = useState('analyzer');
-
-  // New useEffect to handle hash based navigation on load and on hash change
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.substring(1); // remove the '#'
-      if (hash && navItems.some(item => item.id === hash)) {
-        setActiveSection(hash);
-        if (hash === 'sense') setShowSenseTool(true); // Ensure sense tool state is correct
-      } else {
-        // Optional: fallback to home if hash is invalid or empty, 
-        // but often better to leave state alone if user is just navigating back
-        if(!hash) setActiveSection('home');
-      }
-    };
-
-    // Check initial hash
-    handleHashChange();
-
-    // Listen for hash changes (browser back/forward buttons)
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'sense', label: 'Sense' },
-    { id: 'prvaah', label: 'Prvaah' },
-    { id: 'greenwashing', label: 'Greenwashing' },
-    { id: 'offerings', label: 'What We Do' },
-    { id: 'thinking', label: 'Our Thinking' },
-    { id: 'collective', label: 'Collective' },
-    { id: 'contact', label: 'Contact' }, // Added contact to navItems logic for hash checking
-    { id: 'manifesto', label: 'Manifesto' }, // Added manifesto
-    { id: 'research', label: 'Research' } // Added research
-  ];
-
-  const navigateTo = (id) => {
-    setActiveSection(id);
-    setIsMenuOpen(false);
+    <!-- 1. Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    // Update the URL hash
-    window.location.hash = id;
+    <!-- 2. Load React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (id !== 'research') setShowSenseTool(false); 
-  };
+    <!-- 3. Load Babel (to compile React in the browser) -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-  const scrollToPrvaahSection = (id) => {
-      const element = document.getElementById(id);
-      if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
-  return (
-    <div className="min-h-screen bg-[#E0E5EC] font-sans text-[#4A5568] selection:bg-black selection:text-white overflow-x-hidden relative">
-      <ConcentricCircles />
-
-      {/* --- DESKTOP SIDEBAR --- */}
-      <nav className="fixed left-0 top-0 h-full w-64 hidden lg:flex flex-col justify-between items-start py-12 pl-10 z-50 pointer-events-none">
-         <div className="pointer-events-auto cursor-pointer group mb-12" onClick={() => navigateTo('home')}>
-             <SoftCard className="w-20 h-20 flex items-center justify-center !rounded-full p-4" hoverEffect={true}>
-                <HooopLogo className="w-full h-full object-contain" />
-             </SoftCard>
-         </div>
-         <div className="flex flex-col gap-6 pointer-events-auto w-full">
-            {navItems.slice(0, 7).map((item) => ( // Only show main nav items in sidebar
-                <button key={item.id} onClick={() => navigateTo(item.id)} className="group flex items-center gap-4 w-full text-left focus:outline-none">
-                    <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-black scale-125' : 'bg-gray-300 group-hover:bg-gray-400'}`} />
-                    <span className={`text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 ${activeSection === item.id ? 'text-black translate-x-1' : 'text-gray-400 group-hover:text-gray-600'}`}>
-                        {item.label}
-                    </span>
-                </button>
-            ))}
-         </div>
-         <div className="pointer-events-auto mt-auto">
-            <VerticalPill height="h-24" className="w-2 !rounded-full bg-gray-300" />
-         </div>
-      </nav>
-
-      {/* --- MOBILE NAV --- */}
-      <div className="fixed top-0 left-0 right-0 z-50">
-          <div className="h-20 flex items-center justify-between px-6 lg:hidden bg-[#E0E5EC]/90 backdrop-blur-md shadow-sm border-b border-white/50">
-            <div className="font-bold text-2xl tracking-tighter flex items-center gap-3">
-                {/* Increased logo size from w-8 h-8 to w-12 h-12 to fix size/cutting issues */}
-                <HooopLogo className="w-12 h-12" />
-                <span className="text-black">{SITE_CONTENT.brand.name}</span>
-            </div>
-            <button onClick={() => setIsMenuOpen(true)} className="p-3 rounded-xl bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-black active:shadow-inner">
-              <Menu size={24} />
-            </button>
-          </div>
-          <div className="lg:hidden bg-[#E0E5EC]/95 backdrop-blur-md border-b border-white/20 overflow-x-auto flex items-center gap-6 px-6 py-3 no-scrollbar shadow-inner">
-             {navItems.slice(0, 7).map(item => (
-                 <button key={item.id} onClick={() => navigateTo(item.id)} className={`whitespace-nowrap text-[10px] font-bold uppercase tracking-widest flex-shrink-0 transition-colors ${activeSection === item.id ? 'text-teal-600' : 'text-gray-500'}`}>{item.label}</button>
-             ))}
-          </div>
-      </div>
-
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-[60] bg-[#E0E5EC] flex flex-col items-center justify-center space-y-8 animate-fade-in lg:hidden">
-          <button onClick={() => setIsMenuOpen(false)} className="absolute top-6 right-6 p-4 rounded-full bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-black">
-            <X size={24} />
-          </button>
-          {navItems.slice(0, 7).map((item) => (
-            <button key={item.id} onClick={() => { navigateTo(item.id); setIsMenuOpen(false); }} className={`text-2xl font-bold tracking-tight ${activeSection === item.id ? 'text-black' : 'text-gray-500'}`}>
-              {item.label}
-            </button>
-          ))}
-        </div>
-      )}
-
-      {/* Main Content */}
-      <main className="lg:pl-64 w-full min-h-screen relative z-10 px-6 lg:px-20 py-32 lg:py-0">
-        
-        {/* Floating "Let's Talk" Button - Positioned for Desktop Top Right and Mobile Bottom Right */}
-        <div className="fixed bottom-6 right-6 lg:top-10 lg:right-10 lg:bottom-auto z-40">
-            <button onClick={() => navigateTo('contact')} className="bg-black text-white px-6 py-3 lg:px-8 lg:py-4 rounded-full font-bold text-xs lg:text-sm tracking-wider shadow-[5px_5px_15px_rgba(0,0,0,0.2)] hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                Let's Talk
-            </button>
-        </div>
-
-        <div className="w-full min-h-screen flex flex-col justify-center">
-          
-          {/* HOME */}
-          {activeSection === 'home' && (
-            <section className="relative flex flex-col lg:flex-row items-center h-full min-h-screen animate-fade-in-up">
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-10 hidden xl:flex gap-6 pointer-events-none opacity-50">
-                  <VerticalPill height="h-96" className="w-24" />
-                  <VerticalPill height="h-64" className="w-24 mt-20" />
-              </div>
-              <div className="w-full lg:w-1/2 z-10 flex flex-col justify-center items-start space-y-10 pl-4 lg:pl-12">
-                <div className="flex flex-col">
-                    <span className="text-xs font-bold tracking-[0.3em] uppercase text-gray-400 mb-4">{SITE_CONTENT.brand.est}</span>
-                    <h1 className="text-5xl lg:text-8xl font-black text-[#313b4e] leading-[0.9] tracking-tight">
-                      {SITE_CONTENT.hero.titleLine1} <br/>
-                      <span className="text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-600">{SITE_CONTENT.hero.titleLine2}</span>
-                    </h1>
-                </div>
-                <p className="text-lg lg:text-xl text-gray-500 max-w-md leading-relaxed font-medium">{SITE_CONTENT.hero.subtitle}</p>
-                <div className="flex flex-wrap gap-6 items-center">
-                  <SoftCard onClick={() => navigateTo('offerings')} className="px-8 py-4 flex items-center gap-3 text-black font-bold">
-                    <span>{SITE_CONTENT.hero.buttonText}</span>
-                    <ArrowRight size={18} />
-                  </SoftCard>
-                  <button onClick={() => navigateTo('manifesto')} className="text-sm font-bold text-teal-600 hover:text-black transition-colors border-b-2 border-transparent hover:border-black pb-1">
-                    {SITE_CONTENT.hero.linkText}
-                  </button>
-                </div>
-              </div>
-              <div className="w-full lg:w-1/2 h-[50vh] lg:h-full flex items-center justify-center relative mt-12 lg:mt-0">
-                 <div className="relative w-[300px] h-[300px] lg:w-[500px] lg:h-[500px]">
-                     <div className="absolute inset-0 rounded-full border-[40px] border-[#E0E5EC] shadow-[20px_20px_60px_#bebebe,-20px_-20px_60px_#ffffff] flex items-center justify-center animate-float">
-                        <div className="w-full h-full rounded-full shadow-[inset_10px_10px_20px_#bebebe,inset_-10px_-10px_20px_#ffffff] flex items-center justify-center p-12">
-                             <HooopLogo className="w-full h-full object-contain opacity-90" />
-                        </div>
-                     </div>
-                     <SoftCard className="absolute -left-12 bottom-20 p-6 w-48 z-20" hoverEffect={false}>
-                        <div className="text-xs font-bold text-gray-400 uppercase mb-1">Focus</div>
-                        <div className="text-lg font-bold text-black">Sustainability</div>
-                     </SoftCard>
-                 </div>
-              </div>
-            </section>
-          )}
-            
-          {/* MANIFESTO SECTION */}
-          {activeSection === 'manifesto' && (
-            <section className="px-6 lg:px-32 py-24 min-h-screen flex flex-col justify-center animate-fade-in-up">
-                <div className="mb-10">
-                    <button 
-                        onClick={() => navigateTo('home')}
-                        className="flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-gray-900 mb-8 uppercase tracking-widest"
-                    >
-                        <ArrowLeft size={16} /> Back to Home
-                    </button>
-                    <div className="text-xl font-bold text-gray-400 mb-2">EST. 2025</div>
-                    <h2 className="text-6xl lg:text-8xl font-black text-gray-900 mb-8 tracking-tighter">
-                        hello.<br/>
-                        we are <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600">HOOOP</span>
-                    </h2>
-                </div>
-
-                <div className="max-w-3xl space-y-8 text-xl lg:text-2xl font-light leading-relaxed text-gray-600">
-                    <p>
-                        Marketing has the power to change behaviour; and for decades the minds behind <span className="font-bold text-gray-900">HOOOP</span> have acted according to that belief.
-                    </p>
-                    <p className="text-gray-900 font-medium">
-                        It's time for us to now drive positive human behaviour.
-                    </p>
-                    <p>
-                        At <span className="text-teal-600 font-bold">HOOOP</span>, we are focused on partnering with businesses that push the world forward, even as we help you outpace the market.
-                    </p>
-                    <p>
-                        A new generation of consumers has emerged that follows its conscience as it spends, but also does not sacrifice its material wants.
-                    </p>
-                    <div className="pl-6 border-l-4 border-teal-400 italic text-gray-800">
-                        It is at this intersection that the greatest opportunities lie.
-                        <br/><br/>
-                        This is a time of conscious choices.
-                    </div>
-                </div>
-            </section>
-          )}
-
-          {/* OUR THINKING (BLOG) SECTION */}
-          {activeSection === 'thinking' && (
-            <section className="relative min-h-screen py-24 animate-fade-in-up">
-                <div className="max-w-4xl mx-auto px-6">
-                    {/* Header */}
-                    <div className="mb-20 text-center md:text-left">
-                        <h2 className="text-5xl lg:text-7xl font-black text-[#313b4e] mb-6 tracking-tighter">
-                            {SITE_CONTENT.thinking.title}
-                        </h2>
-                        <p className="text-xl text-gray-500 max-w-2xl font-light leading-relaxed">
-                            {SITE_CONTENT.thinking.subtitle}
-                        </p>
-                    </div>
-
-                    {/* Featured Tool: SENSE */}
-                    <div className="mb-20">
-                         <div className="bg-gray-900 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-xl group cursor-pointer" onClick={() => { setShowSenseTool(true); navigateTo('sense'); }}>
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-green-500 to-transparent opacity-20 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
-                            <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
-                                <div>
-                                    <div className="flex items-center gap-2 mb-4">
-                                        <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                                        <span className="text-xs font-bold tracking-widest uppercase text-green-400">Featured Intelligence</span>
-                                    </div>
-                                    <h3 className="text-3xl font-bold mb-3">{SITE_CONTENT.thinking.featuredTool.title}</h3>
-                                    <p className="text-gray-400 max-w-md text-sm leading-relaxed mb-6">
-                                        {SITE_CONTENT.thinking.featuredTool.desc}
-                                    </p>
-                                    <span className="inline-flex items-center gap-2 text-sm font-bold border-b border-green-500 pb-1 hover:text-green-400 transition-colors">
-                                        {SITE_CONTENT.thinking.featuredTool.cta} <ArrowRight size={16} />
-                                    </span>
-                                </div>
-                                <div className="bg-white/10 p-4 rounded-2xl border border-white/10 backdrop-blur-sm">
-                                    <ScanLine size={48} className="text-green-400" />
-                                </div>
-                            </div>
-                         </div>
-                    </div>
-
-                    {/* Blog List - Collab Fund Style */}
-                    <div className="space-y-16 border-t border-gray-200 pt-16">
-                        {SITE_CONTENT.thinking.posts.map((post, index) => (
-                            <article key={index} className="group cursor-pointer">
-                                <div className="flex flex-col md:flex-row gap-2 md:items-baseline justify-between mb-2">
-                                    <span className="text-xs font-bold tracking-widest uppercase text-teal-600">{post.category}</span>
-                                    <span className="text-xs text-gray-400 font-mono">{post.date}</span>
-                                </div>
-                                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors duration-300">
-                                    {post.title}
-                                </h3>
-                                <p className="text-gray-500 leading-relaxed max-w-2xl text-lg">
-                                    {post.desc}
-                                </p>
-                            </article>
-                        ))}
-                    </div>
-                </div>
-            </section>
-          )}
-
-          {/* SENSE SECTION (New Dedicated Section - Uses new HTML structure) */}
-          {activeSection === 'sense' && (
-            <section className="relative min-h-screen py-24 animate-fade-in-up">
-                {/* TABS FOR SENSE TOOLS */}
-                <div className="max-w-6xl mx-auto px-6 mb-12">
-                     <div className="flex gap-4 overflow-x-auto no-scrollbar pb-2">
-                        {[
-                            { id: 'analyzer', label: 'Analyzer', icon: ScanLine },
-                            { id: 'checklist', label: 'Visual Audit', icon: Check },
-                            { id: 'learn', label: 'Learn', icon: BookOpen }
-                        ].map(tab => (
-                            <button
-                                key={tab.id}
-                                onClick={() => setSenseTab(tab.id)}
-                                className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold transition-all whitespace-nowrap ${
-                                    senseTab === tab.id 
-                                    ? 'bg-gray-900 text-white shadow-lg' 
-                                    : 'bg-white text-gray-500 hover:bg-gray-100 border border-gray-200'
-                                }`}
-                            >
-                                <tab.icon size={16} />
-                                {tab.label}
-                            </button>
-                        ))}
-                     </div>
-                </div>
-
-                {/* Sub-Views based on Tab */}
-                {senseTab === 'analyzer' && <SenseAnalysisView />}
-                {senseTab === 'checklist' && <ChecklistView />}
-                {senseTab === 'learn' && <ResourcesView />}
-            </section>
-          )}
-
-          {/* PRVAAH SECTION (Restored) */}
-          {activeSection === 'prvaah' && (
-            <section className="min-h-screen py-24 animate-fade-in-up">
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="text-center mb-20">
-                         <div className="flex justify-center mb-6">
-                            {/* Placeholder for Prvaah Logo - upload image as 'Prvaah Logo.png' or update src */}
-                            <ImageWithFallback src="/Prvaah Logo.png" alt="Prvaah Logo" className="h-24 w-auto object-contain" />
-                         </div>
-                         <h2 className="text-5xl lg:text-7xl font-black text-[#313b4e] mb-4 tracking-tighter">
-                            {SITE_CONTENT.prvaah.title}
-                         </h2>
-                         <p className="text-lg text-gray-400 italic mb-6">"{SITE_CONTENT.prvaah.sanskritMeaning}"</p>
-                         <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                            {SITE_CONTENT.prvaah.description1}
-                         </p>
-                    </div>
-
-                    {/* PILLARS GRID */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-                        {SITE_CONTENT.prvaah.pillars.map((pillar, idx) => {
-                             const Icon = getIconComponent(pillar.icon);
-                             return (
-                                <SoftCard key={idx} className="p-8 group hover:-translate-y-1 transition-transform">
-                                    <div className="w-14 h-14 rounded-2xl bg-[#E0E5EC] shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] flex items-center justify-center mb-6 text-blue-600 group-hover:scale-110 transition-transform">
-                                        <Icon size={28} />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-800 mb-3">{pillar.label}</h3>
-                                    <p className="text-sm text-gray-500 leading-relaxed">{pillar.desc}</p>
-                                </SoftCard>
-                             );
-                        })}
-                    </div>
-
-                    {/* TESTIMONIALS */}
-                    <div className="bg-gray-100/50 rounded-[3rem] p-8 md:p-16 border border-white/50 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-                        <h3 className="text-3xl font-bold text-center mb-12 relative z-10">Voices from the Corridor</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            {SITE_CONTENT.prvaah.testimonials.map((testi, idx) => (
-                                <div key={idx} className="relative z-10">
-                                    <div className="bg-[#E0E5EC] p-8 rounded-[2rem] shadow-[9px_9px_16px_rgb(163,177,198,0.5),-9px_-9px_16px_rgba(255,255,255,0.5)] h-full flex flex-col">
-                                        <div className="mb-6 text-blue-500">
-                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.054 15.331 14.686 16.673 13.925C17.702 13.34 18.528 12.57 18.913 11.666C19.299 10.762 19.143 9.715 18.496 8.941C17.971 8.312 17.152 7.95 16.281 7.95C15.364 7.95 14.502 8.358 13.913 9.066L13.567 9.482L13.567 21L14.017 21ZM4.983 21L4.983 18C4.983 16.054 6.297 14.686 7.639 13.925C8.668 13.34 9.494 12.57 9.879 11.666C10.265 10.762 10.109 9.715 9.462 8.941C8.937 8.312 8.118 7.95 7.247 7.95C6.33 7.95 5.468 8.358 4.879 9.066L4.533 9.482L4.533 21L4.983 21Z"></path></svg>
-                                        </div>
-                                        <p className="text-gray-600 italic mb-6 text-sm leading-loose flex-1">"{testi.text}"</p>
-                                        <div className="flex items-center gap-4 mt-auto border-t border-gray-200/50 pt-4">
-                                            <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-300">
-                                                <ImageWithFallback src={testi.image} alt={testi.name} className="w-full h-full object-cover" />
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-gray-900 text-sm">{testi.name}</h4>
-                                                <p className="text-xs text-gray-500">{testi.role}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-          )}
-
-          {/* RESEARCH SECTION (Reports Only) */}
-          {activeSection === 'research' && (
-            <section className="relative min-h-screen py-24 animate-fade-in-up">
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="text-center mb-20">
-                        <h2 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">{SITE_CONTENT.research.title}</h2>
-                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">{SITE_CONTENT.research.subtitle}</p>
-                        <p className="text-md text-gray-400 mt-2 max-w-2xl mx-auto">{SITE_CONTENT.research.intro}</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {SITE_CONTENT.research.reports.map((item, idx) => {
-                            const Icon = getIconComponent('chart');
-                            return (
-                            <SoftCard key={idx} className="p-8 flex flex-col justify-between h-80 group hover:-translate-y-2">
-                                <div>
-                                    <div className="flex justify-between items-start mb-6">
-                                        <div className="p-3 rounded-2xl bg-[#E0E5EC] shadow-[inset_3px_3px_6px_#bebebe,inset_-3px_-3px_6px_#ffffff]">
-                                            <Icon size={24} className="text-gray-600" />
-                                        </div>
-                                        <span className="text-xs font-bold uppercase tracking-widest text-teal-600 bg-teal-50 px-3 py-1 rounded-full">{item.category}</span>
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h3>
-                                    <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-                                </div>
-                                <div className="mt-6 pt-6 border-t border-gray-200/50 flex items-center justify-between text-gray-400 group-hover:text-teal-600 transition-colors cursor-pointer">
-                                    <span className="text-xs font-bold uppercase tracking-widest">Download</span>
-                                    <Download size={18} />
-                                </div>
-                            </SoftCard>
-                        )})}
-                    </div>
-                </div>
-            </section>
-          )}
-
-          {/* GREENWASHING (Playbook Only) */}
-          {activeSection === 'greenwashing' && <GreenwashingView navigateTo={navigateTo} />}
-
-          {/* COMBINED OFFERINGS & MODELS SECTION */}
-          {activeSection === 'offerings' && (
-            <section className="py-24 min-h-screen animate-fade-in-up">
-              {/* Part 1: What We Do (Services) */}
-              <div className="max-w-6xl mx-auto px-6 mb-32">
-                  <div className="flex flex-col lg:flex-row justify-between items-end mb-20">
-                     <div>
-                         <h2 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">What We Do</h2>
-                         <p className="text-gray-500">Soft interventions for hard problems.</p>
-                     </div>
-                     <VerticalPill height="h-2" className="w-32 !rotate-0 hidden lg:block" />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                     {SITE_CONTENT.offerings.map((card, idx) => (
-                       <SoftCard key={idx} className="p-10 flex flex-col justify-between h-80 group">
-                          <div>
-                            <div className="w-12 h-12 rounded-2xl bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] flex items-center justify-center mb-6 text-black font-bold text-xl group-hover:text-white group-hover:bg-black transition-colors duration-300">
-                               {idx + 1}
-                            </div>
-                            <h3 className="text-2xl font-bold text-[#313b4e] mb-4">{card.title}</h3>
-                            <p className="text-gray-500 text-sm leading-relaxed">{card.desc}</p>
-                          </div>
-                       </SoftCard>
-                     ))}
-                  </div>
-              </div>
-
-              {/* Visual Divider */}
-              <div className="w-full flex justify-center mb-32 opacity-20">
-                  <VerticalPill height="h-32" className="w-2" />
-              </div>
-
-              {/* Part 2: Engagement Models */}
-              <div className="max-w-6xl mx-auto px-6">
-                 <div className="text-center mb-16">
-                    <h2 className="text-4xl lg:text-5xl font-black text-[#313b4e] mb-4">Engagement Models</h2>
-                    <p className="text-lg text-gray-500">Flexible ways to work with us.</p>
-                 </div>
-                 <div className="flex flex-col gap-12 max-w-5xl mx-auto">
-                    {SITE_CONTENT.models.map((model, idx) => {
-                        const Icon = getIconComponent(model.iconType);
-                        return (
-                        <ScrollReveal key={idx} className={`delay-${idx * 100}`}>
-                            <SoftCard className={`p-10 lg:p-16 flex flex-col ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 items-center lg:items-start group hover:scale-[1.01] transition-transform`}>
-                                 <div className="w-32 h-32 rounded-full bg-[#E0E5EC] shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] flex items-center justify-center shrink-0">
-                                     <Icon size={40} className="text-gray-400 group-hover:text-black transition-colors" />
-                                 </div>
-                                 <div className="text-center lg:text-left flex-1">
-                                     <h3 className="text-3xl lg:text-4xl font-black text-[#313b4e] mb-6">{model.title}</h3>
-                                     <p className="text-xl font-light text-gray-600 mb-4 leading-relaxed">
-                                         <span className="font-bold text-black">{model.headline}</span>
-                                     </p>
-                                     <p className="text-gray-500 text-sm leading-relaxed max-w-2xl">
-                                         {model.desc}
-                                     </p>
-                                 </div>
-                            </SoftCard>
-                        </ScrollReveal>
-                    )})}
-                    <div className="mt-12 text-center max-w-3xl mx-auto">
-                        <div className="inline-block px-8 py-3 rounded-full bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] mb-6">
-                            <span className="text-teal-600 font-bold uppercase tracking-widest text-sm">Transparent</span>
-                        </div>
-                        <h4 className="text-2xl font-bold text-gray-800 mb-4">No hidden fees, no markups.</h4>
-                        <p className="text-gray-500">We work hand-in-hand with brands, agencies, funds and sustainability consultancies to align brand & sustainability strategy.</p>
-                    </div>
-                 </div>
-              </div>
-            </section>
-          )}
-
-          {/* COLLECTIVE */}
-          {activeSection === 'collective' && (
-             <section className="py-24 min-h-screen animate-fade-in-up">
-                <div className="mb-20">
-                   <h2 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-6">The Collective</h2>
-                   <p className="text-gray-500 max-w-xl text-lg">
-                      We are thinkers, technologists, communicators, and designers working to accelerate change.
-                   </p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                   {SITE_CONTENT.collective.map((member, idx) => (
-                       <SoftCard key={idx} className="p-8 flex flex-col items-center text-center group">
-                          <div className="w-32 h-32 rounded-full bg-[#E0E5EC] shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] p-2 flex-shrink-0 mb-6">
-                             <ImageWithFallback src={member.img} alt={member.name} className="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500"/>
-                          </div>
-                          <div>
-                             <h3 className="text-xl font-bold text-[#313b4e]">{member.name}</h3>
-                             <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-4 mt-2 h-8">{member.role}</p>
-                             <p className="text-gray-500 text-xs leading-relaxed mb-6 h-20 overflow-hidden">{member.desc}</p>
-                             <div className="flex justify-center gap-4">
-                                {member.linkedin && (
-                                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="relative z-20">
-                                    <Linkedin size={18} className="text-gray-400 hover:text-black cursor-pointer transition-colors"/>
-                                </a>
-                                )}
-                                <Globe size={18} className="text-gray-400 hover:text-black cursor-pointer transition-colors"/>
-                             </div>
-                          </div>
-                       </SoftCard>
-                   ))}
-                </div>
-                 {/* Join the Collective CTA */}
-                <div className="mt-16 text-center">
-                    <p className="text-gray-600 text-lg">
-                        If our purpose resonates with you, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a> to join the collective.
-                    </p>
-                </div>
-             </section>
-          )}
-          
-          {/* CONTACT */}
-          {activeSection === 'contact' && (
-            <section className="py-24 min-h-screen flex items-center justify-center animate-fade-in-up">
-               <div className="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16">
-                  <div>
-                     <h2 className="text-5xl font-black text-[#313b4e] mb-8">Let's Talk.</h2>
-                     <p className="text-gray-500 mb-8 text-lg">Ready to reimagine growth?</p>
-                     <div className="space-y-6">
-                        <SoftCard className="p-4 flex items-center gap-4 w-fit" hoverEffect={false}>
-                            <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white text-xs">@</div>
-                            <span className="font-bold text-gray-700">{SITE_CONTENT.brand.contactEmail}</span>
-                        </SoftCard>
-                     </div>
-                  </div>
-                  <form className="space-y-8">
-                     {['Name', 'Email', 'Message'].map((label, i) => (
-                         <div key={i}>
-                            <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 ml-2">{label}</label>
-                            {label === 'Message' ? (
-                                <textarea rows="4" className="w-full bg-[#E0E5EC] rounded-3xl p-6 shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] border-none outline-none focus:ring-2 focus:ring-black/5 transition-all" />
-                            ) : (
-                                <input type="text" className="w-full bg-[#E0E5EC] rounded-full p-4 px-6 shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] border-none outline-none focus:ring-2 focus:ring-black/5 transition-all" />
-                            )}
-                         </div>
-                     ))}
-                     <button className="w-full bg-black text-white font-bold py-5 rounded-full shadow-[5px_5px_15px_rgba(0,0,0,0.2)] hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
-                        Send Message
-                     </button>
-                  </form>
-               </div>
-            </section>
-          )}
-        </div>
-      </main>
-
-      <style>{`
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-scan { animation: scan 3s linear infinite; }
-        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-        /* Hide scrollbar for Horizontal Nav */
+    <!-- Custom Styles for 3D Flip and Animations -->
+    <style>
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        html { scroll-behavior: smooth; }
+        
         /* 3D Flip Utilities */
         .perspective-1000 { perspective: 1000px; }
         .transform-style-3d { transform-style: preserve-3d; }
         .backface-hidden { backface-visibility: hidden; }
         .rotate-y-180 { transform: rotateY(180deg); }
         
-        /* New Styles for Sense & Greenwashing */
-        .soft-input {
-            background: #F5F5F7;
-            box-shadow: inset 4px 4px 8px #d1d4d9, inset -4px -4px 8px #ffffff;
-        }
-        .input-error {
-            box-shadow: inset 4px 4px 8px #fecaca, inset -4px -4px 8px #ffffff;
-            border: 1px solid #f87171;
-        }
-        .soft-btn-primary {
-            background: #1a1a1a;
-            color: white;
-            box-shadow: 5px 5px 12px rgba(0,0,0,0.2);
-            transition: transform 0.2s ease;
-        }
-        .soft-btn-primary:hover {
-            transform: translateY(-2px);
-        }
-        .radar-circle {
-            animation: radar-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
+        /* Smooth Scroll Reveal Animation */
         .fade-in-section {
             opacity: 0;
             transform: translateY(30px);
@@ -1732,13 +38,921 @@ const App = React.forwardRef((props, ref) => {
             opacity: 1;
             transform: none;
         }
-        @keyframes radar-ping {
-            0% { transform: scale(0.8); opacity: 0.8; }
-            100% { transform: scale(2); opacity: 0; }
-        }
-      `}</style>
-    </div>
-  );
-});
+    </style>
+</head>
+<body class="bg-[#E0E5EC]">
+    <div id="root"></div>
 
-export default App;
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // --- Icons (Lucide Recreated) ---
+        const IconWrapper = ({ children, size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                {children}
+            </svg>
+        );
+
+        const ArrowRight = (props) => <IconWrapper {...props}><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></IconWrapper>;
+        const ShieldAlert = (props) => <IconWrapper {...props}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></IconWrapper>;
+        const Zap = (props) => <IconWrapper {...props}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></IconWrapper>;
+        const BarChart3 = (props) => <IconWrapper {...props}><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></IconWrapper>;
+        const Menu = (props) => <IconWrapper {...props}><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></IconWrapper>;
+        const X = (props) => <IconWrapper {...props}><path d="M18 6 6 18"/><path d="m6 6 12 12"/></IconWrapper>;
+        const CheckCircle = (props) => <IconWrapper {...props}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></IconWrapper>;
+        const AlertTriangle = (props) => <IconWrapper {...props}><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></IconWrapper>;
+        const Eye = (props) => <IconWrapper {...props}><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></IconWrapper>;
+        const MicOff = (props) => <IconWrapper {...props}><line x1="1" x2="23" y1="1" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/><path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"/><line x1="12" x2="12" y1="19" y2="23"/><line x1="8" x2="16" y1="23" y2="23"/></IconWrapper>;
+        const Info = (props) => <IconWrapper {...props}><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></IconWrapper>;
+        const Scale = (props) => <IconWrapper {...props}><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></IconWrapper>;
+        const FileText = (props) => <IconWrapper {...props}><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></IconWrapper>;
+        const Gavel = (props) => <IconWrapper {...props}><path d="m14 13-7.5 7.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L11 10"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></IconWrapper>;
+        const DollarSign = (props) => <IconWrapper {...props}><line x1="12" x2="12" y1="1" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></IconWrapper>;
+        const TrendingUp = (props) => <IconWrapper {...props}><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></IconWrapper>;
+        const Users = (props) => <IconWrapper {...props}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></IconWrapper>;
+        const Search = (props) => <IconWrapper {...props}><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></IconWrapper>;
+        const Lock = (props) => <IconWrapper {...props}><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></IconWrapper>;
+        const HelpCircle = (props) => <IconWrapper {...props}><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></IconWrapper>;
+        const Tag = (props) => <IconWrapper {...props}><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></IconWrapper>;
+        const RefreshCw = (props) => <IconWrapper {...props}><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></IconWrapper>;
+        const UserX = (props) => <IconWrapper {...props}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" x2="22" y1="8" y2="13"/><line x1="22" x2="17" y1="8" y2="13"/></IconWrapper>;
+        const Flag = (props) => <IconWrapper {...props}><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></IconWrapper>;
+
+
+        // --- Components ---
+
+        const NavItem = ({ active, label, onClick }) => (
+            <button
+                onClick={onClick}
+                className={`relative group flex items-center justify-center w-full h-32 transition-all duration-300 ${
+                active ? 'text-black font-bold' : 'text-gray-400 hover:text-gray-600'
+                }`}
+            >
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[10px] tracking-wider uppercase origin-center">
+                    {label}
+                </span>
+                {active && (
+                    <span className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-12 bg-green-500 rounded-l-full" />
+                )}
+            </button>
+        );
+
+        const Section = ({ id, children, className = "" }) => (
+            <section id={id} className={`min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 ${className}`}>
+                {children}
+            </section>
+        );
+
+        const SoftCard = ({ children, className = "", onClick }) => (
+            <div 
+                onClick={onClick}
+                className={`bg-[#F0F0F3] rounded-[2rem] p-8 shadow-[-10px_-10px_30px_#FFFFFF,10px_10px_30px_#AEAEC040] transition-all duration-300 hover:shadow-[-5px_-5px_10px_#FFFFFF,5px_5px_10px_#AEAEC040] hover:scale-[1.01] ${className}`}
+            >
+                {children}
+            </div>
+        );
+
+        const PillButton = ({ children, primary = false, onClick }) => (
+            <button
+                onClick={onClick}
+                className={`
+                flex items-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1
+                ${primary 
+                    ? 'bg-black text-white shadow-lg hover:shadow-xl' 
+                    : 'bg-[#F0F0F3] text-gray-700 shadow-[-5px_-5px_10px_#FFFFFF,5px_5px_10px_#AEAEC040] hover:shadow-[-2px_-2px_5px_#FFFFFF,2px_2px_5px_#AEAEC040]'
+                }
+                `}
+            >
+                {children}
+            </button>
+        );
+
+        const ArchetypeCard = ({ title, type, icon: Icon, description, color, subtext, stat }) => (
+            <div className="relative group perspective-1000 w-full md:w-[48%] lg:w-[23%] mb-6">
+                <div className={`
+                h-[500px] w-full bg-[#F0F0F3] rounded-[2.5rem] p-8 
+                shadow-[-10px_-10px_30px_#FFFFFF,10px_10px_30px_#AEAEC040]
+                flex flex-col justify-between items-start
+                transition-all duration-500 group-hover:shadow-xl border border-transparent
+                `}
+                style={{ borderColor: color }}
+                >
+                <div className="w-full flex flex-col h-full">
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg shrink-0`} style={{ backgroundColor: color }}>
+                    <Icon size={24} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">{title}</h3>
+                    <p className="text-xs font-bold tracking-wider uppercase text-gray-400 mb-4">{type}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">{description}</p>
+                    
+                    {stat && (
+                        <div className="bg-white/60 backdrop-blur-sm p-3 rounded-xl border border-white/50 mb-4 shadow-sm mt-auto">
+                            <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wide mb-1">Reality Check</p>
+                            <p className="text-xs font-bold text-gray-800 leading-tight">{stat}</p>
+                        </div>
+                    )}
+                </div>
+                
+                <div className="w-full pt-6 border-t border-gray-200 mt-auto">
+                    <span className="text-xs font-semibold block" style={{ color: color }}>
+                        {subtext}
+                    </span>
+                </div>
+                </div>
+            </div>
+        );
+
+        // NEW: Interactive Flip Card Component - FIXED className
+        const FlipCard = ({ frontTitle, frontIcon: FrontIcon, backText, backStat, color }) => {
+            const [isFlipped, setIsFlipped] = useState(false);
+
+            return (
+                <div 
+                    className="relative w-full h-64 perspective-1000 cursor-pointer group"
+                    onClick={() => setIsFlipped(!isFlipped)}
+                    onMouseEnter={() => setIsFlipped(true)}
+                    onMouseLeave={() => setIsFlipped(false)}
+                >
+                    <div className={`w-full h-full relative transition-all duration-700 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
+                        {/* Front */}
+                        <div className="absolute inset-0 backface-hidden bg-[#F0F0F3] rounded-2xl shadow-[-5px_-5px_10px_#FFFFFF,5px_5px_10px_#AEAEC040] flex flex-col items-center justify-center p-6 text-center border-2 border-transparent hover:border-gray-200 transition-colors">
+                            <div className={`p-4 rounded-full mb-4 text-white shadow-lg`} style={{backgroundColor: color}}>
+                                <FrontIcon size={32} />
+                            </div>
+                            <h3 className="text-lg font-bold text-gray-800">{frontTitle}</h3>
+                            <p className="text-xs text-gray-400 mt-2 uppercase tracking-widest flex items-center gap-1">
+                                Tap to Reveal <ArrowRight size={12} />
+                            </p>
+                        </div>
+
+                        {/* Back */}
+                        <div className="absolute inset-0 backface-hidden rotate-y-180 bg-gray-900 rounded-2xl shadow-xl flex flex-col items-center justify-center p-6 text-center text-white">
+                            <p className="text-3xl font-bold text-green-400 mb-2">{backStat}</p>
+                            <p className="text-sm text-gray-300 leading-relaxed">{backText}</p>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const SinCard = ({ number, title, description, icon: Icon }) => (
+            <div className="min-w-[300px] md:min-w-[350px] bg-white/60 backdrop-blur-sm p-8 rounded-[2rem] mr-6 border border-white/50 shadow-sm hover:shadow-md transition-all">
+                <div className="flex justify-between items-start mb-6">
+                <div className="bg-red-50 p-3 rounded-2xl text-red-500">
+                    <Icon size={24} />
+                </div>
+                <span className="text-6xl font-black text-gray-100 font-serif -mt-4 opacity-50">{number}</span>
+                </div>
+                <h4 className="text-xl font-bold text-gray-800 mb-3">{title}</h4>
+                <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+            </div>
+        );
+
+        const TrackerCard = ({ title, description, icon: Icon }) => (
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all h-full">
+                <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 rounded-lg bg-indigo-50 text-indigo-600">
+                        <Icon size={20} />
+                    </div>
+                    <h4 className="font-bold text-gray-800">{title}</h4>
+                </div>
+                <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
+            </div>
+        );
+
+        const StatBar = ({ label, percentage, color }) => (
+            <div className="mb-4">
+                <div className="flex justify-between items-end mb-1">
+                    <span className="text-sm font-medium text-gray-600">{label}</span>
+                    <span className="text-sm font-bold text-gray-900">{percentage}%</span>
+                </div>
+                <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                    <div 
+                        className="h-full rounded-full transition-all duration-1000 ease-out" 
+                        style={{ width: `${percentage}%`, backgroundColor: color }}
+                    ></div>
+                </div>
+            </div>
+        );
+
+        // Scroll Reveal Hook
+        const useOnScreen = (options) => {
+            const ref = useRef(null);
+            const [isVisible, setIsVisible] = useState(false);
+
+            useEffect(() => {
+                const observer = new IntersectionObserver(([entry]) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                        observer.disconnect(); // Only trigger once
+                    }
+                }, options);
+
+                if (ref.current) {
+                    observer.observe(ref.current);
+                }
+
+                return () => {
+                    if (ref.current) observer.unobserve(ref.current);
+                };
+            }, [ref, options]);
+
+            return [ref, isVisible];
+        };
+
+        // Scroll Reveal Wrapper Component
+        const ScrollReveal = ({ children, delay = 0 }) => {
+            const [ref, isVisible] = useOnScreen({ threshold: 0.2 });
+            return (
+                <div 
+                    ref={ref} 
+                    className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
+                    style={{ transitionDelay: `${delay}ms` }}
+                >
+                    {children}
+                </div>
+            );
+        };
+
+        // --- Main App ---
+
+        const App = () => {
+            const [activeSection, setActiveSection] = useState('home');
+            const [menuOpen, setMenuOpen] = useState(false);
+
+            // UPDATED: Added 'tracker' section
+            const sections = [
+                { id: 'home', label: 'Intro' },
+                { id: 'gap', label: 'The Gap' },
+                { id: 'risks', label: 'Risks' },
+                { id: 'interactive', label: 'Silence' },
+                { id: 'archetypes', label: 'Archetypes' },
+                { id: 'sins', label: '7 Sins' },
+                { id: 'tracker', label: 'Spectrum' },
+                { id: 'regulations', label: 'Laws' },
+                { id: 'playbook', label: 'Playbook' },
+            ];
+
+            const scrollToSection = (id) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                    // No longer setting activeSection here manually, let scroll spy handle it
+                    setMenuOpen(false);
+                }
+            };
+
+            // NEW: Scroll Spy implementation
+            useEffect(() => {
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                setActiveSection(entry.target.id);
+                            }
+                        });
+                    },
+                    { 
+                        root: null,
+                        rootMargin: '-40% 0px -40% 0px', // Active when element is in middle of viewport
+                        threshold: 0
+                    }
+                );
+
+                sections.forEach(({ id }) => {
+                    const element = document.getElementById(id);
+                    if (element) observer.observe(element);
+                });
+
+                return () => {
+                    sections.forEach(({ id }) => {
+                        const element = document.getElementById(id);
+                        if (element) observer.unobserve(element);
+                    });
+                };
+            }, []);
+
+            return (
+                <div className="bg-[#E0E5EC] min-h-screen text-gray-800 font-sans selection:bg-green-200 selection:text-green-900 overflow-hidden flex relative">
+                
+                {/* --- Sidebar Navigation (Desktop) --- */}
+                <nav className="hidden md:flex flex-col justify-between items-center w-24 h-screen fixed left-0 top-0 py-8 z-50 bg-[#E0E5EC]/80 backdrop-blur-md border-r border-white/30">
+                    <div className="w-10 h-10 bg-black text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg shrink-0">
+                    G
+                    </div>
+                    
+                    <div className="flex flex-col gap-2 h-full justify-center w-full py-4 overflow-hidden">
+                    {sections.map((section) => (
+                        <NavItem 
+                        key={section.id}
+                        label={section.label}
+                        active={activeSection === section.id}
+                        onClick={() => scrollToSection(section.id)}
+                        />
+                    ))}
+                    </div>
+
+                    <div className="text-[10px] font-bold text-gray-400 -rotate-90 whitespace-nowrap mb-4 shrink-0">
+                    SCROLL
+                    </div>
+                </nav>
+
+                {/* --- Mobile Navigation --- */}
+                <div className="md:hidden fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-[#E0E5EC]/90 backdrop-blur-md border-b border-white/20">
+                    <div className="w-8 h-8 bg-black text-white rounded-lg flex items-center justify-center font-bold shadow-lg">G</div>
+                    <button onClick={() => setMenuOpen(!menuOpen)} className="p-2 text-gray-700">
+                    {menuOpen ? <X /> : <Menu />}
+                    </button>
+                </div>
+
+                {menuOpen && (
+                    <div className="md:hidden fixed inset-0 z-40 bg-[#E0E5EC] pt-24 px-6 overflow-y-auto">
+                    {sections.map((section) => (
+                        <button
+                        key={section.id}
+                        onClick={() => scrollToSection(section.id)}
+                        className={`block w-full text-left py-5 text-2xl font-bold border-b border-gray-300 ${activeSection === section.id ? 'text-green-600' : 'text-gray-800'}`}
+                        >
+                        {section.label}
+                        </button>
+                    ))}
+                    </div>
+                )}
+
+                {/* --- Main Content Area --- */}
+                <main className="flex-1 md:ml-24 overflow-y-auto h-screen scroll-smooth no-scrollbar">
+                    
+                    {/* SECTION 1: HERO */}
+                    <Section id="home" className="relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-gradient-to-bl from-green-300/30 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+                        
+                        <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div className="z-10 order-2 lg:order-1 pt-10 md:pt-0">
+                            <ScrollReveal>
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/50 rounded-full mb-8 backdrop-blur-sm border border-white/50 shadow-sm">
+                                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                <span className="text-xs font-bold tracking-widest uppercase text-gray-600">Strategic Briefing for Marketers</span>
+                                </div>
+                            </ScrollReveal>
+                            
+                            <ScrollReveal delay={200}>
+                                <h1 className="text-5xl md:text-7xl xl:text-8xl font-black text-gray-900 leading-[0.9] tracking-tighter mb-8">
+                                Green <br/>
+                                Is The <br/>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">New Lie.</span>
+                                </h1>
+                            </ScrollReveal>
+                            
+                            <ScrollReveal delay={400}>
+                                <p className="text-lg md:text-xl text-gray-600 max-w-md mb-10 leading-relaxed font-medium">
+                                In an era of conscious consumers, sustainability is a make-or-break brand pillar.
+                                <br/><br/>
+                                We bridge the critical gap between <span className="font-bold text-gray-900">reality</span> and <span className="font-bold text-gray-900">perception</span>.
+                                </p>
+                            </ScrollReveal>
+
+                            <ScrollReveal delay={600}>
+                                <div className="flex flex-col sm:flex-row gap-4">
+                                <PillButton primary onClick={() => scrollToSection('gap')}>
+                                    Mind The Gap <ArrowRight size={18} />
+                                </PillButton>
+                                <PillButton onClick={() => scrollToSection('risks')}>
+                                    Calculate Risks
+                                </PillButton>
+                                </div>
+                            </ScrollReveal>
+                        </div>
+
+                        <div className="order-1 lg:order-2 flex justify-center lg:justify-end relative h-[300px] lg:h-auto">
+                            <div className="relative w-full h-full flex items-center justify-center">
+                                <div className="absolute top-1/2 left-1/2 -translate-x-3/4 -translate-y-1/2 w-48 h-48 md:w-80 md:h-80 bg-[#E0E5EC] rounded-full shadow-[inset_-10px_-10px_30px_#FFFFFF,inset_10px_10px_30px_#AEAEC040] flex items-center justify-center z-10">
+                                    <span className="text-gray-400 font-bold text-lg md:text-xl">Perception</span>
+                                </div>
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/2 w-48 h-48 md:w-80 md:h-80 bg-green-500 rounded-full shadow-2xl flex items-center justify-center opacity-90 z-20 mix-blend-multiply transition-all duration-1000 hover:translate-x-[-30%] cursor-pointer">
+                                    <span className="text-white font-bold text-lg md:text-xl">Reality</span>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </Section>
+
+                    {/* SECTION 2: THE GAP & VERIFICATION DATA */}
+                    <Section id="gap">
+                        <div className="max-w-6xl mx-auto w-full">
+                            <div className="mb-12">
+                                <ScrollReveal>
+                                    <h2 className="text-4xl md:text-5xl font-bold mb-6">The Central Challenge</h2>
+                                    <div className="w-20 h-2 bg-green-500 rounded-full mb-8"></div>
+                                    <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mb-8">
+                                        The result is a <span className="font-bold text-gray-800">'Sustainability Gap'</span>—or as <span className="font-bold text-gray-900">Brand Finance</span> defines it, the <span className="font-bold text-gray-900">Sustainability Perceptions Gap (SPG)</span>.
+                                    </p>
+                                </ScrollReveal>
+                            </div>
+
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                                {/* New Data Viz: How Claims Are Verified */}
+                                <ScrollReveal delay={200}>
+                                    <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-lg border border-gray-100 h-full">
+                                        <div className="flex items-center gap-3 mb-6">
+                                            <Search className="text-green-600" size={28} />
+                                            <h3 className="text-2xl font-bold text-gray-800">The Verification Gap</h3>
+                                        </div>
+                                        <p className="text-sm text-gray-500 mb-6">
+                                            Survey of Indian marketing professionals: <br/>"How are your sustainability claims usually verified?"
+                                        </p>
+                                        
+                                        <div className="space-y-1">
+                                            <StatBar label="Third-party Certifications" percentage={30} color="#4ADE80" />
+                                            <StatBar label="Legal Team Approval" percentage={22} color="#9CA3AF" />
+                                            <StatBar label="Internal Team Assessment" percentage={20} color="#D1D5DB" />
+                                            <StatBar label="We Don't Verify Them" percentage={15} color="#EF4444" />
+                                            <StatBar label="Supplier Data" percentage={13} color="#E5E7EB" />
+                                        </div>
+                                        
+                                        <div className="mt-6 p-4 bg-red-50 rounded-xl border border-red-100 flex gap-3">
+                                            <AlertTriangle className="text-red-500 shrink-0" size={20} />
+                                            <p className="text-xs text-red-600 font-semibold">
+                                                15% of claims go live with zero verification. This is a massive legal liability.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </ScrollReveal>
+
+                                <div className="flex flex-col gap-6">
+                                    <ScrollReveal delay={300}>
+                                        <SoftCard className="flex-1 flex flex-col justify-center">
+                                            <div className="flex justify-between items-center mb-4">
+                                                <h3 className="text-xl font-bold">SPV</h3>
+                                                <span className="text-green-600 font-bold text-[10px] bg-green-100 px-2 py-1 rounded-full uppercase">Brand Finance Metric</span>
+                                            </div>
+                                            <h4 className="font-bold text-gray-800 mb-2">Sustainability Perceptions Value</h4>
+                                            <p className="text-gray-500 text-sm mb-3">
+                                                The financial value consumers attribute to a brand's commitment to ESG factors.
+                                            </p>
+                                            <p className="text-xs text-gray-400">
+                                                Quantifies the financial impact of reputation.
+                                            </p>
+                                        </SoftCard>
+                                    </ScrollReveal>
+
+                                    <ScrollReveal delay={400}>
+                                        <SoftCard className="flex-1 flex flex-col justify-center">
+                                            <div className="flex justify-between items-center mb-4">
+                                                <h3 className="text-xl font-bold">SPG</h3>
+                                                <span className="text-red-500 font-bold text-[10px] bg-red-100 px-2 py-1 rounded-full uppercase">Guidance / Gap</span>
+                                            </div>
+                                            <h4 className="font-bold text-gray-800 mb-2">Sustainability Perceptions Gap</h4>
+                                            <p className="text-gray-500 text-sm mb-3">
+                                                The difference between perceived value (SPV) and actual performance.
+                                            </p>
+                                            <p className="text-xs text-gray-400">
+                                                Indicates potential value creation opportunities or greenwashing risks.
+                                            </p>
+                                        </SoftCard>
+                                    </ScrollReveal>
+                                </div>
+                            </div>
+                        </div>
+                    </Section>
+
+                    {/* SECTION 3: RISKS - STAGGERED REVEAL SCROLL STORY */}
+                    <Section id="risks" className="bg-[#D1D5DB]/30">
+                        <div className="max-w-6xl mx-auto w-full">
+                            <ScrollReveal>
+                                <div className="mb-12 text-center md:text-left">
+                                    <h2 className="text-4xl md:text-5xl font-bold mb-4">The High Price</h2>
+                                    <p className="text-xl text-gray-600">The industry is balanced on a tightrope between two dangerous extremes.</p>
+                                </div>
+                            </ScrollReveal>
+
+                            {/* The Narrative Flow - Items reveal one by one */}
+                            <div className="space-y-8">
+                                
+                                {/* 1. The Shocking Stat */}
+                                <ScrollReveal delay={100}>
+                                    <div className="bg-red-50/80 rounded-[2rem] p-8 border-l-8 border-red-500 shadow-md">
+                                        <div className="flex items-start gap-4">
+                                            <Users className="text-red-500 shrink-0 mt-1" size={32} />
+                                            <div>
+                                                <h4 className="text-2xl font-bold text-gray-800 mb-2">Trust Fallout</h4>
+                                                <p className="text-lg text-gray-700">
+                                                    <span className="font-black text-red-600 text-2xl">77%</span> of consumers would stop buying if caught greenwashing. 
+                                                    <br/>A single exposé can shatter brand credibility instantly.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ScrollReveal>
+
+                                {/* 2. The Financial Penalty */}
+                                <ScrollReveal delay={400}>
+                                    <div className="bg-orange-50/80 rounded-[2rem] p-8 border-l-8 border-orange-500 shadow-md ml-0 md:ml-12">
+                                        <div className="flex items-start gap-4">
+                                            <Gavel className="text-orange-500 shrink-0 mt-1" size={32} />
+                                            <div>
+                                                <h4 className="text-2xl font-bold text-gray-800 mb-2">Legal Reality</h4>
+                                                <p className="text-lg text-gray-700">
+                                                    Misleading claims are now illegal. 
+                                                    <br/>CCPA fines up to <span className="font-bold text-orange-600">₹50 Lakhs</span> for repeat offenses. Ignorance is no longer a defense.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ScrollReveal>
+
+                                {/* 3. The Silent Cost */}
+                                <ScrollReveal delay={700}>
+                                    <div className="bg-gray-100 rounded-[2rem] p-8 border-l-8 border-gray-500 shadow-md ml-0 md:ml-24">
+                                        <div className="flex items-start gap-4">
+                                            <MicOff className="text-gray-500 shrink-0 mt-1" size={32} />
+                                            <div>
+                                                <h4 className="text-2xl font-bold text-gray-800 mb-2">The Cost of Silence</h4>
+                                                <p className="text-lg text-gray-700">
+                                                    Greenhushing leaves value on the table. 
+                                                    <br/>Competitors own the narrative while you stay quiet. Investors assume you have something to hide.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ScrollReveal>
+
+                            </div>
+                        </div>
+                    </Section>
+
+                    {/* NEW SECTION: INTERACTIVE FLIP CARDS */}
+                    <Section id="interactive">
+                        <div className="max-w-6xl mx-auto w-full">
+                            <div className="text-center mb-16">
+                                <h2 className="text-4xl md:text-5xl font-bold mb-4">Why Are We Silent?</h2>
+                                <p className="text-gray-500">Tap cards to reveal the reality behind the fear.</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <FlipCard 
+                                    frontTitle="Fear of Scrutiny" 
+                                    frontIcon={Eye} 
+                                    color="#EF4444"
+                                    backStat="70%"
+                                    backText="of companies with strong credentials engage in greenhushing to avoid criticism."
+                                />
+                                <FlipCard 
+                                    frontTitle="Uncertainty" 
+                                    frontIcon={HelpCircle} 
+                                    color="#F59E0B"
+                                    backStat="No Data"
+                                    backText="Lack of reliable data is the #1 cited barrier to honest messaging."
+                                />
+                                <FlipCard 
+                                    frontTitle="Perfectionism" 
+                                    frontIcon={Lock} 
+                                    color="#607D8B"
+                                    backStat="Progress > Perfection"
+                                    backText="Stakeholders reward transparency about the journey, not just the destination."
+                                />
+                            </div>
+                        </div>
+                    </Section>
+
+                    {/* SECTION 4: ARCHETYPES - FIXED LAYOUT */}
+                    <Section id="archetypes">
+                        <div className="max-w-7xl mx-auto w-full">
+                            <div className="text-center mb-16">
+                                <h2 className="text-4xl md:text-5xl font-bold mb-4">Which one is your brand?</h2>
+                                <p className="text-gray-500 text-lg">Four Brand Archetypes defined by Performance vs. Communication</p>
+                            </div>
+                            
+                            <div className="flex flex-wrap justify-center gap-6">
+                                <ArchetypeCard 
+                                    title="Silent Green"
+                                    type="High Performance / Low Talk"
+                                    icon={MicOff}
+                                    description="Doing good in silence. Often driven by fear of scrutiny or perfectionism."
+                                    stat="70% of companies with strong credentials engage in this."
+                                    subtext="RISK: Missed Opportunities"
+                                    color="#607D8B"
+                                />
+                                <ArchetypeCard 
+                                    title="Vocal Green"
+                                    type="High Performance / High Talk"
+                                    icon={CheckCircle}
+                                    description="The Gold Standard. They walk the talk and communicate it openly. Authenticity builds trust."
+                                    subtext="ASSET: High SPV & Trust"
+                                    color="#4ADE80"
+                                />
+                                <ArchetypeCard 
+                                    title="Opaque Brown"
+                                    type="Low Performance / Low Talk"
+                                    icon={Eye}
+                                    description="Neither green nor transparent. Doing little and saying little. Breeds mistrust."
+                                    subtext="RISK: Irrelevance"
+                                    color="#795548"
+                                />
+                                <ArchetypeCard 
+                                    title="Vocal Brown"
+                                    type="Low Performance / High Talk"
+                                    icon={ShieldAlert}
+                                    description="The Greenwashers. All talk, no walk. Making false claims to appear friendly."
+                                    subtext="RISK: Legal Action"
+                                    color="#EF4444"
+                                />
+                            </div>
+                        </div>
+                    </Section>
+
+                    {/* SECTION 5: 7 SINS */}
+                    <Section id="sins" className="bg-green-50/50">
+                        <div className="max-w-6xl mx-auto w-full">
+                            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                                <div>
+                                    <h2 className="text-4xl md:text-5xl font-bold mb-4">The 7 Sins</h2>
+                                    <p className="text-xl text-gray-600 max-w-lg">The Anatomy of Deception: 42% of green claims globally are exaggerated, false, or deceptive.</p>
+                                </div>
+                                <div className="hidden md:flex items-center gap-2 text-gray-400">
+                                <span className="text-sm uppercase tracking-widest">Scroll</span>
+                                <ArrowRight size={16} />
+                                </div>
+                            </div>
+
+                            <div className="overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0 flex snap-x snap-mandatory scroll-smooth no-scrollbar">
+                                <SinCard 
+                                    number="01" 
+                                    title="Hidden Trade-off" 
+                                    icon={AlertTriangle}
+                                    description="Highlighting one green attribute while ignoring other, more significant environmental harms." 
+                                />
+                                <SinCard 
+                                    number="02" 
+                                    title="No Proof" 
+                                    icon={FileText}
+                                    description="A claim that cannot be substantiated by easily accessible supporting information or third-party certification." 
+                                />
+                                <SinCard 
+                                    number="03" 
+                                    title="Vagueness" 
+                                    icon={Info}
+                                    description="Using terms so poorly defined or broad that their real meaning is likely to be misunderstood (e.g., 'all-natural')." 
+                                />
+                                <SinCard 
+                                    number="04" 
+                                    title="False Labels" 
+                                    icon={ShieldAlert}
+                                    description="Creating a false impression of third-party endorsement through fake or self-created 'certifications'." 
+                                />
+                                <SinCard 
+                                    number="05" 
+                                    title="Irrelevance" 
+                                    icon={Zap}
+                                    description="An environmental claim that may be truthful but is unimportant or unhelpful (e.g., 'CFC-free' when legally banned)." 
+                                />
+                                <SinCard 
+                                    number="06" 
+                                    title="Lesser of Two Evils" 
+                                    icon={BarChart3}
+                                    description="True within the product category but distracting from the greater environmental impacts of the category." 
+                                />
+                                <SinCard 
+                                    number="07" 
+                                    title="Fibbing" 
+                                    icon={X}
+                                    description="Making environmental claims that are simply false. The most direct and dangerous form of deception." 
+                                />
+                            </div>
+                        </div>
+                    </Section>
+
+                    {/* NEW SECTION: SPECTRUM OF DECEPTION (PLANET TRACKER) */}
+                    <Section id="tracker" className="bg-[#D1D5DB]/30">
+                        <div className="max-w-6xl mx-auto w-full">
+                            <div className="mb-12">
+                                <h2 className="text-4xl md:text-5xl font-bold mb-4">The Spectrum of Deception</h2>
+                                <p className="text-xl text-gray-600 max-w-2xl">
+                                    Beyond the 7 Sins: <strong>Planet Tracker</strong> identifies six sophisticated forms of greenwashing that aim to deceive consumers and investors.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <TrackerCard 
+                                    title="Greenlabelling" 
+                                    icon={Tag}
+                                    description="Using vague or unsubstantiated terms like 'natural' or 'eco-friendly' to imply sustainability without proof."
+                                />
+                                <TrackerCard 
+                                    title="Greenhushing" 
+                                    icon={MicOff}
+                                    description="Deliberately under-reporting or hiding environmental data and credentials to avoid scrutiny."
+                                />
+                                <TrackerCard 
+                                    title="Greencrowding" 
+                                    icon={Users}
+                                    description="Joining sustainability initiatives to blend in with genuinely green companies, moving at the pace of the slowest member."
+                                />
+                                <TrackerCard 
+                                    title="Greenlighting" 
+                                    icon={Zap}
+                                    description="Highlighting one small, positive environmental feature to distract from overall unsustainable practices."
+                                />
+                                <TrackerCard 
+                                    title="Greenrinsing" 
+                                    icon={RefreshCw}
+                                    description="Adjusting or pushing back sustainability targets before they are met, often increasing ambition to mask failure."
+                                />
+                                <TrackerCard 
+                                    title="Greenshifting" 
+                                    icon={UserX}
+                                    description="Shifting responsibility for climate issues onto consumers, suggesting demand dictates harmful practices."
+                                />
+                            </div>
+                        </div>
+                    </Section>
+
+                    {/* SECTION 6: LAWS */}
+                    <Section id="regulations">
+                        <div className="max-w-5xl mx-auto w-full">
+                            <div className="mb-16">
+                                <h2 className="text-4xl md:text-5xl font-bold mb-6">Playing by the Rules</h2>
+                                <p className="text-xl text-gray-600 max-w-3xl">
+                                    India has implemented one of the world's strictest legal frameworks. Ignorance is no longer a defense.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                                {/* CCPA Card */}
+                                <div className="bg-white rounded-[2rem] p-8 border border-gray-200 shadow-sm hover:shadow-md transition-all">
+                                    <div className="flex items-center gap-3 mb-6">
+                                        <Scale className="text-green-600" size={32} />
+                                        <h3 className="text-2xl font-bold">CCPA Guidelines (2024)</h3>
+                                    </div>
+                                    
+                                    <ul className="space-y-4 text-sm text-gray-700">
+                                        <li className="flex items-start gap-3">
+                                            <span className="mt-1 w-2 h-2 bg-green-500 rounded-full shrink-0"></span>
+                                            <strong>Legal Definition:</strong> Greenwashing is now classified as a "misleading practice".
+                                        </li>
+                                        <li className="flex items-start gap-3">
+                                            <span className="mt-1 w-2 h-2 bg-green-500 rounded-full shrink-0"></span>
+                                            <strong>Liability:</strong> Extends to the brand, the ad agency, and the endorser.
+                                        </li>
+                                        <li className="bg-red-50 p-3 rounded-lg border border-red-100 mt-2">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <Gavel className="text-red-500" size={16}/>
+                                                <span className="font-bold text-red-700">Financial Penalties</span>
+                                            </div>
+                                            <div className="flex justify-between items-center text-red-800 font-mono text-sm">
+                                                <span>First Offense:</span>
+                                                <strong>₹10,00,000</strong>
+                                            </div>
+                                            <div className="flex justify-between items-center text-red-800 font-mono text-sm mt-1">
+                                                <span>Repeat Offense:</span>
+                                                <strong>₹50,00,000</strong>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                {/* ASCI Card */}
+                                <div className="bg-white rounded-[2rem] p-8 border border-gray-200 shadow-sm hover:shadow-md transition-all">
+                                    <div className="flex items-center gap-3 mb-6">
+                                        <Lock className="text-blue-600" size={32} />
+                                        <h3 className="text-2xl font-bold">ASCI Guidelines</h3>
+                                    </div>
+                                    <ul className="space-y-4 text-sm text-gray-700">
+                                        <li className="flex items-start gap-3">
+                                            <span className="mt-1 w-2 h-2 bg-blue-500 rounded-full shrink-0"></span>
+                                            Mandates honesty and clarity; scope of claims must be defined (product vs packaging).
+                                        </li>
+                                        <li className="flex items-start gap-3">
+                                            <span className="mt-1 w-2 h-2 bg-blue-500 rounded-full shrink-0"></span>
+                                            Prohibits misleading visuals that falsely imply green attributes.
+                                        </li>
+                                        <li className="flex items-start gap-3">
+                                            <span className="mt-1 w-2 h-2 bg-blue-500 rounded-full shrink-0"></span>
+                                            Requires claims to be substantiated by verifiable, independent evidence.
+                                        </li>
+                                    </ul>
+                                    
+                                    {/* NEW: ASCI 2024 Statistic Nugget */}
+                                    <div className="mt-6 p-4 bg-orange-50 rounded-xl border border-orange-100">
+                                        <div className="flex items-start gap-3">
+                                             <AlertTriangle className="text-orange-500 shrink-0 mt-1" size={18} />
+                                             <div>
+                                                 <p className="text-[10px] font-bold text-orange-600 uppercase tracking-wide mb-1">2024 Reality Check</p>
+                                                 <p className="text-sm text-gray-700 leading-snug">
+                                                     <span className="font-bold">100%</span> of ads reviewed by ASCI for greenwashing violations required modification due to lack of transparency.
+                                                 </p>
+                                             </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-4 p-4 bg-gray-50 rounded-xl">
+                                        <p className="font-bold text-gray-800 text-xs uppercase tracking-wide mb-1">Also Scrutinizing:</p>
+                                        <p className="text-sm text-gray-600"><strong>SEBI</strong> is now scrutinizing ESG claims in investor reports (BRSR), linking marketing to accountability.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Section>
+
+                    {/* SECTION 7: PLAYBOOK */}
+                    <Section id="playbook" className="bg-black text-white rounded-t-[3rem] mt-10">
+                        <div className="max-w-5xl mx-auto w-full py-10">
+                            <div className="text-center mb-16">
+                                <div className="inline-block px-4 py-1 rounded-full border border-green-500/50 text-green-400 text-xs font-bold uppercase tracking-widest mb-4">
+                                    Action Plan
+                                </div>
+                                <h2 className="text-4xl md:text-6xl font-bold mb-4">The Playbook</h2>
+                                <p className="text-gray-400">Executing with Excellence</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-20">
+                                <div>
+                                    <div className="mb-12">
+                                        <div className="flex items-center gap-4 mb-4">
+                                            <div className="w-8 h-8 rounded-full bg-green-500 text-black flex items-center justify-center font-bold">1</div>
+                                            <h3 className="text-2xl font-bold">Set the Tone & Policy</h3>
+                                        </div>
+                                        <p className="text-gray-400 leading-relaxed pl-12">
+                                            Establish clear, non-negotiable guidelines. Create an internal <strong>"Green Review Checklist"</strong> to vet every claim against the 7 Sins and legal requirements before it goes out.
+                                        </p>
+                                    </div>
+
+                                    <div className="mb-12">
+                                        <div className="flex items-center gap-4 mb-4">
+                                            <div className="w-8 h-8 rounded-full bg-green-500 text-black flex items-center justify-center font-bold">2</div>
+                                            <h3 className="text-2xl font-bold">Champion Alignment</h3>
+                                        </div>
+                                        <p className="text-gray-400 leading-relaxed pl-12">
+                                            Tear down silos. Convene regular meetings between marketing, sustainability, R&D, and legal. Authenticity is a shared responsibility, not just a marketing task.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div className="mb-12">
+                                        <div className="flex items-center gap-4 mb-4">
+                                            <div className="w-8 h-8 rounded-full bg-green-500 text-black flex items-center justify-center font-bold">3</div>
+                                            <h3 className="text-2xl font-bold">Lead with Transparency</h3>
+                                        </div>
+                                        <p className="text-gray-400 leading-relaxed pl-12">
+                                            Be publicly accountable for progress and challenges. When leadership is transparent about the journey, it cascades down, valuing integrity over marketing spin.
+                                        </p>
+                                    </div>
+
+                                    <div className="mb-12">
+                                        <div className="flex items-center gap-4 mb-4">
+                                            <div className="w-8 h-8 rounded-full bg-green-500 text-black flex items-center justify-center font-bold">4</div>
+                                            <h3 className="text-2xl font-bold">Integrate to Core Strategy</h3>
+                                        </div>
+                                        <p className="text-gray-400 leading-relaxed pl-12">
+                                            Move sustainability from a PR topic to the brand's DNA. Embed it in brand values, campaign briefs, and business KPIs to ensure messaging is durable.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-12 p-8 md:p-16 bg-white/5 rounded-[3rem] backdrop-blur-md border border-white/10 text-center relative overflow-hidden group">
+                                <div className="absolute inset-0 bg-green-500/10 blur-3xl rounded-full transform scale-0 group-hover:scale-150 transition-transform duration-1000"></div>
+                                
+                                <h4 className="text-3xl md:text-5xl font-black mb-6 relative z-10">"Honesty is the new green."</h4>
+                                <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg relative z-10 leading-relaxed">
+                                    If you've been silent, start talking. If you've overstated, course-correct. Authenticity is your greatest competitive advantage.
+                                </p>
+                                <button onClick={() => window.open('https://www.hooop.in/g', '_blank')} className="relative z-10 bg-green-500 hover:bg-green-400 text-black px-12 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(74,222,128,0.4)]">
+                                    Start The Journey
+                                </button>
+                            </div>
+                            
+                            <footer className="mt-20 text-center text-gray-500 text-xs pb-12 px-6">
+                                <div className="max-w-2xl mx-auto border-t border-gray-300/50 pt-8">
+                                    <p className="mb-2 font-bold text-gray-400 uppercase tracking-widest text-[10px]">Primary Sources</p>
+                                    <p className="mb-6 leading-relaxed">
+                                        Strategic insights and survey data derived from the <strong>"Green Is the New Lie"</strong> Whitepaper and <strong>"The Green Truth"</strong> Survey by Sense App.
+                                    </p>
+                                    
+                                    <p className="mb-2 font-bold text-gray-400 uppercase tracking-widest text-[10px]">Data & Definitions</p>
+                                    <p className="leading-relaxed opacity-80 space-y-1">
+                                        <span className="block"><strong>Brand Finance:</strong> Sustainability Perceptions Value (SPV) & Gap (SPG) definitions.</span>
+                                        <span className="block"><strong>Planet Tracker:</strong> The Six Types of Greenwashing framework.</span>
+                                        <span className="block"><strong>ASCI & CCPA:</strong> Regulatory guidelines and compliance statistics (2024).</span>
+                                    </p>
+                                    
+                                    <div className="mt-8 pt-8 border-t border-gray-300/30 flex justify-center items-center gap-2 opacity-40 hover:opacity-100 transition-opacity">
+                                        <span>Sense App Design</span>
+                                        <span>•</span>
+                                        <span className="cursor-pointer hover:text-green-600" onClick={() => window.open('https://www.hooop.in/g', '_blank')}>HOOOP</span>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </Section>
+
+                </main>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+    </script>
+</body>
+</html>
