@@ -1222,7 +1222,7 @@ const GreenwashingView = ({ navigateTo }) => {
                             <div className="mt-8 pt-8 border-t border-gray-300/30 flex justify-center items-center gap-2 opacity-40 hover:opacity-100 transition-opacity">
                                 <span>Sense App Design</span>
                                 <span>•</span>
-                                <span className="cursor-pointer hover:text-green-600" onClick={() => window.open('https://www.hooop.in/g', '_blank')}>HOOOP</span>
+                                <span className="cursor-pointer hover:text-green-600" onClick={() => window.open('https://www.hooop.in/#sense', '_blank')}>HOOOP</span>
                             </div>
                         </div>
                     </footer>
