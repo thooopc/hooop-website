@@ -68,7 +68,7 @@ const SITE_CONTENT = {
     ]
   },
   prvaah: {
-    sanskritMeaning: "Meaning flow in Sanskrit",
+    sanskritMeaning: "flow in Sanskrit",
     description1: (
       <span>
         Created by <a href="https://www.everloop.agency/" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">Everloop.Agency</a> and <a href="https://www.hooop.in" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">HOOOP Collective</a>, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.
