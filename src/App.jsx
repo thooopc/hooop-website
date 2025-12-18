@@ -26,7 +26,7 @@ const SITE_CONTENT = {
     subtitle: "Essays on the intersection of climate, capital, and culture.",
     featuredTool: {
         title: "Sense by HOOOP",
-        desc: "Use our AI-powered brand narrative insurance tool to stress-test your claims against greenwashing risks.",
+        desc: "Use our logic based brand narrative tool to stress-test your claims against greenwashing risks.",
         cta: "Run Analysis"
     },
     posts: [
@@ -111,7 +111,8 @@ const SITE_CONTENT = {
     ]
   },
   prvaah: {
-    sanskritMeaning: "flow in Sanskrit",
+    title: "prvaah",
+    sanskritMeaning: "meaning flow in Sanskrit",
     description1: (
       <span>
         Created by <a href="https://www.everloop.agency/" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">Everloop.Agency</a> and <a href="https://www.hooop.in" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">HOOOP Collective</a>, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.
@@ -227,6 +228,7 @@ const SITE_CONTENT = {
 // ⚙️ SENSE TOOL LOGIC (Greenwashing Detection)
 // ==========================================
 const SENSE_TERMS = [
+    // 1. VAGUE ENVIRONMENTAL CLAIMS
     { word: "eco-friendly", risk: "High", category: "Vague Claim", reference: "CCPA Clause 5(a)", tip: "Vague. Banned under CCPA Clause 5(a) without specific proof. Use specific metrics like 'biodegradable in 28 days'." },
     { word: "eco friendly", risk: "High", category: "Vague Claim", reference: "CCPA Clause 5(a)", tip: "Vague. Banned under CCPA Clause 5(a) without specific proof. Use specific metrics." },
     { word: "good for the planet", risk: "Critical", category: "Hyperbole", reference: "CCPA Clause 5(a)", tip: "Hyperbole. Implies net positive impact which is rarely true." },
@@ -240,6 +242,85 @@ const SENSE_TERMS = [
     { word: "made responsibly", risk: "Medium", category: "Undefined Term", tip: "Define 'responsibly'. Look for SA8000 or Fair Trade." },
     { word: "good for the earth", risk: "High", category: "Vague Claim", tip: "Vague and hyperbolic. Does it regenerate the earth or just damage it less?" }, 
     { word: "good for nature", risk: "High", category: "Vague Claim", tip: "Similar to 'Good for the Earth'. Too broad to be legally substantiated." }, 
+    { word: "farm fresh", risk: "High", category: "Vague Claim", tip: "Vague 'green-sounding' language with no legal meaning." }, 
+    { word: "conscious", risk: "High", category: "Subjective Claim", tip: "Subjective. 'Conscious' collection implies others are unconscious?" },
+    { word: "innovation rooted in purpose", risk: "Medium", category: "Marketing Fluff", tip: "Vague. What specific environmental purpose? Show the metrics." },
+
+    // 2. SELF-DECLARED ATTRIBUTES
+    { word: "ethically sourced", risk: "Medium", category: "Verification Needed", tip: "Is this self-declared or 3rd-party certified?" },
+    { word: "green-certified", risk: "High", category: "Misleading Label", reference: "CCPA Guidance Note 6", tip: "By whom? Watch out for fake or self-made labels." },
+    { word: "climate-approved", risk: "High", category: "Misleading Label", tip: "Meaningless without a recognized governing body." },
+    { word: "certified sustainable", risk: "High", category: "Misleading Label", tip: "Check the certifier. Is it independent and recognized?" },
+    { word: "industry-leading", risk: "Medium", category: "Puffery", tip: "Puffery unless backed by comparative data." },
+    { word: "verified low-impact", risk: "Medium", category: "Verification Needed", tip: "Verified by whom? Link to the audit report." },
+    { word: "climate safe", risk: "Critical", category: "Absolute Claim", tip: "Scientifically unrealistic claim." },
+    { word: "responsible materials", risk: "Medium", category: "Vague Claim", tip: "Which materials? What percentage?" },
+
+    // 3. FUTURE PROMISES (Greenwishing)
+    { word: "net zero by 2050", risk: "Medium", category: "Future Claim", reference: "CCPA Clause 7", tip: "Distant target. Show interim KPIs and immediate roadmaps." },
+    { word: "journey to sustainability", risk: "High", category: "Future Claim", tip: "Often used to delay action. What are you doing NOW?" },
+    { word: "working towards", risk: "Medium", category: "Future Claim", tip: "Intention ≠ Action. Show current progress." },
+    { word: "committed to", risk: "Medium", category: "Future Claim", tip: "Commitment is easy. Execution is hard. Show the data." },
+    { word: "transitioning to", risk: "Medium", category: "Future Claim", tip: "Vague timeline. When does the transition end?" },
+    { word: "soon-to-be", risk: "High", category: "Future Claim", tip: "Vague timeline. Commit to a date." },
+    { word: "moving towards", risk: "Medium", category: "Future Claim", tip: "Vague progress indicator." },
+    { word: "spark conversations", risk: "Low", category: "Engagement Claim", tip: "Awareness is good, but is it distracting from actual impact metrics?" },
+    { word: "movement continues", risk: "Medium", category: "Engagement Claim", tip: "Is the movement measurable in environmental terms, or just social engagement?" },
+
+    // 4. OVERSTATED / ABSOLUTIST
+    { word: "zero environmental impact", risk: "Critical", category: "Absolute Claim", tip: "Impossible. All production has some impact." },
+    { word: "completely carbon neutral", risk: "High", category: "Absolute Claim", tip: "Likely relies heavily on offsets rather than reduction." },
+    { word: "100% sustainable", risk: "Critical", category: "Absolute Claim", tip: "Scientifically impossible claim for a manufactured product." },
+    { word: "fully recyclable", risk: "High", category: "Infrastructure Check", reference: "FTC Green Guides", tip: "Only valid if local infrastructure exists for the consumer." },
+    { word: "waste-free", risk: "High", category: "Absolute Claim", tip: "Did you account for supply chain and manufacturing waste?" },
+    { word: "zero emissions", risk: "High", category: "Absolute Claim", tip: "Scope 1, 2, or 3? Often excludes supply chain (Scope 3)." },
+
+    // 5. HIDDEN TRADE-OFFS
+    { word: "made with recycled materials", risk: "Medium", category: "Hidden Trade-off", reference: "CCPA Guidance Note 4", tip: "What %? 1% or 100%? Does the product itself harm the environment?" },
+    { word: "plastic-free packaging", risk: "Medium", category: "Hidden Trade-off", tip: "Good step, but is the *product* inside toxic or harmful?" },
+    { word: "plant-based ingredients", risk: "Medium", category: "Hidden Trade-off", tip: "Plant-based can still be intensively farmed or processed." },
+    { word: "solar-powered operations", risk: "Medium", category: "Hidden Trade-off", tip: "Great, but what about raw material sourcing and transport?" },
+    { word: "living billboard", risk: "High", category: "Distraction", tip: "Is this a tiny green feature masking a larger non-green impact (e.g. ad industry waste)?" },
+    { word: "breathing reminder", risk: "High", category: "Metaphor", tip: "Metaphorical language often hides a lack of concrete data." },
+
+    // 6. NATURE-FLAVOURED LANGUAGE
+    { word: "inspired by nature", risk: "High", category: "Puffery", tip: "Greenwashing fluff. No legal meaning." },
+    { word: "pure and natural", risk: "High", category: "Puffery", tip: "Arsenic is natural. Doesn't mean safe or sustainable." },
+    { word: "green living", risk: "High", category: "Lifestyle Claim", tip: "Vague lifestyle marketing term." },
+    { word: "nature's goodness", risk: "High", category: "Puffery", tip: "Marketing puffery substituting for proof." },
+    { word: "conscious design", risk: "High", category: "Subjective Claim", tip: "Subjective. Define 'conscious' with metrics." },
+
+    // 7. CARBON WITHOUT METHODOLOGY
+    { word: "carbon smart", risk: "High", category: "Undefined Term", tip: "Undefined marketing term." },
+    { word: "climate friendly", risk: "High", category: "Vague Claim", tip: "Too broad to be substantiated." },
+    { word: "reduced carbon footprint", risk: "Medium", category: "Comparative Claim", tip: "Reduced by how much? Compared to what baseline?" },
+    { word: "low carbon product", risk: "Medium", category: "Comparative Claim", tip: "Define the threshold for 'low'." },
+    { word: "offset-backed", risk: "High", category: "Offset Claim", tip: "Offsets are a last resort, not a primary solution." },
+
+    // 8. CIRCULARITY WITHOUT SYSTEM
+    { word: "designed for reuse", risk: "Medium", category: "System Claim", tip: "Is there actually a take-back system in place?" },
+    { word: "built for circularity", risk: "Medium", category: "System Claim", tip: "Circular requires a system, not just a product attribute." },
+    { word: "circular product", risk: "High", category: "System Claim", tip: "A product cannot be circular alone; it needs a system." },
+    { word: "closed-loop", risk: "High", category: "System Claim", tip: "Is the loop actually closed, or is it a theoretical promise?" },
+
+    // 9. MISLEADING QUANTIFICATION
+    { word: "more sustainable", risk: "High", category: "Comparative Claim", tip: "More than what? A competitor? Last year? Be specific." },
+    { word: "greener", risk: "High", category: "Comparative Claim", tip: "Greener is subjective. Define the metric." },
+    { word: "cleaner for the planet", risk: "High", category: "Comparative Claim", tip: "Vague comparison. Needs data." },
+    { word: "new sustainability formula", risk: "High", category: "Marketing Spin", tip: "Marketing spin unless methodology is disclosed." },
+    { word: "improved eco performance", risk: "Medium", category: "Vague Metric", tip: "Show the performance data." },
+    { word: "less waste", risk: "Medium", category: "Vague Metric", tip: "Less than what? Define the baseline clearly." }, 
+
+    // 10. BUZZWORDS
+    { word: "regenerative", risk: "Medium", category: "Buzzword", tip: "High bar. Requires specific soil/carbon data." },
+    { word: "conscious consumption", risk: "High", category: "Buzzword", tip: "Vague. Often shifts blame to consumer." },
+    { word: "earth-first", risk: "High", category: "Buzzword", tip: "Marketing slogan." },
+    { word: "impact-led", risk: "Medium", category: "Buzzword", tip: "Show the impact report." },
+    { word: "climate-positive", risk: "High", category: "Buzzword", tip: "Requires removing more carbon than emitted. Rare." },
+    { word: "better choices", risk: "Medium", category: "Buzzword", tip: "Vague." },
+    
+    // Legacy/Specifics
+    { word: "save the planet", risk: "Critical", category: "Hyperbole", tip: "Hyperbole. No single product saves the planet." },
 ];
 
 const GLOSSARY = [
@@ -249,6 +330,7 @@ const GLOSSARY = [
     { term: "Biodegradable", def: "Capable of being decomposed by bacteria or other living organisms. Note: Everything is biodegradable eventually; look for timeframes." },
     { term: "Carbon Neutral", def: "Balancing carbon emissions with carbon removal (often via offsets). Aim for 'Net Zero' (reduction first) instead." },
     { term: "Circularity", def: "A model where products are designed to be reused, repaired, or recycled, eliminating waste and pollution." },
+    { term: "Eco-anxiety", def: "Chronic fear of environmental doom. Action and education are the best antidotes." },
     { term: "Greenwashing", def: "Making misleading or unsubstantiated claims about the environmental benefits of a product, service, or practice." },
     { term: "Net Zero", def: "Reducing greenhouse gas emissions to as close to zero as possible, with any remaining emissions re-absorbed from the atmosphere." },
     { term: "Organic", def: "Grown without the use of synthetic pesticides, fertilizers, or GMOs. Look for certified labels." },
@@ -422,7 +504,6 @@ const TrackerCard = ({ title, description, icon: Icon }) => (
 
 // --- NEW SENSE PAGE COMPONENTS ---
 const SenseAnalysisView = () => {
-    // ... (Sense logic remains same)
     const [text, setText] = useState("");
     const [result, setResult] = useState(null);
     const [error, setError] = useState("");
@@ -608,7 +689,6 @@ const SenseAnalysisView = () => {
 };
 
 const ChecklistView = () => {
-    // ... (Checklist logic remains same)
     const [items, setItems] = useState([
         { id: 1, text: "Are we using green/brown colors just to look 'natural' without changing the product?", checked: false }, 
         { id: 2, text: "Do we have a specific webpage backing these claims?", checked: false },
@@ -640,7 +720,6 @@ const ChecklistView = () => {
 };
 
 const ResourcesView = () => {
-    // ... (Resources logic remains same)
     const [openIndex, setOpenIndex] = useState(null);
     const toggle = (index) => { setOpenIndex(openIndex === index ? null : index); };
 
