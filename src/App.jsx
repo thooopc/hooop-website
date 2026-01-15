@@ -123,7 +123,9 @@ const SITE_CONTENT = {
       { icon: "zap", label: "Capability", desc: "Equip your team: Sustainability training, leadership workshops & industry playbooks." },
       { icon: "globe", label: "Access", desc: "Navigate new markets: Market intelligence, cultural insights & investor introductions." },
       { icon: "file", label: "Pilots", desc: "Test & adapt: Go-to-market pilots, product validation & circular supply-chains." },
-      { icon: "trending", label: "Scale", desc: "Expand responsibly: Long-term ESG integration, green media & impact measurement." }
+      { icon: "trending", label: "Scale", desc: "Expand responsibly: Long-term ESG integration, green media & impact measurement." },
+      {icon: "recycle",label: "Circularity", desc: "Communicate with confidence: Measure impact, optimize circularity outcomes, and articulate benefits without greenwashing risks."
+      }
     ],
     testimonials: [
       {
