@@ -124,7 +124,10 @@ const SITE_CONTENT = {
       { icon: "globe", label: "Access", desc: "Navigate new markets: Market intelligence, cultural insights & investor introductions." },
       { icon: "file", label: "Pilots", desc: "Test & adapt: Go-to-market pilots, product validation & circular supply-chains." },
       { icon: "trending", label: "Scale", desc: "Expand responsibly: Long-term ESG integration, green media & impact measurement." },
-      {icon: "recycle",label: "Circularity", desc: "Communicate with confidence: Measure impact, optimize circularity outcomes, and articulate benefits without greenwashing risks."
+      { 
+        icon: "recycle",
+        label: "Circularity Impact measurement & articulation",
+        desc: "You want to communicate to the industry and customers the circularity or broader environmental benefits your product or business delivers? We can help you measure your impact, optimise your circularity outcomes and communicate it in a way that speaks to your target audience and keeps you clear of greenwashing accusations."
       }
     ],
     testimonials: [
@@ -243,7 +246,6 @@ const SENSE_TERMS = [
     { word: "made responsibly", risk: "Medium", category: "Undefined Term", tip: "Define 'responsibly'. Look for SA8000 or Fair Trade." },
     { word: "good for the earth", risk: "High", category: "Vague Claim", tip: "Vague and hyperbolic. Does it regenerate the earth or just damage it less?" }, 
     { word: "good for nature", risk: "High", category: "Vague Claim", tip: "Similar to 'Good for the Earth'. Too broad to be legally substantiated." }, 
-    // ... [Rest of TERMS from user code] ...
 ];
 
 const GLOSSARY = [
@@ -422,6 +424,42 @@ const TrackerCard = ({ title, description, icon: Icon }) => (
         </div>
         <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
     </div>
+);
+
+const BlogPostView = ({ post, onBack }) => (
+  <div className="min-h-screen pt-24 pb-20 px-6 animate-fade-in-up">
+    <div className="max-w-3xl mx-auto bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-gray-100 relative">
+      <button 
+        onClick={onBack}
+        className="absolute top-8 right-8 p-3 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 transition-colors z-10"
+      >
+        <X size={20} />
+      </button>
+
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+           <span className="px-3 py-1 bg-teal-50 text-teal-600 rounded-full text-xs font-bold uppercase tracking-widest">{post.category}</span>
+           <span className="text-gray-400 text-xs font-mono">{post.date}</span>
+        </div>
+        <h1 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">{post.title}</h1>
+        <p className="text-xl text-gray-500 font-medium leading-relaxed border-l-4 border-teal-500 pl-4">{post.desc}</p>
+      </div>
+
+      <div className="prose prose-lg text-gray-600 leading-relaxed space-y-6">
+         {post.content.map((paragraph, idx) => (
+            <p key={idx}>{paragraph}</p>
+         ))}
+      </div>
+
+      <div className="mt-12 pt-12 border-t border-gray-100 text-center">
+         <p className="text-sm text-gray-400 font-bold uppercase tracking-widest mb-4">Share this perspective</p>
+         <div className="flex justify-center gap-4">
+            <button className="p-3 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"><Linkedin size={20} /></button>
+            <button className="p-3 rounded-full bg-gray-50 text-gray-600 hover:bg-gray-100 transition-colors" onClick={() => navigator.clipboard.writeText(window.location.href)}><Copy size={20} /></button>
+         </div>
+      </div>
+    </div>
+  </div>
 );
 
 // --- NEW SENSE PAGE COMPONENTS ---
@@ -1163,13 +1201,13 @@ const GreenwashingView = ({ navigateTo }) => {
                             {/* NEW: ASCI 2024 Statistic Nugget */}
                             <div className="mt-6 p-4 bg-orange-50 rounded-xl border border-orange-100">
                                 <div className="flex items-start gap-3">
-                                        <AlertTriangle className="text-orange-500 shrink-0 mt-1" size={18} />
-                                        <div>
-                                            <p className="text-[10px] font-bold text-orange-600 uppercase tracking-wide mb-1">2024 Reality Check</p>
-                                            <p className="text-sm text-gray-700 leading-snug">
-                                                <span className="font-bold">100%</span> of ads reviewed by ASCI for greenwashing violations required modification due to lack of transparency.
-                                            </p>
-                                        </div>
+                                            <AlertTriangle className="text-orange-500 shrink-0 mt-1" size={18} />
+                                            <div>
+                                                <p className="text-[10px] font-bold text-orange-600 uppercase tracking-wide mb-1">2024 Reality Check</p>
+                                                <p className="text-sm text-gray-700 leading-snug">
+                                                    <span className="font-bold">100%</span> of ads reviewed by ASCI for greenwashing violations required modification due to lack of transparency.
+                                                </p>
+                                            </div>
                                 </div>
                             </div>
 
