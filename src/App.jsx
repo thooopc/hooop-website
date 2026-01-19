@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowRight, ArrowLeft, Globe, Shield, Zap, TrendingUp, FileText, Anchor, Linkedin, ExternalLink, Users, Coins, Briefcase, ScanLine, BarChart3, Download, AlertCircle, Check, Leaf, Info, Scale, BookOpen, ChevronDown, ChevronUp, Tag, ShieldCheck, Wind, Gavel, MicOff, Lock, HelpCircle, Eye, AlertTriangle, CheckCircle, Mail, Copy, RefreshCw, ShieldAlert, Search, UserX, Flag } from 'lucide-react';
+import { Linkedin, Instagram } from "lucide-react";
 
 // ==========================================
 // 🛠️ EASY EDIT SECTION - CHANGE CONTENT HERE
@@ -656,7 +657,7 @@ const SenseAnalysisView = () => {
         </div>
     );
 };
-
+{/* Global Footer */} <footer className="w-full py-12 mt-auto border-t border-gray-200/40 text-center"> <div className="flex justify-center gap-6 mb-6"> <a href="https://www.linkedin.com/company/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#0077b5] hover:scale-110 transition-all duration-300" aria-label="Follow us on LinkedIn" > <Linkedin size={20} /> </a> <a href="https://www.instagram.com/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#E1306C] hover:scale-110 transition-all duration-300" aria-label="Follow us on Instagram" > <Instagram size={20} /> </a> </div> <p className="text-gray-400 text-xs font-medium uppercase tracking-widest"> We are always open for a good conversation, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors lowercase font-bold ml-1">hello@hooop.in</a> </p> </footer>
 const ChecklistView = () => {
     // ... (Checklist logic remains same)
     const [items, setItems] = useState([
