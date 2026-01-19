@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, ArrowLeft, Globe, Shield, Zap, TrendingUp, FileText, Anchor, Linkedin, ExternalLink, Users, Coins, Briefcase, ScanLine, BarChart3, Download, AlertCircle, Check, Leaf, Info, Scale, BookOpen, ChevronDown, ChevronUp, Tag, ShieldCheck, Wind, Gavel, MicOff, Lock, HelpCircle, Eye, AlertTriangle, CheckCircle, Mail, Copy, RefreshCw, ShieldAlert, Search, UserX, Flag } from 'lucide-react';
-import { Linkedin, Instagram } from "lucide-react";
+import { Menu, X, ArrowRight, ArrowLeft, Globe, Shield, Zap, TrendingUp, FileText, Anchor, Linkedin, ExternalLink, Users, Coins, Briefcase, ScanLine, BarChart3, Download, AlertCircle, Check, Leaf, Info, Scale, BookOpen, ChevronDown, ChevronUp, Tag, ShieldCheck, Wind, Gavel, MicOff, Lock, HelpCircle, Eye, AlertTriangle, CheckCircle, Mail, Copy, RefreshCw, ShieldAlert, Search, UserX, Flag, Instagram } from 'lucide-react';
 
 // ==========================================
 // 🛠️ EASY EDIT SECTION - CHANGE CONTENT HERE
@@ -488,7 +487,16 @@ const SenseAnalysisView = () => {
                     hitsMap.set(term.word, term);
             }
         });
-        setResult(Array.from(hitsMap.values()));
+        const findings = Array.from(hitsMap.values());
+        setResult(findings);
+
+        // LOGGING FOR ANALYTICS (Client-side)
+        console.log("Sense Analysis Audit:", {
+            date: new Date().toISOString(),
+            textLength: trimmed.length,
+            riskLevel: getOverallRisk(findings),
+            findingsCount: findings.length
+        });
     };
     
     const copyFindings = () => {
@@ -572,6 +580,20 @@ const SenseAnalysisView = () => {
             <div aria-live="polite">
             {result && (
                 <div className="animate-fade mb-20">
+                    {/* LEGAL DISCLAIMER & CONFIDENCE INDICATOR (Moved Above Results) */}
+                    <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded-r-xl shadow-sm">
+                        <div className="flex items-start gap-3">
+                            <Info className="text-blue-500 shrink-0 mt-0.5" size={20} />
+                            <div>
+                                <h4 className="text-sm font-bold text-blue-900 uppercase tracking-wide mb-1">Heuristic scan, not exhaustive review</h4>
+                                <p className="text-xs text-blue-700 leading-relaxed">
+                                    This automated tool scans for specific high-risk keywords but cannot evaluate context, intent, or substantiation data. 
+                                    <strong>Results do not constitute legal advice.</strong> Please consult your legal team for final approval.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                     {result.length === 0 ? (
                         <div className="soft-card p-6 md:p-8 flex items-center gap-5 text-left">
                             <div className="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0">
@@ -657,7 +679,7 @@ const SenseAnalysisView = () => {
         </div>
     );
 };
-{/* Global Footer */} <footer className="w-full py-12 mt-auto border-t border-gray-200/40 text-center"> <div className="flex justify-center gap-6 mb-6"> <a href="https://www.linkedin.com/company/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#0077b5] hover:scale-110 transition-all duration-300" aria-label="Follow us on LinkedIn" > <Linkedin size={20} /> </a> <a href="https://www.instagram.com/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#E1306C] hover:scale-110 transition-all duration-300" aria-label="Follow us on Instagram" > <Instagram size={20} /> </a> </div> <p className="text-gray-400 text-xs font-medium uppercase tracking-widest"> We are always open for a good conversation, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors lowercase font-bold ml-1">hello@hooop.in</a> </p> </footer>
+
 const ChecklistView = () => {
     // ... (Checklist logic remains same)
     const [items, setItems] = useState([
@@ -1332,6 +1354,7 @@ const App = React.forwardRef((props, ref) => {
   const [showSenseTool, setShowSenseTool] = useState(false);
   const [senseTab, setSenseTab] = useState('analyzer');
   const [selectedPost, setSelectedPost] = useState(null); // New state for selected blog post
+
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'sense', label: 'Sense', hidden: true }, // Request to hide
@@ -1345,8 +1368,7 @@ const App = React.forwardRef((props, ref) => {
     { id: 'research', label: 'Research', hidden: true } 
   ];
 
-
-  // ... (useEffect for hash change remains same)
+  // ... (useEffect for viewport meta remains same)
   useEffect(() => {
   const handleRoute = () => {
     const path = window.location.pathname.replace("/", "") || "home";
@@ -1354,7 +1376,6 @@ const App = React.forwardRef((props, ref) => {
     if (navItems.some(item => item.id === path)) {
       setActiveSection(path);
       setSelectedPost(null);
-      setShowSenseTool(path === "sense" || path === "thinking");
     } else {
       setActiveSection("home");
     }
@@ -1364,8 +1385,6 @@ const App = React.forwardRef((props, ref) => {
   window.addEventListener("popstate", handleRoute);
   return () => window.removeEventListener("popstate", handleRoute);
 }, []);
-
-  // ... (useEffect for viewport meta remains same)
   useEffect(() => {
     let meta = document.querySelector('meta[name="viewport"]');
     if (!meta) {
@@ -1378,22 +1397,25 @@ const App = React.forwardRef((props, ref) => {
 
   
   const navigateTo = (id) => {
-  setActiveSection(id);
+  const next = id || "home";
+
+  setActiveSection(next);
   setSelectedPost(null);
   setIsMenuOpen(false);
 
-  window.history.pushState({}, "", `/${id}`);
+  const path = next === "home" ? "/" : `/${next}`;
+  window.history.pushState({}, "", path);
+
   window.scrollTo({ top: 0, behavior: "smooth" });
 
-  if (id !== "research") setShowSenseTool(false);
+  if (next !== "research") setShowSenseTool(false);
 };
-
 
   const openBlogPost = (post) => {
-  setSelectedPost(post);
-  window.history.pushState({}, "", "/thinking");
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
+    setSelectedPost(post);
+    // REMOVED window.history.pushState to fix SecurityError
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const scrollToPrvaahSection = (id) => {
       const element = document.getElementById(id);
@@ -1896,6 +1918,26 @@ const App = React.forwardRef((props, ref) => {
 
         {/* Global Footer */}
         <footer className="w-full py-12 mt-auto border-t border-gray-200/40 text-center">
+            <div className="flex justify-center gap-6 mb-6">
+                <a 
+                  href="https://www.linkedin.com/company/hooopcollective/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#0077b5] hover:scale-110 transition-all duration-300"
+                  aria-label="Follow us on LinkedIn"
+                >
+                    <Linkedin size={20} />
+                </a>
+                <a 
+                  href="https://www.instagram.com/hooopcollective/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#E1306C] hover:scale-110 transition-all duration-300"
+                  aria-label="Follow us on Instagram"
+                >
+                    <Instagram size={20} />
+                </a>
+            </div>
             <p className="text-gray-400 text-xs font-medium uppercase tracking-widest">
                 We are always open for a good conversation, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors lowercase font-bold ml-1">hello@hooop.in</a>
             </p>
