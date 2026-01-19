@@ -554,9 +554,17 @@ const SenseAnalysisView = () => {
 
             {!result && (
                 <div className="flex justify-center mt-8 mb-16 animate-bounce opacity-80">
-                    <a href="#philosophy" className="w-10 h-10 bg-white rounded-full shadow-lg shadow-gray-200/50 flex items-center justify-center text-green-600 border border-green-50 cursor-pointer hover:bg-green-50 transition-colors">
-                        <Leaf size={18} />
-                    </a>
+                    <button
+  onClick={() =>
+    document
+      .getElementById("philosophy")
+      ?.scrollIntoView({ behavior: "smooth" })
+  }
+  className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-green-600 border border-green-50 hover:bg-green-50 transition-colors"
+>
+  <Leaf size={18} />
+</button>
+                  
                 </div>
             )}
 
@@ -1323,35 +1331,6 @@ const App = React.forwardRef((props, ref) => {
   const [showSenseTool, setShowSenseTool] = useState(false);
   const [senseTab, setSenseTab] = useState('analyzer');
   const [selectedPost, setSelectedPost] = useState(null); // New state for selected blog post
-
-  // ... (useEffect for hash change remains same)
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.substring(1); 
-      if (hash && navItems.some(item => item.id === hash)) {
-        setActiveSection(hash);
-        setSelectedPost(null); // Reset post view on nav change
-        if (hash === 'sense') setShowSenseTool(true); 
-      } else {
-        if(!hash) setActiveSection('home');
-      }
-    };
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-
-  // ... (useEffect for viewport meta remains same)
-  useEffect(() => {
-    let meta = document.querySelector('meta[name="viewport"]');
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.name = 'viewport';
-      meta.content = 'width=device-width, initial-scale=1.0';
-      document.head.appendChild(meta);
-    }
-  }, []);
-
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'sense', label: 'Sense', hidden: true }, // Request to hide
@@ -1365,22 +1344,55 @@ const App = React.forwardRef((props, ref) => {
     { id: 'research', label: 'Research', hidden: true } 
   ];
 
-  const navigateTo = (id) => {
-    setActiveSection(id);
-    setSelectedPost(null); // Reset post view when navigating
-    setIsMenuOpen(false);
-    
-    // Update the URL hash
-    window.location.hash = id;
-    
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (id !== 'research') setShowSenseTool(false); 
+
+  // ... (useEffect for hash change remains same)
+  useEffect(() => {
+  const handleRoute = () => {
+    const path = window.location.pathname.replace("/", "") || "home";
+
+    if (navItems.some(item => item.id === path)) {
+      setActiveSection(path);
+      setSelectedPost(null);
+      setShowSenseTool(path === "sense" || path === "thinking");
+    } else {
+      setActiveSection("home");
+    }
   };
 
+  handleRoute();
+  window.addEventListener("popstate", handleRoute);
+  return () => window.removeEventListener("popstate", handleRoute);
+}, []);
+
+  // ... (useEffect for viewport meta remains same)
+  useEffect(() => {
+    let meta = document.querySelector('meta[name="viewport"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1.0';
+      document.head.appendChild(meta);
+    }
+  }, []);
+
+  
+  const navigateTo = (id) => {
+  setActiveSection(id);
+  setSelectedPost(null);
+  setIsMenuOpen(false);
+
+  window.history.pushState({}, "", `/${id}`);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  if (id !== "research") setShowSenseTool(false);
+};
+
+
   const openBlogPost = (post) => {
-      setSelectedPost(post);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  setSelectedPost(post);
+  window.history.pushState({}, "", "/thinking");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
   const scrollToPrvaahSection = (id) => {
       const element = document.getElementById(id);
