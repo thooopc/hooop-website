@@ -146,9 +146,9 @@ const SITE_CONTENT = {
     ]
   },
   offerings: [
-    { title: "Strategy & Creative", desc: "Refining marketing strategy by embedding sustainability into the core of brand transformation." },
-    { title: "Journey Interventions", desc: "Embedding sustainability-driven nudges into customer, partner, and employee journeys." },
-    { title: "Media & Intelligence", desc: "Tools enabling audience tracking to benchmark against ESG metrics and reduce carbon footprint." },
+    { title: "Policy, Research & Advocacy", desc: "Understanding, shaping, and responding to regulation, public discourse, and  standards — before they become risk." },
+    { title: "Design & Strategy", desc: "We design behavioural and market interventions that move people from intention to action — embedding sustainability into how choices are made." },
+    { title: "Media, Measurement & Reporting", desc: "Tools enabling audience tracking to benchmark against ESG metrics and reduce carbon footprint." },
     { title: "Digital Sustainability", desc: "Optimising digital experiences for minimal environmental impact while maximising influence." }
   ],
   collective: [
