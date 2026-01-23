@@ -663,9 +663,7 @@ const SenseAnalysisView = () => {
                                 </div>
                             ))}
                             <div className="text-center mt-6">
-                                <button type="button" className="text-xs font-bold text-gray-500 hover:text-green-600 underline underline-offset-4 transition-colors flex items-center justify-center gap-2 mx-auto" onClick={copyFindings}>
-                                    <Copy size={12}/> Copy findings to clipboard
-                                </button>
+                              
                             </div>
                         </div>
                     )}
