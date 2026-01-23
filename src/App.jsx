@@ -60,7 +60,7 @@ const SITE_CONTENT = {
           title: "The Era of 'Green' Media Buying", 
           category: "Sustainable Media", 
           date: "September 15, 2025", 
-          desc: "Why CPM is a flawed metric for sustainable brands. A new framework for measuring the carbon footprint of your digital ad spend.",
+          desc: " A new framework for measuring the carbon footprint of your digital ad spend.",
           content: [
             "Digital advertising has a dirty secret: it is a massive emitter of carbon. Every time a programmatic ad loads, it triggers a chain reaction of server calls, data processing, and energy consumption across a complex web of intermediaries. The global internet already accounts for nearly 4% of global greenhouse gas emissions—on par with the aviation industry—and digital advertising is a significant chunk of that pie.",
             "For sustainable brands, this creates a paradox. You cannot sell a low-carbon product using high-carbon media. Yet, the industry's obsession with CPM (Cost Per Mille) and efficiency incentivizes a 'spray and pray' approach that maximizes emissions. We are buying cheap impressions on MFA (Made For Advertising) sites that deliver zero value but consume real energy.",
@@ -679,11 +679,16 @@ const SenseAnalysisView = () => {
                         <AlertTriangle size={12}/> {error}
                     </p>
                 )}
-                <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
-                    <button type="button" onClick={analyze} className="soft-btn-primary px-8 py-3 flex items-center gap-2 font-bold tracking-wide text-sm shadow-lg hover:shadow-xl transition-all">
-                        Test Your Claims <ArrowRight size={16} />
-                    </button>
-                </div>
+               <div className="flex justify-end mt-4">
+  <button
+    type="button"
+    onClick={analyze}
+    className="soft-btn-primary px-8 py-3 flex items-center gap-2 font-bold tracking-wide text-sm shadow-lg hover:shadow-xl transition-all"
+  >
+    Test Your Claims <ArrowRight size={16} />
+  </button>
+</div>
+
             </div>
 
             {!result && (
