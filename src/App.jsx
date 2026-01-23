@@ -477,42 +477,52 @@ const SenseAnalysisView = () => {
     const [result, setResult] = useState(null);
     const [error, setError] = useState("");
 
-    const analyze = () => {
-        const trimmed = text.trim();
-        if (!trimmed) {
-            setError("Please paste a claim or paragraph to analyze.");
-            setResult(null);
-            return;
-        }
-        setError("");
-        
-        const hitsMap = new Map();
-        SENSE_TERMS.forEach((term) => {
-            const pattern = new RegExp(`\\b${escapeRegExp(term.word)}\\b`, "i");
-            if (pattern.test(trimmed) && !hitsMap.has(term.word)) {
-                    hitsMap.set(term.word, term);
-            } else if (term.word.split(' ').length > 1 && trimmed.toLowerCase().includes(term.word) && !hitsMap.has(term.word)) {
-                    hitsMap.set(term.word, term);
-            }
-        });
-        const findings = Array.from(hitsMap.values());
-        setResult(findings);
+   const analyze = () => {
+  alert("BUTTON CLICKED");
 
-        // LOGGING FOR ANALYTICS (Client-side)
-        console.log("Sense Analysis Audit:", {
-            date: new Date().toISOString(),
-            textLength: trimmed.length,
-            riskLevel: getOverallRisk(findings),
-            findingsCount: findings.length
-        });
-    };
-    
-    const copyFindings = () => {
-        if (!result) return;
-        const summary = result.map((r) => `"${r.word}" – ${r.risk} risk: ${r.tip}`).join("\n");
-        navigator.clipboard.writeText(summary);
-        alert("Findings copied to clipboard!");
-    };
+  const trimmed = text.trim();
+
+  if (!trimmed) {
+    setError("Please paste a claim or paragraph to analyze.");
+    setResult(null);
+    return;
+  }
+
+  setError("");
+
+  const hitsMap = new Map();
+
+  SENSE_TERMS.forEach((term) => {
+    let matched = false;
+
+    // WORD-BASED RULES
+    if (term.word) {
+      const safeWord = term.word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const wordPattern = new RegExp(`\\b${safeWord}\\b`, "i");
+
+      if (wordPattern.test(trimmed)) {
+        matched = true;
+      }
+    }
+
+    // REGEX-BASED RULES
+    if (term.pattern && term.pattern.test(trimmed)) {
+      matched = true;
+    }
+
+    if (matched) {
+      hitsMap.set(term.word || term.pattern.toString(), term);
+    }
+  });
+
+  const findings = Array.from(hitsMap.values());
+  setResult(findings);
+
+  console.log("Sense Analysis Audit:", {
+    date: new Date().toISOString(),
+    findingsCount: findings.length
+  });
+};
 
     return (
         <div className="w-full max-w-4xl mx-auto animate-fade">
