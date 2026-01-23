@@ -229,30 +229,147 @@ const SITE_CONTENT = {
   }
 };
 
-// ==========================================
+   // ==========================================
 // ⚙️ SENSE TOOL LOGIC (Greenwashing Detection)
 // ==========================================
 const SENSE_TERMS = [
-    { word: "eco-friendly", risk: "High", category: "Vague Claim", reference: "CCPA Clause 5(a)", tip: "Vague. Banned under CCPA Clause 5(a) without specific proof. Use specific metrics like 'biodegradable in 28 days'." },
-    { word: "eco friendly", risk: "High", category: "Vague Claim", reference: "CCPA Clause 5(a)", tip: "Vague. Banned under CCPA Clause 5(a) without specific proof. Use specific metrics." },
-    { word: "good for the planet", risk: "Critical", category: "Hyperbole", reference: "CCPA Clause 5(a)", tip: "Hyperbole. Implies net positive impact which is rarely true." },
-    { word: "green product", risk: "High", category: "Vague Claim", reference: "FTC Green Guides", tip: "Meaningless. 'Green' has no legal definition." },
-    { word: "planet-safe", risk: "Critical", category: "Absolute Claim", reference: "CCPA Clause 6(5)", tip: "Absolute claim. Nothing is 100% safe for the planet." },
-    { word: "sustainable choice", risk: "Medium", category: "Generic Claim", reference: "ASCI Guidelines", tip: "Generic. Verify against specific lifecycle data." },
-    { word: "better for the earth", risk: "High", category: "Comparative Claim", reference: "CCPA Clause 6(4)", tip: "Better than what? Needs a clear baseline comparison." },
-    { word: "clean alternative", risk: "Medium", category: "Undefined Term", tip: "Undefined term. 'Clean' how? Energy? Waste? Toxins?" },
-    { word: "nature-approved", risk: "High", category: "Puffery", tip: "Marketing fluff. Nature doesn't approve products." },
-    { word: "earth-positive", risk: "High", category: "Regenerative Claim", tip: "Requires proof of regenerative impact, not just 'less bad'." },
-    { word: "made responsibly", risk: "Medium", category: "Undefined Term", tip: "Define 'responsibly'. Look for SA8000 or Fair Trade." },
-    { word: "good for the earth", risk: "High", category: "Vague Claim", tip: "Vague and hyperbolic. Does it regenerate the earth or just damage it less?" }, 
-    { word: "good for nature", risk: "High", category: "Vague Claim", tip: "Similar to 'Good for the Earth'. Too broad to be legally substantiated." }, 
-{
-    pattern: /sustainable\s+(trip|travel|journey|experience|tour|holiday|product|service)/i,
+  {
+    word: "eco-friendly",
+    risk: "High",
+    category: "Vague Claim",
+    reference: "CCPA Clause 5(a)",
+    tip: "Vague. Banned under CCPA Clause 5(a) without specific proof. Use specific metrics like 'biodegradable in 28 days'."
+  },
+  {
+    word: "eco friendly",
+    risk: "High",
+    category: "Vague Claim",
+    reference: "CCPA Clause 5(a)",
+    tip: "Vague. Banned under CCPA Clause 5(a) without specific proof. Use specific metrics."
+  },
+  {
+    word: "good for the planet",
+    risk: "Critical",
+    category: "Hyperbole",
+    reference: "CCPA Clause 5(a)",
+    tip: "Hyperbole. Implies net positive impact which is rarely true."
+  },
+  {
+    word: "green product",
+    risk: "High",
+    category: "Vague Claim",
+    reference: "FTC Green Guides",
+    tip: "Meaningless. 'Green' has no legal definition."
+  },
+  {
+    word: "planet-safe",
+    risk: "Critical",
+    category: "Absolute Claim",
+    reference: "CCPA Clause 6(5)",
+    tip: "Absolute claim. Nothing is 100% safe for the planet."
+  },
+  {
+    word: "sustainable choice",
+    risk: "Medium",
+    category: "Generic Claim",
+    reference: "ASCI Guidelines",
+    tip: "Generic. Verify against specific lifecycle data."
+  },
+  {
+    word: "better for the earth",
+    risk: "High",
+    category: "Comparative Claim",
+    reference: "CCPA Clause 6(4)",
+    tip: "Better than what? Needs a clear baseline comparison."
+  },
+  {
+    word: "clean alternative",
+    risk: "Medium",
+    category: "Undefined Term",
+    tip: "Undefined term. 'Clean' how? Energy? Waste? Toxins?"
+  },
+  {
+    word: "nature-approved",
+    risk: "High",
+    category: "Puffery",
+    tip: "Marketing fluff. Nature doesn't approve products."
+  },
+  {
+    word: "earth-positive",
+    risk: "High",
+    category: "Regenerative Claim",
+    tip: "Requires proof of regenerative impact, not just 'less bad'."
+  },
+  {
+    word: "made responsibly",
+    risk: "Medium",
+    category: "Undefined Term",
+    tip: "Define 'responsibly'. Look for SA8000 or Fair Trade."
+  },
+  {
+    word: "good for the earth",
+    risk: "High",
+    category: "Vague Claim",
+    tip: "Vague and hyperbolic. Does it regenerate the earth or just damage it less?"
+  },
+  {
+    word: "good for nature",
+    risk: "High",
+    category: "Vague Claim",
+    tip: "Similar to 'Good for the Earth'. Too broad to be legally substantiated."
+  },
+
+  // ------------------------------------------
+  // Implicit sustainability framing (experiences)
+  // ------------------------------------------
+  {
+    pattern: /sustainable\s+(trip|travel|journey|tour|holiday)/i,
     risk: "High",
     category: "Unqualified Sustainability Claim",
     reference: "FTC Green Guides / CCPA Clause 5",
     tip: "Calling an entire experience 'sustainable' implies a net environmental benefit. Regulators expect this to be clearly qualified (e.g. rail-based, lower emissions than flying, specific reductions)."
+  },
+
+  // ===============================
+  // STAGE 1 – HIGH-IMPACT ADDITIONS
+  // ===============================
+
+  // Brand-level sustainability claims
+  {
+    pattern: /(sustainable|ethical|responsible)\s+(brand|company|business|platform)/i,
+    risk: "High",
+    category: "Unqualified Brand Claim",
+    reference: "FTC Green Guides / CCPA Clause 5",
+    tip: "Claiming the entire brand or company is sustainable or ethical requires broad, organisation-wide substantiation, not isolated initiatives."
+  },
+
+  // Product / service sustainability framing
+  {
+    pattern: /sustainable\s+(product|service|solution|offering)/i,
+    risk: "High",
+    category: "Unqualified Sustainability Claim",
+    reference: "FTC Green Guides / CCPA Clause 5",
+    tip: "Calling an entire product or service 'sustainable' implies a net environmental benefit. Regulators expect this to be clearly qualified."
+  },
+
+  // Clean / responsible without scope
+  {
+    pattern: /(clean|responsible|ethical)\s+(energy|technology|production|sourcing)/i,
+    risk: "Medium",
+    category: "Scope Ambiguity",
+    reference: "ASCI / FTC Green Guides",
+    tip: "Terms like 'clean' or 'responsible' must specify scope — what exactly is cleaner or more responsible, and compared to what?"
+  },
+
+  // Comparative impact claims without baseline
+  {
+    pattern: /(lower|less|reduced)\s+(emissions|carbon|impact|waste|footprint)/i,
+    risk: "Medium",
+    category: "Unclear Comparison",
+    reference: "CCPA Clause 6(4)",
+    tip: "Comparative claims require a clear baseline (e.g. compared to previous version, industry average, or alternative option)."
   }
+
 
 ];
 
