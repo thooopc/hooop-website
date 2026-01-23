@@ -246,6 +246,14 @@ const SENSE_TERMS = [
     { word: "made responsibly", risk: "Medium", category: "Undefined Term", tip: "Define 'responsibly'. Look for SA8000 or Fair Trade." },
     { word: "good for the earth", risk: "High", category: "Vague Claim", tip: "Vague and hyperbolic. Does it regenerate the earth or just damage it less?" }, 
     { word: "good for nature", risk: "High", category: "Vague Claim", tip: "Similar to 'Good for the Earth'. Too broad to be legally substantiated." }, 
+{
+    pattern: /sustainable\s+(trip|travel|journey|experience|tour|holiday|product|service)/i,
+    risk: "High",
+    category: "Unqualified Sustainability Claim",
+    reference: "FTC Green Guides / CCPA Clause 5",
+    tip: "Calling an entire experience 'sustainable' implies a net environmental benefit. Regulators expect this to be clearly qualified (e.g. rail-based, lower emissions than flying, specific reductions)."
+  }
+
 ];
 
 const GLOSSARY = [
