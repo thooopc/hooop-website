@@ -253,6 +253,20 @@ const SENSE_TERMS = [
     reference: "FTC Green Guides / CCPA Clause 5",
     tip: "Calling an entire experience 'sustainable' implies a net environmental benefit. Regulators expect this to be clearly qualified (e.g. rail-based, lower emissions than flying, specific reductions)."
   }
+{
+  pattern: /(responsible|ethical|values-led|purpose-driven)\s+(company|business|brand|organisation)/i,
+  risk: "High",
+  category: "Unqualified Brand Ethics Claim",
+  reference: "FTC Green Guides / ASCI Guidelines",
+  tip: "Claiming a brand or company is 'responsible' or 'ethical' implies organisation-wide conduct and governance. Regulators expect clear evidence, policies, and third-party verification."
+}
+{
+  pattern: /(less|lower|reduced)\s+(carbon|emissions|footprint|impact)/i,
+  risk: "Medium",
+  category: "Unqualified Comparative Claim",
+  reference: "CCPA Clause 6(4)",
+  tip: "Comparative claims require a clear baseline (e.g. compared to previous year, industry average, or alternative process). Without this, the claim is considered misleading."
+}
 
 ];
 
@@ -478,8 +492,6 @@ const SenseAnalysisView = () => {
     const [error, setError] = useState("");
 
    const analyze = () => {
-  alert("BUTTON CLICKED");
-
   const trimmed = text.trim();
 
   if (!trimmed) {
