@@ -1576,6 +1576,59 @@ const App = React.forwardRef((props, ref) => {
                  </div>
               </div>
             </section>
+                    {/* NEW: Partners & Featured Section */}
+              <section className="py-16 border-t border-gray-200/50">
+                <div className="max-w-7xl mx-auto px-4 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+                  {/* Partners */}
+                  <div>
+                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8 flex items-center gap-2">
+                      <span className="w-8 h-[1px] bg-gray-400"></span> Our Partners
+                    </h3>
+                    <div className="flex flex-wrap gap-4">
+                      {SITE_CONTENT.homeExtras.partners.map((partner, idx) => (
+                        <a 
+                          key={idx} 
+                          href={partner.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group"
+                        >
+                          <SoftCard className="px-6 py-4 flex items-center justify-center min-w-[140px] group-hover:scale-105 transition-transform">
+                            <span className="font-bold text-gray-600 group-hover:text-teal-600 transition-colors">{partner.name}</span>
+                          </SoftCard>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Featured On */}
+                  <div>
+                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8 flex items-center gap-2">
+                      <span className="w-8 h-[1px] bg-gray-400"></span> As Featured On
+                    </h3>
+                    <div className="flex flex-wrap gap-4">
+                      {SITE_CONTENT.homeExtras.featured.map((feature, idx) => (
+                        <a 
+                          key={idx} 
+                          href={feature.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group"
+                        >
+                          <SoftCard className="px-6 py-4 flex items-center justify-center min-w-[160px] group-hover:scale-105 transition-transform">
+                            <div className="flex items-center gap-2">
+                              <span className="font-bold text-gray-600 group-hover:text-teal-600 transition-colors">{feature.name}</span>
+                              <ExternalLink size={14} className="text-gray-300 group-hover:text-teal-400" />
+                            </div>
+                          </SoftCard>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          )}
           )}
             
           {/* MANIFESTO SECTION */}
