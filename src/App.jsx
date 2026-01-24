@@ -1527,8 +1527,8 @@ const App = React.forwardRef((props, ref) => {
         <div className="w-full flex-grow flex flex-col justify-center">
           
           {/* HOME */}
-{true && (
-  <>
+{activeSection === 'home' && (
+<>
             <section className="relative flex flex-col lg:flex-row items-center h-full min-h-screen animate-fade-in-up">
               <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-10 hidden xl:flex gap-6 pointer-events-none opacity-50">
                   <VerticalPill height="h-96" className="w-24" />
