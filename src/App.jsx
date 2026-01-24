@@ -1629,7 +1629,6 @@ const App = React.forwardRef((props, ref) => {
               </section>
             </div>
           )}
-          )}
             
           {/* MANIFESTO SECTION */}
           {activeSection === 'manifesto' && (
