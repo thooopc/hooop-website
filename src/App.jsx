@@ -20,6 +20,17 @@ const SITE_CONTENT = {
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
   },
+   // NEW SECTION: Partners & Features
+  homeExtras: {
+    partners: [
+      { name: "TERI SAS", url: "https://www.terisas.ac.in/" },
+      { name: "The Good Net", url: "https://thegoodnet.com/" }
+    ],
+    featured: [
+      { name: "Brand Equity", url: "https://brandequity.economictimes.indiatimes.com/news/research/advertising/ad-spends-go-green-as-the-hooop-collective-and-the-goodnet-to-launch-indias-first-esg-media-index/120510972" },
+      { name: "Exchange4Media", url: "https://www.exchange4media.com/advertising-news/former-mirum-wpp-leaders-create-the-hooop-collective-142001.html" }
+    ]
+  },
   // OUR THINKING (The Blog)
   thinking: {
     title: "Our Thinking",
