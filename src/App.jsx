@@ -1628,7 +1628,6 @@ const App = React.forwardRef((props, ref) => {
                   </div>
                 </div>
               </section>
-            </div>
           </>
 )}
             
