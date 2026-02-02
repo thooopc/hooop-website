@@ -258,25 +258,65 @@ const SENSE_TERMS = [
     { word: "good for the earth", risk: "High", category: "Vague Claim", tip: "Vague and hyperbolic. Does it regenerate the earth or just damage it less?" }, 
     { word: "good for nature", risk: "High", category: "Vague Claim", tip: "Similar to 'Good for the Earth'. Too broad to be legally substantiated." }, 
 {
-    pattern: /sustainable\s+(trip|travel|journey|experience|tour|holiday|product|service)/i,
-    risk: "High",
-    category: "Unqualified Sustainability Claim",
-    reference: "FTC Green Guides / CCPA Clause 5",
-    tip: "Calling an entire experience 'sustainable' implies a net environmental benefit. Regulators expect this to be clearly qualified (e.g. rail-based, lower emissions than flying, specific reductions)."
-  },
+  word: "good for nature",
+  risk: "High",
+  category: "Vague Claim",
+  tip: "Similar to 'Good for the Earth'. Too broad to be legally substantiated."
+},
+
+{
+  pattern: /sustainable\s+(trip|travel|journey|experience|tour|holiday|product|service)/i,
+  risk: "High",
+  category: "Unqualified Sustainability Claim",
+  reference: "FTC Green Guides / CCPA Clause 5",
+  tip: "Calling an entire experience 'sustainable' implies a net environmental benefit. Regulators expect this to be clearly qualified."
+},
+
 {
   pattern: /(responsible|ethical|values-led|purpose-driven)\s+(company|business|brand|organisation)/i,
   risk: "High",
   category: "Unqualified Brand Ethics Claim",
   reference: "FTC Green Guides / ASCI Guidelines",
-  tip: "Claiming a brand or company is 'responsible' or 'ethical' implies organisation-wide conduct and governance. Regulators expect clear evidence, policies, and third-party verification."
+  tip: "Claiming a brand or company is 'responsible' or 'ethical' implies organisation-wide conduct and governance. Regulators expect evidence and third-party verification."
 },
+
 {
   pattern: /(less|lower|reduced)\s+(carbon|emissions|footprint|impact)/i,
   risk: "Medium",
   category: "Unqualified Comparative Claim",
   reference: "CCPA Clause 6(4)",
-  tip: "Comparative claims require a clear baseline (e.g. compared to previous year, industry average, or alternative process). Without this, the claim is considered misleading."
+  tip: "Comparative claims require a clear baseline (e.g. previous year, industry average, or alternative process)."
+},
+
+{
+  pattern: /(conscious choice|greener tomorrow|better future|for the planet|for tomorrow)/i,
+  risk: "Medium",
+  category: "Implied Environmental Benefit",
+  reference: "FTC Green Guides – General Environmental Benefit Claims",
+  tip: "This phrase implies environmental benefit without specifying what is greener or how impact is reduced."
+},
+
+{
+  pattern: /(100%|completely|totally)[^a-zA-Z0-9]{0,10}(eco[-\s]?safe|environmentally safe|planet[-\s]?safe)/i,
+  risk: "Critical",
+  category: "Absolute Environmental Claim",
+  reference: "FTC Green Guides – General Environmental Benefit Claims",
+  tip: "Absolute claims like '100% eco-safe' imply zero environmental harm. Regulators require rigorous, product-wide proof."
+},
+
+{
+  pattern: /(botanical|plant[-\s]?based|nature[-\s]?derived|natural ingredients)/i,
+  risk: "Medium",
+  category: "Nature-Based Implication",
+  reference: "FTC Green Guides – Implied Environmental Benefit",
+  tip: "Nature-derived ingredients do not automatically mean lower environmental impact. Specify sourcing, processing, and comparative benefits."
+}
+{
+  pattern: /(net[-\s]?zero|carbon neutral)\s+(by|before)\s+\d{4}/i,
+  risk: "High",
+  category: "Future Climate Commitment",
+  reference: "FTC Green Guides / EU Green Claims Directive",
+  tip: "Future net-zero claims require a published transition plan, interim targets, and clarity on reductions vs offsets. Aspirational statements without detail are high risk."
 },
 
 ];
