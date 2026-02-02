@@ -256,7 +256,6 @@ const SENSE_TERMS = [
     { word: "earth-positive", risk: "High", category: "Regenerative Claim", tip: "Requires proof of regenerative impact, not just 'less bad'." },
     { word: "made responsibly", risk: "Medium", category: "Undefined Term", tip: "Define 'responsibly'. Look for SA8000 or Fair Trade." },
     { word: "good for the earth", risk: "High", category: "Vague Claim", tip: "Vague and hyperbolic. Does it regenerate the earth or just damage it less?" }, 
-    { word: "good for nature", risk: "High", category: "Vague Claim", tip: "Similar to 'Good for the Earth'. Too broad to be legally substantiated." }, 
 {
   word: "good for nature",
   risk: "High",
@@ -310,13 +309,20 @@ const SENSE_TERMS = [
   category: "Nature-Based Implication",
   reference: "FTC Green Guides – Implied Environmental Benefit",
   tip: "Nature-derived ingredients do not automatically mean lower environmental impact. Specify sourcing, processing, and comparative benefits."
-}
+},
 {
   pattern: /(net[-\s]?zero|carbon neutral)\s+(by|before)\s+\d{4}/i,
   risk: "High",
   category: "Future Climate Commitment",
   reference: "FTC Green Guides / EU Green Claims Directive",
   tip: "Future net-zero claims require a published transition plan, interim targets, and clarity on reductions vs offsets. Aspirational statements without detail are high risk."
+},
+  {
+  pattern: /(plant|planting)\s+(a\s+)?(tree|trees|forest)/i,
+  risk: "High",
+  category: "Offset-Based Environmental Claim",
+  reference: "FTC Green Guides / EU Green Claims Directive",
+  tip: "Tree-planting claims are considered carbon offset claims. Regulators expect permanence, additionality, leakage, and verification details."
 },
 
 ];
@@ -543,7 +549,12 @@ const SenseAnalysisView = () => {
     const [error, setError] = useState("");
 
    const analyze = () => {
-  const trimmed = text.trim();
+  const trimmed = text
+  .toLowerCase()
+  .replace(/[‐-‒–—]/g, "-")   // normalize all dash types
+  .replace(/[“”‘’]/g, '"')   // normalize smart quotes
+  .replace(/\s+/g, " ")
+  .trim();
 
   if (!trimmed) {
     setError("Please paste a claim or paragraph to analyze.");
