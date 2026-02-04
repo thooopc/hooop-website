@@ -301,14 +301,20 @@ const SENSE_TERMS = [
     tip: "These phrases imply environmental benefit without evidence. Pair with measurable outcomes."
   },
 
+{
+  pattern: /(net[-\s]?zero|carbon neutral)[\s\-–—,:]*?(by|before)[\s\-–—,:]*?\d{4}/i,
+  risk: "High",
+  category: "Future Environmental Commitment",
+  reference: "CCPA 2024 Clause 7, ASCI Code",
+  tip: "Future net-zero claims require a public transition plan, interim targets, and disclosure of reliance on offsets."
+},
   {
-    pattern: /(net[-\s]?zero|carbon neutral)\s+(by|before)\s+\d{4}/i,
-    risk: "High",
-    category: "Future Environmental Commitment",
-    reference: "CCPA 2024 Clause 7, ASCI Code",
-    tip: "Future claims require a disclosed roadmap, interim targets, and clarity on reliance on offsets."
-  },
-
+  pattern: /(planet[-\s]?friendly)/i,
+  risk: "High",
+  category: "Vague Environmental Claim",
+  reference: "CCPA 2024 Clause 5(a), ASCI Environmental Claims Code",
+  tip: "Terms like 'planet-friendly' imply broad environmental benefit without defining scope, metrics, or lifecycle impact."
+},
   {
     pattern: /plant(ing)?\s+(a\s+)?(tree|forest)/i,
     risk: "High",
