@@ -812,11 +812,11 @@ const ResourcesView = () => {
                 <p className="text-sm md:text-base text-gray-500 leading-relaxed max-w-2xl">Dive deeper into the regulations and best practices shaping the future of honest environmental communication.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
-                <a href="https://consumeraffairs.nic.in/" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
+                <a href="https://consumeraffairs.gov.in/public/upload/admin/cmsfiles/whatsnews/The_Guidelines_for_Prevention_and_Regulation_of_Greenwashing_or_Misleading_Environmental_Claims,_2024_whatsnews.pdf" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
                     <div className="flex justify-between items-start mb-4"><div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center"><Scale size={18} /></div><ExternalLink size={16} className="text-gray-300 group-hover:text-gray-600 transition-colors" /></div>
                     <h4 className="font-bold text-lg text-gray-900 mb-1">CCPA Guidelines</h4><p className="text-xs text-gray-500">Official Indian regulations on misleading environmental claims.</p>
                 </a>
-                <a href="https://www.ascionline.in/" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
+                <a href="https://www.ascionline.in/wp-content/uploads/2024/01/Guidelines-for-Advertisements-Making-Environmental-Green-Claims.pdf" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
                     <div className="flex justify-between items-start mb-4"><div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center"><AlertCircle size={18} /></div><ExternalLink size={16} className="text-gray-300 group-hover:text-gray-600 transition-colors" /></div>
                     <h4 className="font-bold text-lg text-gray-900 mb-1">ASCI Code</h4><p className="text-xs text-gray-500">Advertising Standards Council of India's rules on honesty.</p>
                 </a>
