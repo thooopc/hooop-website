@@ -842,7 +842,7 @@ const ResourcesView = () => {
                         </div>
                     ))}
                 </div>
-                <p className="mt-8 text-[10px] text-gray-400 text-center">Sense pattern library last updated: Oct 2025. For complex claims, get professional legal review.</p>
+                <p className="mt-8 text-[10px] text-gray-400 text-center">Sense pattern library last updated: Jan 2026. For complex claims, please write to hello@hooop.in.</p>
             </div>
         </div>
     );
