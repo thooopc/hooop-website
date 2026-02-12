@@ -173,7 +173,7 @@ const SITE_CONTENT = {
     {
       name: "Radhika Sharda",
       role: "Stakeholder Engagemnt, PR and Communications",
-      desc: "With 15+ years of experience in brand and communications, Radhika specializes in translating sustainability visions into execution-ready frameworks, driving organizational excellence and scalable growth.",
+      desc: "With 20+ years of experience in brand and communications, Radhika specializes in translating sustainability visions into execution-ready frameworks, driving organizational excellence and scalable growth.",
       img: "/radhika.jpg",
       linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
     },
