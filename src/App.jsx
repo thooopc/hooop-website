@@ -439,9 +439,9 @@ category: "Exaggerated Impact Claim",
 reference: "CCPA Clause 5(a)",
 tip: "Exaggerated impact claims are considered misleading unless fully substantiated."
 }
-
 ];
-   const GLOSSARY = [
+   
+const GLOSSARY = [
 
   // --- CORE CONCEPTS ---
   { term: "Greenwashing", def: "Making misleading or unsubstantiated claims about environmental benefits." },
