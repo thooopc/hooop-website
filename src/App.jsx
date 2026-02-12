@@ -413,6 +413,32 @@ category: "Impact Reduction Claim",
 reference: "CCPA Clause 6",
 tip: "Must disclose measurement method and baseline."
 }
+// sustainability positioning language
+{
+pattern: /\b(committed to sustainability|driven by sustainability|sustainability focused)\b/i,
+risk: "High",
+category: "Unqualified Sustainability Positioning",
+reference: "ASCI Code",
+tip: "Organisational sustainability claims require measurable disclosures."
+},
+
+// climate leadership claims
+{
+pattern: /\b(climate leader|climate positive|climate friendly)\b/i,
+risk: "High",
+category: "Climate Claim",
+reference: "FTC + CCPA",
+tip: "Leadership or positive impact claims require comparative and lifecycle proof."
+},
+
+// mission language implying impact
+{
+pattern: /\b(save(s|ing)? the planet|protect(s|ing)? the earth)\b/i,
+risk: "Critical",
+category: "Exaggerated Impact Claim",
+reference: "CCPA Clause 5(a)",
+tip: "Exaggerated impact claims are considered misleading unless fully substantiated."
+}
 
 ];
 const GLOSSARY = [
