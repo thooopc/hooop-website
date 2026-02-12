@@ -241,97 +241,150 @@ const SITE_CONTENT = {
 };
 
 // ==========================================
-// ⚙️ SENSE TOOL LOGIC (Greenwashing Detection)
+// SENSE MASTER DETECTION ENGINE
+// Regulatory-aligned greenwashing detection
+// Sources: CCPA 2024, ASCI Code, FTC Green Guides
 // ==========================================
+
 const SENSE_TERMS = [
 
-  {
-    word: "eco-friendly",
-    risk: "High",
-    category: "Vague Environmental Claim",
-    reference: "CCPA 2024 Clause 5(a), ASCI Environmental Claims Code",
-    tip: "Generic term. CCPA prohibits use of terms like 'eco-friendly', 'green', or 'clean' without clear qualifiers, scope, and verifiable evidence."
-  },
-
- {
-  pattern: /\bgreen\s+(product|brand|solution|choice|alternative|energy|company)\b/i,
-  risk: "High",
-  category: "Vague Environmental Claim",
-  reference: "CCPA 2024 Clause 5(a), Annexure-1 Illustration 1, ASCI Code",
-  tip: "Using 'green' as an environmental descriptor is ambiguous without qualification. Specify scope and metrics."
-},
-
-  {
-    word: "good for the planet",
-    risk: "Critical",
-    category: "Implied Net Positive Claim",
-    reference: "CCPA 2024 Clause 5(a), ASCI Code",
-    tip: "Implies overall environmental benefit. Regulators treat this as misleading unless full lifecycle proof is disclosed."
-  },
-{
-  pattern: /(eco|earth|planet|environment(al)?)\s*[- ]?\s*friendly/i,
-  risk: "High",
-  category: "Vague Environmental Claim",
-  reference: "CCPA 2024 Clause 5(a), ASCI Code",
-  tip: "Terms like 'eco-friendly', 'earth-friendly', or 'environmentally friendly' are considered vague environmental benefit claims unless clearly qualified with verifiable evidence."
-},
-
-  {
-    pattern: /(100%|completely|totally)\s+(eco[-\s]?safe|environmentally safe|planet[-\s]?safe)/i,
-    risk: "Critical",
-    category: "Absolute Environmental Claim",
-    reference: "CCPA 2024 Clause 6(5), Annexure-1 Illustration 3",
-    tip: "Absolute safety claims imply zero environmental harm, which is extremely difficult to substantiate."
-  },
-
-  {
-    pattern: /(natural|botanical|plant[-\s]?based|nature[-\s]?derived)/i,
-    risk: "Medium",
-    category: "Nature-Based Implication",
-    reference: "CCPA 2024 Clause 5(a), Annexure-1 Illustration 2, ASCI Code",
-    tip: "Nature-derived ingredients do not automatically mean lower environmental impact. Disclose sourcing, processing, and lifecycle data."
-  },
-
-  {
-    pattern: /(less|lower|reduced)\s+(carbon|emissions|footprint|impact)/i,
-    risk: "Medium",
-    category: "Comparative Claim",
-    reference: "CCPA 2024 Clause 6(4), ASCI Code",
-    tip: "Comparative claims must clearly state the baseline used for comparison."
-  },
-
-  {
-    pattern: /(conscious choice|greener tomorrow|better future|for the planet)/i,
-    risk: "Medium",
-    category: "Implied Environmental Benefit",
-    reference: "CCPA 2024 Clause 5(a), ASCI Code",
-    tip: "These phrases imply environmental benefit without evidence. Pair with measurable outcomes."
-  },
+/* =========================
+   VAGUE ENVIRONMENTAL CLAIMS
+   ========================= */
 
 {
-  pattern: /(net[-\s]?zero|carbon neutral)[\s\-–—,:]*?(by|before)[\s\-–—,:]*?\d{4}/i,
-  risk: "High",
-  category: "Future Environmental Commitment",
-  reference: "CCPA 2024 Clause 7, ASCI Code",
-  tip: "Future net-zero claims require a public transition plan, interim targets, and disclosure of reliance on offsets."
+pattern: /(eco|earth|planet|environment(al)?)\s*[- ]?\s*friendly/i,
+risk: "High",
+category: "Vague Environmental Claim",
+reference: "CCPA 2024 Clause 5(a), ASCI Code",
+tip: "Generic environmental claims must be clearly qualified and supported with verifiable evidence."
 },
-  {
-  pattern: /(planet[-\s]?friendly)/i,
-  risk: "High",
-  category: "Vague Environmental Claim",
-  reference: "CCPA 2024 Clause 5(a), ASCI Environmental Claims Code",
-  tip: "Terms like 'planet-friendly' imply broad environmental benefit without defining scope, metrics, or lifecycle impact."
+
+{
+word: "green",
+risk: "High",
+category: "Vague Environmental Claim",
+reference: "CCPA Clause 5(a)",
+tip: "'Green' is ambiguous unless specified."
 },
-  {
-    pattern: /plant(ing)?\s+(a\s+)?(tree|forest)/i,
-    risk: "High",
-    category: "Offset-Based Claim",
-    reference: "CCPA 2024 Clause 7, ASCI Code",
-    tip: "Tree-planting claims must disclose scale, permanence, geography, and whether this offsets emissions."
-  }
+
+{
+pattern: /(good for the planet|planet friendly|earth friendly)/i,
+risk: "High",
+category: "Vague Benefit Claim",
+reference: "CCPA Clause 5(a)",
+tip: "Broad environmental benefit claims require substantiation."
+},
+
+{
+pattern: /(natural|botanical|plant[-\s]?based|nature[-\s]?derived)/i,
+risk: "Medium",
+category: "Nature-Based Implication",
+reference: "CCPA Annexure Illustration 2",
+tip: "Nature-derived ingredients do not automatically mean lower impact."
+},
+
+/* =========================
+   ABSOLUTE CLAIMS
+   ========================= */
+
+{
+pattern: /\b(100%|completely|totally|zero|no)\s+(emissions?|impact|harm|pollution|waste)\b/i,
+risk: "Critical",
+category: "Absolute Environmental Claim",
+reference: "CCPA Clause 6(5)",
+tip: "Absolute environmental claims require full lifecycle proof."
+},
+
+{
+pattern: /(100%|completely|totally)\s+(eco[-\s]?safe|environmentally safe|planet[-\s]?safe)/i,
+risk: "Critical",
+category: "Absolute Safety Claim",
+reference: "CCPA Clause 6(5)",
+tip: "Absolute safety claims imply zero environmental harm."
+},
+
+/* =========================
+   FUTURE COMMITMENTS
+   ========================= */
+
+{
+pattern: /\b(net[-\s]?zero|carbon neutral|climate positive)\b.*\b(20\d{2})\b/i,
+risk: "High",
+category: "Future Environmental Commitment",
+reference: "CCPA Clause 7",
+tip: "Future claims must disclose roadmap, milestones, and reliance on offsets."
+},
+
+/* =========================
+   OFFSET CLAIMS
+   ========================= */
+
+{
+pattern: /(plant(ing)?\s+(a\s+)?tree|forest|offset|compensat)/i,
+risk: "High",
+category: "Offset Claim",
+reference: "CCPA Clause 7",
+tip: "Offset claims must disclose verification, permanence, and equivalence."
+},
+
+/* =========================
+   COMPARATIVE CLAIMS
+   ========================= */
+
+{
+pattern: /\b(lower|less|reduced|better|cleaner|greener)\b.*\b(than|vs|compared)\b/i,
+risk: "Medium",
+category: "Comparative Claim",
+reference: "CCPA Clause 6(4)",
+tip: "Comparative claims must clearly state baseline."
+},
+
+{
+pattern: /(less|lower|reduced)\s+(carbon|emissions|footprint|impact)/i,
+risk: "Medium",
+category: "Unqualified Comparative Claim",
+reference: "CCPA Clause 6(4)",
+tip: "Must specify compared to what."
+},
+
+/* =========================
+   IMPLIED BENEFITS
+   ========================= */
+
+{
+pattern: /(better future|greener tomorrow|for the planet|for earth|conscious choice)/i,
+risk: "Medium",
+category: "Implied Environmental Benefit",
+reference: "CCPA Clause 5(a)",
+tip: "Implied environmental benefits require measurable support."
+},
+
+/* =========================
+   BRAND-LEVEL CLAIMS
+   ========================= */
+
+{
+pattern: /(sustainable|ethical|responsible|planet friendly)\s+(brand|company|business|platform)/i,
+risk: "High",
+category: "Unqualified Brand Claim",
+reference: "CCPA + ASCI",
+tip: "Brand-level claims require organisation-wide proof."
+},
+
+/* =========================
+   BUZZWORD STACKING
+   ========================= */
+
+{
+pattern: /(eco|green|sustainable|natural|ethical).*(eco|green|sustainable|natural|ethical)/i,
+risk: "Medium",
+category: "Buzzword Stacking",
+reference: "ASCI Code",
+tip: "Stacking sustainability buzzwords without specifics is considered misleading."
+}
 
 ];
-
 const GLOSSARY = [
     { term: "Accountability", def: "Being transparent about exactly how you affect the environment, good and bad." }, 
     { term: "Accreditation", def: "Third-party audit or certification. Don't just take a brand's word for it." }, 
