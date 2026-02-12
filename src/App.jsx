@@ -344,7 +344,7 @@ tip: "Natural ingredients do not automatically mean lower environmental impact."
 
 // Sustainability blanket claims
 {
-pattern: /\b(sustainable|eco|green)\s+(product|brand|company|solution|service)\b/i,
+pattern: /\b(sustainable|eco|green)\s+(product|brand|company|solution|service|packaging|material|fabric|process|technology)\b,
 risk: "High",
 category: "Unqualified Sustainability Claim",
 reference: "CCPA Clause 5(a)",
@@ -412,7 +412,7 @@ risk: "Medium",
 category: "Impact Reduction Claim",
 reference: "CCPA Clause 6",
 tip: "Must disclose measurement method and baseline."
-}
+},
 // sustainability positioning language
 {
 pattern: /\b(committed to sustainability|driven by sustainability|sustainability focused)\b/i,
