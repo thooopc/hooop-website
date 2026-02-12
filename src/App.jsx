@@ -439,6 +439,30 @@ category: "Exaggerated Impact Claim",
 reference: "CCPA Clause 5(a)",
 tip: "Exaggerated impact claims are considered misleading unless fully substantiated."
 }
+{
+  pattern: /\brecycled\b/i,
+  risk: "Medium",
+  category: "Unqualified Recycled Claim",
+  reference: "CCPA 2024 Clause 5(a), ASCI Environmental Claims Code",
+  tip: "Claims about recycled content must specify percentage, type (post-consumer/pre-consumer), and verification."
+},
+
+{
+  pattern: /\bmade from recycled\b/i,
+  risk: "High",
+  category: "Misleading Composition Claim",
+  reference: "CCPA 2024 Clause 6(1)",
+  tip: "Implies entire product is recycled. Must disclose actual proportion."
+},
+
+{
+  pattern: /\b(recycled|recyclable|biodegradable|compostable)\s+(fabric|material|plastic|packaging|component|seat|textile)/i,
+  risk: "Medium",
+  category: "Material Attribute Claim",
+  reference: "FTC Green Guides + CCPA 2024",
+  tip: "Material claims must specify scope, percentage, and conditions under which they apply."
+}
+
 ];
    
 const GLOSSARY = [
