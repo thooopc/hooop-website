@@ -71,7 +71,7 @@ const SITE_CONTENT = {
           title: "The Era of 'Green' Media Buying", 
           category: "Sustainable Media", 
           date: "September 15, 2025", 
-          desc: "Why CPM is a flawed metric for sustainable brands. A new framework for measuring the carbon footprint of your digital ad spend.",
+          desc: "A new framework for measuring the carbon footprint of your digital ad spend.",
           content: [
             "Digital advertising has a dirty secret: it is a massive emitter of carbon. Every time a programmatic ad loads, it triggers a chain reaction of server calls, data processing, and energy consumption across a complex web of intermediaries. The global internet already accounts for nearly 4% of global greenhouse gas emissions—on par with the aviation industry—and digital advertising is a significant chunk of that pie.",
             "For sustainable brands, this creates a paradox. You cannot sell a low-carbon product using high-carbon media. Yet, the industry's obsession with CPM (Cost Per Mille) and efficiency incentivizes a 'spray and pray' approach that maximizes emissions. We are buying cheap impressions on MFA (Made For Advertising) sites that deliver zero value but consume real energy.",
@@ -268,6 +268,13 @@ const SENSE_TERMS = [
     reference: "CCPA 2024 Clause 5(a), ASCI Code",
     tip: "Implies overall environmental benefit. Regulators treat this as misleading unless full lifecycle proof is disclosed."
   },
+{
+  pattern: /(eco|earth|planet|environment(al)?)\s*[- ]?\s*friendly/i,
+  risk: "High",
+  category: "Vague Environmental Claim",
+  reference: "CCPA 2024 Clause 5(a), ASCI Code",
+  tip: "Terms like 'eco-friendly', 'earth-friendly', or 'environmentally friendly' are considered vague environmental benefit claims unless clearly qualified with verifiable evidence."
+},
 
   {
     pattern: /(100%|completely|totally)\s+(eco[-\s]?safe|environmentally safe|planet[-\s]?safe)/i,
