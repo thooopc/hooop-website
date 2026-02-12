@@ -323,7 +323,13 @@ category: "Offset-Based Claim",
 reference: "CCPA Clause 7",
 tip: "Tree planting does not equal carbon neutrality without verified accounting."
 },
-
+{
+pattern: /\b(recycled|biodegradable|compostable|recyclable)\b(?![^.]*\b(\d+%|percent|certified|ISO|GRS|FSC)\b)/i,
+risk: "High",
+category: "Unsupported Sustainability Claim",
+reference: "CCPA 2024 Clause 5",
+tip: "Material sustainability claims must include measurable proof or certification."
+},
 // Comparative environmental claims
 {
 pattern: /\b(less|lower|reduced|better)\s+(carbon|emissions|impact|footprint)\b/i,
@@ -438,7 +444,7 @@ risk: "Critical",
 category: "Exaggerated Impact Claim",
 reference: "CCPA Clause 5(a)",
 tip: "Exaggerated impact claims are considered misleading unless fully substantiated."
-}
+},
 {
   pattern: /\brecycled\b/i,
   risk: "Medium",
@@ -456,11 +462,11 @@ tip: "Exaggerated impact claims are considered misleading unless fully substanti
 },
 
 {
-  pattern: /\b(recycled|recyclable|biodegradable|compostable)\s+(fabric|material|plastic|packaging|component|seat|textile)/i,
-  risk: "Medium",
-  category: "Material Attribute Claim",
-  reference: "FTC Green Guides + CCPA 2024",
-  tip: "Material claims must specify scope, percentage, and conditions under which they apply."
+pattern: /\b(recycled|recyclable|biodegradable|compostable)\s+(fabric(s)?|material(s)?|plastic(s)?|packaging|component(s)?|seat(s)?|textile(s)?)\b/i,
+risk: "Medium",
+category: "Material Attribute Claim",
+reference: "FTC Green Guides + CCPA 2024",
+tip: "Material claims must specify scope, percentage, and conditions under which they apply."
 },
 
 ];
@@ -759,7 +765,7 @@ const SenseAnalysisView = () => {
     }
 
     // REGEX-BASED RULES
-    if (term.pattern && term.pattern.test(trimmed)) {
+   if (term.pattern && term.pattern.exec(trimmed)) {
       matched = true;
     }
 
