@@ -658,7 +658,7 @@ const SenseAnalysisView = () => {
     }
 
     if (matched) {
-      hitsMap.set(term.word || term.pattern.toString(), term);
+      hitsMap.set(Symbol(), term);
     }
   });
 
