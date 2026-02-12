@@ -441,19 +441,60 @@ tip: "Exaggerated impact claims are considered misleading unless fully substanti
 }
 
 ];
-const GLOSSARY = [
-    { term: "Accountability", def: "Being transparent about exactly how you affect the environment, good and bad." }, 
-    { term: "Accreditation", def: "Third-party audit or certification. Don't just take a brand's word for it." }, 
-    { term: "B Corp", def: "Certification for companies meeting high standards of social and environmental performance, accountability, and transparency." },
-    { term: "Biodegradable", def: "Capable of being decomposed by bacteria or other living organisms. Note: Everything is biodegradable eventually; look for timeframes." },
-    { term: "Carbon Neutral", def: "Balancing carbon emissions with carbon removal (often via offsets). Aim for 'Net Zero' (reduction first) instead." },
-    { term: "Circularity", def: "A model where products are designed to be reused, repaired, or recycled, eliminating waste and pollution." },
-    { term: "Greenwashing", def: "Making misleading or unsubstantiated claims about the environmental benefits of a product, service, or practice." },
-    { term: "Net Zero", def: "Reducing greenhouse gas emissions to as close to zero as possible, with any remaining emissions re-absorbed from the atmosphere." },
-    { term: "Organic", def: "Grown without the use of synthetic pesticides, fertilizers, or GMOs. Look for certified labels." },
-    { term: "Traceability", def: "Using tech to track a product's journey from raw material to you. Proof, not just promises." }, 
-    { term: "Upcycling", def: "Transforming by-products, waste materials, or unwanted products into new materials or products of better quality." },
+   const GLOSSARY = [
+
+  // --- CORE CONCEPTS ---
+  { term: "Greenwashing", def: "Making misleading or unsubstantiated claims about environmental benefits." },
+  { term: "Environmental Claim", def: "Any statement suggesting a product or company has environmental benefits." },
+  { term: "Sustainability Claim", def: "A claim that a product, service, or company is environmentally or socially responsible." },
+
+  // --- EMISSIONS + CLIMATE ---
+  { term: "Carbon Neutral", def: "Balancing emitted carbon with equivalent offsets or removals." },
+  { term: "Net Zero", def: "Reducing emissions as much as possible and neutralizing the remainder." },
+  { term: "Climate Positive", def: "Removing more emissions than produced." },
+  { term: "Scope 1 Emissions", def: "Direct emissions from owned or controlled sources." },
+  { term: "Scope 2 Emissions", def: "Indirect emissions from purchased energy." },
+  { term: "Scope 3 Emissions", def: "Indirect emissions across the value chain." },
+
+  // --- CLAIM RISK TYPES ---
+  { term: "Vague Claim", def: "A statement that sounds environmental but lacks measurable proof." },
+  { term: "Absolute Claim", def: "A claim suggesting zero impact or total safety." },
+  { term: "Comparative Claim", def: "A claim stating something is better without a defined baseline." },
+  { term: "Implied Benefit Claim", def: "Language suggesting environmental benefit without evidence." },
+  { term: "Future Commitment Claim", def: "A promise of future environmental performance." },
+  { term: "Offset Claim", def: "A claim that impact is neutralized through offsets." },
+  { term: "Puffery", def: "Promotional language that sounds impressive but has no measurable meaning." },
+
+  // --- SCIENCE + VALIDATION ---
+  { term: "Lifecycle Assessment (LCA)", def: "Measurement of environmental impact across a product’s entire life." },
+  { term: "Substantiation", def: "Evidence required to support a claim." },
+  { term: "Third-Party Verification", def: "Independent confirmation of a claim’s accuracy." },
+  { term: "Certification", def: "Formal approval by a recognized authority." },
+  { term: "Traceability", def: "Ability to track materials from origin to final product." },
+
+  // --- MATERIAL + PRODUCT TERMS ---
+  { term: "Biodegradable", def: "Able to break down naturally over time." },
+  { term: "Compostable", def: "Able to break down into non-toxic components in compost conditions." },
+  { term: "Recyclable", def: "Able to be processed into new materials." },
+  { term: "Upcycled", def: "Waste transformed into higher-value materials." },
+  { term: "Plant-Based", def: "Derived from plants instead of fossil sources." },
+
+  // --- BUSINESS + ESG ---
+  { term: "ESG", def: "Environmental, Social, and Governance performance factors." },
+  { term: "Impact Reporting", def: "Disclosure of measurable sustainability results." },
+  { term: "Responsible Sourcing", def: "Obtaining materials ethically and sustainably." },
+  { term: "Circular Economy", def: "A system where materials are reused instead of discarded." },
+  { term: "Regenerative", def: "Restoring ecosystems rather than just reducing harm." },
+
+  // --- MARKETING + POLICY ---
+  { term: "Disclosure", def: "Providing complete information about a claim." },
+  { term: "Material Information", def: "Details that influence consumer decisions." },
+  { term: "Green Claim Guidelines", def: "Regulatory rules governing environmental marketing." },
+  { term: "Compliance", def: "Meeting regulatory standards." },
+  { term: "Misleading Claim", def: "A statement that creates a false impression." }
+
 ];
+
 
 const RISK_ORDER = { Low: 1, Medium: 2, High: 3, Critical: 4 };
 const getOverallRisk = (findings) => {
