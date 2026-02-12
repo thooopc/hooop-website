@@ -275,6 +275,13 @@ category: "Vague Benefit Claim",
 reference: "CCPA Clause 5(a)",
 tip: "Broad environmental benefit claims require substantiation."
 },
+{
+pattern: /\b(eco|earth|planet|environment(al)?|nature)\s*[- ]?\s*friendly\b/i,
+risk: "High",
+category: "Vague Environmental Claim",
+reference: "CCPA 2024 Clause 5(a), ASCI Code",
+tip: "Generic environmental claims like 'eco-friendly' or 'nature friendly' must be clearly qualified and supported with verifiable evidence."
+},
 
 {
 pattern: /(natural|botanical|plant[-\s]?based|nature[-\s]?derived)/i,
@@ -303,6 +310,14 @@ category: "Absolute Safety Claim",
 reference: "CCPA Clause 6(5)",
 tip: "Absolute safety claims imply zero environmental harm."
 },
+  {
+pattern: /\b(100%|completely|totally|zero)\b/i,
+risk: "High",
+category: "Absolute Claim Language",
+reference: "CCPA Clause 6(5)",
+tip: "Absolute qualifiers like '100%' require full substantiation across the entire product lifecycle."
+},
+
 
 /* =========================
    FUTURE COMMITMENTS
