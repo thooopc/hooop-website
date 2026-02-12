@@ -461,7 +461,7 @@ tip: "Exaggerated impact claims are considered misleading unless fully substanti
   category: "Material Attribute Claim",
   reference: "FTC Green Guides + CCPA 2024",
   tip: "Material claims must specify scope, percentage, and conditions under which they apply."
-}
+},
 
 ];
    
