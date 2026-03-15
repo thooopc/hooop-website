@@ -149,7 +149,7 @@ const SITE_CONTENT = {
         image: "/Marina Bradford.jpg"
       },
       {
-        text: "The India–UK agreement creates a genuine opportunity for sustainable enterprises to expand into new markets. It also strengthens digital trade, supports sustainability goals, and empowers MSMEs and inclusive enterprises to expand globally.",
+        text: "The India-UK agreement creates a genuine opportunity for sustainable enterprises to expand into new markets. It also strengthens digital trade, supports sustainability goals, and empowers MSMEs and inclusive enterprises to expand globally.",
         name: "Arvind Nair",
         role: "Founding Partner, HOOOP",
         image: "/Arvind.jpg"
