@@ -787,13 +787,16 @@ const SenseAnalysisView = () => {
         <div className="w-full max-w-4xl mx-auto animate-fade">
             <div className="mb-12 md:mb-16 grid md:grid-cols-2 gap-8 items-center">
                 <div className="text-left pl-2">
-                    <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                        Does it make <br/><span className="text-gray-400">Sense?</span>
-                    </h2>
-                    <p className="text-gray-500 text-sm md:text-base font-medium mb-6 leading-relaxed">
-                        Protect your reputation, ensure legal compliance, and build investor trust. 
-                        <strong className="text-gray-800 ml-1">Sense</strong> stress-tests your environmental claims before you publish.
-                    </p>
+                    <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+Greenwashing Claim Tool
+<br/>
+<span className="text-gray-400">Test Your Sustainability Messaging</span>
+</h1>
+                   <p className="text-gray-500 text-sm md:text-base font-medium mb-6 leading-relaxed">
+Sense is a greenwashing tool that scans sustainability marketing
+language and ESG messaging. Paste your brand copy to identify claims that
+may require evidence under emerging environmental regulations.
+</p>
                     <div className="flex flex-wrap gap-2 mb-2">
                         {["Reputation", "Legal Compliance", "Trust", "ESG Credibility"].map((v, i) => (
                             <span key={i} className="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-bold text-gray-600 shadow-sm flex items-center gap-1">
@@ -917,7 +920,29 @@ const SenseAnalysisView = () => {
                 </div>
             )}
             </div>
+<section className="max-w-3xl mx-auto mt-16 text-gray-600 leading-relaxed">
+<h2 className="text-xl font-bold mb-4">
+What is greenwashing?
+</h2>
 
+<p className="mb-4">
+Greenwashing occurs when companies exaggerate or misrepresent
+the environmental benefits of a product, service, or company.
+Common examples include vague claims like "eco-friendly" or
+"planet safe" without measurable evidence.
+</p>
+
+<h2 className="text-xl font-bold mt-8 mb-4">
+How the Sense checker works
+</h2>
+
+<p>
+The Sense tool scans sustainability marketing claims and flags
+language commonly associated with greenwashing risks. The system
+references regulatory guidance including regulatory standards
+and environmental marketing guidelines.
+</p>
+</section>
             <div id="philosophy" className="pt-12 border-t border-gray-200/60 pb-12">
                 <div className="max-w-2xl mx-auto text-center mb-8">
                     <h3 className="text-2xl font-bold mb-3 text-gray-900">The Sense Philosophy</h3>
