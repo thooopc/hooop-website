@@ -901,7 +901,7 @@ const SenseAnalysisView = () => {
                                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-2">
                                         <div className="flex items-center gap-3">
                                             <AlertCircle className="text-red-400 shrink-0" size={18} />
-                                            <h4 className="font-bold text-base text-gray-900">"{item.word}"</h4>
+                                            <h4 className="font-bold text-base text-gray-900">{item.category}</h4>
                                         </div>
                                             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wide bg-gray-100 px-2 py-1 rounded self-start md:self-auto">{item.category}</span>
                                     </div>
