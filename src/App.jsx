@@ -1806,9 +1806,9 @@ const App = React.forwardRef((props, ref) => {
     <span>{SITE_CONTENT.hero.collectiveButtonText}</span>
     <Users size={18} className="group-hover:scale-110 transition-transform"/>
   </SoftCard>
-
 </div>
-              <div className="w-full lg:w-1/2 h-[50vh] lg:h-full flex items-center justify-center relative mt-12 lg:mt-0">
+</div>
+                <div className="w-full lg:w-1/2 h-[50vh] lg:h-full flex items-center justify-center relative mt-12 lg:mt-0">
                  <div className="relative w-[300px] h-[300px] lg:w-[500px] lg:h-[500px]">
                      <div className="absolute inset-0 rounded-full border-[40px] border-[#E0E5EC] shadow-[20px_20px_60px_#bebebe,-20px_-20px_60px_#ffffff] flex items-center justify-center animate-float">
                         <div className="w-full h-full rounded-full shadow-[inset_10px_10px_20px_#bebebe,inset_-10px_-10px_20px_#ffffff] flex items-center justify-center p-12">
