@@ -787,14 +787,13 @@ const SenseAnalysisView = () => {
         <div className="w-full max-w-4xl mx-auto animate-fade">
             <div className="mb-12 md:mb-16 grid md:grid-cols-2 gap-8 items-center">
                 <div className="text-left pl-2">
-                    <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
 Greenwashing Tool
 <br/>
 <span className="text-gray-400">Does your Sustainability Messaging Make Sense</span>
 </h1>
                    <p className="text-gray-500 text-sm md:text-base font-medium mb-6 leading-relaxed">
-Sense is a greenwashing tool that scans sustainability marketing
-language and ESG messaging.
+Sense is a greenwashing tool that scans climate language and ESG messaging.
 </p>
                     <div className="flex flex-wrap gap-2 mb-2">
                         {["Reputation", "Legal Compliance", "Trust", "ESG Credibility"].map((v, i) => (
