@@ -15,7 +15,7 @@ const SITE_CONTENT = {
   hero: {
     titleLine1: "Growth",
     titleLine2: "Re-Imagined",
-    subtitle: "We align customer behaviour with sustainable choices, designing for impact and business growth.",
+    subtitle: "A strategy collective focused on climate communication,policy, sustainable marketing, and behavioural change.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
@@ -1632,9 +1632,9 @@ const App = React.forwardRef((props, ref) => {
 
   const navItems = [
     { id: 'home', label: 'Home' },
-    { id: 'sense', label: 'Sense', hidden: true }, // Request to hide
+    { id: 'sense', label: 'Sense' },
     { id: 'prvaah', label: 'Prvaah' },
-    { id: 'greenwashing', label: 'Greenwashing', hidden: true }, // Request to hide
+    { id: 'greenwashing', label: 'Greenwashing'},
     { id: 'offerings', label: 'What We Do' },
     { id: 'thinking', label: 'Our Thinking' },
     { id: 'collective', label: 'Collective' },
@@ -1781,24 +1781,33 @@ const App = React.forwardRef((props, ref) => {
                 <p className="text-lg lg:text-xl text-gray-500 max-w-md leading-relaxed font-medium">{SITE_CONTENT.hero.subtitle}</p>
                 
                 {/* Updated Action Buttons Area */}
-                <div className="flex flex-wrap gap-4 sm:gap-6 items-center">
-                  <SoftCard onClick={() => navigateTo('offerings')} className="px-6 py-4 sm:px-8 flex items-center gap-3 text-black font-bold group cursor-pointer hover:scale-[1.02]">
-                    <span>{SITE_CONTENT.hero.buttonText}</span>
-                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </SoftCard>
-                  
-                  {/* New Collective CTA */}
-                  <SoftCard onClick={() => navigateTo('collective')} className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-teal-600 hover:scale-[1.02]">
-                    <span>{SITE_CONTENT.hero.collectiveButtonText}</span>
-                    <Users size={18} className="group-hover:scale-110 transition-transform"/>
-                  </SoftCard>
+                <div className="flex flex-wrap gap-4 sm:gap-6 items-center mt-4">
 
-                  <button onClick={() => navigateTo('manifesto')} className="mt-4 sm:mt-0 text-sm font-bold text-teal-600 hover:text-black transition-colors border-b-2 border-transparent hover:border-black pb-1">
-                    {SITE_CONTENT.hero.linkText}
-                  </button>
-                </div>
+  <SoftCard 
+    onClick={() => navigateTo('manifesto')}
+    className="px-6 py-4 sm:px-8 flex items-center gap-3 text-black font-bold group cursor-pointer hover:scale-[1.02]"
+  >
+    <span>Read Our Manifesto</span>
+    <BookOpen size={18} className="group-hover:scale-110 transition-transform"/>
+  </SoftCard>
 
-              </div>
+  <SoftCard 
+    onClick={() => navigateTo('sense')}
+    className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-green-600 hover:scale-[1.02]"
+  >
+    <span>Test Sustainability Claims</span>
+    <ScanLine size={18} className="group-hover:scale-110 transition-transform"/>
+  </SoftCard>
+
+  <SoftCard 
+    onClick={() => navigateTo('collective')}
+    className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-teal-600 hover:scale-[1.02]"
+  >
+    <span>{SITE_CONTENT.hero.collectiveButtonText}</span>
+    <Users size={18} className="group-hover:scale-110 transition-transform"/>
+  </SoftCard>
+
+</div>
               <div className="w-full lg:w-1/2 h-[50vh] lg:h-full flex items-center justify-center relative mt-12 lg:mt-0">
                  <div className="relative w-[300px] h-[300px] lg:w-[500px] lg:h-[500px]">
                      <div className="absolute inset-0 rounded-full border-[40px] border-[#E0E5EC] shadow-[20px_20px_60px_#bebebe,-20px_-20px_60px_#ffffff] flex items-center justify-center animate-float">
