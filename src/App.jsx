@@ -29,7 +29,9 @@ const SITE_CONTENT = {
     ],
     featured: [
       { name: "Brand Equity", url: "https://brandequity.economictimes.indiatimes.com/news/research/advertising/ad-spends-go-green-as-the-hooop-collective-and-the-goodnet-to-launch-indias-first-esg-media-index/120510972" },
-      { name: "Exchange4Media", url: "https://www.exchange4media.com/advertising-news/former-mirum-wpp-leaders-create-the-hooop-collective-142001.html" }
+      { name: "Exchange4Media", url: "https://www.exchange4media.com/advertising-news/former-mirum-wpp-leaders-create-the-hooop-collective-142001.html" },
+      { name: "Manifest", url: "https://www.manifest-media.in/marketing/130226/report-flags-indian-brands-sustainability-claims-35-rely-on-interna.html" }
+
     ]
   },
   // OUR THINKING (The Blog)
