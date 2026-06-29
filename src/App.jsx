@@ -15,7 +15,7 @@ const SITE_CONTENT = {
   hero: {
     titleLine1: "Growth",
     titleLine2: "Re-Imagined",
-    subtitle: "A strategy collective focused on climate communication,policy, sustainable marketing, and behavioural change.",
+    subtitle: "A venture studio and strategy collective turning climate innovation into commercial reality by bridging the gap between scale-ups and mainstream adoption.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
@@ -156,11 +156,12 @@ const SITE_CONTENT = {
       }
     ]
   },
-  offerings: [
-    { title: "Policy, Research & Advocacy", desc: "Understanding, shaping, and responding to regulation, public discourse, and  standards — before they become risk." },
-    { title: "Design & Strategy", desc: "We design behavioural and market interventions that move people from intention to action — embedding sustainability into how choices are made." },
-    { title: "Media, Measurement & Reporting", desc: "Tools enabling audience tracking to benchmark against ESG metrics and reduce carbon footprint." },
-    { title: "Digital Sustainability", desc: "Optimising digital experiences for minimal environmental impact while maximising influence." }
+  oofferings: [
+    { title: "Investment & Funding Readiness", desc: "Making ventures investable and financeable through pitch refinement, impact proposition development, and identifying relevant grant or blended finance pathways." },
+    { title: "Market Access & Commercial Partnerships", desc: "Connecting scale-ups with corporate procurement, supply chain integration, and strategic buyers to secure genuine commercial traction, not just introductions." },
+    { title: "Impact & Environmental Credibility", desc: "Building bulletproof ESG narratives, assessing greenwashing risks, and developing verifiable lifecycle impact stories that investors and regulators can trust." },
+    { title: "International Expansion & Market Entry", desc: "Navigating cross-border growth (India, UK, EU) through ESG compliance, regulatory navigation, and market entry pilot development." },
+    { title: "Offtake & Deployment Support", desc: "Supporting the complex transition from pilot to commercial scale through strategic matchmaking, risk assessment, and financing pathway development." }
   ],
   collective: [
     {
@@ -213,11 +214,11 @@ const SITE_CONTENT = {
       desc: "Our consulting model is designed for brands looking to integrate sustainability deeply into their marketing DNA, moving beyond compliance to customer connection.",
       iconType: "briefcase"
     },
-    {
-      title: "INVEST",
-      headline: "We invest our expertise as a form of capital.",
-      desc: "For high-potential sustainable startups, we offer a sweat-equity model, aligning our success directly with your growth and impact.",
-      iconType: "coins"
+     {
+      title: "VENTURE STUDIO",
+      headline: "Enabling scale-up for sustainable and circular solutions.",
+      desc: "We do not run fixed cohorts. We provide tailored strategic support, capital, and ecosystem access to help climate and biomaterial ventures cross the 'valley of death' and achieve mainstream adoption.",
+      iconType: "trending"
     },
     {
       title: "COLLECTIVE",
