@@ -25,6 +25,7 @@ const SITE_CONTENT = {
     partners: [
       { name: "TERI SAS", url: "https://www.terisas.ac.in/" },
       { name: "The Good Net", url: "https://thegoodnet.com/" }
+      { name: "Everloop, url: "https://www.everloop.agency/" }
     ],
     featured: [
       { name: "Brand Equity", url: "https://brandequity.economictimes.indiatimes.com/news/research/advertising/ad-spends-go-green-as-the-hooop-collective-and-the-goodnet-to-launch-indias-first-esg-media-index/120510972" },
