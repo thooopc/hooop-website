@@ -156,7 +156,7 @@ const SITE_CONTENT = {
       }
     ]
   },
-  oofferings: [
+  offerings: [
     { title: "Investment & Funding Readiness", desc: "Making ventures investable and financeable through pitch refinement, impact proposition development, and identifying relevant grant or blended finance pathways." },
     { title: "Market Access & Commercial Partnerships", desc: "Connecting scale-ups with corporate procurement, supply chain integration, and strategic buyers to secure genuine commercial traction, not just introductions." },
     { title: "Impact & Environmental Credibility", desc: "Building bulletproof ESG narratives, assessing greenwashing risks, and developing verifiable lifecycle impact stories that investors and regulators can trust." },
