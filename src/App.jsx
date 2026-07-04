@@ -15,7 +15,7 @@ const SITE_CONTENT = {
   hero: {
     titleLine1: "Growth",
     titleLine2: "Re-Imagined",
-    subtitle: "A venture studio and strategy collective turning climate innovation into commercial reality by bridging the gap between scale-ups and mainstream adoption.",
+    subtitle: "A venture lab and strategy collective turning climate innovation into commercial reality by bridging the gap between scale-ups and mainstream adoption.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
@@ -53,7 +53,7 @@ const SITE_CONTENT = {
           content: [
             "For years, corporate interaction with marine ecosystems has been relegated to the CSR budget. A coastal beach clean-up makes for great employee engagement and a solid LinkedIn post, but it does little to stem the systemic flow of plastic into our oceans. To achieve true marine circularity, we must shift our perspective from 'clean-up' to 'commercialisation'.",
             "The challenge of ocean-bound plastic is largely a supply chain and logistics issue, especially in nations with vast coastlines like India. Collecting the plastic is only step one. The 'valley of death' for marine circularity startups lies in sorting, washing, processing, and certifying this degraded material so it meets the strict quality standards of global FMCG and fashion brands.",
-            "This is where the Venture Studio model proves invaluable. Scaling a marine plastic venture requires locking in guaranteed offtake agreements. A startup cannot invest in a high-capacity extrusion facility without knowing a major brand will buy the recycled pellets. We help bridge this gap by connecting marine innovators directly with corporate procurement teams, designing pilot programs that de-risk the integration of ocean-bound materials into existing product lines.",
+            "This is where the Venture lab model proves invaluable. Scaling a marine plastic venture requires locking in guaranteed offtake agreements. A startup cannot invest in a high-capacity extrusion facility without knowing a major brand will buy the recycled pellets. We help bridge this gap by connecting marine innovators directly with corporate procurement teams, designing pilot programs that de-risk the integration of ocean-bound materials into existing product lines.",
             "Furthermore, traceability is non-negotiable. With the rise of ESG scrutiny, brands using ocean-bound plastic must prove exactly where it came from. 'Washed up on a beach' is no longer sufficient; buyers require block-chain or tech-enabled tracking from the coastal collection point to the factory floor.",
             "By transforming coastal waste from an environmental hazard into a reliable, certified, and economically viable raw material, we can build a self-sustaining circular economy. When ocean-bound plastic becomes too valuable to leave on the beach, the market will naturally clean the oceans."
           ]
@@ -82,7 +82,7 @@ const SITE_CONTENT = {
             "When we talk about climate tech and decarbonization, the conversation disproportionately focuses on the land and the sky—solar grids, EVs, and terrestrial agriculture. Yet, the ocean absorbs roughly 30% of carbon dioxide produced by humans and acts as the planet's greatest carbon sink. The 'Blue Economy' is vital for our survival, but it remains woefully underfunded.",
             "Marine innovation—ranging from zero-emission maritime shipping and deep-sea monitoring tech to regenerative aquaculture and coral reef restoration—struggles to cross the commercialisation gap. Traditional venture capital often views marine tech as too capital-intensive, too heavily regulated, or possessing timelines that are too long for standard 10-year fund cycles.",
             "However, this hesitation ignores a massive, impending market shift. As global frameworks like the UN's High Seas Treaty take effect, and as corporations recognize the urgent need to address biodiversity and water-resilience in their ESG reporting (like SEBI's BRSR Core), demand for verified Blue Economy solutions will skyrocket.",
-            "Venture Studios play a critical role here by providing 'Investment & Funding Readiness'. We help marine scale-ups translate their deep-tech or ecological impact into compelling, derisked commercial propositions for investors. This includes identifying blended finance pathways, securing government grants for pilot coastal projects, and structuring early-stage offtake agreements that give VCs the confidence to invest.",
+            "Venture labs play a critical role here by providing 'Investment & Funding Readiness'. We help marine scale-ups translate their deep-tech or ecological impact into compelling, derisked commercial propositions for investors. This includes identifying blended finance pathways, securing government grants for pilot coastal projects, and structuring early-stage offtake agreements that give VCs the confidence to invest.",
             "Capital must flow where the impact is highest. By bringing rigorous commercial structuring to marine conservation and blue tech, we can unlock the capital needed to protect our oceans while generating significant financial returns."
           ]
       },
@@ -95,7 +95,7 @@ const SITE_CONTENT = {
           content: [
             "Of all the innovations emerging in the circular economy, marine biomaterials—particularly seaweed-based alternatives to plastic—hold the most promise. Seaweed grows incredibly fast, requires no freshwater or fertilizer, absorbs carbon as it grows, and yields materials that are 100% home-compostable. It is the holy grail of sustainable packaging.",
             "Yet, walking down the aisle of a typical Indian supermarket, you won't see it. Why? Because the biomaterial sector is currently trapped in the 'valley of death'. Startups can successfully create biodegradable sachets or edible liquid pods in the lab, but integrating them into the high-speed, high-heat packaging lines of global FMCG giants is a monumental engineering and commercial challenge.",
-            "Scaling marine biomaterials requires a Venture Studio approach. It is not enough to hand a startup a check; they need deep operational integration. They require partnerships with machinery manufacturers to adapt legacy packaging lines. They need regulatory navigation to ensure new edible materials meet FSSAI or FDA food safety standards.",
+            "Scaling marine biomaterials requires a Venture lab approach. It is not enough to hand a startup a check; they need deep operational integration. They require partnerships with machinery manufacturers to adapt legacy packaging lines. They need regulatory navigation to ensure new edible materials meet FSSAI or FDA food safety standards.",
             "Furthermore, there is the supply side challenge. Scaling seaweed packaging requires scaling regenerative seaweed aquaculture globally. This involves creating ethical, fair-trade supply chains with coastal farming communities, ensuring that the raw material is harvested without damaging existing marine ecosystems.",
             "The transition from fossil-fuel plastics to marine biomaterials will be one of the greatest wealth-generating shifts of the next two decades. But it will not happen through isolated innovation. It requires the orchestrated, strategic deployment of capital, corporate partnerships, and operational expertise to bring these oceanic solutions into the mainstream."
           ]
@@ -123,7 +123,7 @@ const SITE_CONTENT = {
           content: [
             "Climate change is a global problem, which means climate solutions must scale globally. However, for a sustainable enterprise looking to expand from India to the UK/EU, or vice versa, the barriers to entry have evolved. Tariffs and traditional trade barriers have been replaced by stringent ESG compliance frameworks.",
             "We call this the need for an 'ESG Passport'. A biomaterials company in Pune looking to supply a fashion house in London doesn't just need to prove their product quality; they must prove their Scope 3 emissions compliance, their labor practices, and their alignment with the Carbon Border Adjustment Mechanism (CBAM).",
-            "This regulatory labyrinth often prevents high-potential scale-ups from accessing lucrative international markets. A venture studio focusing on cross-border growth must prioritize 'International Expansion & Market Entry' through the lens of sustainability compliance. It involves mapping ESG disclosures, ensuring anti-greenwashing alignment with bodies like the CMA or ASCI, and developing a narrative that regulators trust.",
+            "This regulatory labyrinth often prevents high-potential scale-ups from accessing lucrative international markets. A venture lab focusing on cross-border growth must prioritize 'International Expansion & Market Entry' through the lens of sustainability compliance. It involves mapping ESG disclosures, ensuring anti-greenwashing alignment with bodies like the CMA or ASCI, and developing a narrative that regulators trust.",
             "Beyond compliance, successful market entry requires strategic matchmaking. Startups need introductions to local investors who understand the specific thematic area—whether it's water resilience tech or waste-to-value solutions. They need local pilot partners to validate the technology in a new geographical context.",
             "The companies that will dominate the next decade of the green transition are those that view international ESG regulations not as a barrier, but as a competitive moat. By building operations that proactively comply with the highest global standards, these ventures unlock access to premium markets and dedicated impact capital."
           ]
@@ -302,7 +302,7 @@ const SITE_CONTENT = {
       iconType: "briefcase"
     },
      {
-      title: "VENTURE STUDIO",
+      title: "VENTURE LAB",
       headline: "Enabling scale-up for sustainable and circular solutions.",
       desc: "We do not run fixed cohorts. We provide tailored strategic support, capital, and ecosystem access to help climate and biomaterial ventures cross the 'valley of death' and achieve mainstream adoption.",
       iconType: "trending"
