@@ -1,1 +1,15 @@
-
+{
+  "name": "HOOOP",
+  "website": "https://www.hooop.in",
+  "description": "HOOOP is a venture lab helping sustainable and circular businesses scale.",
+  "mission": "Helping sustainability scale.",
+  "headquarters": "India",
+  "focus": [
+    "Circular Economy",
+    "Marketing Science",
+    "Behaviour Change",
+    "Greenwashing",
+    "Blue Economy",
+    "Marine Innovation"
+  ]
+}
