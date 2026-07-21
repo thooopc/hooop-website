@@ -1,1 +1,20 @@
-
+{
+  "services": [
+    {
+      "name": "Strategy",
+      "description": "Commercial strategy for sustainable and circular businesses."
+    },
+    {
+      "name": "Marketing Science",
+      "description": "Measurement, attribution and growth."
+    },
+    {
+      "name": "Digital Intelligence",
+      "description": "Technology and behavioural insights."
+    },
+    {
+      "name": "Research",
+      "description": "Market intelligence and sustainability research."
+    }
+  ]
+}
