@@ -1,1 +1,22 @@
-
+{
+  "articles": [
+    {
+      "title": "Commercialising Ocean Bound Plastic Supply Chains",
+      "url": "https://www.hooop.in/thinking/commercialising-ocean-bound-plastic-supply-chains",
+      "topics": [
+        "Circular Economy",
+        "Ocean Plastics",
+        "Supply Chains"
+      ]
+    },
+    {
+      "title": "Scaling Seaweed",
+      "url": "https://www.hooop.in/thinking/scaling-seaweed-marine-biomaterials-plastic-alternatives",
+      "topics": [
+        "Blue Economy",
+        "Seaweed",
+        "Biomaterials"
+      ]
+    }
+  ]
+}
