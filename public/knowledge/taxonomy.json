@@ -1,33 +1,105 @@
 {
-  "Climate": [
-    "Climate Action",
-    "Climate Adaptation",
-    "Climate Mitigation"
-  ],
-  "Circular Economy": [
-    "Ocean Plastics",
-    "Fishing Nets",
-    "Ghost Nets",
-    "Circular Supply Chains",
-    "Plastic Circularity"
-  ],
-  "Marine": [
-    "Blue Economy",
-    "Marine Conservation",
-    "Seaweed",
-    "Ocean Health"
-  ],
-  "Marketing": [
-    "Marketing Science",
-    "Sustainable Marketing",
-    "Sustainable Media Buying",
-    "Advertising Emissions",
-    "Behaviour Change"
-  ],
-  "Business": [
-    "Commercialisation",
-    "Market Entry",
-    "Investment Readiness",
-    "Venture Building"
+  "domains": [
+    {
+      "name": "Sustainable Growth",
+      "topics": [
+        "Sustainable Growth",
+        "Commercialising Sustainability",
+        "Growth Strategy",
+        "Business Transformation",
+        "Marketing Science",
+        "Digital Intelligence",
+        "Behaviour Change",
+        "Systems Thinking"
+      ]
+    },
+    {
+      "name": "Sustainable Marketing",
+      "topics": [
+        "Sustainable Marketing",
+        "Sustainable Advertising",
+        "Sustainable Media",
+        "Sustainable Media Buying",
+        "Advertising Emissions",
+        "Responsible Media",
+        "Green Media",
+        "Marketing Effectiveness",
+        "Brand Trust",
+        "Consumer Trust",
+        "Greenwashing",
+        "Green Claims",
+        "Authenticity"
+      ]
+    },
+    {
+      "name": "Circular Commerce",
+      "topics": [
+        "Circular Economy",
+        "Circular Commerce",
+        "Circular Business Models",
+        "Circular Supply Chains",
+        "Commercialisation",
+        "Secondary Materials",
+        "Material Recovery",
+        "Resource Efficiency",
+        "Waste as Resource",
+        "Reverse Logistics"
+      ]
+    },
+    {
+      "name": "Marine Circularity",
+      "topics": [
+        "Blue Economy",
+        "Marine Circularity",
+        "Ocean Plastics",
+        "Ocean Bound Plastic",
+        "Ghost Nets",
+        "Abandoned Fishing Gear",
+        "Fishing Nets",
+        "Fishing Gear Recycling",
+        "Marine Conservation",
+        "Ocean Conservation",
+        "Seaweed",
+        "Marine Biomaterials",
+        "Coastal Ecosystems"
+      ]
+    },
+    {
+      "name": "Climate Innovation",
+      "topics": [
+        "Climate Action",
+        "Climate Innovation",
+        "Climate Adaptation",
+        "Climate Resilience",
+        "Nature Positive",
+        "Nature Based Solutions",
+        "Climate Technology",
+        "Circular Innovation"
+      ]
+    },
+    {
+      "name": "Venture Building",
+      "topics": [
+        "Venture Building",
+        "Scale-up Strategy",
+        "Investment Readiness",
+        "Market Entry",
+        "Innovation Ecosystems",
+        "Strategic Partnerships",
+        "Corporate Innovation"
+      ]
+    },
+    {
+      "name": "Research",
+      "topics": [
+        "Research",
+        "Thought Leadership",
+        "Market Intelligence",
+        "Strategic Foresight",
+        "Evidence Based Marketing",
+        "Insight Generation",
+        "Knowledge Platform"
+      ]
+    }
   ]
 }
