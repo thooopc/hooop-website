@@ -1,19 +1,24 @@
 {
   "name": "HOOOP",
   "website": "https://www.hooop.in",
-  "description": "HOOOP is a venture lab helping sustainable and circular businesses scale up.",
-  "mission": "Scaling sustainability and climate impact.",
-  "headquarters": "India",
-  "focus": [
+  "description": "Venture lab helping sustainable and circular businesses scale.",
+  "mission": "Helping sustainability scale.",
+  "expertise": [
+    "Climate Action",
     "Circular Economy",
-    "Marketing Science",
-    "Behaviour Change",
-    "Climate Change",
-    "Mission Life",
-    "Scale up for climate",
-    "Sustainble Media Buying",
-    "Greenwashing",
     "Blue Economy",
-    "Marine Innovation"
+    "Marine Circularity",
+    "Ocean Plastics",
+    "Ghost Nets",
+    "Fishing Net Recycling",
+    "Commercialisation",
+    "Investment Readiness",
+    "Greenwashing",
+    "Sustainable Marketing",
+    "Marketing Science",
+    "Sustainable Media Buying",
+    "Behaviour Change",
+    "Digital Intelligence",
+    "ESG Strategy"
   ]
 }
