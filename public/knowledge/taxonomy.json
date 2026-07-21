@@ -1,1 +1,33 @@
-
+{
+  "Climate": [
+    "Climate Action",
+    "Climate Adaptation",
+    "Climate Mitigation"
+  ],
+  "Circular Economy": [
+    "Ocean Plastics",
+    "Fishing Nets",
+    "Ghost Nets",
+    "Circular Supply Chains",
+    "Plastic Circularity"
+  ],
+  "Marine": [
+    "Blue Economy",
+    "Marine Conservation",
+    "Seaweed",
+    "Ocean Health"
+  ],
+  "Marketing": [
+    "Marketing Science",
+    "Sustainable Marketing",
+    "Sustainable Media Buying",
+    "Advertising Emissions",
+    "Behaviour Change"
+  ],
+  "Business": [
+    "Commercialisation",
+    "Market Entry",
+    "Investment Readiness",
+    "Venture Building"
+  ]
+}
