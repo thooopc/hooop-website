@@ -1,15 +1,18 @@
 # HOOOP
 
-HOOOP is a venture lab helping sustainable and circular businesses scale.
+> HOOOP is a venture lab helping sustainable and circular businesses scale through marketing science, venture building and digital intelligence.
 
-Website
-https://www.hooop.in
+HOOOP works at the intersection of sustainability, circular economy, marketing science, digital transformation and behavioural change. We help organisations accelerate sustainable growth through research, strategy, technology and communications.
 
-Mission
+## Website
+
+- [Homepage](https://www.hooop.in): Overview of HOOOP, its mission and capabilities.
+
+## Mission
 
 Helping sustainability scale through marketing science, venture building and digital intelligence.
 
-Expertise
+## Expertise
 
 - Circular Economy
 - Sustainable Marketing
@@ -23,22 +26,23 @@ Expertise
 - Venture Building
 - Marketing Science
 
-Services
+## Core Pages
 
-https://www.hooop.in/offerings
+- [Offerings](https://www.hooop.in/offerings): Sustainability consulting and venture building services.
+- [Research](https://www.hooop.in/research): Original research, reports and insights.
+- [Thinking](https://www.hooop.in/thinking): Articles and thought leadership.
+- [Manifesto](https://www.hooop.in/manifesto): HOOOP's philosophy and principles.
+- [Contact](https://www.hooop.in/contact): Contact information and enquiries.
 
-Research
+## Topics
 
-https://www.hooop.in/research
-
-Thinking
-
-https://www.hooop.in/thinking
-
-Manifesto
-
-https://www.hooop.in/manifesto
-
-Contact
-
-https://www.hooop.in/contact
+- Sustainable Marketing
+- Circular Economy
+- ESG
+- Behaviour Change
+- Marketing Science
+- Mission LiFE
+- Sustainable Media
+- Climate Communication
+- Digital Sustainability
+- Blue Economy
