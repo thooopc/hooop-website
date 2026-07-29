@@ -775,6 +775,10 @@ const setJsonLd = (id, data) => {
 
 const useSeo = ({ title, description, path, jsonLd }) => {
   useEffect(() => {
+    // A null path means "this render is handled by a child component" — bail out
+    // rather than overwrite the canonical the child already set. React runs child
+    // effects before parent effects, so without this the parent wins.
+    if (!path) return;
     if (title) document.title = title;
     if (description) setMetaTag("name", "description", description);
     const url = `${SITE_URL}${path === "/" ? "" : path}`;
@@ -2371,7 +2375,9 @@ const App = React.forwardRef((props, ref) => {
   useSeo({
     title: seoConfig?.title,
     description: seoConfig?.description,
-    path: seoConfig?.path || `/${activeSection}`,
+    // An open blog post sets its own title/canonical in BlogPostView; passing
+    // null here stops this parent call from clobbering it with /thinking.
+    path: selectedPost ? null : (seoConfig?.path || `/${activeSection}`),
     jsonLd: seoConfig?.jsonLd || null
   });
 
