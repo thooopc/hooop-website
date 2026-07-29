@@ -258,8 +258,9 @@ const SITE_CONTENT = {
       title: "Marketing-Led Consulting",
       desc: "Most of what we do starts here. Strategy and communication for businesses whose growth depends on being believed, not just heard.",
       items: [
-        "Sustainability communication audits",
+        "Building brands in a digital-first world",
         "Brand, creative and narrative strategy",
+        "Sustainability communication audits",
         "Audience discovery and segmentation",
         "Claim substantiation and greenwashing risk",
       ],
@@ -270,6 +271,7 @@ const SITE_CONTENT = {
       title: "Media Sustainability",
       desc: "Media planning that uses sustainability as a live performance signal rather than something you report on once the campaign has ended.",
       items: [
+        "Planning and managing media budgets at scale",
         "ESG media planning and green media buying",
         "Campaign carbon measurement and reporting",
         "Media intelligence and performance analysis",
@@ -285,7 +287,7 @@ const SITE_CONTENT = {
         "Stakeholder engagement, PR and communications",
         "Environmental law and policy advisory",
         "Circular economy policy and systems design",
-        "Regulatory navigation across CCPA, ASCI and CSRD",
+        "Community engagement and advocacy",
       ],
     },
     {
