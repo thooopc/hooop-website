@@ -49,6 +49,41 @@ const SITE_CONTENT = {
     },
     posts: [
        {
+          title: "We Asked Indian Marketers How They Verify Green Claims. 15% Said They Don't.",
+          slug: "how-indian-brands-verify-sustainability-claims",
+          category: "Greenwashing",
+          date: "July 29, 2026",
+          desc: "Our survey of Indian marketing professionals found that around a third of sustainability claims reach the public without any independent check. The interesting part is why — it is far more often process than intent.",
+          content: [
+            "When we ran the survey behind our Green Is the New Lie whitepaper, we expected to find a gap between what brands claim and what they can prove. What we did not expect was how many teams already know the gap exists and publish anyway.",
+            "We asked Indian marketing professionals a deliberately plain question: how are your sustainability claims usually verified? The answers were more candid than we anticipated.",
+            { heading: "What the survey found" },
+            "Thirty per cent said third-party certifications. Twenty-two per cent said legal team approval. Twenty per cent said internal team assessment. Thirteen per cent said supplier data. And fifteen per cent told us, plainly, that they do not verify them at all.",
+            "That last number gets the headline, and it should. But the number we keep returning to is thirty-five per cent — internal assessment plus no verification combined. That is the share of claims reaching the public with no independent check behind them at all. Roughly one in three.",
+            "An internal assessment is not nothing. Someone looked. But it is the same organisation marking its own homework, and under India's current rules that is no longer a defensible position if a claim is challenged.",
+            { heading: "This is usually process, not intent" },
+            "It would be easy to read thirty-five per cent as evidence that a third of Indian brands are deliberately misleading people. We do not think that is what is happening, and the rest of the data does not support it either.",
+            "Seventy per cent of companies with genuinely strong sustainability credentials told us they hold back from talking about them — what the industry has started calling greenhushing. These are not bad actors. They are teams who are doing real work and are frightened of being picked apart for the parts they have not solved yet.",
+            "The most common barrier cited was not cost or cynicism. It was data. Marketers are asked to make claims about supply chains they cannot see into, using figures that sit with procurement, or with a supplier, or nowhere at all. The claim goes out because a campaign has a deadline and the substantiation does not have an owner.",
+            "That is a process problem. Process problems are fixable, which is the more useful way to look at this.",
+            { heading: "What changed, and why it matters now" },
+            "Until recently, a vague green claim was a reputational risk. Since the CCPA's 2024 guidelines it is a legal one. Greenwashing is now classified as a misleading practice, liability extends to the brand, the agency and the endorser, and penalties run to ten lakh rupees for a first offence and fifty lakh for a repeat.",
+            "ASCI has tightened alongside it, requiring that the scope of a claim be defined — product, packaging, process or company — and that evidence be verifiable and independent. SEBI has started scrutinising ESG claims in BRSR filings, which quietly links what marketing says to what the business reports.",
+            "We have written up the full regulatory picture, including what each body now expects and where the common failure points sit.",
+            { cta: "Read the greenwashing playbook", to: "greenwashing" },
+            { heading: "What good verification actually looks like" },
+            "The teams handling this well are not necessarily the ones with the biggest sustainability budgets. They tend to have three unglamorous things in place.",
+            "First, someone owns substantiation. Not the campaign, the claim. One named person who can produce the evidence behind a line of copy without a three-day search.",
+            "Second, the claim is scoped before it is written. Whether the recycled content refers to the bottle or the label is decided at brief stage, not in a legal review a week before launch.",
+            "Third, the language is checked against the specific patterns regulators look for — absolutes, unqualified comparatives, future commitments without interim milestones. Most claims that get flagged are not lies. They are true statements phrased in a way that cannot be defended.",
+            { heading: "A reasonable place to start" },
+            "If you are not sure where your own messaging sits, the fastest check is to read your live claims the way a regulator would rather than the way a marketer does. That means asking, for each one: what specifically is being claimed, about what, and what evidence exists that someone outside this building could examine.",
+            "We built Sense for exactly that first pass. It scans your wording against the patterns that attract scrutiny and tells you which phrases would need substantiation. It is not legal advice and it will not tell you whether your claim is true — only you have that. But it will tell you which sentences are going to be asked about.",
+            { cta: "Check your claims with Sense", to: "sense" },
+            "The rules here are new for everyone, ourselves included, and the guidance is still settling. We would rather compare notes with people working through the same questions than pretend we have this fully mapped. If you are wrestling with a claim you cannot quite substantiate, we are always up for that conversation.",
+          ],
+       },
+       {
           title: "From Beach Clean-Ups to Supply Chains: Commercialising Ocean-Bound Plastic",
           slug: "commercialising-ocean-bound-plastic-supply-chains",
           category: "Circular Economy",
@@ -881,7 +916,7 @@ const TrackerCard = ({ title, description, icon: Icon }) => (
     </div>
 );
 
-const BlogPostView = ({ post, onBack }) => {
+const BlogPostView = ({ post, onBack, navigateTo }) => {
   useSeo({
     title: `${post.title} | HOOOP`,
     description: post.desc,
@@ -917,10 +952,27 @@ const BlogPostView = ({ post, onBack }) => {
         <p className="text-xl text-gray-500 font-medium leading-relaxed border-l-4 border-teal-500 pl-4">{post.desc}</p>
       </div>
 
+      {/* Content items are plain strings (paragraphs) for backwards compatibility,
+          or {heading} / {cta,to} objects for structure and internal links. */}
       <div className="prose prose-lg text-gray-600 leading-relaxed space-y-6">
-         {post.content.map((paragraph, idx) => (
-            <p key={idx}>{paragraph}</p>
-         ))}
+         {post.content.map((item, idx) => {
+            if (typeof item === "string") return <p key={idx}>{item}</p>;
+            if (item.heading) return (
+              <h2 key={idx} className="text-2xl font-bold text-gray-900 !mt-10 !mb-3">{item.heading}</h2>
+            );
+            if (item.cta) return (
+              <p key={idx}>
+                <button
+                  type="button"
+                  onClick={() => navigateTo && navigateTo(item.to)}
+                  className="inline-flex items-center gap-2 font-bold text-teal-600 hover:text-teal-800 transition-colors"
+                >
+                  {item.cta} <ArrowRight size={15} />
+                </button>
+              </p>
+            );
+            return null;
+         })}
       </div>
 
       <div className="mt-12 pt-12 border-t border-gray-100 text-center">
@@ -2562,7 +2614,7 @@ const App = React.forwardRef((props, ref) => {
           {/* OUR THINKING (BLOG) SECTION */}
           {activeSection === 'thinking' && (
             selectedPost ? (
-                <BlogPostView post={selectedPost} onBack={backToThinkingList} />
+                <BlogPostView post={selectedPost} onBack={backToThinkingList} navigateTo={navigateTo} />
             ) : (
                 <section className="relative min-h-screen py-24 animate-fade-in-up">
                     <div className="max-w-4xl mx-auto px-6">

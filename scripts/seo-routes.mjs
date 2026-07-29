@@ -63,6 +63,9 @@ export const ROUTES = Object.fromEntries([
     description: "How the HOOOP Collective collects, uses, and protects personal data provided through Sense, in line with India's Digital Personal Data Protection Act, 2023.",
   }],
 
+  post("how-indian-brands-verify-sustainability-claims",
+    "We Asked Indian Marketers How They Verify Green Claims. 15% Said They Don't.",
+    "Our survey of Indian marketing professionals found that around a third of sustainability claims reach the public without any independent check. The interesting part is why — it is far more often process than intent."),
   post("commercialising-ocean-bound-plastic-supply-chains",
     "From Beach Clean-Ups to Supply Chains: Commercialising Ocean-Bound Plastic",
     "Corporate beach clean-ups are great for CSR, but true marine circularity requires integrating ocean-bound plastics into viable, scalable supply chains."),
