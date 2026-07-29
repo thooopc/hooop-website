@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Menu, X, ArrowRight, ArrowLeft, Globe, Shield, Zap, TrendingUp, FileText, Anchor, Linkedin, ExternalLink, Users, Coins, Briefcase, ScanLine, BarChart3, Download, AlertCircle, Check, Leaf, Info, Scale, BookOpen, ChevronDown, ChevronUp, Tag, ShieldCheck, Wind, Gavel, MicOff, Lock, HelpCircle, Eye, AlertTriangle, CheckCircle, Mail, Copy, RefreshCw, ShieldAlert, Search, UserX, Flag, Instagram } from 'lucide-react';
 
 // ==========================================
@@ -989,9 +990,12 @@ const SenseConsentModal = ({ onGranted, onCancel }) => {
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="consent-title">
-      <div className="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl">
+  // Rendered through a portal: the Sense section carries a CSS transform
+  // (animate-fade-in-up), which would otherwise become the containing block
+  // for position:fixed and push this dialog off-viewport.
+  return createPortal(
+    <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="consent-title">
+      <div className="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl my-auto">
         <h2 id="consent-title" className="text-xl font-bold text-gray-900 mb-3">Before you run the check</h2>
         <p className="text-sm text-gray-600 mb-3">We'd like your email address so we can:</p>
         <ul className="text-sm text-gray-600 mb-5 list-disc pl-5 space-y-1">
@@ -1023,7 +1027,8 @@ const SenseConsentModal = ({ onGranted, onCancel }) => {
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
