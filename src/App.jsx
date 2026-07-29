@@ -888,6 +888,145 @@ const BlogPostView = ({ post, onBack }) => {
   );
 };
 
+const SENSE_CONSENT_KEY = "hooop_sense_consent_v1";
+const CONSENT_NOTICE_VERSION = "2026-07-29";
+
+const PrivacyView = () => {
+  useSeo({
+    title: "Privacy Notice | HOOOP Collective",
+    description: "How the HOOOP Collective collects, uses, and protects personal data provided through Sense, in line with India's Digital Personal Data Protection Act, 2023.",
+    path: "/privacy"
+  });
+
+  const H = ({ children }) => <h2 className="text-lg font-bold text-gray-900 mt-8 mb-2">{children}</h2>;
+
+  return (
+    <div className="w-full max-w-3xl mx-auto animate-fade text-gray-600 leading-relaxed pb-16">
+      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Privacy Notice</h1>
+      <p className="text-xs text-gray-400 uppercase tracking-widest font-bold mb-8">Last updated: 29 July 2026</p>
+
+      <H>Who is collecting your data</H>
+      <p>
+        This site and the Sense tool are operated by The HOOOP Collective ("HOOOP", "we", "us"),
+        reachable at <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a>.
+        Under India's Digital Personal Data Protection Act, 2023 (DPDP Act), HOOOP is the Data
+        Fiduciary for the personal data described below.
+      </p>
+
+      <H>What we collect</H>
+      <p>
+        Your email address, which you provide once before running your first check in Sense. The
+        sustainability claims you paste into Sense are analysed entirely in your browser and are
+        never sent to or stored on our servers.
+      </p>
+
+      <H>Why we collect it</H>
+      <ul className="list-disc pl-5 space-y-1 mt-2">
+        <li><strong className="text-gray-800">Follow-up:</strong> so our team can contact you about your results or HOOOP's services.</li>
+        <li><strong className="text-gray-800">Product research:</strong> to understand who uses Sense and how, so we can improve it.</li>
+      </ul>
+      <p className="mt-3">We will not use your email for any other purpose without asking you again.</p>
+
+      <H>Your consent</H>
+      <p>
+        We collect your email only if you tick the consent box and submit it. The box is never
+        pre-ticked. You can withdraw your consent at any time, as easily as you gave it, by emailing{" "}
+        <a href="mailto:hello@hooop.in?subject=Withdraw%20consent%20-%20Sense" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a>{" "}
+        with the subject "Withdraw consent - Sense". We will delete your email within 30 days of such a request.
+      </p>
+
+      <H>How long we keep it</H>
+      <p>Up to 24 months from your last interaction with Sense, or until you ask us to delete it — whichever is earlier.</p>
+
+      <H>Your rights</H>
+      <p>
+        Under the DPDP Act you have the right to access, correct, update, or erase your personal
+        data, to withdraw consent, and to nominate another person to exercise these rights on your
+        behalf. To exercise any of these, email{" "}
+        <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a>.
+      </p>
+
+      <H>Grievance contact</H>
+      <p>
+        If you have a complaint about how your data is handled, contact{" "}
+        <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a>.
+        We aim to respond within 7 business days.
+      </p>
+    </div>
+  );
+};
+
+const SenseConsentModal = ({ onGranted, onCancel }) => {
+  const [email, setEmail] = useState("");
+  const [checked, setChecked] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  const submit = async () => {
+    setError("");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    if (!checked) {
+      setError("Please tick the consent box to continue.");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/collect-consent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, consent: true, noticeVersion: CONSENT_NOTICE_VERSION }),
+      });
+      if (!res.ok) throw new Error("request failed");
+      window.localStorage.setItem(SENSE_CONSENT_KEY, "true");
+      onGranted();
+    } catch (err) {
+      setError("We couldn't record your consent just now. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="consent-title">
+      <div className="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl">
+        <h2 id="consent-title" className="text-xl font-bold text-gray-900 mb-3">Before you run the check</h2>
+        <p className="text-sm text-gray-600 mb-3">We'd like your email address so we can:</p>
+        <ul className="text-sm text-gray-600 mb-5 list-disc pl-5 space-y-1">
+          <li>follow up about your results or HOOOP's services, and</li>
+          <li>understand how Sense is used, so we can improve it.</li>
+        </ul>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@company.com"
+          className="soft-input w-full p-4 text-sm text-gray-700 outline-none mb-4 rounded-xl"
+        />
+        <label className="flex gap-3 items-start text-xs text-gray-600 mb-4 cursor-pointer">
+          <input type="checkbox" checked={checked} onChange={(e) => setChecked(e.target.checked)} className="mt-0.5 shrink-0" />
+          <span>
+            I agree to HOOOP collecting my email for the two purposes above, as described in the{" "}
+            <a href="/privacy" target="_blank" rel="noreferrer" className="underline font-bold text-gray-900">privacy notice</a>.
+            I can withdraw this consent at any time.
+          </span>
+        </label>
+        {error && <p className="text-xs font-bold text-red-500 mb-3 flex items-center gap-1"><AlertTriangle size={12} /> {error}</p>}
+        <div className="flex gap-3 justify-end">
+          <button type="button" onClick={onCancel} className="px-5 py-2.5 rounded-full text-sm font-bold text-gray-500 hover:text-gray-800 transition-colors">
+            Cancel
+          </button>
+          <button type="button" onClick={submit} disabled={submitting} className="soft-btn-primary px-6 py-2.5 rounded-full text-sm font-bold disabled:opacity-60">
+            {submitting ? "Saving…" : "Agree & continue"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // --- NEW SENSE PAGE COMPONENTS ---
 const SenseAnalysisView = () => {
     useSeo({
@@ -909,6 +1048,20 @@ const SenseAnalysisView = () => {
     const [text, setText] = useState("");
     const [result, setResult] = useState(null);
     const [error, setError] = useState("");
+    const [showConsent, setShowConsent] = useState(false);
+
+    const requestAnalyze = () => {
+      if (!text.trim()) {
+        setError("Please paste a claim or paragraph to analyze.");
+        setResult(null);
+        return;
+      }
+      if (window.localStorage.getItem(SENSE_CONSENT_KEY) === "true") {
+        analyze();
+        return;
+      }
+      setShowConsent(true);
+    };
 
    const analyze = () => {
   const trimmed = text
@@ -1005,11 +1158,23 @@ Sense is a greenwashing tool that scans climate language and ESG messaging.
                     </p>
                 )}
                 <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
-                    <button type="button" onClick={analyze} className="soft-btn-primary px-8 py-3 flex items-center gap-2 font-bold tracking-wide text-sm shadow-lg hover:shadow-xl transition-all">
+                    <button type="button" onClick={requestAnalyze} className="soft-btn-primary px-8 py-3 flex items-center gap-2 font-bold tracking-wide text-sm shadow-lg hover:shadow-xl transition-all">
                         Test Your Claims <ArrowRight size={16} />
                     </button>
                 </div>
             </div>
+
+            <p className="text-[10px] text-gray-400 mb-8 pl-1">
+                We'll ask for your email once before your first check. See our{" "}
+                <a href="/privacy" className="underline hover:text-gray-600">privacy notice</a>.
+            </p>
+
+            {showConsent && (
+                <SenseConsentModal
+                    onGranted={() => { setShowConsent(false); analyze(); }}
+                    onCancel={() => setShowConsent(false)}
+                />
+            )}
 
             {!result && (
                 <div className="flex justify-center mt-8 mb-16 animate-bounce opacity-80">
@@ -1843,9 +2008,10 @@ const App = React.forwardRef((props, ref) => {
     { id: 'offerings', label: 'What We Do' },
     { id: 'thinking', label: 'Our Thinking' },
     { id: 'collective', label: 'Collective' },
-    { id: 'contact', label: 'Contact', hidden: true }, 
-    { id: 'manifesto', label: 'Manifesto', hidden: true }, 
-    { id: 'research', label: 'Research', hidden: true } 
+    { id: 'contact', label: 'Contact', hidden: true },
+    { id: 'manifesto', label: 'Manifesto', hidden: true },
+    { id: 'research', label: 'Research', hidden: true },
+    { id: 'privacy', label: 'Privacy', hidden: true }
   ];
 
   const findPostBySlug = (slug) => SITE_CONTENT.thinking.posts.find(p => p.slug === slug);
@@ -2234,6 +2400,12 @@ const App = React.forwardRef((props, ref) => {
             </section>
           )}
 
+          {activeSection === 'privacy' && (
+            <section className="relative min-h-screen py-24 px-6 animate-fade-in-up">
+                <PrivacyView />
+            </section>
+          )}
+
           {/* PRVAAH SECTION */}
           {activeSection === 'prvaah' && (
             <section className="min-h-screen py-24 animate-fade-in-up">
@@ -2472,6 +2644,11 @@ const App = React.forwardRef((props, ref) => {
             </div>
             <p className="text-gray-400 text-xs font-medium uppercase tracking-widest">
                 We are always open for a good conversation, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors lowercase font-bold ml-1">hello@hooop.in</a>
+            </p>
+            <p className="mt-4">
+                <button type="button" onClick={() => navigateTo('privacy')} className="text-gray-400 text-[10px] uppercase tracking-widest font-bold hover:text-gray-600 transition-colors">
+                    Privacy Notice
+                </button>
             </p>
         </footer>
       </main>
