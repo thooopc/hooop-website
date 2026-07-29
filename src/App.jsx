@@ -1445,14 +1445,7 @@ const INDEX_BANDS = [
   { label: "Elite", range: "54 – 100", tone: "bg-green-50 text-green-700 border-green-100" },
 ];
 
-const INDEX_CASES = [
-  { brand: "Lego", line: "Conscious-consumer reach across 112 markets in a single campaign.", stats: [["-35%", "CPC"], ["-40%", "CO₂e"], ["112", "markets"]] },
-  { brand: "UNICEF", line: "Hitting cost-per-acquisition targets while cutting emissions.", stats: [["-20%", "CPC"], ["-11%", "CPA"], ["-32%", "CO₂e"]] },
-  { brand: "Amazon", line: "A B2B audience reached through ethically-scored environments.", stats: [["+54%", "purchase intent"], ["-58%", "CO₂e"], ["40%", "ESG-goal aligned"]] },
-  { brand: "Mastercard", line: "Video campaign restricted to high-scoring publishers only.", stats: [["0.7%", "CTR"], ["+40%", "video views"], ["-69%", "CO₂e"]] },
-  { brand: "BYD", line: "EV launch awareness across affinity and in-market audiences.", stats: [["+43%", "CTR"], ["-20%", "CPC"], ["+21%", "test drives"]] },
-  { brand: "Nestlé", line: "Corporate sustainability messaging to an over-indexed audience.", stats: [["1.83%", "engagement"], ["82%", "brand recall"], ["-64%", "CO₂e"]] },
-];
+const INDEX_BRANDS = ["Amazon", "Mastercard", "Lego", "UNICEF", "Nestlé", "Dyson", "BYD", "Samsung"];
 
 const EsgMediaIndexView = ({ navigateTo }) => {
   useSeo({
@@ -1468,13 +1461,6 @@ const EsgMediaIndexView = ({ navigateTo }) => {
       "description": "India's first ESG Media Index, built with The GoodNet. Scores media placements across consumption, content and corporate ESG signals and uses them as live optimisation inputs.",
     },
   });
-
-  const Stat = ({ v, l }) => (
-    <div>
-      <p className="text-2xl md:text-3xl font-black text-gray-900 leading-none">{v}</p>
-      <p className="text-[10px] uppercase tracking-wide text-gray-400 font-bold mt-1">{l}</p>
-    </div>
-  );
 
   return (
     <div className="w-full max-w-6xl mx-auto px-6 animate-fade pb-20">
@@ -1604,27 +1590,23 @@ const EsgMediaIndexView = ({ navigateTo }) => {
         </div>
       </section>
 
-      {/* PROOF */}
+      {/* BRANDS */}
       <section className="py-14 border-t border-gray-200/60">
         <ScrollReveal>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Campaigns run on these signals</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Brands we've worked with</h2>
           <p className="text-gray-600 max-w-3xl leading-relaxed mb-10">
-            Results from campaigns run on The GoodNet's index globally. We're bringing the same approach to the Indian market.
+            Campaigns planned and measured on these signals, through our work with The GoodNet.
           </p>
         </ScrollReveal>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {INDEX_CASES.map((c, i) => (
-            <ScrollReveal key={c.brand} delay={(i % 3) * 120}>
-              <div className="soft-card p-6 h-full flex flex-col">
-                <h3 className="font-bold text-gray-900 text-lg">{c.brand}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed mt-2 mb-5 flex-grow">{c.line}</p>
-                <div className="grid grid-cols-3 gap-3 pt-4 border-t border-gray-200/70">
-                  {c.stats.map(([v, l]) => <Stat key={l} v={v} l={l} />)}
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
+        <ScrollReveal delay={120}>
+          <div className="flex flex-wrap gap-3">
+            {INDEX_BRANDS.map((b) => (
+              <span key={b} className="soft-card px-6 py-3 text-base md:text-lg font-bold text-gray-500">
+                {b}
+              </span>
+            ))}
+          </div>
+        </ScrollReveal>
       </section>
 
       {/* CTA */}
