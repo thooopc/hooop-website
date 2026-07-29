@@ -1123,7 +1123,7 @@ Greenwashing Tool
 <span className="text-gray-400">Does your Sustainability Messaging Make Sense</span>
 </h1>
                    <p className="text-gray-500 text-sm md:text-base font-medium mb-6 leading-relaxed">
-Sense is a greenwashing tool that scans climate language and ESG messaging.
+Sense is a greenwashing checker for climate language and ESG messaging. It flags wording that tends to attract regulatory attention, so you can rethink it before you publish rather than after someone else does. It's a guiding light, not a verdict — and we're still learning where the lines fall too. These rules are new for all of us.
 </p>
                     <div className="flex flex-wrap gap-2 mb-2">
                         {["Reputation", "Legal Compliance", "Trust", "ESG Credibility"].map((v, i) => (
