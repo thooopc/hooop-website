@@ -29,10 +29,13 @@ const SITE_CONTENT = {
       { name: "Everloop", url: "https://www.everloop.agency/" }
     ],
     featured: [
-      { name: "Brand Equity", url: "https://brandequity.economictimes.indiatimes.com/news/research/advertising/ad-spends-go-green-as-the-hooop-collective-and-the-goodnet-to-launch-indias-first-esg-media-index/120510972" },
-      { name: "Exchange4Media", url: "https://www.exchange4media.com/advertising-news/former-mirum-wpp-leaders-create-the-hooop-collective-142001.html" },
-      { name: "Manifest", url: "https://www.manifest-media.in/marketing/130226/report-flags-indian-brands-sustainability-claims-35-rely-on-interna.html" }
-
+      { name: "Brand Equity", headline: "Ad spends go green as HOOOP and The GoodNet launch India's first ESG media index", url: "https://brandequity.economictimes.indiatimes.com/news/research/advertising/ad-spends-go-green-as-the-hooop-collective-and-the-goodnet-to-launch-indias-first-esg-media-index/120510972" },
+      { name: "ExchangeWire", headline: "HOOOP and The GoodNet partner to launch India's first ESG Media Index & Marketplace", url: "https://www.exchangewire.com/blog/2025/06/13/the-hooop-collective-the-goodnet-partner-to-launch-indias-first-esg-media-index-marketplace/" },
+      { name: "afaqs!", headline: "A study by The HOOOP Collective highlights validation of claims by Indian brands", url: "https://www.afaqs.com/companies/a-study-by-the-hooop-collective-highlights-validation-claims-by-indian-brands-11100009" },
+      { name: "IMPACT", headline: "HOOOP and Everloop launch Prvaah to bridge UK–India business", url: "https://www.impactonnet.com/more-from-impact/the-hooop-collective-and-everloopagency-launch-prvaah-to-bridge-ukindia-business-12144.html" },
+      { name: "Media Infoline", headline: "HOOOP and Everloop launch Prvaah to enable businesses across the UK and India", url: "https://www.mediainfoline.com/alliances/the-hooop-collective-and-everloop-launch-prvaah-to-enable-businesses-across-the-uk-and-india" },
+      { name: "Manifest", headline: "Report flags Indian brands' sustainability claims: 35% rely on internal checks or none", url: "https://www.manifest-media.in/marketing/130226/report-flags-indian-brands-sustainability-claims-35-rely-on-interna.html" },
+      { name: "Exchange4Media", headline: "Former Mirum (WPP) leaders create The HOOOP Collective", url: "https://www.exchange4media.com/advertising-news/former-mirum-wpp-leaders-create-the-hooop-collective-142001.html" }
     ]
   },
   // OUR THINKING (The Blog)
@@ -2431,39 +2434,43 @@ const App = React.forwardRef((props, ref) => {
                  </div>
               </div>
             </section>
-              <section className="py-16 border-t border-gray-200/50">
-                <div className="max-w-7xl mx-auto px-4 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
-                  <div>
-                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8 flex items-center gap-2">
-                      <span className="w-8 h-[1px] bg-gray-400"></span> Our Partners
-                    </h3>
-                    <div className="flex flex-wrap gap-4">
-                      {SITE_CONTENT.homeExtras.partners.map((partner, idx) => (
-                        <a key={idx} href={partner.url} target="_blank" rel="noopener noreferrer" className="group">
-                          <SoftCard className="px-6 py-4 flex items-center justify-center min-w-[140px] group-hover:scale-105 transition-transform">
-                            <span className="font-bold text-gray-600 group-hover:text-teal-600 transition-colors">{partner.name}</span>
-                          </SoftCard>
-                        </a>
-                      ))}
-                    </div>
+              <section className="py-20 border-t border-gray-200/50">
+                <div className="max-w-6xl mx-auto px-4 lg:px-12">
+
+                  {/* PARTNERS — single balanced row */}
+                  <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                    <span className="w-8 h-[1px] bg-gray-400"></span> Our Partners
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-20">
+                    {SITE_CONTENT.homeExtras.partners.map((partner, idx) => (
+                      <a key={idx} href={partner.url} target="_blank" rel="noopener noreferrer"
+                         className="group rounded-2xl bg-white/50 border border-white/70 px-6 py-6 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                        <span className="font-bold text-gray-500 group-hover:text-teal-600 transition-colors tracking-wide">
+                          {partner.name}
+                        </span>
+                      </a>
+                    ))}
                   </div>
 
-                  <div>
-                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8 flex items-center gap-2">
-                      <span className="w-8 h-[1px] bg-gray-400"></span> As Featured On
-                    </h3>
-                    <div className="flex flex-wrap gap-4">
-                      {SITE_CONTENT.homeExtras.featured.map((feature, idx) => (
-                        <a key={idx} href={feature.url} target="_blank" rel="noopener noreferrer" className="group">
-                          <SoftCard className="px-6 py-4 flex items-center justify-center min-w-[160px] group-hover:scale-105 transition-transform">
-                            <div className="flex items-center gap-2">
-                              <span className="font-bold text-gray-600 group-hover:text-teal-600 transition-colors">{feature.name}</span>
-                              <ExternalLink size={14} className="text-gray-300 group-hover:text-teal-400" />
-                            </div>
-                          </SoftCard>
-                        </a>
-                      ))}
-                    </div>
+                  {/* COVERAGE — headline-led list */}
+                  <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                    <span className="w-8 h-[1px] bg-gray-400"></span> As Featured On
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1">
+                    {SITE_CONTENT.homeExtras.featured.map((feature, idx) => (
+                      <a key={idx} href={feature.url} target="_blank" rel="noopener noreferrer"
+                         className="group flex items-start gap-4 py-5 border-b border-gray-200/60 hover:border-teal-200 transition-colors">
+                        <div className="flex-grow min-w-0">
+                          <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-teal-600/80 mb-1.5">
+                            {feature.name}
+                          </p>
+                          <p className="text-sm text-gray-600 group-hover:text-gray-900 leading-snug transition-colors">
+                            {feature.headline || feature.name}
+                          </p>
+                        </div>
+                        <ExternalLink size={14} className="text-gray-300 group-hover:text-teal-500 shrink-0 mt-5 transition-colors" />
+                      </a>
+                    ))}
                   </div>
                 </div>
               </section>
