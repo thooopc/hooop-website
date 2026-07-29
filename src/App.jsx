@@ -254,11 +254,52 @@ const SITE_CONTENT = {
     ]
   },
   offerings: [
-    { title: "Investment & Funding Readiness", desc: "Making ventures investable and financeable through pitch refinement, impact proposition development, and identifying relevant grant or blended finance pathways." },
-    { title: "Market Access & Commercial Partnerships", desc: "Connecting scale-ups with corporate procurement, supply chain integration, and strategic buyers to secure genuine commercial traction, not just introductions." },
-    { title: "Impact & Environmental Credibility", desc: "Building bulletproof ESG narratives, assessing greenwashing risks, and developing verifiable lifecycle impact stories that investors and regulators can trust." },
-    { title: "International Expansion & Market Entry", desc: "Navigating cross-border growth (India, UK, EU) through ESG compliance, regulatory navigation, and market entry pilot development." },
-    { title: "Offtake & Deployment Support", desc: "Supporting the complex transition from pilot to commercial scale through strategic matchmaking, risk assessment, and financing pathway development." }
+    {
+      title: "Marketing-Led Consulting",
+      desc: "Most of what we do starts here. Strategy and communication for businesses whose growth depends on being believed, not just heard.",
+      items: [
+        "Sustainability communication audits",
+        "Brand, creative and narrative strategy",
+        "Audience discovery and segmentation",
+        "Claim substantiation and greenwashing risk",
+      ],
+      linkLabel: "Check a claim with Sense",
+      linkTo: "sense",
+    },
+    {
+      title: "Media Sustainability",
+      desc: "Media planning that uses sustainability as a live performance signal rather than something you report on once the campaign has ended.",
+      items: [
+        "ESG media planning and green media buying",
+        "Campaign carbon measurement and reporting",
+        "Media intelligence and performance analysis",
+        "Benchmarking against the ESG Media Index",
+      ],
+      linkLabel: "See the ESG Media Index",
+      linkTo: "esg-media-index",
+    },
+    {
+      title: "Policy, Advocacy & Stakeholder Engagement",
+      desc: "The parts of sustainability that live outside marketing — regulators, communities, boards and the people your business answers to.",
+      items: [
+        "Stakeholder engagement, PR and communications",
+        "Environmental law and policy advisory",
+        "Circular economy policy and systems design",
+        "Regulatory navigation across CCPA, ASCI and CSRD",
+      ],
+    },
+    {
+      title: "Venture Growth & Market Access",
+      desc: "For climate and circular ventures trying to cross the gap between a working pilot and commercial scale.",
+      items: [
+        "Investment and funding readiness",
+        "Market access and commercial partnerships",
+        "Offtake and deployment support",
+        "Cross-border expansion across India, the UK and EU",
+      ],
+      linkLabel: "Explore Prvaah",
+      linkTo: "prvaah",
+    },
   ],
   collective: [
     {
@@ -2173,8 +2214,8 @@ const APP_SECTION_SEO = {
     }
   },
   offerings: {
-    title: "What We Do — Climate & ESG Advisory Services | HOOOP",
-    description: "Investment readiness, market access, impact credibility, cross-border expansion, and offtake support for climate and circular-economy ventures.",
+    title: "What We Do — Sustainable Marketing, Media & ESG Consulting | HOOOP",
+    description: "Marketing-led consulting, ESG media planning and measurement, policy and stakeholder engagement, and venture growth support for climate and circular businesses in India.",
     path: "/offerings"
   },
   collective: {
@@ -2731,20 +2772,35 @@ const App = React.forwardRef((props, ref) => {
                   <div className="flex flex-col lg:flex-row justify-between items-end mb-20">
                      <div>
                          <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">What We Do</h1>
-                         <p className="text-gray-500">Soft interventions for hard problems.</p>
+                         <p className="text-gray-500 max-w-xl">Four practices that overlap more often than not. Most engagements start in one and pull in the others.</p>
                      </div>
                      <VerticalPill height="h-2" className="w-32 !rotate-0 hidden lg:block" />
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                      {SITE_CONTENT.offerings.map((card, idx) => (
-                       <SoftCard key={idx} className="p-10 flex flex-col justify-between h-80 group">
-                          <div>
-                            <div className="w-12 h-12 rounded-2xl bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] flex items-center justify-center mb-6 text-black font-bold text-xl group-hover:text-white group-hover:bg-black transition-colors duration-300">
-                               {idx + 1}
-                            </div>
-                            <h2 className="text-2xl font-bold text-[#313b4e] mb-4">{card.title}</h2>
-                            <p className="text-gray-500 text-sm leading-relaxed">{card.desc}</p>
+                       <SoftCard key={idx} className="p-8 lg:p-10 flex flex-col h-full group">
+                          <div className="w-12 h-12 rounded-2xl bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] flex items-center justify-center mb-6 text-black font-bold text-xl group-hover:text-white group-hover:bg-black transition-colors duration-300">
+                             {idx + 1}
                           </div>
+                          <h2 className="text-2xl font-bold text-[#313b4e] mb-3">{card.title}</h2>
+                          <p className="text-gray-500 text-sm leading-relaxed mb-6">{card.desc}</p>
+                          <ul className="space-y-2.5 mb-6">
+                            {card.items.map((item, i) => (
+                              <li key={i} className="flex gap-3 text-sm text-gray-600">
+                                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0 mt-[7px]" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                          {card.linkTo && (
+                            <button
+                              type="button"
+                              onClick={() => navigateTo(card.linkTo)}
+                              className="mt-auto self-start inline-flex items-center gap-2 text-sm font-bold text-teal-600 hover:text-teal-800 transition-colors"
+                            >
+                              {card.linkLabel} <ArrowRight size={15} />
+                            </button>
+                          )}
                        </SoftCard>
                      ))}
                   </div>

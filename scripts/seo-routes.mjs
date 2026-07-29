@@ -39,8 +39,8 @@ export const ROUTES = Object.fromEntries([
     description: "Prvaah guides enterprises across India, the EU, and the UK through ESG compliance, funding readiness, and responsible market expansion.",
   }],
   ["/offerings", {
-    title: "What We Do — Climate & ESG Advisory Services | HOOOP",
-    description: "Investment readiness, market access, impact credibility, cross-border expansion, and offtake support for climate and circular-economy ventures.",
+    title: "What We Do — Sustainable Marketing, Media & ESG Consulting | HOOOP",
+    description: "Marketing-led consulting, ESG media planning and measurement, policy and stakeholder engagement, and venture growth support for climate and circular businesses in India.",
   }],
   ["/thinking", {
     title: "Our Thinking — Climate, Capital & Culture | HOOOP Blog",
