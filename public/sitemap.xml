@@ -62,6 +62,12 @@
   </url>
 
   <url>
+    <loc>https://www.hooop.in/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
     <loc>https://www.hooop.in/thinking/commercialising-ocean-bound-plastic-supply-chains</loc>
     <lastmod>2026-06-25</lastmod>
     <priority>0.7</priority>
