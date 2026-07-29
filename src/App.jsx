@@ -25,7 +25,7 @@ const SITE_CONTENT = {
   homeExtras: {
     partners: [
       { name: "TERI SAS", url: "https://www.terisas.ac.in/" },
-      { name: "The Good Net", url: "https://thegoodnet.com/" },
+      { name: "The Good Net", url: "https://wearethegoodnet.com/" },
       { name: "Everloop", url: "https://www.everloop.agency/" }
     ],
     featured: [
