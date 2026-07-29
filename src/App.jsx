@@ -1431,6 +1431,223 @@ const PillButton = ({ children, primary = false, onClick }) => (
     </button>
 );
 
+// --- ESG MEDIA INDEX (HOOOP x The GoodNet) ---
+const INDEX_PILLARS = [
+  { name: "Consumption", icon: Zap, copy: "Energy use, delivery waste, and ad efficiency across the supply path — the same things that quietly inflate your CPMs." },
+  { name: "Content", icon: FileText, copy: "Content analysis of where your ad actually lands, and how well that environment fits what your brand has committed to." },
+  { name: "Corporate", icon: Scale, copy: "Whether the media owner behind the placement operates responsibly — editorial standards, data practices, governance." },
+];
+
+const INDEX_BANDS = [
+  { label: "ESG Risk Media", range: "Below 30", tone: "bg-red-50 text-red-700 border-red-100" },
+  { label: "Moderate", range: "30 – 44", tone: "bg-orange-50 text-orange-700 border-orange-100" },
+  { label: "Trusted", range: "45 – 53", tone: "bg-yellow-50 text-yellow-700 border-yellow-100" },
+  { label: "Elite", range: "54 – 100", tone: "bg-green-50 text-green-700 border-green-100" },
+];
+
+const INDEX_CASES = [
+  { brand: "Lego", line: "Conscious-consumer reach across 112 markets in a single campaign.", stats: [["-35%", "CPC"], ["-40%", "CO₂e"], ["112", "markets"]] },
+  { brand: "UNICEF", line: "Hitting cost-per-acquisition targets while cutting emissions.", stats: [["-20%", "CPC"], ["-11%", "CPA"], ["-32%", "CO₂e"]] },
+  { brand: "Amazon", line: "A B2B audience reached through ethically-scored environments.", stats: [["+54%", "purchase intent"], ["-58%", "CO₂e"], ["40%", "ESG-goal aligned"]] },
+  { brand: "Mastercard", line: "Video campaign restricted to high-scoring publishers only.", stats: [["0.7%", "CTR"], ["+40%", "video views"], ["-69%", "CO₂e"]] },
+  { brand: "BYD", line: "EV launch awareness across affinity and in-market audiences.", stats: [["+43%", "CTR"], ["-20%", "CPC"], ["+21%", "test drives"]] },
+  { brand: "Nestlé", line: "Corporate sustainability messaging to an over-indexed audience.", stats: [["1.83%", "engagement"], ["82%", "brand recall"], ["-64%", "CO₂e"]] },
+];
+
+const EsgMediaIndexView = ({ navigateTo }) => {
+  useSeo({
+    title: "ESG Media Index India — Sustainable Media Planning | HOOOP × The GoodNet",
+    description: "India's first ESG Media Index. Score every placement on carbon, content and corporate signals — and use them to cut CPC and wasted spend, not just to report afterwards.",
+    path: "/esg-media-index",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "ESG Media Planning, Measurement and Marketplace",
+      "provider": { "@type": "Organization", "name": "HOOOP Collective", "url": SITE_URL },
+      "areaServed": "India",
+      "description": "India's first ESG Media Index, built with The GoodNet. Scores media placements across consumption, content and corporate ESG signals and uses them as live optimisation inputs.",
+    },
+  });
+
+  const Stat = ({ v, l }) => (
+    <div>
+      <p className="text-2xl md:text-3xl font-black text-gray-900 leading-none">{v}</p>
+      <p className="text-[10px] uppercase tracking-wide text-gray-400 font-bold mt-1">{l}</p>
+    </div>
+  );
+
+  return (
+    <div className="w-full max-w-6xl mx-auto px-6 animate-fade pb-20">
+      {/* HERO */}
+      <section className="pt-8 pb-16 md:pb-24">
+        <ScrollReveal>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 rounded-full mb-8 border border-white/60 shadow-sm">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            <span className="text-xs font-bold tracking-widest uppercase text-gray-600">HOOOP × The GoodNet</span>
+          </div>
+        </ScrollReveal>
+        <ScrollReveal delay={150}>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-[0.95] tracking-tighter mb-8">
+            Sustainable media<br />
+            <span className="text-gray-400">shouldn't cost you performance.</span>
+          </h1>
+        </ScrollReveal>
+        <ScrollReveal delay={300}>
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed mb-4">
+            Most media plans treat sustainability as something you report on after the campaign ends. We think that's a
+            missed opportunity — because the signals that make media cleaner are largely the same ones that make it work harder.
+          </p>
+          <p className="text-base text-gray-500 max-w-2xl leading-relaxed mb-10">
+            India's first ESG Media Index, built with <a href="https://wearethegoodnet.com/" target="_blank" rel="noopener noreferrer" className="text-teal-600 font-bold hover:underline">The GoodNet</a>.
+          </p>
+        </ScrollReveal>
+        <ScrollReveal delay={450}>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <PillButton primary onClick={() => navigateTo('contact')}>
+              Benchmark your media <ArrowRight size={18} />
+            </PillButton>
+            <PillButton onClick={() => document.getElementById('emi-how')?.scrollIntoView({ behavior: 'smooth' })}>
+              How the index works
+            </PillButton>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* THE THESIS */}
+      <section className="py-14 border-t border-gray-200/60">
+        <ScrollReveal>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Why clean media tends to perform better</h2>
+          <p className="text-gray-600 max-w-3xl leading-relaxed mb-10">
+            This surprised us too when we first saw the data. Quality journalism, low ad clutter, short supply chains and
+            low invalid traffic all reduce a campaign's carbon footprint. They also happen to be the markers of inventory
+            that gets seen by actual humans. You are usually optimising for both at once — most plans just never measure it that way.
+          </p>
+        </ScrollReveal>
+        <div className="grid md:grid-cols-2 gap-5">
+          <ScrollReveal delay={100}>
+            <div className="soft-card p-6 h-full">
+              <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-3">What you remove</p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                {["Ad clutter and low-viewability placements", "Long, leaky programmatic supply paths", "Invalid traffic and ad fraud", "Made-for-advertising inventory"].map((t, i) => (
+                  <li key={i} className="flex gap-2"><span className="text-gray-300">—</span>{t}</li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={200}>
+            <div className="soft-card p-6 h-full bg-green-50/40">
+              <p className="text-[10px] uppercase tracking-widest font-bold text-green-700 mb-3">What tends to follow</p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                {["Higher viewability and completion rates", "Lower cost per click and per acquisition", "Meaningfully lower carbon per impression", "Placements you'd be comfortable showing a client"].map((t, i) => (
+                  <li key={i} className="flex gap-2"><Check size={14} className="text-green-600 shrink-0 mt-1" />{t}</li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section id="emi-how" className="py-14 border-t border-gray-200/60">
+        <ScrollReveal>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">What the index actually measures</h2>
+          <p className="text-gray-600 max-w-3xl leading-relaxed mb-10">
+            Every domain and placement is scored out of 100 across three families of signal, then weighted against
+            the commitments your business has already made — not a generic definition of "good".
+          </p>
+        </ScrollReveal>
+        <div className="grid md:grid-cols-3 gap-5 mb-10">
+          {INDEX_PILLARS.map((p, i) => (
+            <ScrollReveal key={p.name} delay={i * 120}>
+              <div className="soft-card p-6 h-full">
+                <p.icon className="text-green-600 mb-3" size={24} />
+                <h3 className="font-bold text-gray-900 text-lg mb-2">{p.name}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{p.copy}</p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+        <ScrollReveal>
+          <div className="soft-card p-6">
+            <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-4">Scoring bands (out of 100)</p>
+            <div className="flex flex-wrap gap-3">
+              {INDEX_BANDS.map((b) => (
+                <div key={b.label} className={`px-4 py-2 rounded-xl border text-xs font-bold ${b.tone}`}>
+                  {b.label} <span className="opacity-60 font-medium ml-1">{b.range}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-gray-400 mt-4">The current Indian market benchmark sits around 45. Most plans we look at start below it.</p>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* WAYS TO WORK */}
+      <section className="py-14 border-t border-gray-200/60">
+        <ScrollReveal>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-10">Three ways to use it</h2>
+        </ScrollReveal>
+        <div className="grid md:grid-cols-3 gap-5">
+          {[
+            { t: "Measure", d: "Send us a proposed site list. You get a read on where the plan stands before you commit budget, and reporting that runs alongside the campaign rather than arriving after it." },
+            { t: "Marketplace", d: "A curated pool of 2,000+ vetted publishers, activated through your own DSP. You buy the way you already buy; the curation happens underneath." },
+            { t: "API", d: "Over 200 data points fed straight into your existing planning, bidding and reporting stack, if you'd rather run it yourself." },
+          ].map((x, i) => (
+            <ScrollReveal key={x.t} delay={i * 120}>
+              <div className="soft-card p-6 h-full">
+                <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">0{i + 1}</p>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">{x.t}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{x.d}</p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
+
+      {/* PROOF */}
+      <section className="py-14 border-t border-gray-200/60">
+        <ScrollReveal>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Campaigns run on these signals</h2>
+          <p className="text-gray-600 max-w-3xl leading-relaxed mb-10">
+            Results from campaigns run on The GoodNet's index globally. We're bringing the same approach to the Indian market.
+          </p>
+        </ScrollReveal>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {INDEX_CASES.map((c, i) => (
+            <ScrollReveal key={c.brand} delay={(i % 3) * 120}>
+              <div className="soft-card p-6 h-full flex flex-col">
+                <h3 className="font-bold text-gray-900 text-lg">{c.brand}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed mt-2 mb-5 flex-grow">{c.line}</p>
+                <div className="grid grid-cols-3 gap-3 pt-4 border-t border-gray-200/70">
+                  {c.stats.map(([v, l]) => <Stat key={l} v={v} l={l} />)}
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-14 border-t border-gray-200/60">
+        <ScrollReveal>
+          <div className="soft-card p-8 md:p-12 bg-gray-900 text-white">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Curious where your current plan scores?</h2>
+            <p className="text-gray-300 leading-relaxed max-w-2xl mb-8">
+              Send us a site list and we'll come back with an honest read — the score, where the waste sits, and whether
+              there's enough upside to be worth your time. If there isn't, we'll tell you that. We're still mapping this
+              market ourselves, and we learn something from every plan we look at.
+            </p>
+            <a href="mailto:hello@hooop.in?subject=ESG%20Media%20Index%20-%20benchmark%20my%20plan"
+               className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform">
+              <Mail size={18} /> hello@hooop.in
+            </a>
+          </div>
+        </ScrollReveal>
+      </section>
+    </div>
+  );
+};
+
 const GreenwashingView = ({ navigateTo }) => {
    useSeo({
      title: "Greenwashing in India: Risks, Regulations & The Playbook | HOOOP",
@@ -2010,6 +2227,7 @@ const App = React.forwardRef((props, ref) => {
     { id: 'sense', label: 'Sense' },
     { id: 'prvaah', label: 'Prvaah' },
     { id: 'greenwashing', label: 'Greenwashing'},
+    { id: 'esg-media-index', label: 'Media Index' },
     { id: 'offerings', label: 'What We Do' },
     { id: 'thinking', label: 'Our Thinking' },
     { id: 'collective', label: 'Collective' },
@@ -2402,6 +2620,12 @@ const App = React.forwardRef((props, ref) => {
                 {senseTab === 'analyzer' && <SenseAnalysisView />}
                 {senseTab === 'checklist' && <ChecklistView />}
                 {senseTab === 'learn' && <ResourcesView />}
+            </section>
+          )}
+
+          {activeSection === 'esg-media-index' && (
+            <section className="relative min-h-screen py-24 animate-fade-in-up">
+                <EsgMediaIndexView navigateTo={navigateTo} />
             </section>
           )}
 

@@ -30,6 +30,10 @@ export const ROUTES = Object.fromEntries([
     title: "Greenwashing in India: Risks, Regulations & The Playbook | HOOOP",
     description: "Why greenwashing is now a legal and financial risk in India, how CCPA and ASCI enforce green claims, and a practical playbook for honest sustainability communication.",
   }],
+  ["/esg-media-index", {
+    title: "ESG Media Index India — Sustainable Media Planning | HOOOP × The GoodNet",
+    description: "India's first ESG Media Index. Score every placement on carbon, content and corporate signals — and use them to cut CPC and wasted spend, not just to report afterwards.",
+  }],
   ["/prvaah", {
     title: "Prvaah — India, UK & EU ESG Market Entry Program | HOOOP",
     description: "Prvaah guides enterprises across India, the EU, and the UK through ESG compliance, funding readiness, and responsible market expansion.",
