@@ -2770,14 +2770,40 @@ const App = React.forwardRef((props, ref) => {
           {/* COMBINED OFFERINGS & MODELS SECTION */}
           {activeSection === 'offerings' && (
             <section className="py-24 min-h-screen animate-fade-in-up">
-              <div className="max-w-6xl mx-auto px-6 mb-32">
-                  <div className="flex flex-col lg:flex-row justify-between items-end mb-20">
+              <div className="max-w-6xl mx-auto px-6 mb-24">
+                  <div className="flex flex-col lg:flex-row justify-between items-end mb-14">
                      <div>
                          <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">What We Do</h1>
                          <p className="text-gray-500 max-w-xl">Four practices that overlap more often than not. Most engagements start in one and pull in the others.</p>
                      </div>
                      <VerticalPill height="h-2" className="w-32 !rotate-0 hidden lg:block" />
                   </div>
+
+                  {/* HOW WE WORK — moved above the practices so it is seen without scrolling */}
+                  <div className="mb-20">
+                    <h2 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                      <span className="w-8 h-[1px] bg-gray-400"></span> Ways to work with us
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                      {SITE_CONTENT.models.map((model, idx) => {
+                        const Icon = getIconComponent(model.iconType);
+                        return (
+                          <SoftCard key={idx} className="p-7 flex flex-col group hover:-translate-y-1 transition-transform duration-300">
+                            <div className="w-12 h-12 rounded-full bg-[#E0E5EC] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center mb-5">
+                              <Icon size={20} className="text-gray-400 group-hover:text-teal-600 transition-colors" />
+                            </div>
+                            <h3 className="text-sm font-black tracking-widest text-[#313b4e] mb-3">{model.title}</h3>
+                            <p className="text-sm font-bold text-gray-800 mb-2 leading-snug">{model.headline}</p>
+                            <p className="text-xs text-gray-500 leading-relaxed">{model.desc}</p>
+                          </SoftCard>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <h2 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                    <span className="w-8 h-[1px] bg-gray-400"></span> Our practices
+                  </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                      {SITE_CONTENT.offerings.map((card, idx) => (
                        <SoftCard key={idx} className="p-8 lg:p-10 flex flex-col h-full group">
@@ -2808,43 +2834,13 @@ const App = React.forwardRef((props, ref) => {
                   </div>
               </div>
 
-              <div className="w-full flex justify-center mb-32 opacity-20">
-                  <VerticalPill height="h-32" className="w-2" />
-              </div>
-
               <div className="max-w-6xl mx-auto px-6">
-                 <div className="text-center mb-16">
-                    <h2 className="text-4xl lg:text-5xl font-black text-[#313b4e] mb-4">Engagement Models</h2>
-                    <p className="text-lg text-gray-500">Flexible ways to work with us.</p>
-                 </div>
-                 <div className="flex flex-col gap-12 max-w-5xl mx-auto">
-                    {SITE_CONTENT.models.map((model, idx) => {
-                        const Icon = getIconComponent(model.iconType);
-                        return (
-                        <ScrollReveal key={idx} className={`delay-${idx * 100}`}>
-                            <SoftCard className={`p-10 lg:p-16 flex flex-col ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 items-center lg:items-start group hover:scale-[1.01] transition-transform`}>
-                                 <div className="w-32 h-32 rounded-full bg-[#E0E5EC] shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] flex items-center justify-center shrink-0">
-                                     <Icon size={40} className="text-gray-400 group-hover:text-black transition-colors" />
-                                 </div>
-                                 <div className="text-center lg:text-left flex-1">
-                                     <h3 className="text-3xl lg:text-4xl font-black text-[#313b4e] mb-6">{model.title}</h3>
-                                     <p className="text-xl font-light text-gray-600 mb-4 leading-relaxed">
-                                         <span className="font-bold text-black">{model.headline}</span>
-                                     </p>
-                                     <p className="text-gray-500 text-sm leading-relaxed max-w-2xl">
-                                         {model.desc}
-                                     </p>
-                                 </div>
-                            </SoftCard>
-                        </ScrollReveal>
-                    )})}
-                    <div className="mt-12 text-center max-w-3xl mx-auto">
-                        <div className="inline-block px-8 py-3 rounded-full bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] mb-6">
-                            <span className="text-teal-600 font-bold uppercase tracking-widest text-sm">Transparent</span>
-                        </div>
-                        <h4 className="text-2xl font-bold text-gray-800 mb-4">No hidden fees, no markups.</h4>
-                        <p className="text-gray-500">We work hand-in-hand with brands, agencies, funds and sustainability consultancies to align brand & sustainability strategy.</p>
-                    </div>
+                 <div className="text-center max-w-3xl mx-auto pt-4">
+                     <div className="inline-block px-8 py-3 rounded-full bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] mb-6">
+                         <span className="text-teal-600 font-bold uppercase tracking-widest text-sm">Transparent</span>
+                     </div>
+                     <h4 className="text-2xl font-bold text-gray-800 mb-4">No hidden fees, no markups.</h4>
+                     <p className="text-gray-500">We work hand-in-hand with brands, agencies, funds and sustainability consultancies to align brand &amp; sustainability strategy.</p>
                  </div>
               </div>
             </section>
