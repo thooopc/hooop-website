@@ -1,4 +1,8 @@
 {
+  "redirects": [
+    { "source": "/our-thinking", "destination": "/thinking", "permanent": true },
+    { "source": "/what-we-do", "destination": "/offerings", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/robots.txt", "destination": "/robots.txt" },
     { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
