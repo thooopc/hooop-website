@@ -2990,17 +2990,19 @@ const App = React.forwardRef((props, ref) => {
                       the old cards cut them off at 80px with overflow-hidden. */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                      {SITE_CONTENT.collective.map((member, idx) => (
-                         <SoftCard key={idx} className="p-8 flex gap-6 group">
-                            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-[#E0E5EC] shadow-[inset_4px_4px_10px_#bebebe,inset_-4px_-4px_10px_#ffffff] p-1.5 shrink-0">
-                               <ImageWithFallback src={member.img} alt={member.name} className="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500"/>
+                         <SoftCard key={idx} className="p-6 md:p-7 flex flex-col sm:flex-row gap-6 md:gap-7 group">
+                            {/* Portrait rather than a circle: the source images are 3:4, so a
+                                circular crop threw away most of the frame. */}
+                            <div className="w-full sm:w-40 md:w-44 aspect-[3/4] sm:aspect-[3/4] rounded-[1.75rem] bg-[#E0E5EC] shadow-[inset_4px_4px_10px_#bebebe,inset_-4px_-4px_10px_#ffffff] p-2 shrink-0 overflow-hidden">
+                               <ImageWithFallback src={member.img} alt={member.name} className="w-full h-full object-cover object-top rounded-[1.4rem] grayscale group-hover:grayscale-0 transition-all duration-700"/>
                             </div>
-                            <div className="min-w-0">
+                            <div className="min-w-0 flex flex-col">
                                <h2 className="text-xl font-bold text-[#313b4e] leading-tight">{member.name}</h2>
                                <p className="text-gray-400 font-bold text-[10px] uppercase tracking-widest mt-1.5 mb-3">{member.role}</p>
                                <p className="text-gray-500 text-sm leading-relaxed">{member.desc}</p>
                                {member.linkedin && (
                                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 mt-4 text-xs font-bold text-gray-400 hover:text-teal-600 transition-colors">
+                                    className="inline-flex items-center gap-2 mt-auto pt-4 text-xs font-bold text-gray-400 hover:text-teal-600 transition-colors">
                                     <Linkedin size={15} /> LinkedIn
                                  </a>
                                )}
