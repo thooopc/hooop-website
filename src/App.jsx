@@ -286,18 +286,20 @@ const SITE_CONTENT = {
         Created by <a href="https://www.everloop.agency/" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">Everloop.Agency</a> and <a href="https://www.hooop.in" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">HOOOP Collective</a>, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.
       </span>
     ),
-    pillars: [
-      { icon: "shield", label: "Compliance", desc: "Enter with credibility: ESG disclosure mapping, anti-greenwashing assessment." },
-      { icon: "zap", label: "Capability", desc: "Equip your team: Sustainability training, leadership workshops & industry playbooks." },
-      { icon: "globe", label: "Access", desc: "Navigate new markets: Market intelligence, cultural insights & investor introductions." },
-      { icon: "file", label: "Pilots", desc: "Test & adapt: Go-to-market pilots, product validation & circular supply-chains." },
-      { icon: "trending", label: "Scale", desc: "Expand responsibly: Long-term ESG integration, green media & impact measurement." },
-      { 
-        icon: "recycle",
-        label: "Circularity Impact measurement & articulation",
-        desc: "You want to communicate to the industry and customers the circularity or broader environmental benefits your product or business delivers? We can help you measure your impact, optimise your circularity outcomes and communicate it in a way that speaks to your target audience and keeps you clear of greenwashing accusations."
-      }
+    // The five stages are a sequence — the page is named "flow" — so they render
+    // as a connected journey rather than as disconnected cards.
+    stages: [
+      { icon: "shield", label: "Compliance", short: "Enter with credibility", desc: "ESG disclosure mapping and anti-greenwashing assessment." },
+      { icon: "zap", label: "Capability", short: "Equip your team", desc: "Sustainability training, leadership workshops and industry playbooks." },
+      { icon: "globe", label: "Access", short: "Navigate new markets", desc: "Market intelligence, cultural insight and investor introductions." },
+      { icon: "file", label: "Pilots", short: "Test and adapt", desc: "Go-to-market pilots, product validation and circular supply chains." },
+      { icon: "trending", label: "Scale", short: "Expand responsibly", desc: "Long-term ESG integration, green media and impact measurement." },
     ],
+    circularity: {
+      icon: "recycle",
+      label: "Circularity impact, measured and articulated",
+      desc: "If you need to show the industry and your customers what your circularity actually delivers, we can help you measure it, improve it, and say it in a way that lands with your audience while keeping you clear of greenwashing risk.",
+    },
     testimonials: [
       {
         text: "At Everloop, we see Pravah as a continuum — not just an entry point but a journey. From ESG alignment to market pilots and long-term resilience, this platform helps sustainable enterprises flow between the UK and India with confidence, purpose, and accountability.",
@@ -740,7 +742,8 @@ const iconMap = {
   scale: Scale,
   tag: Tag,
   userx: UserX,
-  flag: Flag
+  flag: Flag,
+  recycle: RefreshCw
 };
 
 const getIconComponent = (name) => iconMap[name] || Users;
@@ -2757,60 +2760,97 @@ const App = React.forwardRef((props, ref) => {
 
           {/* PRVAAH SECTION */}
           {activeSection === 'prvaah' && (
-            <section className="min-h-screen py-24 animate-fade-in-up">
+            <section className="min-h-screen py-20 animate-fade-in-up">
                 <div className="max-w-6xl mx-auto px-6">
-                    <div className="text-center mb-20">
-                         <div className="flex justify-center mb-6">
-                            <ImageWithFallback src="/Prvaah Logo.png" alt="Prvaah Logo" className="h-24 w-auto object-contain" />
+
+                    {/* HERO — compact */}
+                    <div className="text-center mb-16">
+                         <div className="flex justify-center mb-5">
+                            <ImageWithFallback src="/Prvaah Logo.png" alt="Prvaah Logo" className="h-16 w-auto object-contain" />
                          </div>
-                         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-[#313b4e] mb-4 tracking-tighter">
+                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#313b4e] tracking-tighter">
                             {SITE_CONTENT.prvaah.title}
                          </h1>
-                         <p className="text-lg text-gray-400 italic mb-6">"{SITE_CONTENT.prvaah.sanskritMeaning}"</p>
-                         <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                         <p className="text-sm text-gray-400 italic mt-2 mb-5">"{SITE_CONTENT.prvaah.sanskritMeaning}"</p>
+                         <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
                             {SITE_CONTENT.prvaah.description1}
                          </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-                        {SITE_CONTENT.prvaah.pillars.map((pillar, idx) => {
-                             const Icon = getIconComponent(pillar.icon);
-                             return (
-                                <SoftCard key={idx} className="p-8 group hover:-translate-y-1 transition-transform">
-                                    <div className="w-14 h-14 rounded-2xl bg-[#E0E5EC] shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] flex items-center justify-center mb-6 text-blue-600 group-hover:scale-110 transition-transform">
-                                        <Icon size={28} />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-800 mb-3">{pillar.label}</h3>
-                                    <p className="text-sm text-gray-500 leading-relaxed">{pillar.desc}</p>
-                                </SoftCard>
-                             );
-                        })}
+                    {/* THE FLOW — five stages as one connected journey */}
+                    <div className="mb-6 flex items-center gap-2">
+                      <span className="w-8 h-[1px] bg-gray-400"></span>
+                      <h2 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">The flow</h2>
                     </div>
 
-                    <div className="bg-gray-100/50 rounded-[3rem] p-8 md:p-16 border border-white/50 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-                        <h2 className="text-3xl font-bold text-center mb-12 relative z-10">Voices from the Corridor</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            {SITE_CONTENT.prvaah.testimonials.map((testi, idx) => (
-                                <div key={idx} className="relative z-10">
-                                    <div className="bg-[#E0E5EC] p-8 rounded-[2rem] shadow-[9px_9px_16px_rgb(163,177,198,0.5),-9px_-9px_16px_rgba(255,255,255,0.5)] h-full flex flex-col">
-                                        <div className="mb-6 text-blue-500">
-                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.054 15.331 14.686 16.673 13.925C17.702 13.34 18.528 12.57 18.913 11.666C19.299 10.762 19.143 9.715 18.496 8.941C17.971 8.312 17.152 7.95 16.281 7.95C15.364 7.95 14.502 8.358 13.913 9.066L13.567 9.482L13.567 21L14.017 21ZM4.983 21L4.983 18C4.983 16.054 6.297 14.686 7.639 13.925C8.668 13.34 9.494 12.57 9.879 11.666C10.265 10.762 10.109 9.715 9.462 8.941C8.937 8.312 8.118 7.95 7.247 7.95C6.33 7.95 5.468 8.358 4.879 9.066L4.533 9.482L4.533 21L4.983 21Z"></path></svg>
-                                        </div>
-                                        <p className="text-gray-600 italic mb-6 text-sm leading-loose flex-1">"{testi.text}"</p>
-                                        <div className="flex items-center gap-4 mt-auto border-t border-gray-200/50 pt-4">
-                                            <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-300">
-                                                <ImageWithFallback src={testi.image} alt={testi.name} className="w-full h-full object-cover" />
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-gray-900 text-sm">{testi.name}</h4>
-                                                <p className="text-xs text-gray-500">{testi.role}</p>
-                                            </div>
-                                        </div>
+                    <div className="relative mb-20">
+                      {/* connector: horizontal on desktop, vertical on mobile */}
+                      <div className="hidden md:block absolute left-0 right-0 top-7 h-[2px] bg-gradient-to-r from-teal-200 via-teal-300 to-teal-200" />
+                      <div className="md:hidden absolute left-7 top-0 bottom-0 w-[2px] bg-gradient-to-b from-teal-200 via-teal-300 to-teal-200" />
+
+                      <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-5 relative">
+                        {SITE_CONTENT.prvaah.stages.map((stage, idx) => {
+                          const Icon = getIconComponent(stage.icon);
+                          return (
+                            <div key={idx} className="flex md:flex-col gap-5 md:gap-0 items-start group">
+                              <div className="w-14 h-14 rounded-full bg-[#E4E8EF] border-2 border-white shadow-[4px_4px_10px_rgba(163,177,198,0.5),-4px_-4px_10px_rgba(255,255,255,0.8)] flex items-center justify-center shrink-0 text-teal-600 group-hover:scale-110 transition-transform duration-300 relative z-10">
+                                <Icon size={22} />
+                              </div>
+                              <div className="md:mt-6">
+                                <p className="text-[10px] font-bold uppercase tracking-widest text-teal-600/70 mb-1">Step {idx + 1}</p>
+                                <h3 className="text-lg font-bold text-[#313b4e] leading-tight">{stage.label}</h3>
+                                <p className="text-xs font-bold text-gray-500 mt-1">{stage.short}</p>
+                                <p className="text-xs text-gray-500 leading-relaxed mt-2">{stage.desc}</p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* CIRCULARITY — a service, not a stage */}
+                    <SoftCard className="p-8 md:p-10 mb-20 flex flex-col md:flex-row gap-8 items-start">
+                      <div className="w-14 h-14 rounded-2xl bg-[#E0E5EC] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center shrink-0 text-teal-600">
+                        {(() => { const I = getIconComponent(SITE_CONTENT.prvaah.circularity.icon); return <I size={26} />; })()}
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-[#313b4e] mb-3">{SITE_CONTENT.prvaah.circularity.label}</h3>
+                        <p className="text-sm text-gray-500 leading-relaxed max-w-3xl">{SITE_CONTENT.prvaah.circularity.desc}</p>
+                      </div>
+                    </SoftCard>
+
+                    {/* VOICES — compact */}
+                    <div className="mb-6 flex items-center gap-2">
+                      <span className="w-8 h-[1px] bg-gray-400"></span>
+                      <h2 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">Voices from the corridor</h2>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+                        {SITE_CONTENT.prvaah.testimonials.map((testi, idx) => (
+                            <SoftCard key={idx} className="p-7 flex flex-col h-full">
+                                <p className="text-sm text-gray-600 leading-relaxed flex-1">"{testi.text}"</p>
+                                <div className="flex items-center gap-3 mt-6 pt-5 border-t border-gray-200/60">
+                                    <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-300 shrink-0">
+                                        <ImageWithFallback src={testi.image} alt={testi.name} className="w-full h-full object-cover" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-gray-900 text-sm">{testi.name}</h4>
+                                        <p className="text-xs text-gray-500">{testi.role}</p>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
+                            </SoftCard>
+                        ))}
+                    </div>
+
+                    {/* CTA — the page had none */}
+                    <div className="soft-card p-8 md:p-12 bg-gray-900 text-white rounded-[2.5rem]">
+                      <h2 className="text-2xl md:text-3xl font-bold mb-4">Thinking about the corridor?</h2>
+                      <p className="text-gray-300 leading-relaxed max-w-2xl mb-8">
+                        Whether you are moving into India or out of it, the first conversation is usually about what you already have and what is genuinely missing. That one is free.
+                      </p>
+                      <a href="mailto:hello@hooop.in?subject=Prvaah%20-%20market%20entry"
+                         className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform">
+                        <Mail size={18} /> hello@hooop.in
+                      </a>
                     </div>
                 </div>
             </section>
@@ -2937,42 +2977,47 @@ const App = React.forwardRef((props, ref) => {
           {/* COLLECTIVE */}
           {activeSection === 'collective' && (
              <section className="py-24 min-h-screen animate-fade-in-up">
-                <div className="mb-20">
-                   <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-6">The Collective</h1>
-                   <p className="text-gray-500 max-w-xl text-lg">
-                      We are thinkers, technologists, communicators, and designers working to accelerate change.
-                   </p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                   {SITE_CONTENT.collective.map((member, idx) => (
-                       <SoftCard key={idx} className="p-8 flex flex-col items-center text-center group">
-                          <div className="w-32 h-32 rounded-full bg-[#E0E5EC] shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] p-2 flex-shrink-0 mb-6">
-                             <ImageWithFallback src={member.img} alt={member.name} className="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500"/>
-                          </div>
-                          <div>
-                             <h2 className="text-xl font-bold text-[#313b4e]">{member.name}</h2>
-                             <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-4 mt-2 h-8">{member.role}</p>
-                             <p className="text-gray-500 text-xs leading-relaxed mb-6 h-20 overflow-hidden">{member.desc}</p>
-                             <div className="flex justify-center gap-4">
-                                {member.linkedin && (
-                                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="relative z-20">
-                                    <Linkedin size={18} className="text-gray-400 hover:text-black cursor-pointer transition-colors"/>
-                                </a>
-                                )}
-                                <Globe size={18} className="text-gray-400 hover:text-black cursor-pointer transition-colors"/>
-                             </div>
-                          </div>
-                       </SoftCard>
-                   ))}
-                </div>
-                <div className="mt-16 text-center">
-                    <p className="text-gray-600 text-lg">
-                        If our purpose resonates with you, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a> to join the collective.
-                    </p>
+                <div className="max-w-6xl mx-auto px-6">
+                  <div className="mb-16">
+                     <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-6">The Collective</h1>
+                     <p className="text-gray-500 max-w-2xl text-lg leading-relaxed">
+                        We are thinkers, technologists, communicators and designers working to accelerate change —
+                        senior practitioners who combine per engagement rather than sitting in a pyramid.
+                     </p>
+                  </div>
+
+                  {/* Two-across editorial layout. Bios are no longer height-clipped:
+                      the old cards cut them off at 80px with overflow-hidden. */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                     {SITE_CONTENT.collective.map((member, idx) => (
+                         <SoftCard key={idx} className="p-8 flex gap-6 group">
+                            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-[#E0E5EC] shadow-[inset_4px_4px_10px_#bebebe,inset_-4px_-4px_10px_#ffffff] p-1.5 shrink-0">
+                               <ImageWithFallback src={member.img} alt={member.name} className="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500"/>
+                            </div>
+                            <div className="min-w-0">
+                               <h2 className="text-xl font-bold text-[#313b4e] leading-tight">{member.name}</h2>
+                               <p className="text-gray-400 font-bold text-[10px] uppercase tracking-widest mt-1.5 mb-3">{member.role}</p>
+                               <p className="text-gray-500 text-sm leading-relaxed">{member.desc}</p>
+                               {member.linkedin && (
+                                 <a href={member.linkedin} target="_blank" rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 mt-4 text-xs font-bold text-gray-400 hover:text-teal-600 transition-colors">
+                                    <Linkedin size={15} /> LinkedIn
+                                 </a>
+                               )}
+                            </div>
+                         </SoftCard>
+                     ))}
+                  </div>
+
+                  <div className="mt-16 text-center">
+                      <p className="text-gray-600 text-lg">
+                          If our purpose resonates with you, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a> to join the collective.
+                      </p>
+                  </div>
                 </div>
              </section>
           )}
-          
+
           {/* CONTACT */}
           {activeSection === 'contact' && (
              <section className="py-24 min-h-screen flex flex-col items-center justify-center animate-fade-in-up px-6">
