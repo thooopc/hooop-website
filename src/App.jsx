@@ -415,9 +415,9 @@ const SITE_CONTENT = {
       iconType: "briefcase"
     },
      {
-      title: "VENTURE LAB",
-      headline: "Enabling scale-up for sustainable and circular solutions.",
-      desc: "We do not run fixed cohorts. We provide tailored strategic support, capital, and ecosystem access to help climate and biomaterial ventures cross the 'valley of death' and achieve mainstream adoption.",
+      title: "PARTNER",
+      headline: "Sometimes we partner rather than consult.",
+      desc: "When an idea is genuinely interesting, we get involved at a more fundamental level — bringing strategy, investment and network to drive growth and scale alongside you, rather than working to a brief.",
       iconType: "trending"
     },
     {
@@ -2274,7 +2274,7 @@ const GreenwashingView = ({ navigateTo }) => {
 // only touches title/description when a truthy value is passed).
 const APP_SECTION_SEO = {
   home: {
-    title: "HOOOP Collective — Sustainable Marketing & ESG Consulting for Indian Brands",
+    title: "HOOOP Collective — Sustainable Marketing & Growth Strategy for Indian Brands",
     // Explicit rather than derived from the hero: the on-page line is now
     // deliberately short, which makes a thin search snippet.
     description: "A sustainable marketing and strategy collective for climate and circular businesses — brand strategy, market intelligence and behavioural insight.",
@@ -2300,12 +2300,12 @@ const APP_SECTION_SEO = {
   },
   offerings: {
     title: "What We Do — Sustainable Marketing, Media & ESG Consulting | HOOOP",
-    description: "Marketing-led consulting, ESG media planning and measurement, policy and stakeholder engagement, and venture growth support for climate and circular businesses in India.",
+    description: "Marketing-led consulting, ESG media planning and measurement, policy and stakeholder engagement, and market access for climate and circular businesses in India.",
     path: "/offerings"
   },
   collective: {
     title: "The Collective — Our Sustainability & Brand Strategy Team | HOOOP",
-    description: "Meet the thinkers, technologists, communicators, and policy experts behind HOOOP's climate venture lab and ESG strategy work.",
+    description: "Meet the thinkers, technologists, communicators, and policy experts behind HOOOP's sustainable marketing and strategy work.",
     path: "/collective"
   },
   thinking: {
@@ -2319,7 +2319,7 @@ const APP_SECTION_SEO = {
     path: "/research"
   },
   contact: {
-    title: "Contact HOOOP | Climate Venture Lab & ESG Strategy",
+    title: "Contact HOOOP | Sustainable Marketing & Growth Strategy",
     description: "Get in touch with the HOOOP Collective to talk climate innovation, ESG strategy, or brand credibility.",
     path: "/contact"
   }

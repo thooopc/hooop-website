@@ -15,7 +15,7 @@ const post = (slug, title, description) => [
 
 export const ROUTES = Object.fromEntries([
   ["/", {
-    title: "HOOOP Collective — Sustainable Marketing & ESG Consulting for Indian Brands",
+    title: "HOOOP Collective — Sustainable Marketing & Growth Strategy for Indian Brands",
     description: "A sustainable marketing and strategy collective for climate and circular businesses — brand strategy, market intelligence and behavioural insight.",
   }],
   ["/manifesto", {
@@ -40,7 +40,7 @@ export const ROUTES = Object.fromEntries([
   }],
   ["/offerings", {
     title: "What We Do — Sustainable Marketing, Media & ESG Consulting | HOOOP",
-    description: "Marketing-led consulting, ESG media planning and measurement, policy and stakeholder engagement, and venture growth support for climate and circular businesses in India.",
+    description: "Marketing-led consulting, ESG media planning and measurement, policy and stakeholder engagement, and market access for climate and circular businesses in India.",
   }],
   ["/thinking", {
     title: "Our Thinking — Climate, Capital & Culture | HOOOP Blog",
@@ -48,14 +48,14 @@ export const ROUTES = Object.fromEntries([
   }],
   ["/collective", {
     title: "The Collective — Our Sustainability & Brand Strategy Team | HOOOP",
-    description: "Meet the thinkers, technologists, communicators, and policy experts behind HOOOP's climate venture lab and ESG strategy work.",
+    description: "Meet the thinkers, technologists, communicators, and policy experts behind HOOOP's sustainable marketing and strategy work.",
   }],
   ["/research", {
     title: "Research & Reports | HOOOP",
     description: "Data-driven reports on greenwashing in Indian marketing, the sustainability consumer paradox, circular economy, and sustainable media.",
   }],
   ["/contact", {
-    title: "Contact HOOOP | Climate Venture Lab & ESG Strategy",
+    title: "Contact HOOOP | Sustainable Marketing & Growth Strategy",
     description: "Get in touch with the HOOOP Collective to talk climate innovation, ESG strategy, or brand credibility.",
   }],
   ["/privacy", {
