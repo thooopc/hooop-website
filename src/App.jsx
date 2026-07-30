@@ -16,7 +16,7 @@ const SITE_CONTENT = {
   hero: {
     titleLine1: "Growth.",
     titleLine2: "Reimagined.",
-    subtitle: "A venture studio helping climate and circular businesses bridge the gap between innovation and adoption.",
+    subtitle: "A sustainable marketing and strategy collective helping climate and circular businesses bridge the gap between innovation and adoption.",
     subtitleSecondary: "We combine brand and marketing strategy, market intelligence, commercial partnerships and behavioural insight to help businesses grow credibly and at scale.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
@@ -2274,10 +2274,10 @@ const GreenwashingView = ({ navigateTo }) => {
 // only touches title/description when a truthy value is passed).
 const APP_SECTION_SEO = {
   home: {
-    title: "HOOOP Collective — Climate Venture Lab & ESG Strategy for Indian Brands",
+    title: "HOOOP Collective — Sustainable Marketing & ESG Consulting for Indian Brands",
     // Explicit rather than derived from the hero: the on-page line is now
     // deliberately short, which makes a thin search snippet.
-    description: "A venture studio helping climate and circular businesses bridge innovation and adoption — marketing strategy, market intelligence and commercial partnerships.",
+    description: "A sustainable marketing and strategy collective for climate and circular businesses — brand strategy, market intelligence and behavioural insight.",
     path: "/"
   },
   manifesto: {
