@@ -14,9 +14,10 @@ const SITE_CONTENT = {
     contactEmail: "hello@hooop.in",
   },
   hero: {
-    titleLine1: "Growth",
-    titleLine2: "Re-Imagined",
-    subtitle: "A venture lab and strategy collective turning climate innovation into commercial reality by bridging the gap between scale-ups and mainstream adoption.",
+    titleLine1: "Growth.",
+    titleLine2: "Reimagined.",
+    subtitle: "A venture studio helping climate and circular businesses bridge the gap between innovation and adoption.",
+    subtitleSecondary: "We combine brand and marketing strategy, market intelligence, commercial partnerships and behavioural insight to help ventures become investable, credible and scalable.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
@@ -2274,7 +2275,9 @@ const GreenwashingView = ({ navigateTo }) => {
 const APP_SECTION_SEO = {
   home: {
     title: "HOOOP Collective — Climate Venture Lab & ESG Strategy for Indian Brands",
-    description: SITE_CONTENT.hero.subtitle,
+    // Explicit rather than derived from the hero: the on-page line is now
+    // deliberately short, which makes a thin search snippet.
+    description: "A venture studio helping climate and circular businesses bridge innovation and adoption — marketing strategy, market intelligence and commercial partnerships.",
     path: "/"
   },
   manifesto: {
@@ -2516,7 +2519,10 @@ const App = React.forwardRef((props, ref) => {
                       <span className="text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-600">{SITE_CONTENT.hero.titleLine2}</span>
                     </h1>
                 </div>
-                <p className="text-lg lg:text-xl text-gray-500 max-w-md leading-relaxed font-medium">{SITE_CONTENT.hero.subtitle}</p>
+                <div className="space-y-5 max-w-md">
+                  <p className="text-lg lg:text-xl text-gray-500 leading-relaxed font-medium">{SITE_CONTENT.hero.subtitle}</p>
+                  <p className="text-base text-gray-400 leading-relaxed">{SITE_CONTENT.hero.subtitleSecondary}</p>
+                </div>
                 
                 <div className="flex flex-wrap gap-4 sm:gap-6 items-center mt-4">
 

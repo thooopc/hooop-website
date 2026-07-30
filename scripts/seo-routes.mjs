@@ -16,7 +16,7 @@ const post = (slug, title, description) => [
 export const ROUTES = Object.fromEntries([
   ["/", {
     title: "HOOOP Collective — Climate Venture Lab & ESG Strategy for Indian Brands",
-    description: "A venture lab and strategy collective turning climate innovation into commercial reality by bridging the gap between scale-ups and mainstream adoption.",
+    description: "A venture studio helping climate and circular businesses bridge innovation and adoption — marketing strategy, market intelligence and commercial partnerships.",
   }],
   ["/manifesto", {
     title: "Our Manifesto | HOOOP",
