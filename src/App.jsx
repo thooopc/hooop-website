@@ -2993,8 +2993,10 @@ const App = React.forwardRef((props, ref) => {
                          <SoftCard key={idx} className="p-6 md:p-7 flex flex-col sm:flex-row gap-6 md:gap-7 group">
                             {/* Portrait rather than a circle: the source images are 3:4, so a
                                 circular crop threw away most of the frame. */}
-                            <div className="w-full sm:w-40 md:w-44 aspect-[3/4] sm:aspect-[3/4] rounded-[1.75rem] bg-[#E0E5EC] shadow-[inset_4px_4px_10px_#bebebe,inset_-4px_-4px_10px_#ffffff] p-2 shrink-0 overflow-hidden">
-                               <ImageWithFallback src={member.img} alt={member.name} className="w-full h-full object-cover object-top rounded-[1.4rem] grayscale group-hover:grayscale-0 transition-all duration-700"/>
+                            <div className="relative w-full sm:w-40 md:w-44 aspect-[3/4] rounded-[1.75rem] bg-[#E0E5EC] shadow-[inset_4px_4px_10px_#bebebe,inset_-4px_-4px_10px_#ffffff] shrink-0">
+                               {/* Inset-positioned rather than w-full/h-full: percentage height
+                                   does not resolve reliably inside an aspect-ratio box. */}
+                               <ImageWithFallback src={member.img} alt={member.name} className="absolute inset-2 object-cover object-top rounded-[1.4rem] grayscale group-hover:grayscale-0 transition-all duration-700"/>
                             </div>
                             <div className="min-w-0 flex flex-col">
                                <h2 className="text-xl font-bold text-[#313b4e] leading-tight">{member.name}</h2>
