@@ -95,6 +95,8 @@ const SITE_CONTENT = {
             "This is where the Venture lab model proves invaluable. Scaling a marine plastic venture requires locking in guaranteed offtake agreements. A startup cannot invest in a high-capacity extrusion facility without knowing a major brand will buy the recycled pellets. We help bridge this gap by connecting marine innovators directly with corporate procurement teams, designing pilot programs that de-risk the integration of ocean-bound materials into existing product lines.",
             "Furthermore, traceability is non-negotiable. With the rise of ESG scrutiny, brands using ocean-bound plastic must prove exactly where it came from. 'Washed up on a beach' is no longer sufficient; buyers require block-chain or tech-enabled tracking from the coastal collection point to the factory floor.",
             "By transforming coastal waste from an environmental hazard into a reliable, certified, and economically viable raw material, we can build a self-sustaining circular economy. When ocean-bound plastic becomes too valuable to leave on the beach, the market will naturally clean the oceans."
+          
+            { cta: "How we support scale-ups", to: "offerings" },
           ]
       },
       {
@@ -109,6 +111,8 @@ const SITE_CONTENT = {
             "The second is the *Hidden Trade-off*. A brand might boast about using '15% recycled ocean plastic' in a bottle, while ignoring that the remaining 85% is virgin plastic, and the bottle's design makes it unrecyclable at its end-of-life. The marketing highlights a marine benefit to mask a broader circularity failure.",
             "The third, and most egregious, is the *Misleading Source*. 'Ocean-bound plastic' is a highly specific term, generally defined as plastic waste recovered within 50 kilometers of a coastline in areas lacking formal waste management. If a brand uses plastic collected hundreds of miles inland but brands it with a blue wave logo to imply marine recovery, they are deceiving the consumer.",
             "For brands aiming to build authentic ESG credibility, marine claims require radical transparency. Use precise language, disclose the exact percentage of marine materials, provide open-source access to supply chain traceability, and ensure compliance with strict regulatory frameworks. If you are protecting the ocean, prove the math."
+          
+            { cta: "Read the greenwashing playbook", to: "greenwashing" },
           ]
       },
       {
@@ -123,6 +127,8 @@ const SITE_CONTENT = {
             "However, this hesitation ignores a massive, impending market shift. As global frameworks like the UN's High Seas Treaty take effect, and as corporations recognize the urgent need to address biodiversity and water-resilience in their ESG reporting (like SEBI's BRSR Core), demand for verified Blue Economy solutions will skyrocket.",
             "Venture labs play a critical role here by providing 'Investment & Funding Readiness'. We help marine scale-ups translate their deep-tech or ecological impact into compelling, derisked commercial propositions for investors. This includes identifying blended finance pathways, securing government grants for pilot coastal projects, and structuring early-stage offtake agreements that give VCs the confidence to invest.",
             "Capital must flow where the impact is highest. By bringing rigorous commercial structuring to marine conservation and blue tech, we can unlock the capital needed to protect our oceans while generating significant financial returns."
+          
+            { cta: "How we support ventures", to: "offerings" },
           ]
       },
       {
@@ -137,6 +143,8 @@ const SITE_CONTENT = {
             "Scaling marine biomaterials requires a Venture lab approach. It is not enough to hand a startup a check; they need deep operational integration. They require partnerships with machinery manufacturers to adapt legacy packaging lines. They need regulatory navigation to ensure new edible materials meet FSSAI or FDA food safety standards.",
             "Furthermore, there is the supply side challenge. Scaling seaweed packaging requires scaling regenerative seaweed aquaculture globally. This involves creating ethical, fair-trade supply chains with coastal farming communities, ensuring that the raw material is harvested without damaging existing marine ecosystems.",
             "The transition from fossil-fuel plastics to marine biomaterials will be one of the greatest wealth-generating shifts of the next two decades. But it will not happen through isolated innovation. It requires the orchestrated, strategic deployment of capital, corporate partnerships, and operational expertise to bring these oceanic solutions into the mainstream."
+          
+            { cta: "How we support scale-ups", to: "offerings" },
           ]
       },
       {
@@ -151,6 +159,8 @@ const SITE_CONTENT = {
             "To cross this valley, circular economy scale-ups must radically shift their approach. First, they need 'Investment & Funding Readiness' that goes beyond venture capital. This means unlocking blended finance, government grants, and demonstration project funding that can subsidize the risk for early corporate adopters.",
             "Second, ventures need bulletproof 'Impact Credibility'. A corporate buyer cannot take a risk on a new sustainable material if there is a chance it will lead to greenwashing accusations. Providing verifiable, third-party audited lifecycle impact stories is a mandatory prerequisite for B2B commercial traction.",
             "Ultimately, crossing the valley of death requires a deep understanding of corporate inertia. By anticipating procurement roadblocks and offering de-risked, turnkey pilot integrations, sustainable ventures can move from being exciting 'innovation projects' to indispensable commercial partners."
+          
+            { cta: "How we support scale-ups", to: "offerings" },
           ]
       },
       {
@@ -165,6 +175,8 @@ const SITE_CONTENT = {
             "This regulatory labyrinth often prevents high-potential scale-ups from accessing lucrative international markets. A venture lab focusing on cross-border growth must prioritize 'International Expansion & Market Entry' through the lens of sustainability compliance. It involves mapping ESG disclosures, ensuring anti-greenwashing alignment with bodies like the CMA or ASCI, and developing a narrative that regulators trust.",
             "Beyond compliance, successful market entry requires strategic matchmaking. Startups need introductions to local investors who understand the specific thematic area—whether it's water resilience tech or waste-to-value solutions. They need local pilot partners to validate the technology in a new geographical context.",
             "The companies that will dominate the next decade of the green transition are those that view international ESG regulations not as a barrier, but as a competitive moat. By building operations that proactively comply with the highest global standards, these ventures unlock access to premium markets and dedicated impact capital."
+          
+            { cta: "Explore Prvaah", to: "prvaah" },
           ]
       },
       {
@@ -179,6 +191,8 @@ const SITE_CONTENT = {
             "Consider the due diligence process for Series A and B rounds in 2025. Funds are no longer satisfied with slide decks promising 'net-zero aspirations'. They are deploying forensic carbon accountants to audit supply chains. They are using satellite imagery to verify reforestation claims. In this environment, a brand narrative that outpaces actual impact is a liability. It suggests a management team that prioritizes optics over operations—a red flag for any serious investor.",
             "The financial implications of greenwashing allegations are severe. Beyond the immediate legal fines—which, under new guidelines like India's CCPA, are becoming substantial—there is the cost of the 'trust discount'. Once a brand is flagged for deceptive practices, the market applies a permanent discount to its future claims. Customer acquisition costs (CAC) spike as skepticism rises. Employee retention drops as purpose-driven talent exits. The brand equity, painstakingly built over years, evaporates overnight.",
             "For founders and CMOs, the lesson is clear: Authenticity is a competitive moat. Building a brand on verifiable, data-backed impact might be slower than spinning a green fairytale, but it builds a valuation that holds up under scrutiny. In the new economy, the most valuable asset on your balance sheet isn't just your IP; it's your integrity."
+          
+            { cta: "Read the greenwashing playbook", to: "greenwashing" },
           ]
       },
       { 
@@ -193,6 +207,8 @@ const SITE_CONTENT = {
             "The brands winning in this era are those practicing 'Radical Transparency'. They don't just publish a sustainability report; they publish their failures. They admit that their packaging is only 80% recyclable because the technology for the last 20% doesn't exist yet at scale. They openly discuss the carbon cost of their logistics and invite consumers to help solve it. This approach disarms the cynical consumer because it validates their skepticism.",
             "It shifts the dynamic from a brand preaching from a pedestal to a brand partnering with its community on a difficult journey. It transforms the brand promise from 'We are saving the world' to 'We are trying to do better, and here is the proof'.",
             "To build a narrative that survives scrutiny, marketers must move from 'storytelling' to 'truth-telling'. Every claim must be backed by accessible data (QR codes to supply chain maps, for instance). Adjectives must be replaced by nouns and numbers. 'Better for the planet' is a lie; '40% less water usage than industry average' is a fact. In the age of the cynical consumer, facts are the only story that sells."
+          
+            { cta: "Stress-test your claims with Sense", to: "sense" },
           ]
       },
       { 
@@ -207,6 +223,8 @@ const SITE_CONTENT = {
             "It is time to declare the end of 'Green' media buying as a niche CSR activity and treat it as a core performance metric. We propose a new framework: Carbon-Adjusted CPM. This metric factors in the emissions intensity of the media supply chain. A publisher running on renewable energy, with a direct server-to-server connection, offers a higher quality, lower carbon impression than a murky programmatic chain.",
             "Optimizing for sustainability in media actually improves performance. By cutting out the 'long tail' of low-quality sites to reduce carbon, brands inevitably improve viewability and brand safety. By simplifying the ad tech stack (Supply Path Optimization), we reduce energy waste and fees simultaneously.",
             "The future of media planning involves 'Carbon Budgets' alongside financial budgets. Campaigns will be capped not just by dollars, but by CO2e. Agencies that can deliver high attention with low emissions will win. The era of ignoring the digital exhaust of our marketing is over."
+          
+            { cta: "See the ESG Media Index", to: "esg-media-index" },
           ]
       },
       { 
@@ -221,6 +239,8 @@ const SITE_CONTENT = {
             "This is where the funding gap becomes critical. Transitioning to renewable energy, auditing supply chains, and obtaining certifications requires capital. Yet, global climate finance has been slow to reach the 'missing middle'—the mid-sized enterprises that form the backbone of the Indian supply chain. UK investors are keen on green assets, but they struggle to verify the ESG credentials of Indian SMEs.",
             "This is the gap Prvaah was built to bridge. By standardizing compliance data and providing a credible 'ESG Passport' for Indian businesses, we unlock access to UK green finance. We are seeing a shift from generalist FDI to specialized 'Impact Capital' flows. UK funds are looking for Indian partners who are not just compliant with today's laws, but resilient to tomorrow's climate risks.",
             "For Indian businesses, the message is urgent: ESG is no longer a 'nice-to-have' for export; it is a license to operate. The India-UK Climate Corridor is open for business, but only for those who have the data to prove they belong there."
+          
+            { cta: "Explore Prvaah", to: "prvaah" },
           ]
       },
       { 
@@ -235,6 +255,8 @@ const SITE_CONTENT = {
             "Storydoing means embedding sustainability into the user experience. It's not an ad campaign; it's a product feature. It's the shampoo bar that saves money per wash. It's the electric scooter that is cheaper to run than a petrol bike. It's the repair service that is more convenient than buying new.",
             "Effective climate communication in 2025 uses the principles of behavioral economics. We need to use 'nudges'—default choices, social proof, and immediate rewards—to bridge the gap. Instead of preaching about a distant net-zero future, we must highlight the immediate personal benefits of sustainable choices: health, savings, and status.",
             "The brands that will define the next decade are those that stop talking about the problem and start designing the solution into the customer's daily life. They don't just tell a green story; they help the customer live one."
+          
+            { cta: "What we do", to: "offerings" },
           ]
       },
       { 
@@ -249,6 +271,8 @@ const SITE_CONTENT = {
             "The playbook for 2025 involves decoupling revenue from resource extraction. Resale is the obvious first step. By launching branded resale platforms, companies capture the margin on second-hand sales that was previously going to third-party platforms like Depop or ThredUp. It turns a product from a one-time sale into a recurring revenue asset.",
             "Repair is the second pillar. Positioning repair as a premium service builds immense brand loyalty. It transforms the relationship with the customer from transactional to relational. The jacket you repair is the jacket you keep—and the brand you trust.",
             "Finally, design for disassembly. Marketing needs to educate consumers on *why* a mono-material shirt is better. We need to make 'recyclable' a tangible feature, not a hidden tag. The transition to circular fashion is a marketing challenge as much as a supply chain one. We have to make 'old' feel like 'better'. We have to make longevity aspirational. The brands that master this circular narrative will not only save on EPR fees; they will own the future of fashion."
+          
+            { cta: "Check your claims with Sense", to: "sense" },
           ]
       }
     ]
