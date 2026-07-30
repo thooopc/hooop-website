@@ -369,42 +369,42 @@ const SITE_CONTENT = {
     {
       name: "Arvind Nair",
       role: "Growth & Sustainability",
-      desc: "Helping build marketing as a force for sustainable business to help narrow the value action gap. Formerly Global VP at Mirum India.",
+      desc: "Arvind works on the gap between what people say they want and what they actually buy, and on making marketing useful to businesses trying to close it. Previously Global VP at Mirum India.",
       img: "/Arvind.jpg",
       linkedin: "https://www.linkedin.com/in/arvindbnair/"
     },
     {
       name: "Radhika Sharda",
-      role: "Stakeholder Engagemnt, PR and Communications",
-      desc: "With 20+ years of experience in brand and communications, Radhika specializes in translating sustainability visions into execution-ready frameworks, driving organizational excellence and scalable growth.",
+      role: "Stakeholder Engagement, PR & Communications",
+      desc: "Radhika has spent over twenty years in brand and communications, mostly turning good sustainability intentions into something a team can actually execute on Monday morning.",
       img: "/radhika.jpg",
       linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
     },
     {
       name: "Maya D'Souza",
       role: "Circular Economy Policy",
-      desc: "Expert on circular economy policy and practice. Focused on systems design and policy frameworks for sustainable impact.",
+      desc: "Maya works on circular economy policy and practice — the systems and frameworks that decide whether circularity stays a pilot or becomes how an industry runs.",
       img: "/MayaF.png",
       linkedin: "https://www.linkedin.com/in/maya-de-souza-12b16aa/"
     },
     {
       name: "Paromita Mukhopadhyay",
       role: "Environmental Law & Policy",
-      desc: "Leads environmental law and policy thinking at HOOOP with 20+ years of experience. Consultant for funds monitoring regulatory and policy developments.",
+      desc: "Paromita leads our environmental law and policy thinking, drawing on more than twenty years in the field. She also advises funds tracking how regulation is shifting beneath them.",
       img: "/Paromita.jpg",
       linkedin: "https://www.linkedin.com/in/paromita-mukhopadhyay-nair-bb24447/"
     },
     {
       name: "Shujoy Dutta",
       role: "Brand Strategy",
-      desc: "Blending brand with sustainability to craft  impactful brand strategies.",
+      desc: "Shujoy builds brand strategy where sustainability is part of the story rather than a line at the end of it — work that has to hold up creatively and commercially.",
       img: "/shujoy.jpg",
       linkedin: "https://www.linkedin.com/in/shujoy-dutta-05599219/"
     },
     {
       name: "Rachana Lokhande",
       role: "Sustainable Media Strategy",
-      desc: "25+ years leadership in media & tech. Former Co-CEO of Kinetic Worldwide. Advancing the concept of sustainable media to drive climate-positive impact.",
+      desc: "Rachana spent twenty-five years leading media and technology businesses, including as Co-CEO of Kinetic Worldwide. She now works on making sustainable media a planning decision rather than an afterthought.",
       img: "/Rachna.jpg",
       linkedin: "https://www.linkedin.com/in/rachanadlokhande/"
     }
