@@ -369,42 +369,42 @@ const SITE_CONTENT = {
     {
       name: "Arvind Nair",
       role: "Growth & Sustainability",
-      desc: "Arvind works on the gap between what people say they want and what they actually buy, and on building the ecosystem around sustainable marketing. Previously Global VP of Growth & Sustainability at Mirum India, where he shaped the agency\u2019s full-funnel offer across creative, media and martech for brands including IndiGo, Ford, Fitbit and American Express.",
+      desc: "Helping build marketing as a force for sustainable business to help narrow the value action gap. Formerly Global VP at Mirum India.",
       img: "/Arvind.jpg",
       linkedin: "https://www.linkedin.com/in/arvindbnair/"
     },
     {
       name: "Radhika Sharda",
-      role: "Stakeholder Engagement, PR & Communications",
-      desc: "Radhika is a communications strategist and sustainability storyteller with more than two decades shaping reputation and purpose-led narratives. Formerly Senior Director and India Practice Chair for Brands at Burson, she has led national mandates across consumer, auto, tech and FMCG, with work recognised at the SABRE, PRCA and PR Awards Asia.",
+      role: "Stakeholder Engagemnt, PR and Communications",
+      desc: "With 20+ years of experience in brand and communications, Radhika specializes in translating sustainability visions into execution-ready frameworks, driving organizational excellence and scalable growth.",
       img: "/radhika.jpg",
       linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
     },
     {
       name: "Maya D'Souza",
       role: "Circular Economy Policy",
-      desc: "Maya works on circular economy policy and practice — the systems and frameworks that decide whether circularity stays a pilot or becomes how an industry runs.",
+      desc: "Expert on circular economy policy and practice. Focused on systems design and policy frameworks for sustainable impact.",
       img: "/MayaF.png",
       linkedin: "https://www.linkedin.com/in/maya-de-souza-12b16aa/"
     },
     {
       name: "Paromita Mukhopadhyay",
       role: "Environmental Law & Policy",
-      desc: "Paromita leads our environmental law and policy thinking, with more than two decades in legal policy and research. She also advises funds on the regulatory developments likely to affect the companies and sectors they hold, and on what those developments actually require of them.",
+      desc: "Leads environmental law and policy thinking at HOOOP with 20+ years of experience. Consultant for funds monitoring regulatory and policy developments.",
       img: "/Paromita.jpg",
       linkedin: "https://www.linkedin.com/in/paromita-mukhopadhyay-nair-bb24447/"
     },
     {
       name: "Shujoy Dutta",
       role: "Brand Strategy",
-      desc: "Shujoy has spent twenty-five years as both creative and strategist, most recently as Senior Vice President and Executive Planning Director at Wunderman Thompson India, where he led planning for the south. Now a research scholar at IIT Delhi, he brings the brand thinking and architecture to how we frame sustainability.",
+      desc: "Blending brand with sustainability to craft  impactful brand strategies.",
       img: "/shujoy.jpg",
       linkedin: "https://www.linkedin.com/in/shujoy-dutta-05599219/"
     },
     {
       name: "Rachana Lokhande",
       role: "Sustainable Media Strategy",
-      desc: "Rachana spent twenty-five years leading media and technology businesses, including as Co-CEO of Kinetic Worldwide, one of the world\u2019s largest out-of-home media organisations. She now works on making sustainable media a planning decision rather than an afterthought.",
+      desc: "25+ years leadership in media & tech. Former Co-CEO of Kinetic Worldwide. Advancing the concept of sustainable media to drive climate-positive impact.",
       img: "/Rachna.jpg",
       linkedin: "https://www.linkedin.com/in/rachanadlokhande/"
     }
@@ -2977,47 +2977,42 @@ const App = React.forwardRef((props, ref) => {
           {/* COLLECTIVE */}
           {activeSection === 'collective' && (
              <section className="py-24 min-h-screen animate-fade-in-up">
-                <div className="max-w-6xl mx-auto px-6">
-                  <div className="mb-16">
-                     <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-6">The Collective</h1>
-                     <p className="text-gray-500 max-w-2xl text-lg leading-relaxed">
-                        We are thinkers, technologists, communicators and designers working to accelerate change —
-                        senior practitioners who combine per engagement rather than sitting in a pyramid.
-                     </p>
-                  </div>
-
-                  {/* Two-across editorial layout. Bios are no longer height-clipped:
-                      the old cards cut them off at 80px with overflow-hidden. */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                     {SITE_CONTENT.collective.map((member, idx) => (
-                         <SoftCard key={idx} className="p-8 flex gap-6 group">
-                            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-[#E0E5EC] shadow-[inset_4px_4px_10px_#bebebe,inset_-4px_-4px_10px_#ffffff] p-1.5 shrink-0">
-                               <ImageWithFallback src={member.img} alt={member.name} className="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500"/>
-                            </div>
-                            <div className="min-w-0">
-                               <h2 className="text-xl font-bold text-[#313b4e] leading-tight">{member.name}</h2>
-                               <p className="text-gray-400 font-bold text-[10px] uppercase tracking-widest mt-1.5 mb-3">{member.role}</p>
-                               <p className="text-gray-500 text-sm leading-relaxed">{member.desc}</p>
-                               {member.linkedin && (
-                                 <a href={member.linkedin} target="_blank" rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 mt-4 text-xs font-bold text-gray-400 hover:text-teal-600 transition-colors">
-                                    <Linkedin size={15} /> LinkedIn
-                                 </a>
-                               )}
-                            </div>
-                         </SoftCard>
-                     ))}
-                  </div>
-
-                  <div className="mt-16 text-center">
-                      <p className="text-gray-600 text-lg">
-                          If our purpose resonates with you, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a> to join the collective.
-                      </p>
-                  </div>
+                <div className="mb-20">
+                   <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-6">The Collective</h1>
+                   <p className="text-gray-500 max-w-xl text-lg">
+                      We are thinkers, technologists, communicators, and designers working to accelerate change.
+                   </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                   {SITE_CONTENT.collective.map((member, idx) => (
+                       <SoftCard key={idx} className="p-8 flex flex-col items-center text-center group">
+                          <div className="w-32 h-32 rounded-full bg-[#E0E5EC] shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] p-2 flex-shrink-0 mb-6">
+                             <ImageWithFallback src={member.img} alt={member.name} className="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500"/>
+                          </div>
+                          <div>
+                             <h2 className="text-xl font-bold text-[#313b4e]">{member.name}</h2>
+                             <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-4 mt-2 h-8">{member.role}</p>
+                             <p className="text-gray-500 text-xs leading-relaxed mb-6 h-20 overflow-hidden">{member.desc}</p>
+                             <div className="flex justify-center gap-4">
+                                {member.linkedin && (
+                                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="relative z-20">
+                                    <Linkedin size={18} className="text-gray-400 hover:text-black cursor-pointer transition-colors"/>
+                                </a>
+                                )}
+                                <Globe size={18} className="text-gray-400 hover:text-black cursor-pointer transition-colors"/>
+                             </div>
+                          </div>
+                       </SoftCard>
+                   ))}
+                </div>
+                <div className="mt-16 text-center">
+                    <p className="text-gray-600 text-lg">
+                        If our purpose resonates with you, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a> to join the collective.
+                    </p>
                 </div>
              </section>
           )}
-
+          
           {/* CONTACT */}
           {activeSection === 'contact' && (
              <section className="py-24 min-h-screen flex flex-col items-center justify-center animate-fade-in-up px-6">
