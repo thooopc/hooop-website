@@ -17,7 +17,7 @@ const SITE_CONTENT = {
     titleLine1: "Growth.",
     titleLine2: "Reimagined.",
     subtitle: "A venture studio helping climate and circular businesses bridge the gap between innovation and adoption.",
-    subtitleSecondary: "We combine brand and marketing strategy, market intelligence, commercial partnerships and behavioural insight to help ventures become investable, credible and scalable.",
+    subtitleSecondary: "We combine brand and marketing strategy, market intelligence, commercial partnerships and behavioural insight to help established businesses grow credibly and at scale.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
