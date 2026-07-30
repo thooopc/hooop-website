@@ -369,14 +369,14 @@ const SITE_CONTENT = {
     {
       name: "Arvind Nair",
       role: "Growth & Sustainability",
-      desc: "Arvind works on the gap between what people say they want and what they actually buy, and on making marketing useful to businesses trying to close it. Previously Global VP at Mirum India.",
+      desc: "Arvind works on the gap between what people say they want and what they actually buy, and on building the ecosystem around sustainable marketing. Previously Global VP of Growth & Sustainability at Mirum India, where he shaped the agency\u2019s full-funnel offer across creative, media and martech for brands including IndiGo, Ford, Fitbit and American Express.",
       img: "/Arvind.jpg",
       linkedin: "https://www.linkedin.com/in/arvindbnair/"
     },
     {
       name: "Radhika Sharda",
       role: "Stakeholder Engagement, PR & Communications",
-      desc: "Radhika has spent over twenty years in brand and communications, mostly turning good sustainability intentions into something a team can actually execute on Monday morning.",
+      desc: "Radhika is a communications strategist and sustainability storyteller with more than two decades shaping reputation and purpose-led narratives. Formerly Senior Director and India Practice Chair for Brands at Burson, she has led national mandates across consumer, auto, tech and FMCG, with work recognised at the SABRE, PRCA and PR Awards Asia.",
       img: "/radhika.jpg",
       linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
     },
@@ -390,21 +390,21 @@ const SITE_CONTENT = {
     {
       name: "Paromita Mukhopadhyay",
       role: "Environmental Law & Policy",
-      desc: "Paromita leads our environmental law and policy thinking, drawing on more than twenty years in the field. She also advises funds tracking how regulation is shifting beneath them.",
+      desc: "Paromita leads our environmental law and policy thinking, with more than two decades in legal policy and research. She also advises funds on the regulatory developments likely to affect the companies and sectors they hold, and on what those developments actually require of them.",
       img: "/Paromita.jpg",
       linkedin: "https://www.linkedin.com/in/paromita-mukhopadhyay-nair-bb24447/"
     },
     {
       name: "Shujoy Dutta",
       role: "Brand Strategy",
-      desc: "Shujoy builds brand strategy where sustainability is part of the story rather than a line at the end of it — work that has to hold up creatively and commercially.",
+      desc: "Shujoy has spent twenty-five years as both creative and strategist, most recently as Senior Vice President and Executive Planning Director at Wunderman Thompson India, where he led planning for the south. Now a research scholar at IIT Delhi, he brings the brand thinking and architecture to how we frame sustainability.",
       img: "/shujoy.jpg",
       linkedin: "https://www.linkedin.com/in/shujoy-dutta-05599219/"
     },
     {
       name: "Rachana Lokhande",
       role: "Sustainable Media Strategy",
-      desc: "Rachana spent twenty-five years leading media and technology businesses, including as Co-CEO of Kinetic Worldwide. She now works on making sustainable media a planning decision rather than an afterthought.",
+      desc: "Rachana spent twenty-five years leading media and technology businesses, including as Co-CEO of Kinetic Worldwide, one of the world\u2019s largest out-of-home media organisations. She now works on making sustainable media a planning decision rather than an afterthought.",
       img: "/Rachna.jpg",
       linkedin: "https://www.linkedin.com/in/rachanadlokhande/"
     }
