@@ -1,7 +1,8 @@
 {
   "redirects": [
     { "source": "/our-thinking", "destination": "/thinking", "permanent": true },
-    { "source": "/what-we-do", "destination": "/offerings", "permanent": true }
+    { "source": "/what-we-do", "destination": "/offerings", "permanent": true },
+    { "source": "/thinking/era-of-green-media-buying", "destination": "/thinking/sustainable-media-planning-india", "permanent": true }
   ],
   "rewrites": [
     { "source": "/robots.txt", "destination": "/robots.txt" },

@@ -14,8 +14,8 @@ const SITE_CONTENT = {
     contactEmail: "hello@hooop.in",
   },
   hero: {
-    titleLine1: "Growth.",
-    titleLine2: "Reimagined.",
+    titleLine1: "Marketing Science",
+    titleLine2: "for Circular and Sustainable Commerce.",
     subtitle: "A marketing and strategy collective helping climate and circular businesses bridge the gap between innovation and adoption.",
     subtitleSecondary: "We combine brand and marketing strategy, market intelligence, commercial partnerships and behavioural insight to help businesses grow credibly and at scale.",
     buttonText: "Our Offerings",
@@ -212,22 +212,36 @@ const SITE_CONTENT = {
             { cta: "Stress-test your claims with Sense", to: "sense" },
           ]
       },
-      { 
-          title: "The Era of 'Green' Media Buying", 
-          slug: "era-of-green-media-buying",
-          category: "Sustainable Media", 
-          date: "September 15, 2025", 
-          desc: "A new framework for measuring the carbon footprint of your digital ad spend.",
+      {
+          title: "Sustainable Media Planning in India: How Cutting Carbon Cuts Wasted Spend",
+          slug: "sustainable-media-planning-india",
+          category: "Sustainable Media",
+          date: "July 30, 2026",
+          desc: "Every rupee is being asked to justify itself. The inventory inflating your campaign's carbon footprint is usually the same inventory that was never going to perform.",
           content: [
-            "Digital advertising has a dirty secret: it is a massive emitter of carbon. Every time a programmatic ad loads, it triggers a chain reaction of server calls, data processing, and energy consumption across a complex web of intermediaries. The global internet already accounts for nearly 4% of global greenhouse gas emissions—on par with the aviation industry—and digital advertising is a significant chunk of that pie.",
-            "For sustainable brands, this creates a paradox. You cannot sell a low-carbon product using high-carbon media. Yet, the industry's obsession with CPM (Cost Per Mille) and efficiency incentivizes a 'spray and pray' approach that maximizes emissions. We are buying cheap impressions on MFA (Made For Advertising) sites that deliver zero value but consume real energy.",
-            "It is time to declare the end of 'Green' media buying as a niche CSR activity and treat it as a core performance metric. We propose a new framework: Carbon-Adjusted CPM. This metric factors in the emissions intensity of the media supply chain. A publisher running on renewable energy, with a direct server-to-server connection, offers a higher quality, lower carbon impression than a murky programmatic chain.",
-            "Optimizing for sustainability in media actually improves performance. By cutting out the 'long tail' of low-quality sites to reduce carbon, brands inevitably improve viewability and brand safety. By simplifying the ad tech stack (Supply Path Optimization), we reduce energy waste and fees simultaneously.",
-            "The future of media planning involves 'Carbon Budgets' alongside financial budgets. Campaigns will be capped not just by dollars, but by CO2e. Agencies that can deliver high attention with low emissions will win. The era of ignoring the digital exhaust of our marketing is over.",
-          
+            "Two publishers can serve the same creative to the same person. One does it at roughly three times the emissions of the other.",
+            "That is a fact about the internet. What makes it useful is that the heavy one is usually also the expensive one.",
+            { heading: "Where the rupee actually goes" },
+            "The reason one placement burns more energy is rarely its content. It is the ad clutter on the page. The programmatic supply path with six intermediaries each taking a margin. The made-for-advertising site built to harvest impressions no human will ever look at. The invalid traffic. The ad that technically served but never entered anyone's viewport.",
+            "Every one of those burns electricity. Every one of those was also paid for out of your budget, and returned nothing.",
+            "So when you strip out the inventory inflating a campaign's footprint, you are mostly stripping out inventory that was never going to perform. Fewer intermediaries means more of each rupee reaching actual media. Higher viewability means you are paying for ads that were seen. Less invalid traffic means fewer impressions served to bots.",
+            "None of that is a climate argument. It is a media efficiency argument that happens to have a climate consequence.",
+            { heading: "Why this year in particular" },
+            "Marketing budgets are under a kind of scrutiny they have not faced in a while. Every line is being asked what it returned. In that room, sustainability is usually the first thing cut, read as a cost you carry for reputational reasons rather than a lever that moves the number.",
+            "We would argue that gets it backwards, and that the framing is what is wrong rather than the spend.",
+            "If you told a CFO you had found a way to stop paying for impressions no human sees, that is not a sustainability initiative. That is competent buying. The fact that the same decision cuts emissions is real and worth reporting, but it is the second-order benefit, not the reason to do it.",
+            { heading: "What the signals actually are" },
+            "Carbon intensity, supply path length, inventory quality, invalid traffic rates, publisher governance. All of it is knowable before you commit budget. Used at planning stage they behave like performance signals. Used after the campaign they are just reporting.",
+            "That is the whole shift: sustainability data as a planning input rather than a post-campaign PDF.",
+            { heading: "What we still do not know" },
+            "We do not have a defensible benchmark for what good looks like on an Indian media plan yet. The market average we are seeing sits around 45 out of 100 on the index we are building with The GoodNet. That is an early read on a small sample, and we would treat it as a starting point rather than a standard.",
+            "We are also not certain how far the correlation holds. On the plans we have looked at, cleaner inventory has consistently been better inventory. Whether that stays true at every budget level and in every category, we genuinely do not know yet.",
+            { heading: "Where we have got to" },
+            "Enough plans in to think the trade-off most marketers assume, that responsible media costs you performance, mostly is not real. Not enough to call it settled.",
+            "If you are weighing the same question, or you have seen data pointing the other way, we would like to hear it. Send us a site list and we will tell you what we see, including if the honest answer is that there is not much to gain.",
             { cta: "See the ESG Media Index", to: "esg-media-index" },
-          ]
-      },
+          ],
+       },
       { 
           title: "Decoding the India-UK Climate Corridor", 
           slug: "decoding-india-uk-climate-corridor",
@@ -2517,7 +2531,8 @@ const App = React.forwardRef((props, ref) => {
               <div className="w-full lg:w-1/2 z-10 flex flex-col justify-center items-start space-y-10 pl-4 lg:pl-12">
                 <div className="flex flex-col">
                     <span className="text-xs font-bold tracking-[0.3em] uppercase text-gray-400 mb-4">{SITE_CONTENT.brand.est}</span>
-                    <h1 className="text-4xl sm:text-5xl lg:text-8xl font-black text-[#313b4e] leading-[0.9] tracking-tight">
+                    {/* Sized for the longer line: text-8xl was set for "Growth. / Reimagined." */}
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-[#313b4e] leading-[1.02] tracking-tight max-w-2xl">
                       {SITE_CONTENT.hero.titleLine1} <br/>
                       <span className="text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-600">{SITE_CONTENT.hero.titleLine2}</span>
                     </h1>
