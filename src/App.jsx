@@ -17,7 +17,6 @@ const SITE_CONTENT = {
     titleLine1: "Marketing Science",
     titleLine2: "for Circular and Sustainable Commerce.",
     subtitle: "A marketing and strategy collective helping climate and circular businesses bridge the gap between innovation and adoption.",
-    subtitleSecondary: "We combine brand and marketing strategy, market intelligence, commercial partnerships and behavioural insight to help businesses grow credibly and at scale.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
@@ -2542,10 +2541,7 @@ const App = React.forwardRef((props, ref) => {
                       </span>
                     </h1>
                 </div>
-                <div className="space-y-5 max-w-md">
-                  <p className="text-lg lg:text-xl text-gray-500 leading-relaxed font-medium">{SITE_CONTENT.hero.subtitle}</p>
-                  <p className="text-base text-gray-400 leading-relaxed">{SITE_CONTENT.hero.subtitleSecondary}</p>
-                </div>
+                <p className="text-lg lg:text-xl text-gray-500 leading-relaxed font-medium max-w-md">{SITE_CONTENT.hero.subtitle}</p>
                 
                 <div className="flex flex-wrap gap-4 sm:gap-6 items-center mt-4">
 
