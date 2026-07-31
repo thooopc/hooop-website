@@ -16,7 +16,7 @@ const SITE_CONTENT = {
   hero: {
     titleLine1: "Marketing Science",
     titleLine2: "for Circular and Sustainable Commerce.",
-    subtitle: "A marketing and strategy collective helping climate and circular businesses bridge the gap between innovation and adoption.",
+    subtitle: "A marketing and strategy collective helping climate and circular businesses bridge the gap between innovation and commercial adoption.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
