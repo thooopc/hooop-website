@@ -2531,10 +2531,15 @@ const App = React.forwardRef((props, ref) => {
               <div className="w-full lg:w-1/2 z-10 flex flex-col justify-center items-start space-y-10 pl-4 lg:pl-12">
                 <div className="flex flex-col">
                     <span className="text-xs font-bold tracking-[0.3em] uppercase text-gray-400 mb-4">{SITE_CONTENT.brand.est}</span>
-                    {/* Sized for the longer line: text-8xl was set for "Growth. / Reimagined." */}
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-[#313b4e] leading-[1.02] tracking-tight max-w-2xl">
-                      {SITE_CONTENT.hero.titleLine1} <br/>
-                      <span className="text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-600">{SITE_CONTENT.hero.titleLine2}</span>
+                    {/* Two weights rather than one size: the full line at hero scale
+                        wrapped to six lines and pushed the CTAs off screen. */}
+                    <h1 className="text-[#313b4e] tracking-tight max-w-xl">
+                      <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[0.95]">
+                        {SITE_CONTENT.hero.titleLine1}
+                      </span>
+                      <span className="block mt-3 text-xl sm:text-2xl lg:text-[1.75rem] font-bold leading-snug text-transparent bg-clip-text bg-gradient-to-br from-gray-700 to-gray-500">
+                        {SITE_CONTENT.hero.titleLine2}
+                      </span>
                     </h1>
                 </div>
                 <div className="space-y-5 max-w-md">
