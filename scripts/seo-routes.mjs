@@ -63,6 +63,9 @@ export const ROUTES = Object.fromEntries([
     description: "How the HOOOP Collective collects, uses, and protects personal data provided through Sense, in line with India's Digital Personal Data Protection Act, 2023.",
   }],
 
+  post("fssai-label-crackdown-sustainability-claims",
+    "FSSAI Is Deleting \u201c100%\u201d and \u201cNatural\u201d From Food Labels. Green Claims Use the Same Words.",
+    "FSSAI has spent months stripping words like 100%, natural and healthy off Indian food packaging. The reasoning it is using applies almost word for word to sustainability claims."),
   post("how-indian-brands-verify-sustainability-claims",
     "We Asked Indian Marketers How They Verify Green Claims. 15% Said They Don't.",
     "Our survey of Indian marketing professionals found that around a third of sustainability claims reach the public without any independent check. The interesting part is why — it is far more often process than intent."),
