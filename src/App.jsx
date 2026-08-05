@@ -57,7 +57,6 @@ const SITE_CONTENT = {
           content: [
             "Over the past few months, words have been quietly disappearing from Indian food packaging. Healthy. Natural. Fresh. 100%. No added sugar.",
             "Not because brands changed their minds. Because FSSAI started issuing notices.",
-            { heading: "What actually happened" },
             "FSSAI directed all food businesses to remove the claim of 100% fruit juice from labels and advertisements of reconstituted juice. The reasoning was specific: under the Food Safety and Standards (Advertising and Claims) Regulations, 2018, there is no provision for a 100% claim at all. And it is particularly misleading where the major ingredient is water and the fruit has been reconstituted from concentrate.",
             "Then it widened. A prohibition order against Dabur over 100% claims on honey, ghee and coconut oil. Notices to Lotte India, Ferns N Petals and Kubera Foods. Le Casa questioned over All Natural on a hazelnut spread. Healthy Master and Troovy over the word Healthy.",
             "None of those companies were accused of selling something dangerous. The products were fine. The labels were the problem.",
