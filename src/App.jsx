@@ -424,14 +424,15 @@ const SITE_CONTENT = {
       linkTo: "prvaah",
     },
   ],
-  // Expertise areas instead of prose bios. `years` is rendered only when
-  // present — leave it off rather than estimating one.
+  // Expertise areas instead of prose bios. `note` carries the single most
+  // recognisable prior role, taken from the team profiles deck.
   collective: [
     {
       name: "Arvind Nair",
       role: "Growth & Sustainability",
-      expertise: ["Growth Strategy", "Sustainable Marketing", "Brand Building", "Digital"],
-      note: "Formerly Global VP, Mirum India",
+      years: "20+",
+      expertise: ["Strategy & Growth", "Digital-First Brands", "Media & Martech", "Sustainability"],
+      note: "Formerly Global VP, Growth & Sustainability, Mirum India",
       img: "/Arvind.jpg",
       linkedin: "https://www.linkedin.com/in/arvindbnair/"
     },
@@ -439,13 +440,15 @@ const SITE_CONTENT = {
       name: "Radhika Sharda",
       role: "Stakeholder Engagement, PR & Communications",
       years: "20+",
-      expertise: ["Stakeholder Engagement", "PR & Communications", "Brand"],
+      expertise: ["Stakeholder Engagement", "PR & Communications", "Reputation & Crisis", "Climate Communication"],
+      note: "Formerly Senior Director & India Practice Chair, Brands, Burson",
       img: "/radhika.jpg",
       linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
     },
     {
       name: "Maya D'Souza",
       role: "Circular Economy Policy",
+      years: "25+",
       expertise: ["Circular Economy Policy", "Systems Design", "Policy Frameworks"],
       img: "/MayaF.png",
       linkedin: "https://www.linkedin.com/in/maya-de-souza-12b16aa/"
@@ -454,14 +457,17 @@ const SITE_CONTENT = {
       name: "Paromita Mukhopadhyay",
       role: "Environmental Law & Policy",
       years: "20+",
-      expertise: ["Environmental Law", "Policy & Regulation", "Fund Advisory"],
+      expertise: ["Environmental Law", "Policy & Regulation", "Regulatory Research"],
+      note: "Advises funds on regulatory and policy risk",
       img: "/Paromita.jpg",
       linkedin: "https://www.linkedin.com/in/paromita-mukhopadhyay-nair-bb24447/"
     },
     {
       name: "Shujoy Dutta",
       role: "Brand Strategy",
-      expertise: ["Brand Strategy", "Sustainability Positioning"],
+      years: "25+",
+      expertise: ["Brand Strategy", "Brand Architecture", "Creative & Planning"],
+      note: "Formerly SVP & Executive Planning Director, Wunderman Thompson India",
       img: "/shujoy.jpg",
       linkedin: "https://www.linkedin.com/in/shujoy-dutta-05599219/"
     },
@@ -470,7 +476,7 @@ const SITE_CONTENT = {
       role: "Sustainable Media Strategy",
       years: "25+",
       expertise: ["Media Strategy", "Sustainable Media", "Ad Tech"],
-      note: "Former Co-CEO, Kinetic Worldwide",
+      note: "Formerly Co-CEO, Kinetic Worldwide",
       img: "/Rachna.jpg",
       linkedin: "https://www.linkedin.com/in/rachanadlokhande/"
     }
@@ -3129,7 +3135,7 @@ const App = React.forwardRef((props, ref) => {
                                  break the row's shared baseline. */}
                              <div className="h-12 mb-1">
                                {member.years && (
-                                 <p className="text-[#313b4e] font-black text-2xl leading-none">
+                                 <p className="text-teal-600 font-black text-2xl leading-none">
                                    {member.years}
                                    <span className="block text-gray-400 font-bold text-[10px] uppercase tracking-widest mt-1">Years</span>
                                  </p>
@@ -3141,13 +3147,13 @@ const App = React.forwardRef((props, ref) => {
                              <div className="min-h-[7rem] flex flex-col justify-center gap-3 mb-5">
                                <div className="flex flex-wrap justify-center gap-1.5">
                                  {(member.expertise || []).map((area, i) => (
-                                   <span key={i} className="px-2.5 py-1 rounded-full bg-white/70 border border-gray-200 text-[10px] font-bold text-gray-600 shadow-sm">
+                                   <span key={i} className="px-2.5 py-1 rounded-full bg-teal-50 border border-teal-100 text-[10px] font-bold text-teal-700 shadow-sm">
                                      {area}
                                    </span>
                                  ))}
                                </div>
                                {member.note && (
-                                 <p className="text-gray-400 text-[11px] italic">{member.note}</p>
+                                 <p className="text-gray-400 text-[11px] italic leading-snug">{member.note}</p>
                                )}
                              </div>
 
