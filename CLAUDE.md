@@ -112,8 +112,16 @@ concrete, not literary.
 - Zero commercial queries. No toehold on any non-brand term.
 - `/greenwashing` — **crawled 6 Apr 2026, not indexed**. Best page on the site.
 - Never crawled: `/collective`, `/contact`, `/offerings`, `/research`, `/thinking`.
-- Conclusion: content depth and authority are the constraint, not technical SEO.
-  Do not propose further technical work before the recrawl lands.
+- Conclusion at the time: content depth and authority are the constraint, not
+  technical SEO. **Partly wrong.** On 5 Aug 2026 every route was found to be
+  serving zero body text to non-JS clients — fixed by the prerender work above.
+  Authority is still the larger constraint, but "technical SEO is done" was an
+  overstatement and the recrawl baseline should be read with that in mind.
+
+GA4, 9 Jul – 5 Aug 2026: 75 active users, 49s avg engagement. Against 10 search
+clicks in three months, that means essentially all traffic is direct/LinkedIn.
+No key events are configured, so Sense consent submissions — the most valuable
+action on the site — are invisible in analytics. Still open.
 
 Search Console and GA4 are not connected. Read exports from Google Drive instead
 — Drive access is authorised for `arvindbnair@gmail.com`. `google.com` domains
