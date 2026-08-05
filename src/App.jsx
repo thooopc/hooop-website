@@ -424,46 +424,53 @@ const SITE_CONTENT = {
       linkTo: "prvaah",
     },
   ],
+  // Expertise areas instead of prose bios. `years` is rendered only when
+  // present — leave it off rather than estimating one.
   collective: [
     {
       name: "Arvind Nair",
       role: "Growth & Sustainability",
-      desc: "Helping build marketing as a force for sustainable business to help narrow the value action gap. Formerly Global VP at Mirum India.",
+      expertise: ["Growth Strategy", "Sustainable Marketing", "Brand Building", "Digital"],
+      note: "Formerly Global VP, Mirum India",
       img: "/Arvind.jpg",
       linkedin: "https://www.linkedin.com/in/arvindbnair/"
     },
     {
       name: "Radhika Sharda",
-      role: "Stakeholder Engagemnt, PR and Communications",
-      desc: "With 20+ years of experience in brand and communications, Radhika specializes in translating sustainability visions into execution-ready frameworks, driving organizational excellence and scalable growth.",
+      role: "Stakeholder Engagement, PR & Communications",
+      years: "20+",
+      expertise: ["Stakeholder Engagement", "PR & Communications", "Brand"],
       img: "/radhika.jpg",
       linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
     },
     {
       name: "Maya D'Souza",
       role: "Circular Economy Policy",
-      desc: "Expert on circular economy policy and practice. Focused on systems design and policy frameworks for sustainable impact.",
+      expertise: ["Circular Economy Policy", "Systems Design", "Policy Frameworks"],
       img: "/MayaF.png",
       linkedin: "https://www.linkedin.com/in/maya-de-souza-12b16aa/"
     },
     {
       name: "Paromita Mukhopadhyay",
       role: "Environmental Law & Policy",
-      desc: "Leads environmental law and policy thinking at HOOOP with 20+ years of experience. Consultant for funds monitoring regulatory and policy developments.",
+      years: "20+",
+      expertise: ["Environmental Law", "Policy & Regulation", "Fund Advisory"],
       img: "/Paromita.jpg",
       linkedin: "https://www.linkedin.com/in/paromita-mukhopadhyay-nair-bb24447/"
     },
     {
       name: "Shujoy Dutta",
       role: "Brand Strategy",
-      desc: "Blending brand with sustainability to craft  impactful brand strategies.",
+      expertise: ["Brand Strategy", "Sustainability Positioning"],
       img: "/shujoy.jpg",
       linkedin: "https://www.linkedin.com/in/shujoy-dutta-05599219/"
     },
     {
       name: "Rachana Lokhande",
       role: "Sustainable Media Strategy",
-      desc: "25+ years leadership in media & tech. Former Co-CEO of Kinetic Worldwide. Advancing the concept of sustainable media to drive climate-positive impact.",
+      years: "25+",
+      expertise: ["Media Strategy", "Sustainable Media", "Ad Tech"],
+      note: "Former Co-CEO, Kinetic Worldwide",
       img: "/Rachna.jpg",
       linkedin: "https://www.linkedin.com/in/rachanadlokhande/"
     }
@@ -3116,7 +3123,29 @@ const App = React.forwardRef((props, ref) => {
                           <div>
                              <h2 className="text-xl font-bold text-[#313b4e]">{member.name}</h2>
                              <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-4 mt-2 h-8">{member.role}</p>
-                             <p className="text-gray-500 text-xs leading-relaxed mb-6 h-20 overflow-hidden">{member.desc}</p>
+
+                             {member.years && (
+                               <p className="text-[#313b4e] font-black text-2xl leading-none mb-1">
+                                 {member.years}
+                                 <span className="block text-gray-400 font-bold text-[10px] uppercase tracking-widest mt-1">Years</span>
+                               </p>
+                             )}
+
+                             {/* Fixed height so the six cards stay on one baseline whether or
+                                 not a member carries a years figure or a note. */}
+                             <div className="min-h-[7rem] flex flex-col justify-center gap-3 mb-5">
+                               <div className="flex flex-wrap justify-center gap-1.5">
+                                 {(member.expertise || []).map((area, i) => (
+                                   <span key={i} className="px-2.5 py-1 rounded-full bg-white/70 border border-gray-200 text-[10px] font-bold text-gray-600 shadow-sm">
+                                     {area}
+                                   </span>
+                                 ))}
+                               </div>
+                               {member.note && (
+                                 <p className="text-gray-400 text-[11px] italic">{member.note}</p>
+                               )}
+                             </div>
+
                              <div className="flex justify-center gap-4">
                                 {member.linkedin && (
                                 <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="relative z-20">
