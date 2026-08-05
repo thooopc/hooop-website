@@ -521,37 +521,60 @@ const SITE_CONTENT = {
 // Sources: CCPA 2024, ASCI Code, FTC Green Guides
 // ==========================================
 
+// Words that only signal a green claim when the surrounding copy is actually
+// about the environment. Rules carrying needsContext:true require a hit here,
+// which is what stops "industry best practices" and "certified accountants"
+// from being reported as greenwashing.
+const ENV_CONTEXT = /\b(eco|green|greener|greenest|environment(al|ally)?|sustainab\w*|climate|carbon|emissions?|recycl\w*|compost\w*|biodegrad\w*|planet|earth|nature|organic|renewable|solar|waste|landfill|plastic|footprint|ocean|marine|forest|tree|circular|net[-\s]?zero|esg|pollution|energy[-\s]?efficient|vegan|cruelty[-\s]?free)\b/i;
+
+// Named certification schemes. When one of these appears the claim is being
+// substantiated, so the generic "name your certifying body" prompt is noise.
+const NAMED_SCHEME = /\b(grs|fsc|iso\s?\d+|bis|ecocert|cradle to cradle|b corp|energy star|rainforest alliance|oeko[-\s]?tex|gots|usda|fairtrade|green seal|epeat|leed)\b/i;
+
 const SENSE_TERMS = [
 
 // ==========================================
-// REGULATOR PACK v1 — ADVANCED CLAIM LOGIC
+// REGULATOR PACK v2 — ADVANCED CLAIM LOGIC
 // ==========================================
 
 // Absolute environmental benefit claims
 {
-pattern: /\b(100%|completely|totally|zero|perfectly)\s+(eco|green|clean|safe|natural|friendly|sustainable)\b/i,
+pattern: /\b(100\s?%|completely|totally|entirely|fully|perfectly|zero)\s+(eco|green|clean|safe|natural|friendly|sustainable|recycled|recyclable|biodegradable|compostable|renewable|organic|plastic[-\s]?free|carbon[-\s]?free|chemical[-\s]?free|waste[-\s]?free|vegan)\b/i,
 risk: "Critical",
 category: "Absolute Environmental Claim",
 reference: "CCPA Clause 6(5), ASCI Code",
 tip: "Absolute environmental claims imply zero harm. Regulators require full lifecycle proof."
 },
 
-// Standalone absolute wording
+// Standalone absolute wording.
+// The alternation deliberately carries its own word boundaries: a trailing \b
+// after "100%" can never match, because % is not a word character, so the old
+// combined form silently never fired on "100% recycled".
 {
-pattern: /\b(100%|completely|totally|zero impact|no impact)\b/i,
+pattern: /(\b100\s?%|\bcompletely\b|\btotally\b|\bentirely\b|\bfully\b|\bzero impact\b|\bno impact\b)/i,
+needsContext: true,
 risk: "High",
 category: "Absolute Claim Language",
 reference: "CCPA Clause 6(5)",
-tip: "Absolute qualifiers require rigorous substantiation."
+tip: "Absolute qualifiers require rigorous substantiation. State what the figure measures."
 },
 
 // Vague eco positioning
 {
-pattern: /\b(planet friendly|earth friendly|nature friendly|environment friendly|eco conscious)\b/i,
+pattern: /\b(eco[-\s]?friendly|environmentally[-\s]?friendly|environment[-\s]?friendly|planet[-\s]?friendly|earth[-\s]?friendly|nature[-\s]?friendly|green[-\s]?friendly|eco[-\s]?conscious|eco[-\s]?safe|planet[-\s]?safe|earth[-\s]?safe)\b/i,
 risk: "High",
 category: "Vague Environmental Claim",
 reference: "CCPA Clause 5(a), ASCI Code",
 tip: "Generic environmental claims must specify measurable impact."
+},
+
+// Zero-prefixed absolutes
+{
+pattern: /\bzero[-\s]?(waste|emissions?|carbon|impact|plastic|landfill|footprint|pollution|harm)\b|\bno\s+(impact|emissions|waste)\b/i,
+risk: "High",
+category: "Absolute Zero Claim",
+reference: "CCPA Clause 6(5), ASCI Code",
+tip: "Zero claims require boundary, scope and verification. State what is counted and what is excluded."
 },
 
 // Implied future benefit language
@@ -583,7 +606,8 @@ tip: "Future targets must include roadmap, interim milestones, and verification.
 
 // Offset language
 {
-pattern: /\b(offset|compensate|neutralise|neutralize)\b/i,
+pattern: /\b(offset|offsets|offsetting|neutralise|neutralize|neutralising|neutralizing)\b/i,
+needsContext: true,
 risk: "High",
 category: "Offset Claim",
 reference: "CCPA Clause 7",
@@ -592,31 +616,35 @@ tip: "Offset claims must disclose scale, permanence, and certification."
 
 // Tree planting claims
 {
-pattern: /\bplant(ing)?\s+(a\s+)?(tree|forest|mangrove|coral)\b/i,
+pattern: /\bplant(ing|s)?\s+(a\s+|one\s+|\d+\s+)?(tree|trees|forest|mangrove|coral)\b/i,
 risk: "High",
 category: "Offset-Based Claim",
 reference: "CCPA Clause 7",
 tip: "Tree planting does not equal carbon neutrality without verified accounting."
 },
+
+// Material claims without disclosed proportion or scheme
 {
-pattern: /\b(recycled|biodegradable|compostable|recyclable)\b(?![^.]*\b(\d+%|percent|certified|ISO|GRS|FSC)\b)/i,
+pattern: /\b(recycled|biodegradable|compostable|recyclable)\b/i,
+suppressIf: /\b(\d+\s?%|percent)\s+(recycled|post[-\s]?consumer|bio[-\s]?based)\b/i,
 risk: "High",
 category: "Unsupported Sustainability Claim",
 reference: "CCPA 2024 Clause 5",
 tip: "Material sustainability claims must include measurable proof or certification."
 },
+
 // Comparative environmental claims
 {
-pattern: /\b(less|lower|reduced|better)\s+(carbon|emissions|impact|footprint)\b/i,
+pattern: /\b(less|lower|reduced|fewer|better)\s+(carbon|emissions?|impact|footprint|waste|plastic|pollution)\b|\b(greener|cleaner|more sustainable|more eco[-\s]?friendly|kinder to the (planet|environment)|better for the (planet|environment|earth))\b/i,
 risk: "Medium",
 category: "Comparative Claim",
 reference: "CCPA Clause 6(4)",
-tip: "Comparative claims must clearly state baseline comparison."
+tip: "Comparative claims must clearly state baseline comparison. Better than what?"
 },
 
 // Nature-derived implication
 {
-pattern: /\b(natural|botanical|plant[-\s]?based|nature[-\s]?derived)\b/i,
+pattern: /\b(natural|botanical|plant[-\s]?based|nature[-\s]?derived)\b(?!\s+(language|fit|progression|selection|gas|talent|habitat))/i,
 risk: "Medium",
 category: "Nature-Based Claim",
 reference: "CCPA Clause 5(a)",
@@ -625,7 +653,7 @@ tip: "Natural ingredients do not automatically mean lower environmental impact."
 
 // Sustainability blanket claims
 {
-pattern: /\b(sustainable|eco|green)\s+(product|brand|company|solution|service|packaging|material|fabric|process|technology)\b/i,
+pattern: /\b(sustainable|eco|green)\s+(product|products|brand|company|solution|solutions|service|services|packaging|material|materials|fabric|process|technology|choice|option|alternative)\b/i,
 risk: "High",
 category: "Unqualified Sustainability Claim",
 reference: "CCPA Clause 5(a)",
@@ -643,7 +671,8 @@ tip: "Ethical claims imply organisation-wide conduct. Must be provable."
 
 // Environmental superiority claims
 {
-pattern: /\b(best|cleanest|greenest|most sustainable)\b/i,
+pattern: /\b(best|greenest|cleanest|purest|most sustainable|most eco[-\s]?friendly|most environmentally[-\s]?friendly)\b/i,
+needsContext: true,
 risk: "High",
 category: "Superlative Claim",
 reference: "FTC Green Guides",
@@ -652,7 +681,9 @@ tip: "Superlative claims require comparative evidence across market."
 
 // Certification implication
 {
-pattern: /\b(certified|approved|verified)\b/i,
+pattern: /\b(certified|approved|verified|accredited)\b/i,
+needsContext: true,
+suppressIf: NAMED_SCHEME,
 risk: "Medium",
 category: "Certification Claim",
 reference: "CCPA Clause 5",
@@ -661,7 +692,7 @@ tip: "Must clearly state certifying body and scope."
 
 // Broad environmental benefit phrases
 {
-pattern: /\b(good for nature|good for earth|safe for planet)\b/i,
+pattern: /\b(good for (nature|the earth|the planet|the environment)|safe for (the )?(planet|environment)|kind to the planet)\b/i,
 risk: "High",
 category: "Unverifiable Benefit Claim",
 reference: "CCPA Clause 5(a)",
@@ -670,7 +701,7 @@ tip: "Broad benefit claims must specify measurable outcomes."
 
 // Zero harm language
 {
-pattern: /\b(no harm|harmless|non harmful|non-toxic)\b/i,
+pattern: /\b(no harm|harmless|non harmful|non-toxic|chemical[-\s]?free|toxin[-\s]?free)\b/i,
 risk: "High",
 category: "Absolute Safety Claim",
 reference: "CCPA Clause 6(5)",
@@ -679,15 +710,16 @@ tip: "Safety claims must be scientifically substantiated."
 
 // Emissions reduction claims
 {
-pattern: /\b(reduces?|cuts?|eliminates?)\s+(carbon|emissions|pollution)\b/i,
+pattern: /\b(reduces?|cuts?|eliminates?|removes?)\s+(carbon|emissions|pollution|waste)\b/i,
 risk: "Medium",
 category: "Impact Reduction Claim",
 reference: "CCPA Clause 6",
 tip: "Must disclose measurement method and baseline."
 },
+
 // sustainability positioning language
 {
-pattern: /\b(committed to sustainability|driven by sustainability|sustainability focused)\b/i,
+pattern: /\b(committed to sustainability|driven by sustainability|sustainability focused|sustainability[-\s]?first)\b/i,
 risk: "High",
 category: "Unqualified Sustainability Positioning",
 reference: "ASCI Code",
@@ -696,7 +728,7 @@ tip: "Organisational sustainability claims require measurable disclosures."
 
 // climate leadership claims
 {
-pattern: /\b(climate leader|climate positive|climate friendly)\b/i,
+pattern: /\b(climate leader|climate positive|climate friendly|carbon positive)\b/i,
 risk: "High",
 category: "Climate Claim",
 reference: "FTC + CCPA",
@@ -705,7 +737,7 @@ tip: "Leadership or positive impact claims require comparative and lifecycle pro
 
 // mission language implying impact
 {
-pattern: /\b(save(s|ing)? the planet|protect(s|ing)? the earth)\b/i,
+pattern: /\b(save(s|ing)? the planet|protect(s|ing)? the earth|heal(s|ing)? the planet)\b/i,
 risk: "Critical",
 category: "Exaggerated Impact Claim",
 reference: "CCPA Clause 5(a)",
@@ -713,7 +745,7 @@ tip: "Exaggerated impact claims are considered misleading unless fully substanti
 },
 
 {
-  pattern: /\bmade from recycled\b/i,
+  pattern: /\bmade (from|with|of) recycled\b/i,
   risk: "High",
   category: "Misleading Composition Claim",
   reference: "CCPA 2024 Clause 6(1)",
@@ -1357,9 +1389,17 @@ const SenseAnalysisView = () => {
       matched = true;
     }
 
-    if (matched) {
-      hitsMap.set(term.category, term);
-    }
+    if (!matched) return;
+
+    // Generic words (best, certified, offset, 100%) only count as a green claim
+    // when the copy is about the environment at all.
+    if (term.needsContext && !ENV_CONTEXT.test(trimmed)) return;
+
+    // The claim already carries what this rule would ask for — a disclosed
+    // proportion, or a named certification scheme.
+    if (term.suppressIf && term.suppressIf.test(trimmed)) return;
+
+    hitsMap.set(term.category, term);
   });
 
   const findings = Array.from(hitsMap.values());
