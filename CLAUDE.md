@@ -142,10 +142,33 @@ lists brand names only, no performance figures — deliberately, since the site
 also runs a greenwashing checker and unsubstantiated claims would be indefensible.
 The 350g vs 1,050g CO₂ figures are GoodNet's, pending their sign-off.
 
+## Sense detection engine
+
+`SENSE_TERMS` in `App.jsx` is the ruleset; `analyze()` runs every pattern against
+the whole normalised string. Two flags on a rule modify that:
+
+- `needsContext: true` — only counts if `ENV_CONTEXT` also matches. Use it for
+  any word that is only a green claim in an environmental setting (*best,
+  certified, offset, totally, 100%*). Without it, "industry best practices" and
+  "certified accountants" get reported as greenwashing.
+- `suppressIf: /re/` — skip when the claim already carries what the rule asks
+  for, e.g. a named scheme (`NAMED_SCHEME`) or a disclosed percentage.
+
+**Never end an alternation containing `100%` with `\b`.** `%` is not a word
+character, so `\b(100%|…)\b` cannot match "100% recycled". That bug shipped for
+months and made the tool silently miss its own headline term.
+
+Audited 5 Aug 2026: *eco-friendly*, *zero waste* and *greener* had no rule at
+all, while our own marketing named them as the words Sense flags most often.
+When the marketing claims a behaviour, test the behaviour.
+
 ## Open
 
-- Maya D'Souza's bio — the only one not rewritten; she is absent from the team deck
 - Tonality pass across the remaining 11 blog posts
-- The Collective page redesign was built and **rejected** — production is unchanged.
-  Note the live page clips every bio at 80px (`h-20 overflow-hidden`).
-- LinkedIn: company About drafted, GoodNet carbon post drafted
+- **Sense conversion tracking** — no GA4 key events exist, so consent
+  submissions are invisible. Next task.
+- Mobile: `EST. 2025` on the homepage hero sits at y=112–128 behind a sticky nav
+  ending at y=120. Pre-existing, unfixed, flagged to Arvind.
+- LinkedIn: company About drafted, GoodNet carbon post drafted (figures still
+  pending GoodNet's sign-off). FSSAI post copy is final and approved, awaiting
+  Arvind publishing it.
