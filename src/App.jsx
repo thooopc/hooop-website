@@ -10,7 +10,7 @@ const SITE_CONTENT = {
   brand: {
     name: "HOOOP",
     est: "Est. 2025",
-    locations: ["Mumbai", "Delhi", "Goa", "London"],
+    locations: ["Delhi", "Goa", "London", "Mumbai"],
     logoImage: "/THE-HOOO-COLLECTIVEP_without-shadow.png",
     contactEmail: "hello@hooop.in",
   },
