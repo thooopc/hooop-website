@@ -449,7 +449,8 @@ const SITE_CONTENT = {
       name: "Maya D'Souza",
       role: "Circular Economy Policy",
       years: "25+",
-      expertise: ["Circular Economy Policy", "Systems Design", "Policy Frameworks"],
+      expertise: ["Circular Economy Policy", "EPR & Eco-Design", "Textiles & Construction", "International Policy"],
+      note: "Formerly Circular Economy Director, Business in the Community",
       img: "/MayaF.png",
       linkedin: "https://www.linkedin.com/in/maya-de-souza-12b16aa/"
     },
