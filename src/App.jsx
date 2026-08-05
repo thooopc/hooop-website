@@ -446,7 +446,7 @@ const SITE_CONTENT = {
       linkedin: "https://www.linkedin.com/in/radhika-sharda-83129b19/"
     },
     {
-      name: "Maya D'Souza",
+      name: "Maya de Souza",
       role: "Circular Economy Policy",
       years: "25+",
       expertise: ["Circular Economy Policy", "EPR & Eco-Design", "Textiles & Construction", "International Policy"],
