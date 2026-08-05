@@ -3113,47 +3113,47 @@ const App = React.forwardRef((props, ref) => {
 
           {/* COLLECTIVE */}
           {activeSection === 'collective' && (
-             <section className="py-24 min-h-screen animate-fade-in-up">
-                <div className="mb-20">
-                   <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-6">The Collective</h1>
+             <section className="py-16 min-h-screen animate-fade-in-up">
+                <div className="mb-10">
+                   <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">The Collective</h1>
                    <p className="text-gray-500 max-w-xl text-lg">
                       We are thinkers, technologists, communicators, and designers working to accelerate change.
                    </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                    {SITE_CONTENT.collective.map((member, idx) => (
-                       <SoftCard key={idx} className="p-8 flex flex-col items-center text-center group">
-                          <div className="w-32 h-32 rounded-full bg-[#E0E5EC] shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] p-2 flex-shrink-0 mb-6">
+                       <SoftCard key={idx} className="p-5 flex flex-col items-center text-center group">
+                          <div className="w-20 h-20 rounded-full bg-[#E0E5EC] shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] p-1.5 flex-shrink-0 mb-3">
                              <ImageWithFallback src={member.img} alt={member.name} className="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500"/>
                           </div>
                           <div>
-                             <h2 className="text-xl font-bold text-[#313b4e]">{member.name}</h2>
-                             <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-4 mt-2 h-8">{member.role}</p>
+                             <h2 className="text-base font-bold text-[#313b4e]">{member.name}</h2>
+                             <p className="text-gray-400 font-bold text-[10px] uppercase tracking-widest mt-1 h-7 leading-snug">{member.role}</p>
 
                              {/* The slot is always reserved, so a member without a years
                                  figure does not pull the rest of their card upward and
                                  break the row's shared baseline. */}
-                             <div className="h-12 mb-1">
+                             <div className="h-5 mb-2">
                                {member.years && (
-                                 <p className="text-teal-600 font-black text-2xl leading-none">
+                                 <p className="text-teal-600 font-black text-sm leading-none">
                                    {member.years}
-                                   <span className="block text-gray-400 font-bold text-[10px] uppercase tracking-widest mt-1">Years</span>
+                                   <span className="text-gray-400 font-bold text-[9px] uppercase tracking-widest ml-1">Years</span>
                                  </p>
                                )}
                              </div>
 
                              {/* Fixed height so the six cards stay on one baseline whether or
                                  not a member carries a years figure or a note. */}
-                             <div className="min-h-[7rem] flex flex-col justify-center gap-3 mb-5">
-                               <div className="flex flex-wrap justify-center gap-1.5">
+                             <div className="min-h-[5rem] flex flex-col justify-center gap-2 mb-3">
+                               <div className="flex flex-wrap justify-center gap-1">
                                  {(member.expertise || []).map((area, i) => (
-                                   <span key={i} className="px-2.5 py-1 rounded-full bg-teal-50 border border-teal-100 text-[10px] font-bold text-teal-700 shadow-sm">
+                                   <span key={i} className="px-2 py-0.5 rounded-full bg-teal-50 border border-teal-100 text-[9px] font-bold text-teal-700">
                                      {area}
                                    </span>
                                  ))}
                                </div>
                                {member.note && (
-                                 <p className="text-gray-400 text-[11px] italic leading-snug">{member.note}</p>
+                                 <p className="text-gray-400 text-[10px] italic leading-snug">{member.note}</p>
                                )}
                              </div>
 
