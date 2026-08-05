@@ -65,7 +65,9 @@ const SITE_CONTENT = {
             "Look at what FSSAI is actually objecting to, because it is not really about juice.",
             "100% is an absolute with no defined basis. A hundred per cent of what, measured how? Natural has no regulatory definition, so it means whatever the reader assumes it means. Healthy is a conclusion the buyer should be drawing, not one the pack should be asserting.",
             "The 2020 Labelling and Display Regulations put it plainly: a label must not create an erroneous impression, and must indicate the true nature of the food.",
-            "Read that sentence again with a sustainability claim in mind.",
+            "That sentence reads differently with a sustainability claim in mind.",
+            "Every unsupported claim opens what we call a Verification Vacuum — the space between what a brand says and what it can prove. FSSAI is not really policing vocabulary. It is closing that gap, one word at a time.",
+            { figure: "verification-vacuum" },
             { heading: "The overlap is almost word for word" },
             "We built Sense to flag language on sustainability claims that tends to attract regulatory attention. The terms it flags most often are 100%, natural, eco-friendly, zero, and unqualified comparatives like better and greener.",
             "Two of those are the exact words FSSAI is currently striking off food packs.",
@@ -80,12 +82,15 @@ const SITE_CONTENT = {
             "If you carry a 100% recycled claim, ask what the 100% attaches to. The bottle? The label? The carton it shipped in? If the honest answer needs a footnote, the footnote is the claim.",
             "If you use natural, clean or responsible on pack, you are relying on the reader supplying a definition you have not given them. That was the specific issue in the Le Casa notice.",
             "And if your sustainability claim would survive being read by someone actively hunting for the gap between the words and the evidence, then it will probably survive the test now being applied to food.",
+            "The competitive advantage is no longer making stronger claims. It is making claims that survive verification.",
             { heading: "What we do not know" },
             "We do not know the timeline. Enforcement on green claims in India has been slower and far less public than on food, and we have no basis for saying when that changes.",
             "We are also not certain the approach transfers cleanly. Food claims are largely verifiable from the product itself; environmental claims usually are not. That may mean enforcement lands differently rather than simply later.",
             "There is a risk in the other direction too. Our own survey found roughly a third of Indian sustainability claims go out with no independent check \u2014 but it also found that seventy per cent of companies with genuinely strong credentials say nothing at all, from fear of scrutiny. A crackdown that pushes more brands into silence is not a good outcome either.",
             { heading: "Where we have got to" },
             "The food industry is getting a live demonstration of what happens when a claim outruns its evidence. The words are the same. The regulations rhyme. The main difference is that green claims have not had their turn yet.",
+            "The next decade of marketing will not belong to brands with the loudest sustainability stories. It will belong to the ones that can demonstrate them.",
+            "Closing your own Verification Vacuum is slower work than writing a better line. It is also the only version that holds.",
             "If you are looking at your own pack copy and are not sure which lines would survive that reading, that is a conversation we are always up for.",
             { cta: "Read the greenwashing playbook", to: "greenwashing" },
           ],
@@ -1003,6 +1008,52 @@ const TrackerCard = ({ title, description, icon: Icon }) => (
     </div>
 );
 
+// Named diagrams for blog posts, referenced from content as { figure: "<key>" }.
+// Inline SVG rather than an asset so it stays crisp, needs no hosting, and
+// carries its own accessible description.
+const POST_FIGURES = {
+  "verification-vacuum": {
+    label: "Fig. 01 — The Verification Vacuum",
+    caption: "The gap is where regulators, journalists and procurement teams look first.",
+    alt: "A wide bar labelled 'what you say' sits above a shorter bar labelled 'what you can prove'. The space between the two is labelled the verification vacuum.",
+    svg: (
+      <svg viewBox="0 0 640 250" className="w-full h-auto" role="img" aria-hidden="true" focusable="false">
+        <text x="20" y="34" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="13"
+              fontWeight="700" letterSpacing="2.4" fill="#9CA3AF">WHAT YOU SAY</text>
+        <rect x="20" y="46" width="600" height="46" fill="#111111" />
+        <text x="20" y="140" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="13"
+              fontWeight="700" letterSpacing="2.4" fill="#9CA3AF">WHAT YOU CAN PROVE</text>
+        <rect x="20" y="152" width="252" height="46" fill="#0D9488" />
+        <rect x="272" y="152" width="348" height="46" fill="none" stroke="#0D9488"
+              strokeWidth="1.5" strokeDasharray="6 5" />
+        <text x="290" y="181" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="14"
+              fontWeight="700" letterSpacing="2" fill="#0D9488">THE VERIFICATION VACUUM</text>
+        <line x1="272" y1="92" x2="272" y2="152" stroke="#D1D5DB" strokeWidth="1" strokeDasharray="4 4" />
+        <line x1="620" y1="92" x2="620" y2="152" stroke="#D1D5DB" strokeWidth="1" strokeDasharray="4 4" />
+        <line x1="272" y1="222" x2="620" y2="222" stroke="#0D9488" strokeWidth="1.5" />
+        <line x1="272" y1="216" x2="272" y2="228" stroke="#0D9488" strokeWidth="1.5" />
+        <line x1="620" y1="216" x2="620" y2="228" stroke="#0D9488" strokeWidth="1.5" />
+        <text x="446" y="243" textAnchor="middle" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace"
+              fontSize="11.5" letterSpacing="1.4" fill="#9CA3AF">EVERYTHING YOU CANNOT SUBSTANTIATE</text>
+      </svg>
+    )
+  }
+};
+
+const PostFigure = ({ name }) => {
+  const fig = POST_FIGURES[name];
+  if (!fig) return null;
+  return (
+    <figure className="!my-10 bg-[#F9FAFB] border border-gray-200 rounded-2xl p-6 md:p-8" aria-label={fig.alt}>
+      <div className="text-[11px] font-mono font-bold uppercase tracking-[0.18em] text-gray-400 mb-5">
+        {fig.label}
+      </div>
+      {fig.svg}
+      <figcaption className="mt-5 text-sm text-gray-500 italic leading-relaxed">{fig.caption}</figcaption>
+    </figure>
+  );
+};
+
 const BlogPostView = ({ post, onBack, navigateTo }) => {
   useSeo({
     title: `${post.title} | HOOOP`,
@@ -1040,13 +1091,15 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
       </div>
 
       {/* Content items are plain strings (paragraphs) for backwards compatibility,
-          or {heading} / {cta,to} objects for structure and internal links. */}
+          or {heading} / {cta,to} / {figure} objects for structure, internal links
+          and named diagrams from POST_FIGURES. */}
       <div className="prose prose-lg text-gray-600 leading-relaxed space-y-6">
          {post.content.map((item, idx) => {
             if (typeof item === "string") return <p key={idx}>{item}</p>;
             if (item.heading) return (
               <h2 key={idx} className="text-2xl font-bold text-gray-900 !mt-10 !mb-3">{item.heading}</h2>
             );
+            if (item.figure) return <PostFigure key={idx} name={item.figure} />;
             if (item.cta) return (
               <p key={idx}>
                 <button
