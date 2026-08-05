@@ -459,7 +459,7 @@ const SITE_CONTENT = {
       role: "Environmental Law & Policy",
       years: "20+",
       expertise: ["Environmental Law", "Policy & Regulation", "Regulatory Research"],
-      note: "Advises funds on regulatory and policy risk",
+      note: "Advises on regulatory and policy risk",
       img: "/Paromita.jpg",
       linkedin: "https://www.linkedin.com/in/paromita-mukhopadhyay-nair-bb24447/"
     },
