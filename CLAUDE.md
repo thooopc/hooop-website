@@ -30,9 +30,36 @@ Four places, all required:
 - `public/sitemap.xml`
 - `vercel.json` — a 301 if a URL changed
 
-`scripts/prerender.mjs` writes static HTML per route at build time so crawlers get
-correct `<head>` tags. Without an entry in `seo-routes.mjs` a page falls back to
-generic metadata; the build prints a warning naming any sitemap URL that's missing.
+`scripts/prerender.mjs` writes static HTML per route at build time — both the
+`<head>` tags and the page's rendered body. Without an entry in `seo-routes.mjs`
+a page falls back to generic metadata; the build prints a warning naming any
+sitemap URL that's missing.
+
+## Prerendering (August 2026)
+
+The build is `vite build` → `vite build --ssr src/entry-server.jsx` →
+`node scripts/prerender.mjs`. The SSR pass exists only to give the prerender a
+`render(path)` function; nothing is server-rendered at request time.
+
+Routing therefore has to work without a browser. `resolveRoute(pathname)` lives
+at module scope in `App.jsx` and is used in three places: seeding `useState` on
+the server (via the `initialPath` prop), seeding it in the browser, and handling
+`popstate`. **Anything that changes routing must change `resolveRoute`, not the
+effect** — state seeded in an effect is invisible to the prerender, because
+effects never run during `renderToString`.
+
+The same rule applies to new components: browser globals belong in effects or
+event handlers, never in render. The Sense consent modal calls `createPortal`
+into `document.body`, so it early-returns when `document` is undefined.
+
+`main.jsx` uses `createRoot`, not `hydrateRoot` — React throws the prerendered
+markup away and re-renders. That is deliberate: it costs one paint and makes
+hydration mismatches impossible. Don't "fix" it to `hydrateRoot` without
+checking every date, animation and random value in the tree.
+
+If the SSR bundle fails to load, the build still succeeds and emits head-only
+pages, with a loud warning. **Read the build log** — head-only is the exact
+failure this was written to escape, and it looks fine in a browser.
 
 `public/llms.txt` is what AI assistants read about HOOOP — keep it in sync with
 positioning changes. It was briefing every LLM that HOOOP was a "venture lab"

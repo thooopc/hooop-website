@@ -1227,6 +1227,9 @@ const SenseConsentModal = ({ onGranted, onCancel }) => {
     }
   };
 
+  // No document during the build-time prerender; the modal is client-only.
+  if (typeof document === 'undefined') return null;
+
   // Rendered through a portal: the Sense section carries a CSS transform
   // (animate-fade-in-up), which would otherwise become the containing block
   // for position:fixed and push this dialog off-viewport.
@@ -2436,29 +2439,54 @@ const APP_SECTION_SEO = {
 };
 
 // --- Main App ---
+const NAV_ITEMS = [
+  { id: 'home', label: 'Home' },
+  { id: 'sense', label: 'Sense' },
+  { id: 'prvaah', label: 'Prvaah' },
+  { id: 'greenwashing', label: 'Greenwashing'},
+  { id: 'esg-media-index', label: 'Media Index' },
+  { id: 'offerings', label: 'What We Do' },
+  { id: 'thinking', label: 'Our Thinking' },
+  { id: 'collective', label: 'Collective' },
+  { id: 'contact', label: 'Contact', hidden: true },
+  { id: 'manifesto', label: 'Manifesto', hidden: true },
+  { id: 'research', label: 'Research', hidden: true },
+  { id: 'privacy', label: 'Privacy', hidden: true }
+];
+
+// Turn a pathname into the section (and blog post, if any) it should render.
+// Module scope and free of browser globals on purpose: the build-time
+// prerender calls this via entry-server.jsx to produce real HTML, and the
+// browser calls it on mount and on popstate. Both must agree.
+const resolveRoute = (pathname) => {
+  const parts = String(pathname || '/').split('/').filter(Boolean);
+  const first = parts[0] || 'home';
+
+  if (first === 'thinking' && parts[1]) {
+    return {
+      section: 'thinking',
+      post: SITE_CONTENT.thinking.posts.find(p => p.slug === parts[1]) || null
+    };
+  }
+
+  return { section: NAV_ITEMS.some(i => i.id === first) ? first : 'home', post: null };
+};
+
 const App = React.forwardRef((props, ref) => {
-  const [activeSection, setActiveSection] = useState('home');
+  // On the server there is no window, so the route arrives as a prop. Seeding
+  // state here rather than in an effect is what makes the prerendered HTML
+  // contain the right page — effects never run during renderToString.
+  const initialRoute = resolveRoute(
+    props.initialPath ?? (typeof window === 'undefined' ? '/' : window.location.pathname)
+  );
+
+  const [activeSection, setActiveSection] = useState(initialRoute.section);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showSenseTool, setShowSenseTool] = useState(false);
   const [senseTab, setSenseTab] = useState('analyzer');
-  const [selectedPost, setSelectedPost] = useState(null); // New state for selected blog post
+  const [selectedPost, setSelectedPost] = useState(initialRoute.post); // New state for selected blog post
 
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'sense', label: 'Sense' },
-    { id: 'prvaah', label: 'Prvaah' },
-    { id: 'greenwashing', label: 'Greenwashing'},
-    { id: 'esg-media-index', label: 'Media Index' },
-    { id: 'offerings', label: 'What We Do' },
-    { id: 'thinking', label: 'Our Thinking' },
-    { id: 'collective', label: 'Collective' },
-    { id: 'contact', label: 'Contact', hidden: true },
-    { id: 'manifesto', label: 'Manifesto', hidden: true },
-    { id: 'research', label: 'Research', hidden: true },
-    { id: 'privacy', label: 'Privacy', hidden: true }
-  ];
-
-  const findPostBySlug = (slug) => SITE_CONTENT.thinking.posts.find(p => p.slug === slug);
+  const navItems = NAV_ITEMS;
 
   // Inject the Organization schema once, on first mount.
   useEffect(() => {
@@ -2470,23 +2498,9 @@ const App = React.forwardRef((props, ref) => {
   // all and could not be deep-linked or crawled individually).
   useEffect(() => {
     const handleRoute = () => {
-      const parts = window.location.pathname.split('/').filter(Boolean);
-      const first = parts[0] || 'home';
-
-      if (first === 'thinking' && parts[1]) {
-        const post = findPostBySlug(parts[1]);
-        setActiveSection('thinking');
-        setSelectedPost(post || null);
-        return;
-      }
-
-      if (navItems.some(item => item.id === first)) {
-        setActiveSection(first);
-        setSelectedPost(null);
-      } else {
-        setActiveSection('home');
-        setSelectedPost(null);
-      }
+      const { section, post } = resolveRoute(window.location.pathname);
+      setActiveSection(section);
+      setSelectedPost(post);
     };
 
     handleRoute();
