@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { Menu, X, ArrowRight, ArrowLeft, Globe, Shield, Zap, TrendingUp, FileText, Anchor, Linkedin, ExternalLink, Users, Coins, Briefcase, ScanLine, BarChart3, Download, AlertCircle, Check, Leaf, Info, Scale, BookOpen, ChevronDown, ChevronUp, Tag, ShieldCheck, Wind, Gavel, MicOff, Lock, HelpCircle, Eye, AlertTriangle, CheckCircle, Mail, Copy, RefreshCw, ShieldAlert, Search, UserX, Flag, Instagram } from 'lucide-react';
+import { Menu, X, ArrowRight, ArrowLeft, Globe, Shield, Zap, TrendingUp, FileText, Anchor, Linkedin, ExternalLink, Users, Coins, Briefcase, ScanLine, BarChart3, Download, AlertCircle, Check, Leaf, Info, Scale, BookOpen, ChevronDown, ChevronUp, Tag, ShieldCheck, Wind, Gavel, MicOff, Lock, HelpCircle, Eye, AlertTriangle, CheckCircle, Mail, Copy, RefreshCw, ShieldAlert, Search, UserX, Flag, Instagram, MapPin } from 'lucide-react';
 
 // ==========================================
 // 🛠️ EASY EDIT SECTION - CHANGE CONTENT HERE
@@ -10,6 +10,7 @@ const SITE_CONTENT = {
   brand: {
     name: "HOOOP",
     est: "Est. 2025",
+    locations: ["Mumbai", "Delhi", "Goa", "London"],
     logoImage: "/THE-HOOO-COLLECTIVEP_without-shadow.png",
     contactEmail: "hello@hooop.in",
   },
@@ -2705,7 +2706,8 @@ const App = React.forwardRef((props, ref) => {
                 </div>
                 <p className="text-lg lg:text-xl text-gray-500 leading-relaxed font-medium max-w-md">{SITE_CONTENT.hero.subtitle}</p>
                 
-                <div className="flex flex-wrap gap-4 sm:gap-6 items-center mt-4">
+                <div className="mt-4 space-y-6">
+                <div className="flex flex-wrap gap-4 sm:gap-6 items-center">
 
   <SoftCard 
     onClick={() => navigateTo('manifesto')}
@@ -2730,6 +2732,14 @@ const App = React.forwardRef((props, ref) => {
     <span>{SITE_CONTENT.hero.collectiveButtonText}</span>
     <Users size={18} className="group-hover:scale-110 transition-transform"/>
   </SoftCard>
+</div>
+
+  <div className="flex items-center gap-2 text-gray-400">
+    <MapPin size={14} className="shrink-0" />
+    <span className="text-[11px] font-bold uppercase tracking-[0.2em]">
+      {SITE_CONTENT.brand.locations.join("  \u00b7  ")}
+    </span>
+  </div>
 </div>
 </div>
                 <div className="w-full lg:w-1/2 h-[50vh] lg:h-full flex items-center justify-center relative mt-12 lg:mt-0">

@@ -21,6 +21,12 @@ Work on a branch → push → Vercel builds a **preview** → verify → merge t
 No Node locally on this machine — Vercel does all building. Verify in the browser
 against the deployed preview, never by assuming.
 
+**Verify mobile first.** Every UI change is checked at a 375px viewport before
+desktop, and the mobile result is what gets shown in the report. Resize, then
+reload — load-time device gates re-run on reload. Watch for fixed-height slots
+that align rows on desktop but leave dead space once cards stack, and for
+anything that scrolls horizontally.
+
 ## When adding or renaming a page
 
 Four places, all required:
