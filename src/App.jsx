@@ -3124,12 +3124,17 @@ const App = React.forwardRef((props, ref) => {
                              <h2 className="text-xl font-bold text-[#313b4e]">{member.name}</h2>
                              <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-4 mt-2 h-8">{member.role}</p>
 
-                             {member.years && (
-                               <p className="text-[#313b4e] font-black text-2xl leading-none mb-1">
-                                 {member.years}
-                                 <span className="block text-gray-400 font-bold text-[10px] uppercase tracking-widest mt-1">Years</span>
-                               </p>
-                             )}
+                             {/* The slot is always reserved, so a member without a years
+                                 figure does not pull the rest of their card upward and
+                                 break the row's shared baseline. */}
+                             <div className="h-12 mb-1">
+                               {member.years && (
+                                 <p className="text-[#313b4e] font-black text-2xl leading-none">
+                                   {member.years}
+                                   <span className="block text-gray-400 font-bold text-[10px] uppercase tracking-widest mt-1">Years</span>
+                                 </p>
+                               )}
+                             </div>
 
                              {/* Fixed height so the six cards stay on one baseline whether or
                                  not a member carries a years figure or a note. */}
