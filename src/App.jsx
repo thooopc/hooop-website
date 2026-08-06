@@ -1174,6 +1174,20 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
 };
 
 const SENSE_CONSENT_KEY = "hooop_sense_consent_v1";
+
+// GA4 event helper.
+//
+// Deliberately narrow: no email address and no pasted claim text is ever sent
+// through this — only counts and risk bands. The privacy notice tells people
+// their claims are analysed in the browser and never leave it, and that has to
+// stay true of analytics as well as of the API.
+//
+// gtag is loaded from index.html. It is absent during the build-time prerender
+// and whenever a visitor blocks the script, so every call is guarded.
+const track = (name, params = {}) => {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  window.gtag("event", name, params);
+};
 const CONSENT_NOTICE_VERSION = "2026-07-29";
 
 const PrivacyView = () => {
@@ -1266,6 +1280,9 @@ const SenseConsentModal = ({ onGranted, onCancel }) => {
       });
       if (!res.ok) throw new Error("request failed");
       window.localStorage.setItem(SENSE_CONSENT_KEY, "true");
+      // The lead. Fired only after the POST succeeds, so the count in GA4
+      // matches the rows in the sheet rather than counting attempts.
+      track("sense_consent_submitted", { notice_version: CONSENT_NOTICE_VERSION });
       onGranted();
     } catch (err) {
       setError("We couldn't record your consent just now. Please try again.");
@@ -1352,6 +1369,10 @@ const SenseAnalysisView = () => {
         analyze();
         return;
       }
+      // Top of the funnel: someone wrote a claim and hit the gate. The ratio of
+      // this to sense_consent_submitted is what says whether the gate is
+      // costing us more than it collects.
+      track("sense_consent_shown");
       setShowConsent(true);
     };
 
@@ -1406,6 +1427,15 @@ const SenseAnalysisView = () => {
 
   const findings = Array.from(hitsMap.values());
   setResult(findings);
+
+  // Counts and a risk band only — never the claim itself. word_count is a blunt
+  // proxy for whether people paste a line or a whole page, which tells us what
+  // the tool is actually being used for.
+  track("sense_claim_analysed", {
+    risk_level: getOverallRisk(findings),
+    issues_found: findings.length,
+    word_count: trimmed.split(" ").length
+  });
 };
 
     return (
@@ -2678,7 +2708,10 @@ const App = React.forwardRef((props, ref) => {
         </div>
       )}
 
-      <main className="lg:pl-64 w-full min-h-screen relative z-10 px-4 sm:px-6 lg:px-20 pt-28 lg:pt-0 pb-16 flex flex-col">
+      {/* pt-32 (128px), not pt-28: the fixed mobile header is an 80px logo bar
+          plus a ~40px nav strip, so it ends at 120px. At pt-28 the first line of
+          every page — the hero eyebrow — rendered underneath it. */}
+      <main className="lg:pl-64 w-full min-h-screen relative z-10 px-4 sm:px-6 lg:px-20 pt-32 lg:pt-0 pb-16 flex flex-col">
         
         <div className="w-full flex-grow flex flex-col justify-center">
           
