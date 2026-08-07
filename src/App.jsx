@@ -365,7 +365,7 @@ const SITE_CONTENT = {
         text: "At Everloop, we see Pravah as a continuum — not just an entry point but a journey. From ESG alignment to market pilots and long-term resilience, this platform helps sustainable enterprises flow between the UK and India with confidence, purpose, and accountability.",
         name: "Marina Bradford",
         role: "Director, Everloop.Agency",
-        image: "/Marina Bradford.jpg"
+        image: "/marina-bradford.jpg"
       },
       {
         text: "The India-UK agreement creates a genuine opportunity for sustainable enterprises to expand into new markets. It also strengthens digital trade, supports sustainability goals, and empowers MSMEs and inclusive enterprises to expand globally.",
@@ -3019,7 +3019,7 @@ const App = React.forwardRef((props, ref) => {
                     {/* HERO — compact */}
                     <div className="text-center mb-16">
                          <div className="flex justify-center mb-5">
-                            <ImageWithFallback src="/Prvaah Logo.png" alt="Prvaah Logo" className="h-16 w-auto object-contain" />
+                            <ImageWithFallback src="/prvaah-logo.png" alt="Prvaah Logo" className="h-16 w-auto object-contain" />
                          </div>
                          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#313b4e] tracking-tighter">
                             {SITE_CONTENT.prvaah.title}
