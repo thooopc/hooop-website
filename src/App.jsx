@@ -957,6 +957,33 @@ const HooopLogo = ({ className = "w-10 h-10" }) => (
   <ImageWithFallback src={SITE_CONTENT.brand.logoImage} alt="HOOOP Logo" className={`object-contain ${className}`} />
 );
 
+// Build a URL from a section id. The mirror of resolveRoute(), which parses one.
+const pathForSection = (id) => (!id || id === "home" ? "/" : `/${id}`);
+
+// A real anchor that still navigates client-side.
+//
+// Every navigation control on this site used to be a <button onClick>. The
+// served HTML therefore contained no internal links whatsoever — Googlebot
+// could only discover pages through sitemap.xml, no authority flowed between
+// them, and /offerings, /collective, /research and /thinking were never crawled
+// once. Anchors also restore cmd-click, middle-click and "copy link address".
+//
+// Modified clicks are left to the browser so "open in new tab" keeps working.
+const AppLink = ({ href, onNavigate, className = "", children, ...rest }) => (
+  <a
+    href={href}
+    className={className}
+    onClick={(e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      onNavigate();
+    }}
+    {...rest}
+  >
+    {children}
+  </a>
+);
+
 const SoftCard = ({ children, className = "", onClick, hoverEffect = true, id = "" }) => (
   <div id={id} onClick={onClick} className={`bg-[#E0E5EC] rounded-[30px] shadow-[9px_9px_16px_rgb(163,177,198,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] ${hoverEffect ? 'hover:shadow-[inset_9px_9px_16px_rgb(163,177,198,0.6),inset_-9px_-9px_16px_rgba(255,255,255,0.5)] cursor-pointer' : ''} transition-all duration-300 ease-in-out ${className}`}>
     {children}
@@ -1148,13 +1175,13 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
             if (item.figure) return <PostFigure key={idx} name={item.figure} />;
             if (item.cta) return (
               <p key={idx}>
-                <button
-                  type="button"
-                  onClick={() => navigateTo && navigateTo(item.to)}
-                  className="inline-flex items-center gap-2 font-bold text-teal-600 hover:text-teal-800 transition-colors"
+                <AppLink
+                  href={pathForSection(item.to)}
+                  onNavigate={() => navigateTo && navigateTo(item.to)}
+                  className="inline-flex items-center gap-2 font-bold text-teal-600 hover:text-teal-800 transition-colors no-underline"
                 >
                   {item.cta} <ArrowRight size={15} />
-                </button>
+                </AppLink>
               </p>
             );
             return null;
@@ -2657,19 +2684,19 @@ const App = React.forwardRef((props, ref) => {
 
       {/* --- DESKTOP SIDEBAR --- */}
       <nav className="fixed left-0 top-0 h-full w-64 hidden lg:flex flex-col justify-between items-start py-12 pl-10 z-50 pointer-events-none">
-         <div className="pointer-events-auto cursor-pointer group mb-12" onClick={() => navigateTo('home')}>
+         <AppLink href="/" onNavigate={() => navigateTo('home')} aria-label="HOOOP home" className="pointer-events-auto cursor-pointer group mb-12 block">
              <SoftCard className="w-20 h-20 flex items-center justify-center !rounded-full p-4" hoverEffect={true}>
                 <HooopLogo className="w-full h-full object-contain" />
              </SoftCard>
-         </div>
+         </AppLink>
          <div className="flex flex-col gap-6 pointer-events-auto w-full">
             {navItems.filter(item => !item.hidden).map((item) => ( 
-                <button key={item.id} onClick={() => navigateTo(item.id)} className="group flex items-center gap-4 w-full text-left focus:outline-none">
+                <AppLink key={item.id} href={pathForSection(item.id)} onNavigate={() => navigateTo(item.id)} className="group flex items-center gap-4 w-full text-left focus:outline-none no-underline">
                     <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-black scale-125' : 'bg-gray-300 group-hover:bg-gray-400'}`} />
                     <span className={`text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 ${activeSection === item.id ? 'text-black translate-x-1' : 'text-gray-400 group-hover:text-gray-600'}`}>
                         {item.label}
                     </span>
-                </button>
+                </AppLink>
             ))}
          </div>
          <div className="pointer-events-auto mt-auto">
@@ -2680,17 +2707,17 @@ const App = React.forwardRef((props, ref) => {
       {/* --- MOBILE NAV --- */}
       <div className="fixed top-0 left-0 right-0 z-50">
           <div className="h-20 flex items-center justify-between px-6 lg:hidden bg-[#E0E5EC]/90 backdrop-blur-md shadow-sm border-b border-white/50">
-            <div className="font-bold text-2xl tracking-tighter flex items-center gap-3">
+            <AppLink href="/" onNavigate={() => navigateTo('home')} className="font-bold text-2xl tracking-tighter flex items-center gap-3 no-underline text-black">
                 <HooopLogo className="w-12 h-12" />
                 <span className="text-black">{SITE_CONTENT.brand.name}</span>
-            </div>
+            </AppLink>
             <button onClick={() => setIsMenuOpen(true)} className="p-3 rounded-xl bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-black active:shadow-inner">
               <Menu size={24} />
             </button>
           </div>
           <div className="lg:hidden bg-[#E0E5EC]/95 backdrop-blur-md border-b border-white/20 overflow-x-auto flex items-center gap-6 px-6 py-3 no-scrollbar shadow-inner">
              {navItems.filter(item => !item.hidden).map(item => (
-                 <button key={item.id} onClick={() => navigateTo(item.id)} className={`whitespace-nowrap text-[10px] font-bold uppercase tracking-widest flex-shrink-0 transition-colors ${activeSection === item.id ? 'text-teal-600' : 'text-gray-500'}`}>{item.label}</button>
+                 <AppLink key={item.id} href={pathForSection(item.id)} onNavigate={() => navigateTo(item.id)} className={`whitespace-nowrap text-[10px] font-bold uppercase tracking-widest flex-shrink-0 transition-colors no-underline ${activeSection === item.id ? 'text-teal-600' : 'text-gray-500'}`}>{item.label}</AppLink>
              ))}
           </div>
       </div>
@@ -2701,9 +2728,9 @@ const App = React.forwardRef((props, ref) => {
             <X size={24} />
           </button>
           {navItems.filter(item => !item.hidden).map((item) => (
-            <button key={item.id} onClick={() => { navigateTo(item.id); setIsMenuOpen(false); }} className={`text-2xl font-bold tracking-tight ${activeSection === item.id ? 'text-black' : 'text-gray-500'}`}>
+            <AppLink key={item.id} href={pathForSection(item.id)} onNavigate={() => { navigateTo(item.id); setIsMenuOpen(false); }} className={`text-2xl font-bold tracking-tight no-underline ${activeSection === item.id ? 'text-black' : 'text-gray-500'}`}>
               {item.label}
-            </button>
+            </AppLink>
           ))}
         </div>
       )}
@@ -2742,29 +2769,32 @@ const App = React.forwardRef((props, ref) => {
                 <div className="mt-4 space-y-6">
                 <div className="flex flex-wrap gap-4 sm:gap-6 items-center">
 
-  <SoftCard 
-    onClick={() => navigateTo('manifesto')}
+  <AppLink href={pathForSection('manifesto')} onNavigate={() => navigateTo('manifesto')} className="no-underline">
+  <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-black font-bold group cursor-pointer hover:scale-[1.02]"
   >
     <span>Read Our Manifesto</span>
     <BookOpen size={18} className="group-hover:scale-110 transition-transform"/>
   </SoftCard>
+  </AppLink>
 
-  <SoftCard 
-    onClick={() => navigateTo('sense')}
+  <AppLink href={pathForSection('sense')} onNavigate={() => navigateTo('sense')} className="no-underline">
+  <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-green-600 hover:scale-[1.02]"
   >
     <span>Test Sustainability Claims</span>
     <ScanLine size={18} className="group-hover:scale-110 transition-transform"/>
   </SoftCard>
+  </AppLink>
 
-  <SoftCard 
-    onClick={() => navigateTo('collective')}
+  <AppLink href={pathForSection('collective')} onNavigate={() => navigateTo('collective')} className="no-underline">
+  <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-teal-600 hover:scale-[1.02]"
   >
     <span>{SITE_CONTENT.hero.collectiveButtonText}</span>
     <Users size={18} className="group-hover:scale-110 transition-transform"/>
   </SoftCard>
+  </AppLink>
 </div>
 
   <div className="flex items-center gap-2 text-gray-400">
@@ -2913,7 +2943,8 @@ const App = React.forwardRef((props, ref) => {
 
                         <div className="space-y-16 border-t border-gray-200 pt-16">
                             {SITE_CONTENT.thinking.posts.map((post, index) => (
-                                <article key={index} className="group cursor-pointer" onClick={() => openBlogPost(post)}>
+                                <AppLink key={index} href={`/thinking/${post.slug}`} onNavigate={() => openBlogPost(post)} className="group cursor-pointer block no-underline text-inherit">
+                                  <article>
                                     <div className="flex flex-col md:flex-row gap-2 md:items-baseline justify-between mb-2">
                                         <span className="text-xs font-bold tracking-widest uppercase text-teal-600">{post.category}</span>
                                         <span className="text-xs text-gray-400 font-mono">{post.date}</span>
@@ -2927,7 +2958,8 @@ const App = React.forwardRef((props, ref) => {
                                     <div className="mt-4 flex items-center gap-2 text-sm font-bold text-gray-400 group-hover:text-teal-600 transition-colors">
                                         Read Article <ArrowRight size={14} />
                                     </div>
-                                </article>
+                                  </article>
+                                </AppLink>
                             ))}
                         </div>
                     </div>
@@ -3170,13 +3202,13 @@ const App = React.forwardRef((props, ref) => {
                             ))}
                           </ul>
                           {card.linkTo && (
-                            <button
-                              type="button"
-                              onClick={() => navigateTo(card.linkTo)}
-                              className="mt-auto self-start inline-flex items-center gap-2 text-sm font-bold text-teal-600 hover:text-teal-800 transition-colors"
+                            <AppLink
+                              href={pathForSection(card.linkTo)}
+                              onNavigate={() => navigateTo(card.linkTo)}
+                              className="mt-auto self-start inline-flex items-center gap-2 text-sm font-bold text-teal-600 hover:text-teal-800 transition-colors no-underline"
                             >
                               {card.linkLabel} <ArrowRight size={15} />
-                            </button>
+                            </AppLink>
                           )}
                        </SoftCard>
                      ))}
@@ -3293,11 +3325,22 @@ const App = React.forwardRef((props, ref) => {
             <p className="text-gray-400 text-xs font-medium uppercase tracking-widest">
                 We are always open for a good conversation, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors lowercase font-bold ml-1">hello@hooop.in</a>
             </p>
-            <p className="mt-4">
-                <button type="button" onClick={() => navigateTo('privacy')} className="text-gray-400 text-[10px] uppercase tracking-widest font-bold hover:text-gray-600 transition-colors">
-                    Privacy Notice
-                </button>
-            </p>
+            {/* Sitewide link block. Every page linking to every other page is what
+                gives a crawler a path through the site at all — before this, the
+                only route in was sitemap.xml, and half the site was never
+                fetched once. */}
+            <nav aria-label="Site" className="mt-10 pt-8 border-t border-gray-200/70 w-full max-w-3xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-3">
+                {NAV_ITEMS.map((item) => (
+                    <AppLink
+                        key={item.id}
+                        href={pathForSection(item.id)}
+                        onNavigate={() => navigateTo(item.id)}
+                        className="text-gray-400 text-[10px] uppercase tracking-widest font-bold hover:text-teal-600 transition-colors no-underline"
+                    >
+                        {item.label}
+                    </AppLink>
+                ))}
+            </nav>
         </footer>
       </main>
 
