@@ -162,13 +162,42 @@ Audited 5 Aug 2026: *eco-friendly*, *zero waste* and *greener* had no rule at
 all, while our own marketing named them as the words Sense flags most often.
 When the marketing claims a behaviour, test the behaviour.
 
-## Open
+## Open (as of 6 Aug 2026)
+
+**Blocked on someone else**
+
+- **GoodNet has not cleared the 350g vs 1,050g CO₂ figures.** This blocks the
+  drafted GoodNet carbon LinkedIn post, and it is why `/esg-media-index` argues
+  entirely from assertion. Highest-leverage unblock on the list.
+- **GA4 key events** — `sense_consent_submitted` fires correctly but is not
+  marked as a key event, so it is recorded and not counted. Only Arvind can do
+  this; `analytics.google.com` is blocked in the browser tooling.
+
+**Scheduled**
+
+- **ESG Media Index lead generation**, from 9 Aug. Arvind explicitly does *not*
+  want a lead form — inbound stays as the `mailto:` on the page. Agreed
+  direction: bound the offer to a named artefact, clear the GoodNet figures,
+  write for the language buyers actually search (wasted spend, MFA sites, media
+  quality), and treat outbound as the near-term channel.
+- **GSC check from ~8 Aug** for the FSSAI post. Search Console data lags about
+  two days, so nothing before then means nothing.
+
+**Content backlog**
 
 - Tonality pass across the remaining 11 blog posts
-- **Sense conversion tracking** — no GA4 key events exist, so consent
-  submissions are invisible. Next task.
-- Mobile: `EST. 2025` on the homepage hero sits at y=112–128 behind a sticky nav
-  ending at y=120. Pre-existing, unfixed, flagged to Arvind.
-- LinkedIn: company About drafted, GoodNet carbon post drafted (figures still
-  pending GoodNet's sign-off). FSSAI post copy is final and approved, awaiting
-  Arvind publishing it.
+- LinkedIn company About — drafted, never shipped
+- Four-week LinkedIn cadence delivered 6 Aug as an artifact; not yet reviewed
+
+**Watching**
+
+- `/thinking/era-of-green-media-buying` still draws impressions on the old,
+  301'd slug. Expected to decay; no action unless it persists past September.
+
+## What I can and cannot reach
+
+Search Console **works** via the Chrome extension at `search.google.com` —
+performance, indexing and per-page reports are all readable. `linkedin.com` and
+`analytics.google.com` are **blocked at the tool level**, so LinkedIn engagement
+and GA4 both require Arvind to read them out. Vercel Web Analytics is **not
+enabled** on the project, so that route is closed too unless he turns it on.
