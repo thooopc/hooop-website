@@ -112,6 +112,31 @@ model post):
 A more anecdotal, meandering essay style was tried and rejected. Terse and
 concrete, not literary.
 
+### Audit of the 11 posts still needing the pass (6 Aug 2026)
+
+Measured across the 11 posts not yet rewritten — 2,919 words total, averaging
+265 words each:
+
+- **22** instances of *must / should / needs to*
+- **11 of 11** close on an aphorism. Every one. Examples: *"the market will
+  naturally clean the oceans"*, *"facts are the only story that sells"*,
+  *"they will own the future of fashion"*, *"it's your integrity"*
+- **4** hedges in total, across all eleven posts
+- First-person mentions are mostly *"our oceans"*, not ownership of a claim
+
+Three further problems worth fixing in the same pass:
+
+1. **They reintroduce rejected positioning.** Four posts say *venture lab*, and
+   three lean on *valley of death* as HOOOP's framing rather than as sector
+   vocabulary. See the rejected-words list above.
+2. **They are thin.** 265 words average against ~1,200 for the model post. Thin
+   pages are part of why so little is indexed.
+3. **Dates are stale.** Several say "in 2025" or "the playbook for 2025".
+
+The three already in register, for reference:
+`sustainable-media-planning-india` (the model), `fssai-label-crackdown-…`,
+`how-indian-brands-verify-…`.
+
 ## SEO baseline (28 Apr – 27 Jul 2026, pre-changes)
 
 - **10 clicks, 192 impressions.** Every query branded: "hooop", "aravind nair hooop".
@@ -183,11 +208,19 @@ When the marketing claims a behaviour, test the behaviour.
 - **GSC check from ~8 Aug** for the FSSAI post. Search Console data lags about
   two days, so nothing before then means nothing.
 
-**Content backlog**
+**Moved out of scope — handled in a separate conversation**
+
+From 6 Aug 2026 Arvind split design and content creation into their own chat.
+This one stays on strategy, technology, analytics and SEO. Do not pick these up
+here; the audit above is the handoff:
 
 - Tonality pass across the remaining 11 blog posts
 - LinkedIn company About — drafted, never shipped
-- Four-week LinkedIn cadence delivered 6 Aug as an artifact; not yet reviewed
+- GoodNet carbon post and graphic — drafted, blocked on the figures
+- Four-week LinkedIn cadence, delivered 6 Aug as an artifact
+
+Where a content item is *blocked by* something technical or commercial — the
+GoodNet clearance being the live example — that unblocking still belongs here.
 
 **Watching**
 
