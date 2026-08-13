@@ -1,12 +1,53 @@
 {
   "redirects": [
-    { "source": "/our-thinking", "destination": "/thinking", "permanent": true },
-    { "source": "/what-we-do", "destination": "/offerings", "permanent": true },
-    { "source": "/thinking/era-of-green-media-buying", "destination": "/thinking/sustainable-media-planning-india", "permanent": true }
+    {
+      "source": "/our-thinking",
+      "destination": "/thinking",
+      "permanent": true
+    },
+    {
+      "source": "/what-we-do",
+      "destination": "/offerings",
+      "permanent": true
+    },
+    {
+      "source": "/thinking/era-of-green-media-buying",
+      "destination": "/thinking/sustainable-media-planning-india",
+      "permanent": true
+    },
+    {
+      "source": "/thinking/commercialising-ocean-bound-plastic-supply-chains",
+      "destination": "/thinking/marine-circularity-india",
+      "permanent": true
+    },
+    {
+      "source": "/thinking/ocean-friendly-trap-greenwashing-marine-circularity",
+      "destination": "/thinking/marine-circularity-india",
+      "permanent": true
+    },
+    {
+      "source": "/thinking/financing-blue-economy-marine-conservation-venture-capital",
+      "destination": "/thinking/marine-circularity-india",
+      "permanent": true
+    },
+    {
+      "source": "/thinking/scaling-seaweed-marine-biomaterials-plastic-alternatives",
+      "destination": "/thinking/marine-circularity-india",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/robots.txt", "destination": "/robots.txt" },
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
