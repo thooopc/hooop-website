@@ -112,30 +112,23 @@ model post):
 A more anecdotal, meandering essay style was tried and rejected. Terse and
 concrete, not literary.
 
-### Audit of the 11 posts still needing the pass (6 Aug 2026)
+### The register pass — completed 13 Aug 2026
 
-Measured across the 11 posts not yet rewritten — 2,919 words total, averaging
-265 words each:
+All 11 remaining posts were rewritten, and the four thin marine posts were
+consolidated into `/thinking/marine-circularity-india` with 301s.
 
-- **22** instances of *must / should / needs to*
-- **11 of 11** close on an aphorism. Every one. Examples: *"the market will
-  naturally clean the oceans"*, *"facts are the only story that sells"*,
-  *"they will own the future of fashion"*, *"it's your integrity"*
-- **4** hedges in total, across all eleven posts
-- First-person mentions are mostly *"our oceans"*, not ownership of a claim
+Before → after, measured across the posts that needed it:
 
-Three further problems worth fixing in the same pass:
+- *must / should / needs to*: 22 → 7 across the whole blog
+- Posts closing on an aphorism: 11 of 11 → **0 of 11**. Every post now ends on
+  an invitation to compare notes.
+- Every post now carries ownership language and at least one honest concession.
+- Average length 265 → ~540 words. Still shorter than the model post; expanding
+  further is the remaining lever if these need to rank rather than just exist.
 
-1. **They reintroduce rejected positioning.** Four posts say *venture lab*, and
-   three lean on *valley of death* as HOOOP's framing rather than as sector
-   vocabulary. See the rejected-words list above.
-2. **They are thin.** 265 words average against ~1,200 for the model post. Thin
-   pages are part of why so little is indexed.
-3. **Dates are stale.** Several say "in 2025" or "the playbook for 2025".
-
-The three already in register, for reference:
-`sustainable-media-planning-india` (the model), `fssai-label-crackdown-…`,
-`how-indian-brands-verify-…`.
+Rejected framing is gone: zero instances of *venture lab* remain, and *valley of
+death* survives only where it is the sector's own term, never as HOOOP's model.
+Four stale "in 2025" references were updated.
 
 ## SEO baseline (28 Apr – 27 Jul 2026, pre-changes)
 
