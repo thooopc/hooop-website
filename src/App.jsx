@@ -173,7 +173,7 @@ const SITE_CONTENT = {
             "We are still working out where the lines fall here ourselves, and the sector is young enough that most of it is unsettled. If you are looking at a marine claim and are not sure it holds, we would genuinely like to compare notes.",
             { cta: "Read the greenwashing playbook", to: "greenwashing" },
           ],
-       },,
+       },
       {
           title: "The Commercialisation Gap: Why Circular Products Stall Before They Scale",
           slug: "commercialisation-gap-circular-economy-india",
