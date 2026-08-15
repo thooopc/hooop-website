@@ -27,6 +27,25 @@ reload — load-time device gates re-run on reload. Watch for fixed-height slots
 that align rows on desktop but leave dead space once cards stack, and for
 anything that scrolls horizontally.
 
+## Crawlability (fixed 7 Aug 2026)
+
+Until 7 Aug the served HTML contained **no internal links at all**. Every nav
+control was a `<button onClick>`, so Googlebot could only discover pages through
+`sitemap.xml`, no authority flowed between pages, and `/collective`, `/contact`,
+`/offerings`, `/research` and `/thinking` had **never been crawled once**.
+Google's own URL inspection said it plainly: *"Referring page: None detected."*
+
+`AppLink` in `App.jsx` now renders a real `<a href>` and still navigates
+client-side; modified clicks fall through so open-in-new-tab works. It is used by
+the sidebar, both mobile navs, hero CTAs, blog cards, in-post CTAs, the offerings
+cards, and a sitewide footer link block so every page links to every other.
+
+**If you add a navigation control, use `AppLink`.** A `<button onClick>` is
+invisible to a crawler and silently undoes this.
+
+Result: 15 indexed pages → 25 within a week, with "Discovered – currently not
+indexed" falling 6 → 2.
+
 ## When adding or renaming a page
 
 Four places, all required:
@@ -70,6 +89,24 @@ failure this was written to escape, and it looks fine in a browser.
 `public/llms.txt` is what AI assistants read about HOOOP — keep it in sync with
 positioning changes. It was briefing every LLM that HOOOP was a "venture lab"
 long after the site said otherwise.
+
+## Monitoring
+
+`python3 scripts/health-check.py` checks reachability, prerendered body content,
+crawlable internal link counts, canonical uniqueness, redirects, robots/sitemap
+integrity and asset weight. Exit 0 = clean. **Update its constants when the site
+shape changes** — it correctly failed after the blog consolidation because
+`MIN_POST_LINKS` still expected 14.
+
+A scheduled task `hooop-daily-health-check` runs it weekly (Mondays 9am) plus
+Vercel deploy state and Search Console, and drafts the report to
+arvind@hooop.in. The Gmail connector is on `arvindbnair@gmail.com` and has **no
+send tool**, so it creates a draft; Arvind confirmed that is fine. It also means
+Search Console notification emails are not readable — use the GSC message centre
+(bell icon) instead.
+
+Images: check weight before committing. A 5.2 MB portrait was rendering in a
+40px circle, sixteen times the weight of the entire JS bundle.
 
 ## Positioning (settled July 2026)
 
@@ -180,45 +217,50 @@ Audited 5 Aug 2026: *eco-friendly*, *zero waste* and *greener* had no rule at
 all, while our own marketing named them as the words Sense flags most often.
 When the marketing claims a behaviour, test the behaviour.
 
-## Open (as of 6 Aug 2026)
+## Open (as of 15 Aug 2026)
 
-**Blocked on someone else**
+**Blocked on Arvind**
 
-- **GoodNet has not cleared the 350g vs 1,050g CO₂ figures.** This blocks the
-  drafted GoodNet carbon LinkedIn post, and it is why `/esg-media-index` argues
-  entirely from assertion. Highest-leverage unblock on the list.
-- **GA4 key events** — `sense_consent_submitted` fires correctly but is not
-  marked as a key event, so it is recorded and not counted. Only Arvind can do
-  this; `analytics.google.com` is blocked in the browser tooling.
+- **GoodNet has not cleared the 350g vs 1,050g CO₂ figures.** Blocks the drafted
+  carbon post and leaves `/esg-media-index` arguing entirely from assertion, on a
+  site that runs a greenwashing checker. Highest-leverage unblock on the list.
+- **GA4 key event** — `sense_consent_submitted` fires correctly but is not marked
+  as a key event, so it is recorded and not counted. `analytics.google.com` is
+  blocked at the tool level.
+- **Unconfirmed:** Google flagged `a***r@gmail.com` added as a Search Console
+  owner on 8 Aug. Matches Arvind's own gmail; asked twice, never confirmed.
 
-**Scheduled**
+**Next up**
 
-- **ESG Media Index lead generation**, from 9 Aug. Arvind explicitly does *not*
-  want a lead form — inbound stays as the `mailto:` on the page. Agreed
-  direction: bound the offer to a named artefact, clear the GoodNet figures,
-  write for the language buyers actually search (wasted spend, MFA sites, media
-  quality), and treat outbound as the near-term channel.
-- **GSC check from ~8 Aug** for the FSSAI post. Search Console data lags about
-  two days, so nothing before then means nothing.
+- **ESG Media Index lead generation.** The offer is now bounded and live — "your
+  top 20 domains, scored", with a mailto that pre-fills the questions. Arvind
+  explicitly does **not** want a form. Still to do: content in the language
+  buyers actually search (wasted ad spend, made-for-advertising sites, media
+  quality audit, ad fraud India — nobody searches "ESG media index"), and
+  outbound, where the ET Brand Equity and ExchangeWire coverage is the opener.
 
-**Moved out of scope — handled in a separate conversation**
+**Handled in a separate conversation**
 
-From 6 Aug 2026 Arvind split design and content creation into their own chat.
-This one stays on strategy, technology, analytics and SEO. Do not pick these up
-here; the audit above is the handoff:
-
-- Tonality pass across the remaining 11 blog posts
-- LinkedIn company About — drafted, never shipped
-- GoodNet carbon post and graphic — drafted, blocked on the figures
-- Four-week LinkedIn cadence, delivered 6 Aug as an artifact
-
-Where a content item is *blocked by* something technical or commercial — the
-GoodNet clearance being the live example — that unblocking still belongs here.
+From 6 Aug Arvind split design and content *creation* into its own chat. Blogs
+came back here on 10 Aug because they are an SEO asset. Still elsewhere:
+LinkedIn company About (drafted, never shipped), the GoodNet carbon post
+(blocked on figures), the four-week LinkedIn cadence artifact.
 
 **Watching**
 
-- `/thinking/era-of-green-media-buying` still draws impressions on the old,
-  301'd slug. Expected to decay; no action unless it persists past September.
+- Indexing validation for "Crawled – currently not indexed" started 7 Aug; Google
+  messages when it completes.
+- `/thinking/era-of-green-media-buying` still draws the odd impression on the
+  old 301'd slug. Expected to decay; no action unless it persists past September.
+
+## Current numbers (15 Aug 2026)
+
+- **25 indexed, 7 not** — 3 of those 7 are intentional 301s, plus the 4 marine ones.
+- Search: **8 clicks, branded queries only** (`hooop`, plus junk and one
+  misspelling). No commercial toehold yet.
+- The honest read: crawlability and content quality are fixed; **rankings are
+  not**, and will not move on this timescale. Authority and depth are what is
+  left. Do not read three days of data as a trend at this volume.
 
 ## What I can and cannot reach
 
