@@ -41,16 +41,22 @@ PAGES = {
     "/manifesto": "Manifesto",
     "/privacy": "Privacy",
     "/thinking/fssai-label-crackdown-sustainability-claims": "no provision for a 100%",
+    "/thinking/marine-circularity-india": "ocean-bound plastic",
 }
 
 REDIRECTS = {
     "/our-thinking": "/thinking",
+    "/thinking/commercialising-ocean-bound-plastic-supply-chains": "/thinking/marine-circularity-india",
+    "/thinking/ocean-friendly-trap-greenwashing-marine-circularity": "/thinking/marine-circularity-india",
+    "/thinking/financing-blue-economy-marine-conservation-venture-capital": "/thinking/marine-circularity-india",
+    "/thinking/scaling-seaweed-marine-biomaterials-plastic-alternatives": "/thinking/marine-circularity-india",
     "/what-we-do": "/offerings",
     "/thinking/era-of-green-media-buying": "/thinking/sustainable-media-planning-india",
 }
 
 MIN_INTERNAL_LINKS = 12   # sitewide footer nav; below this, linking has regressed
-MIN_POST_LINKS = 14       # /thinking must link to every post
+MIN_POST_LINKS = 11       # /thinking must link to every post. Was 14 before the
+                          # four marine posts were consolidated on 15 Aug 2026.
 MAX_PAGE_BYTES = 400_000  # a single HTML document
 MAX_ASSET_BYTES = 400_000 # any one image or script
 
