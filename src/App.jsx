@@ -1240,9 +1240,9 @@ const POST_FIGURES = {
         <polygon points="172,63 186,70 172,77" fill="#D1D5DB" />
         <text x="200" y="86" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="46"
               fontWeight="700" fill="#0D9488">1.1%</text>
-        <text x="16" y="112" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="16"
+        <text x="16" y="112" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="18"
               fill="#9CA3AF">2023</text>
-        <text x="200" y="112" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="16"
+        <text x="200" y="112" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="18"
               fill="#9CA3AF">2026</text>
         <rect x="16" y="122" width="130" height="9" fill="#111111" />
         <rect x="200" y="122" width="10" height="9" fill="#0D9488" />
@@ -1257,9 +1257,9 @@ const POST_FIGURES = {
         <polygon points="172,233 186,240 172,247" fill="#D1D5DB" />
         <text x="200" y="252" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="36"
               fontWeight="700" fill="#D97706">$26.8B</text>
-        <text x="16" y="276" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="16"
+        <text x="16" y="276" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="18"
               fill="#9CA3AF">2023</text>
-        <text x="200" y="276" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="16"
+        <text x="200" y="276" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="18"
               fill="#9CA3AF">2025</text>
         <rect x="16" y="286" width="97" height="9" fill="#D1D5DB" />
         <rect x="200" y="286" width="130" height="9" fill="#D97706" />
@@ -1309,8 +1309,8 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
         <X size={20} />
       </button>
 
-      <div className="mb-8">
-        <div className="flex items-center gap-3 mb-4 pr-14 md:pr-0">
+      <div className="mb-8 pt-12 md:pt-0">
+        <div className="flex items-center gap-3 mb-4">
            <span className="px-3 py-1 bg-teal-50 text-teal-600 rounded-full text-xs font-bold uppercase tracking-widest">{post.category}</span>
            <span className="text-gray-400 text-xs font-mono">{post.date}</span>
         </div>
