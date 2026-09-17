@@ -238,6 +238,45 @@ When the marketing claims a behaviour, test the behaviour.
   buyers actually search (wasted ad spend, made-for-advertising sites, media
   quality audit, ad fraud India — nobody searches "ESG media index"), and
   outbound, where the ET Brand Equity and ExchangeWire coverage is the opener.
+  **First of that content shipped 17 Sep** — see below.
+
+## The made-for-advertising post (17 Sep 2026)
+
+`/thinking/made-for-advertising-programmatic-waste-india`, ~1,300 words — more
+than double the blog average and the first post written to rank rather than to
+exist. It is the first attempt at the buyer-language content named above.
+
+Argument: MFA fell from 15% of programmatic spend (ANA, Jun 2023) to a 1.1%
+median (Q1 2026) with no regulation and no campaign — log-level data did it.
+Carbon per ad dollar fell alongside, as a by-product. The honest counterweight,
+stated in the post: total waste rose $20.0B → $26.8B over the same period, and
+the top/bottom advertiser gap is widening ($7.46 vs $19.04 TrueCPM).
+
+The India hook is the differentiator, and it is not written down anywhere else
+we could find: **India has the lowest invalid traffic rate of ten major markets
+— 5.50% against an 8.51% global average** (Lunio, Global Invalid Traffic Report
+2026, 2.7bn clicks, Aug 2024–Aug 2025). The post says in its own text that Lunio
+sells IVT protection and that IVT and MFA are different measures that must not
+be added — necessary on a site that runs a greenwashing checker.
+
+**Every figure is sourced and checkable.** If any of it needs revisiting, the
+sources are the ANA Programmatic Transparency Benchmark releases (Jun 2023,
+Q2 2025, Q1 2026) and the Lunio report. Nothing here came from a client deck,
+so none of it is under the GoodNet clearance constraint.
+
+Also fixed on the way through, all pre-existing and affecting **every** post:
+
+- `POST_FIGURES` SVGs used a 640-wide viewBox, rendering at 179px on a 375px
+  screen — 12px labels came out at ~3px. New figures should use a **360-wide
+  viewBox** and treat the numbers as the graphic, not the axis.
+- The post date sat underneath the absolutely positioned close button on mobile.
+  Padding the flex row does not fix it (the date is a flex item that overflows
+  the padded box); the header gets `pt-12 md:pt-0` instead.
+- The LinkedIn share button was a `<button>` with no handler. Now opens the
+  share dialog against the canonical URL.
+
+LinkedIn copy for it — page post, Arvind's reshare, and his native Thursday
+post — is at `~/Desktop/HOOOP Creatives/linkedin-mfa-post.md`.
 
 **Handled in a separate conversation**
 
