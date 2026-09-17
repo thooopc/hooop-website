@@ -1227,45 +1227,42 @@ const POST_FIGURES = {
     )
   },
   "mfa-decline": {
-    label: "Fig. 02 — One number fell. The other did not.",
-    caption: "Made-for-advertising collapsed as a share of spend. Total programmatic waste rose over the same period. Both are true, and the second is why the first is not the end of the story.",
-    alt: "Two pairs of bars. The first pair shows made-for-advertising falling from 15 per cent of programmatic spend in 2023 to 1.1 per cent in 2026. The second pair shows total programmatic waste rising from 20 billion dollars in 2023 to 26.8 billion dollars in 2025.",
+    label: "Fig. 02 \u2014 One number fell. The other did not.",
+    caption: "Made-for-advertising collapsed as a share of spend, while total programmatic waste rose over the same period. Both are true, and the second is why the first is not the end of the story. Source: ANA Programmatic Transparency Benchmark, June 2023 to May 2026.",
+    alt: "Made-for-advertising fell from 15 per cent of programmatic spend in 2023 to 1.1 per cent in 2026. Over a comparable period, total programmatic waste rose from 20.0 billion dollars to 26.8 billion dollars.",
     svg: (
-      <svg viewBox="0 0 640 282" className="w-full h-auto" role="img" aria-hidden="true" focusable="false">
-        <text x="20" y="18" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="12"
-              fontWeight="700" letterSpacing="2.2" fill="#9CA3AF">MADE-FOR-ADVERTISING, SHARE OF SPEND</text>
-
-        <text x="20" y="52" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="12"
-              fontWeight="700" fill="#6B7280">2023</text>
-        <rect x="76" y="32" width="400" height="28" fill="#111111" />
-        <text x="486" y="52" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="14"
+      <svg viewBox="0 0 360 300" className="w-full h-auto" role="img" aria-hidden="true" focusable="false">
+        <text x="16" y="24" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="19"
+              fontWeight="700" letterSpacing="1.6" fill="#9CA3AF">MFA SHARE OF SPEND</text>
+        <text x="16" y="86" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="46"
               fontWeight="700" fill="#111111">15%</text>
-
-        <text x="20" y="92" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="12"
-              fontWeight="700" fill="#6B7280">2026</text>
-        <rect x="76" y="72" width="29" height="28" fill="#0D9488" />
-        <text x="115" y="92" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="14"
+        <line x1="130" y1="70" x2="172" y2="70" stroke="#D1D5DB" strokeWidth="2.5" />
+        <polygon points="172,63 186,70 172,77" fill="#D1D5DB" />
+        <text x="200" y="86" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="46"
               fontWeight="700" fill="#0D9488">1.1%</text>
+        <text x="16" y="112" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="16"
+              fill="#9CA3AF">2023</text>
+        <text x="200" y="112" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="16"
+              fill="#9CA3AF">2026</text>
+        <rect x="16" y="122" width="130" height="9" fill="#111111" />
+        <rect x="200" y="122" width="10" height="9" fill="#0D9488" />
 
-        <line x1="20" y1="124" x2="620" y2="124" stroke="#E5E7EB" strokeWidth="1" />
+        <line x1="16" y1="160" x2="344" y2="160" stroke="#E5E7EB" strokeWidth="1" />
 
-        <text x="20" y="158" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="12"
-              fontWeight="700" letterSpacing="2.2" fill="#9CA3AF">TOTAL PROGRAMMATIC WASTE, ANNUALISED</text>
-
-        <text x="20" y="192" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="12"
-              fontWeight="700" fill="#6B7280">2023</text>
-        <rect x="76" y="172" width="298" height="28" fill="#E5E7EB" />
-        <text x="384" y="192" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="14"
-              fontWeight="700" fill="#6B7280">$20.0B</text>
-
-        <text x="20" y="232" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="12"
-              fontWeight="700" fill="#6B7280">2025</text>
-        <rect x="76" y="212" width="400" height="28" fill="#D97706" />
-        <text x="486" y="232" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="14"
+        <text x="16" y="196" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="19"
+              fontWeight="700" letterSpacing="1.6" fill="#9CA3AF">TOTAL PROGRAMMATIC WASTE</text>
+        <text x="16" y="252" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="36"
+              fontWeight="700" fill="#9CA3AF">$20.0B</text>
+        <line x1="156" y1="240" x2="172" y2="240" stroke="#D1D5DB" strokeWidth="2.5" />
+        <polygon points="172,233 186,240 172,247" fill="#D1D5DB" />
+        <text x="200" y="252" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="36"
               fontWeight="700" fill="#D97706">$26.8B</text>
-
-        <text x="20" y="270" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="10.5"
-              letterSpacing="1.2" fill="#9CA3AF">SOURCE: ANA PROGRAMMATIC TRANSPARENCY BENCHMARK, JUN 2023 TO MAY 2026</text>
+        <text x="16" y="276" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="16"
+              fill="#9CA3AF">2023</text>
+        <text x="200" y="276" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="16"
+              fill="#9CA3AF">2025</text>
+        <rect x="16" y="286" width="97" height="9" fill="#D1D5DB" />
+        <rect x="200" y="286" width="130" height="9" fill="#D97706" />
       </svg>
     )
   }
@@ -1275,7 +1272,7 @@ const PostFigure = ({ name }) => {
   const fig = POST_FIGURES[name];
   if (!fig) return null;
   return (
-    <figure className="!my-10 bg-[#F9FAFB] border border-gray-200 rounded-2xl p-6 md:p-8" aria-label={fig.alt}>
+    <figure className="!my-10 bg-[#F9FAFB] border border-gray-200 rounded-2xl p-4 md:p-8" aria-label={fig.alt}>
       <div className="text-[11px] font-mono font-bold uppercase tracking-[0.18em] text-gray-400 mb-5">
         {fig.label}
       </div>
@@ -1313,7 +1310,7 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
       </button>
 
       <div className="mb-8">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-4 pr-14 md:pr-0">
            <span className="px-3 py-1 bg-teal-50 text-teal-600 rounded-full text-xs font-bold uppercase tracking-widest">{post.category}</span>
            <span className="text-gray-400 text-xs font-mono">{post.date}</span>
         </div>

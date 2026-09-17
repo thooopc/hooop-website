@@ -253,14 +253,56 @@ LinkedIn company About (drafted, never shipped), the GoodNet carbon post
 - `/thinking/era-of-green-media-buying` still draws the odd impression on the
   old 301'd slug. Expected to decay; no action unless it persists past September.
 
-## Current numbers (15 Aug 2026)
+## Current numbers (23 Aug 2026)
 
-- **25 indexed, 7 not** — 3 of those 7 are intentional 301s, plus the 4 marine ones.
-- Search: **8 clicks, branded queries only** (`hooop`, plus junk and one
-  misspelling). No commercial toehold yet.
-- The honest read: crawlability and content quality are fixed; **rankings are
-  not**, and will not move on this timescale. Authority and depth are what is
-  left. Do not read three days of data as a trend at this volume.
+Health check: 14 pages, 0 failures, 0 warnings.
+
+- **26 indexed, 7 not** — 3 intentional 301s, 2 crawled–not–indexed, 2
+  discovered–not–indexed. Nothing there needs action.
+- Search, **28 days**: 4 clicks, 92 impressions, avg position 32.1.
+- Search, **90 days**: 11 clicks, 252 impressions, avg position 14.5.
+- **Always state the window.** The two averages look like a collapse and are
+  not: more pages indexed means we surface for more marginal queries, which
+  drags the average down while impressions/day actually rose (2.8 → 3.3).
+- **Every click in 90 days came from a brand query.** `hooop` (7), plus
+  `aravind nair hooop` (29 impressions, 0 clicks), `yes`, `greenwashing upsc`,
+  `looop marketing`. **Zero non-brand clicks, ever.**
+- The crawl fix is visibly working: 17 pages earned impressions this month, and
+  `/offerings` — never fetched by Google before the fix — is now the best
+  performing page on the site (2 clicks, 28 impressions).
+- The blog earned ~8 impressions and 0 clicks in 28 days. The rewrite improved
+  quality; quality without authority does not rank.
+- The honest read is unchanged: crawlability and content quality are fixed;
+  **rankings are not.** Authority is the only remaining constraint.
+
+## Ranking for "sustainable / ESG marketing" (23 Aug 2026)
+
+Arvind asked to feature for these terms. Checked, and there is nothing to fix
+on-page — `/` and `/offerings` already carry them in the `<title>`:
+
+```
+/           HOOOP Collective — Sustainable Marketing & Growth Strategy for Indian Brands
+/offerings  What We Do — Sustainable Marketing, Media & ESG Consulting | HOOOP
+```
+
+**Do not "fix" the titles.** `SITE_CONTENT` also has `title:` fields — those are
+page *headings*, not HTML titles, and reading them instead led me to a wrong
+conclusion I caught only by checking the served HTML. Verify against
+`curl https://www.hooop.in/ | grep '<title>'`.
+
+The SERP for these terms is owned by **listicles**, not agencies — Sortlist,
+Norvell Jefferson, Thooja, The Sustainable Agency. Google wants options, not one
+agency's homepage, so the route in is **being listed**, not out-ranking them.
+Each listing is also a relevant backlink, which is the actual constraint.
+
+Indian competitors in the space: Meraki Digital (has claimed "India's First
+Climate-Conscious Marketing Agency"), On Purpose Consulting, HavStrategy,
+UrbanPIE.
+
+**"ESG marketing" appears 0 times on the site**; "sustainable marketing" 9 times.
+Adding it is a positioning decision, not an SEO one — it pulls a corporate and
+investor-reporting audience, where "sustainable marketing" pulls brand and CMO
+people. Awaiting Arvind's call.
 
 ## What I can and cannot reach
 
