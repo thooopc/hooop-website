@@ -63,6 +63,9 @@ export const ROUTES = Object.fromEntries([
     description: "How the HOOOP Collective collects, uses, and protects personal data provided through Sense, in line with India's Digital Personal Data Protection Act, 2023.",
   }],
 
+  post("made-for-advertising-programmatic-waste-india",
+    "Made-for-Advertising Went From 15% of Programmatic Spend to Under 1%",
+    "Made-for-advertising sites took 15% of programmatic budgets in 2023 and around 1% today. What fixed it, why carbon per ad dollar fell with it, and why India — the lowest invalid traffic rate of ten major markets — is not yet running the same checks."),
   post("fssai-label-crackdown-sustainability-claims",
     "FSSAI Is Deleting \u201c100%\u201d and \u201cNatural\u201d From Food Labels. Green Claims Use the Same Words.",
     "FSSAI has spent months stripping words like 100%, natural and healthy off Indian food packaging. The reasoning it is using applies almost word for word to sustainability claims."),

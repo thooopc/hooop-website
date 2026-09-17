@@ -50,6 +50,63 @@ const SITE_CONTENT = {
     },
     posts: [
        {
+          title: "Made-for-Advertising Went From 15% of Programmatic Spend to Under 1%. Measurement Did That, Not Outrage.",
+          slug: "made-for-advertising-programmatic-waste-india",
+          category: "Sustainable Media",
+          date: "September 17, 2026",
+          desc: "In 2023, made-for-advertising sites took fifteen per cent of programmatic budgets. The median is now around one per cent. What fixed it is worth understanding, because the same method is sitting unused on most Indian media plans.",
+          content: [
+            "In June 2023 the Association of National Advertisers published a number that embarrassed the industry. Fifteen per cent of programmatic ad spend was going to made-for-advertising sites. Twenty-one per cent of all impressions.",
+            "Three years on, the median sits at 1.1 per cent.",
+            "We have been looking for a clean example of something the marketing industry actually fixed, rather than a problem it is still describing. This is the best one we have found.",
+            { heading: "What a made-for-advertising site is" },
+            "A page built to carry advertising rather than to be read. Thin articles, often assembled cheaply, wrapped in more ad slots than editorial. Slideshows that break one paragraph across fourteen page loads, each load a fresh set of impressions.",
+            "Nothing about it is illegal. The ads serve. The impressions count. The reporting comes back looking healthy.",
+            "They are also cheap, which is the entire trap. If you buy on cost per thousand impressions, made-for-advertising inventory wins every auction you allow it into. It is optimised to be the cheapest thing in the room.",
+            { heading: "What actually fixed it" },
+            "Not regulation. Nobody passed a law. There was no campaign, no pledge, and as far as we can tell no brand ever ran an ad about it.",
+            "What changed is that advertisers started getting log-level data \u2014 the actual, unaggregated list of every domain their money reached. Once buyers could read that list, three things happened quickly.",
+            "The number of active domains in a median plan fell from 53,799 to 28,958. The median number of supply-side platforms in the path dropped from 19 to 17. And the share of spend transacting through private marketplaces, where the buyer knows who the seller is, went from 64.5 per cent to 87.8 per cent.",
+            "None of that is a moral decision. It is a buying decision that only became possible once people could see what they were buying.",
+            { figure: "mfa-decline" },
+            { heading: "The climate number came along for the ride" },
+            "Over the same period, carbon emissions per advertising dollar fell from 0.10kg to 0.09kg. A ten per cent drop in a single quarter, on a metric nobody in the room was optimising for.",
+            "The mechanics are not mysterious. Open marketplace buys run up to seven times more carbon-intensive than private marketplace buys, because the path is longer and more of the inventory is junk. Made-for-advertising pages carry roughly a quarter more emissions than ordinary inventory, because they are heavier and they load more of themselves per impression.",
+            "So when the industry cleaned up its supply paths for commercial reasons, the emissions fell as a by-product.",
+            "This is the argument we have been making on Indian plans for two years, and it is useful to have it demonstrated at scale by data that has nothing to do with us. Cleaner media is mostly better media. The climate benefit is real, and it is second in line.",
+            { cta: "How we work with media teams", to: "offerings" },
+            { heading: "The part that did not improve" },
+            "Made-for-advertising went from roughly two-thirds of measured programmatic waste to under one per cent. Total waste over the same period went from $20.0 billion to $26.8 billion. Up thirty-four per cent.",
+            "That is not a contradiction. The industry solved the specific problem it could see and measure, and the money moved somewhere less legible.",
+            "The most recent benchmark, published in May 2026, makes the shape of it clear. Among the advertisers being measured, the top performers convert 54.0 per cent of their spend efficiently. The lower performers manage 32.1 per cent. Their true cost per thousand is $7.46 against $19.04 \u2014 the same impressions, two and a half times the price.",
+            "The gap is widening, not closing. The fix works. It works for the people who are measuring.",
+            { heading: "Where India actually sits" },
+            "Here is a fact about Indian digital advertising that we had not seen written down anywhere.",
+            "Lunio's 2026 invalid traffic report looked at 2.7 billion paid clicks across Google, Meta, TikTok, LinkedIn and Bing, in ten major advertising markets. The global average rate of invalid traffic was 8.51 per cent. China came in at 16.37 per cent, Brazil at 14.70.",
+            "India was the lowest in the dataset, at 5.50 per cent.",
+            "The report's own explanation is that India's digital economy is mobile-first and app-centric, and app inventory is easier to validate than the open web. That sounds right to us, though it is an explanation rather than a proof.",
+            "We would be careful with what this number does and does not say. Invalid traffic and made-for-advertising are different problems measured by different methods, and adding them together would be wrong. Lunio also sells invalid traffic protection, so it is not a disinterested source; we are using the ranking rather than the absolute figure, because the ordering is consistent with what other vendors report.",
+            "But taken at face value it points somewhere interesting. India's problem is not that a large share of the traffic is fake. On the available evidence it is the least fake of any major market. The problem is that almost nobody here is running the other checks \u2014 the ones that moved the global numbers.",
+            "The ANA benchmark that produced all of the figures above had 86 participants in its most recent quarter, 66 of them actively contributing data. They are overwhelmingly large American advertisers. There is no Indian equivalent, which means Indian buyers currently have no benchmark to fail against.",
+            { heading: "What we would do on an Indian plan" },
+            "None of this requires new technology. All of it is available to anyone spending money programmatically today.",
+            "Ask for the full domain list. Not the top twenty by spend \u2014 all of them. The length of that list is the single most diagnostic number on a media plan, and most Indian advertisers have never seen theirs.",
+            "Count the intermediaries. How many supply-side platforms sit between your budget and the publisher? If the answer is more than a dozen, you are paying a margin at each one and you cannot tell which.",
+            "Look at measurable rate before you look at viewability. Viewability of eighty per cent means nothing if only half the inventory was measurable in the first place.",
+            "Then look at carbon. By the time you get there, the number will already have fallen, and you will have a sustainability result that came out of a procurement exercise rather than a budget line.",
+            { heading: "What we do not know" },
+            "We do not have an Indian benchmark. Everything above is US advertisers, and we are extrapolating a method rather than a result. Whether domain consolidation plays out the same way here is genuinely open, because the Indian inventory mix skews far more to mobile apps and far less to connected television.",
+            "We also do not know how much of the global improvement is real versus definitional. Some of the drop in made-for-advertising exposure will be buyers getting better, and some will be the category being redrawn as the sites evolve. We have not seen anyone separate the two convincingly, including us.",
+            "And we have not tested the carbon claim on Indian inventory ourselves. The relationship between supply path length and emissions is well evidenced globally. We are assuming it holds here. We would like to stop assuming.",
+            { heading: "Where we have got to" },
+            "An industry took a problem worth fifteen per cent of a budget line and cut it by more than ninety per cent in under three years, with no legislation, no pledge and no campaign. It did it by giving buyers a list and letting them read it.",
+            "That is worth saying plainly, in a field where most of what gets published is an account of how bad things are. Things do sometimes get fixed, and when they do it is usually because somebody made the problem measurable rather than because somebody made it loud.",
+            "It also did not happen everywhere, and India is not in the dataset.",
+            "If you have a live media plan and you are not sure which of these numbers you could produce for it, send us the site list. We will tell you what we see, including if the honest answer is that there is not much to gain.",
+            { cta: "See the ESG Media Index", to: "esg-media-index" },
+          ],
+       },
+       {
           title: "FSSAI Is Deleting \u201c100%\u201d and \u201cNatural\u201d From Food Labels. Green Claims Use the Same Words.",
           slug: "fssai-label-crackdown-sustainability-claims",
           category: "Greenwashing",
@@ -1166,6 +1223,49 @@ const POST_FIGURES = {
         <line x1="620" y1="216" x2="620" y2="228" stroke="#0D9488" strokeWidth="1.5" />
         <text x="446" y="243" textAnchor="middle" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace"
               fontSize="11.5" letterSpacing="1.4" fill="#9CA3AF">EVERYTHING YOU CANNOT SUBSTANTIATE</text>
+      </svg>
+    )
+  },
+  "mfa-decline": {
+    label: "Fig. 02 — One number fell. The other did not.",
+    caption: "Made-for-advertising collapsed as a share of spend. Total programmatic waste rose over the same period. Both are true, and the second is why the first is not the end of the story.",
+    alt: "Two pairs of bars. The first pair shows made-for-advertising falling from 15 per cent of programmatic spend in 2023 to 1.1 per cent in 2026. The second pair shows total programmatic waste rising from 20 billion dollars in 2023 to 26.8 billion dollars in 2025.",
+    svg: (
+      <svg viewBox="0 0 640 282" className="w-full h-auto" role="img" aria-hidden="true" focusable="false">
+        <text x="20" y="18" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="12"
+              fontWeight="700" letterSpacing="2.2" fill="#9CA3AF">MADE-FOR-ADVERTISING, SHARE OF SPEND</text>
+
+        <text x="20" y="52" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="12"
+              fontWeight="700" fill="#6B7280">2023</text>
+        <rect x="76" y="32" width="400" height="28" fill="#111111" />
+        <text x="486" y="52" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="14"
+              fontWeight="700" fill="#111111">15%</text>
+
+        <text x="20" y="92" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="12"
+              fontWeight="700" fill="#6B7280">2026</text>
+        <rect x="76" y="72" width="29" height="28" fill="#0D9488" />
+        <text x="115" y="92" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="14"
+              fontWeight="700" fill="#0D9488">1.1%</text>
+
+        <line x1="20" y1="124" x2="620" y2="124" stroke="#E5E7EB" strokeWidth="1" />
+
+        <text x="20" y="158" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="12"
+              fontWeight="700" letterSpacing="2.2" fill="#9CA3AF">TOTAL PROGRAMMATIC WASTE, ANNUALISED</text>
+
+        <text x="20" y="192" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="12"
+              fontWeight="700" fill="#6B7280">2023</text>
+        <rect x="76" y="172" width="298" height="28" fill="#E5E7EB" />
+        <text x="384" y="192" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="14"
+              fontWeight="700" fill="#6B7280">$20.0B</text>
+
+        <text x="20" y="232" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="12"
+              fontWeight="700" fill="#6B7280">2025</text>
+        <rect x="76" y="212" width="400" height="28" fill="#D97706" />
+        <text x="486" y="232" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="14"
+              fontWeight="700" fill="#D97706">$26.8B</text>
+
+        <text x="20" y="270" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="10.5"
+              letterSpacing="1.2" fill="#9CA3AF">SOURCE: ANA PROGRAMMATIC TRANSPARENCY BENCHMARK, JUN 2023 TO MAY 2026</text>
       </svg>
     )
   }
