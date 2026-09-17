@@ -1346,7 +1346,14 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
       <div className="mt-12 pt-12 border-t border-gray-100 text-center">
          <p className="text-sm text-gray-400 font-bold uppercase tracking-widest mb-4">Share this perspective</p>
          <div className="flex justify-center gap-4">
-            <button className="p-3 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"><Linkedin size={20} /></button>
+            <button
+              aria-label="Share this post on LinkedIn"
+              className="p-3 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
+              onClick={() => window.open(
+                `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${SITE_URL}/thinking/${post.slug}`)}`,
+                "_blank", "noopener,noreferrer,width=600,height=600"
+              )}
+            ><Linkedin size={20} /></button>
             <button className="p-3 rounded-full bg-gray-50 text-gray-600 hover:bg-gray-100 transition-colors" onClick={() => navigator.clipboard.writeText(window.location.href)}><Copy size={20} /></button>
          </div>
       </div>
