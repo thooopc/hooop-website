@@ -2,3 +2,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.hooop.in/sitemap.xml
+
+# Agentic Resource Discovery — tells AI agents where the machine-readable
+# catalogue of this site's resources lives. Lighthouse 13.5 audits this.
+Agentmap: https://www.hooop.in/.well-known/ai-catalog.json

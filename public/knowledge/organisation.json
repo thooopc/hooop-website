@@ -1,8 +1,8 @@
 {
   "name": "HOOOP",
   "website": "https://www.hooop.in",
-  "description": "Venture lab helping sustainable and circular businesses scale.",
-  "mission": "Helping sustainability scale.",
+  "description": "A marketing and strategy collective helping climate and circular businesses bridge the gap between innovation and commercial adoption.",
+  "mission": "Building brands and businesses through marketing-led interventions that make sustainable choices commercially viable.",
   "expertise": [
     "Climate Action",
     "Circular Economy",
@@ -20,5 +20,14 @@
     "Behaviour Change",
     "Digital Intelligence",
     "ESG Strategy"
+  ],
+  "alternateName": [
+    "The HOOOP Collective",
+    "HOOOP Collective"
+  ],
+  "areaServed": [
+    "India",
+    "United Kingdom",
+    "European Union"
   ]
 }

@@ -44,6 +44,16 @@ Building brands and businesses through marketing-led interventions that make sus
 - [Manifesto](https://www.hooop.in/manifesto): HOOOP's philosophy and principles.
 - [Contact](https://www.hooop.in/contact): Contact information and enquiries.
 
+## Machine-readable resources
+
+- [Resource catalogue](https://www.hooop.in/.well-known/ai-catalog.json): Agentic Resource Discovery manifest listing everything below.
+- [Full text](https://www.hooop.in/llms-full.txt): The complete text of every published article.
+- [Organisation](https://www.hooop.in/knowledge/organisation.json): Description, mission, expertise, markets served.
+- [Practices](https://www.hooop.in/knowledge/services.json): The four HOOOP practices.
+- [Article index](https://www.hooop.in/knowledge/articles.json): Every article with URL, category, date and summary.
+- [Taxonomy](https://www.hooop.in/knowledge/taxonomy.json) and [topics](https://www.hooop.in/knowledge/topics.json): Subject clusters.
+- [Glossary](https://www.hooop.in/knowledge/glossary.json): Plain-language definitions.
+
 ## Topics
 
 - Sustainable Marketing

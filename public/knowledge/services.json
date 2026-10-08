@@ -1,20 +1,20 @@
 {
   "services": [
     {
-      "name": "Strategy",
-      "description": "Commercial strategy for sustainable and circular businesses."
+      "name": "Marketing-Led Consulting",
+      "description": "Brand and narrative strategy, sustainability communication audits, audience discovery and claim substantiation."
     },
     {
-      "name": "Marketing Science",
-      "description": "Measurement, attribution and growth."
+      "name": "Media Sustainability",
+      "description": "ESG media planning, green media buying, campaign carbon measurement and media intelligence."
     },
     {
-      "name": "Digital Intelligence",
-      "description": "Technology and behavioural insights."
+      "name": "Policy, Advocacy & Stakeholder Engagement",
+      "description": "PR and communications, environmental law and policy advisory, and circular economy policy."
     },
     {
-      "name": "Research",
-      "description": "Market intelligence and sustainability research."
+      "name": "Venture Growth & Market Access",
+      "description": "Commercial partnerships and cross-border expansion across India, the UK and the EU."
     }
   ]
 }

@@ -1,0 +1,153 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "HOOOP Collective",
+    "identifier": "hooop.in",
+    "documentationUrl": "https://www.hooop.in/llms.txt",
+    "logoUrl": "https://www.hooop.in/THE-HOOO-COLLECTIVEP_without-shadow.png"
+  },
+  "entries": [
+    {
+      "identifier": "urn:ai:hooop.in:site:summary",
+      "displayName": "HOOOP Site Summary",
+      "type": "text/plain",
+      "url": "https://www.hooop.in/llms.txt",
+      "description": "What HOOOP Collective is, its four practices, its expertise and its core pages.",
+      "tags": [
+        "about",
+        "positioning",
+        "services"
+      ],
+      "representativeQueries": [
+        "what does HOOOP Collective do",
+        "sustainable marketing agency India"
+      ],
+      "updatedAt": "2026-10-08T00:00:00Z"
+    },
+    {
+      "identifier": "urn:ai:hooop.in:site:full-text",
+      "displayName": "HOOOP Full Text",
+      "type": "text/plain",
+      "url": "https://www.hooop.in/llms-full.txt",
+      "description": "The full text of every published HOOOP article, with titles, URLs and publication dates.",
+      "tags": [
+        "articles",
+        "research",
+        "full-text"
+      ],
+      "representativeQueries": [
+        "HOOOP writing on greenwashing",
+        "HOOOP research on circular economy"
+      ],
+      "updatedAt": "2026-10-08T00:00:00Z"
+    },
+    {
+      "identifier": "urn:ai:hooop.in:knowledge:organisation",
+      "displayName": "Organisation Profile",
+      "type": "application/json",
+      "url": "https://www.hooop.in/knowledge/organisation.json",
+      "description": "Structured profile of HOOOP Collective: description, mission, expertise, markets served.",
+      "tags": [
+        "organisation",
+        "profile"
+      ],
+      "representativeQueries": [
+        "who are HOOOP Collective",
+        "where does HOOOP operate"
+      ],
+      "updatedAt": "2026-10-08T00:00:00Z"
+    },
+    {
+      "identifier": "urn:ai:hooop.in:knowledge:services",
+      "displayName": "Practices",
+      "type": "application/json",
+      "url": "https://www.hooop.in/knowledge/services.json",
+      "description": "The four HOOOP practices and what each covers.",
+      "tags": [
+        "services",
+        "practices"
+      ],
+      "representativeQueries": [
+        "what services does HOOOP offer",
+        "ESG media planning India"
+      ],
+      "updatedAt": "2026-10-08T00:00:00Z"
+    },
+    {
+      "identifier": "urn:ai:hooop.in:knowledge:articles",
+      "displayName": "Article Index",
+      "type": "application/json",
+      "url": "https://www.hooop.in/knowledge/articles.json",
+      "description": "Index of all published HOOOP articles with title, URL, category, publication date and summary.",
+      "tags": [
+        "articles",
+        "index"
+      ],
+      "representativeQueries": [
+        "HOOOP articles on sustainability claims",
+        "latest HOOOP research"
+      ],
+      "updatedAt": "2026-10-08T00:00:00Z"
+    },
+    {
+      "identifier": "urn:ai:hooop.in:knowledge:taxonomy",
+      "displayName": "Topic Taxonomy",
+      "type": "application/json",
+      "url": "https://www.hooop.in/knowledge/taxonomy.json",
+      "description": "HOOOP's topic clusters and the subjects within each.",
+      "tags": [
+        "taxonomy",
+        "topics"
+      ],
+      "representativeQueries": [
+        "what subjects does HOOOP cover"
+      ],
+      "updatedAt": "2026-10-08T00:00:00Z"
+    },
+    {
+      "identifier": "urn:ai:hooop.in:knowledge:topics",
+      "displayName": "Topic List",
+      "type": "application/json",
+      "url": "https://www.hooop.in/knowledge/topics.json",
+      "description": "Flat list of topics HOOOP publishes and advises on.",
+      "tags": [
+        "topics"
+      ],
+      "representativeQueries": [
+        "HOOOP areas of expertise"
+      ],
+      "updatedAt": "2026-10-08T00:00:00Z"
+    },
+    {
+      "identifier": "urn:ai:hooop.in:knowledge:glossary",
+      "displayName": "Glossary",
+      "type": "application/json",
+      "url": "https://www.hooop.in/knowledge/glossary.json",
+      "description": "Plain-language definitions of the sustainability marketing terms HOOOP uses.",
+      "tags": [
+        "glossary",
+        "definitions"
+      ],
+      "representativeQueries": [
+        "what is greenwashing",
+        "what is the circular economy"
+      ],
+      "updatedAt": "2026-10-08T00:00:00Z"
+    },
+    {
+      "identifier": "urn:ai:hooop.in:site:sitemap",
+      "displayName": "Sitemap",
+      "type": "application/xml",
+      "url": "https://www.hooop.in/sitemap.xml",
+      "description": "Every indexable URL on hooop.in.",
+      "tags": [
+        "sitemap",
+        "urls"
+      ],
+      "representativeQueries": [
+        "list every page on hooop.in"
+      ],
+      "updatedAt": "2026-10-08T00:00:00Z"
+    }
+  ]
+}

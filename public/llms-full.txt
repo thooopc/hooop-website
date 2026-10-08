@@ -1,1 +1,517 @@
+# HOOOP
+
+> HOOOP is a marketing and strategy collective helping climate and circular businesses bridge the gap between innovation and commercial adoption.
+
+HOOOP works at the intersection of sustainability, circular economy, marketing science, digital transformation and behavioural change. We combine brand and marketing strategy, market intelligence, commercial partnerships and behavioural insight to help businesses grow credibly and at scale.
+
+## Website
+
+- [Homepage](https://www.hooop.in): Overview of HOOOP, its mission and capabilities.
+
+## Mission
+
+Building brands and businesses through marketing-led interventions that make sustainable choices commercially viable.
+
+## Practices
+
+- Marketing-led consulting: brand and narrative strategy, sustainability communication audits, audience discovery, claim substantiation.
+- Media sustainability: ESG media planning, green media buying, campaign carbon measurement, media intelligence.
+- Policy, advocacy and stakeholder engagement: PR and communications, environmental law and policy advisory, circular economy policy.
+- Market access: commercial partnerships and cross-border expansion across India, the UK and EU.
+
+## Expertise
+
+- Sustainable Marketing
+- Brand Strategy
+- Circular Economy
+- Greenwashing
+- ESG Media
+- Behaviour Change
+- Ocean Plastics
+- Marine Circularity
+- Blue Economy
+- Marketing Science
+
+## Core Pages
+
+- [Offerings](https://www.hooop.in/offerings): Marketing-led consulting, media sustainability, policy and market access.
+- [Sense](https://www.hooop.in/sense): Free greenwashing checker for sustainability claims.
+- [Greenwashing](https://www.hooop.in/greenwashing): Greenwashing risk, Indian regulation and a practical playbook.
+- [ESG Media Index](https://www.hooop.in/esg-media-index): India's first ESG Media Index, built with The GoodNet.
+- [Prvaah](https://www.hooop.in/prvaah): India, UK and EU market entry programme.
+- [Research](https://www.hooop.in/research): Original research, reports and insights.
+- [Thinking](https://www.hooop.in/thinking): Articles and thought leadership.
+- [Manifesto](https://www.hooop.in/manifesto): HOOOP's philosophy and principles.
+- [Contact](https://www.hooop.in/contact): Contact information and enquiries.
+
+## Topics
+
+- Sustainable Marketing
+- Circular Economy
+- ESG Media
+- Behaviour Change
+- Marketing Science
+- Mission LiFE
+- Sustainable Media
+- Climate Communication
+- Digital Sustainability
+- Blue Economy
+
+---
+
+# Full article text
+
+## FSSAI Is Deleting "100%" and "Natural" From Food Labels. Green Claims Use the Same Words.
+URL: https://www.hooop.in/thinking/fssai-label-crackdown-sustainability-claims
+Published: August 1, 2026
+
+Over the past few months, words have been quietly disappearing from Indian food packaging. Healthy. Natural. Fresh. 100%. No added sugar.
+
+Not because brands changed their minds. Because FSSAI started issuing notices.
+
+FSSAI directed all food businesses to remove the claim of 100% fruit juice from labels and advertisements of reconstituted juice. The reasoning was specific: under the Food Safety and Standards (Advertising and Claims) Regulations, 2018, there is no provision for a 100% claim at all. And it is particularly misleading where the major ingredient is water and the fruit has been reconstituted from concentrate.
+
+Then it widened. A prohibition order against a large FMCG group over 100% claims on honey, ghee and coconut oil. Notices to a confectionery major, a gifting platform and a packaged foods company. A hazelnut spread questioned over All Natural. Two snack brands over the word Healthy.
+
+None of those companies were accused of selling something dangerous. The products were fine. The labels were the problem.
+
+### The reasoning matters more than the category
+
+Look at what FSSAI is actually objecting to, because it is not really about juice.
+
+100% is an absolute with no defined basis. A hundred per cent of what, measured how? Natural has no regulatory definition, so it means whatever the reader assumes it means. Healthy is a conclusion the buyer should be drawing, not one the pack should be asserting.
+
+The 2020 Labelling and Display Regulations put it plainly: a label must not create an erroneous impression, and must indicate the true nature of the food.
+
+That sentence reads differently with a sustainability claim in mind.
+
+Every unsupported claim opens what we call a Verification Vacuum — the space between what a brand says and what it can prove. FSSAI is not really policing vocabulary. It is closing that gap, one word at a time.
+
+We built Sense to flag language on sustainability claims that tends to attract regulatory attention. The terms it flags most often are 100%, natural, eco-friendly, zero, and unqualified comparatives like better and greener.
+
+Two of those are the exact words FSSAI is currently striking off food packs.
+
+That is not coincidence. It is the same logic: that an unqualified absolute is indefensible, that an undefined adjective is a claim rather than a description, and that the burden of proof sits with whoever printed it.
+
+India's CCPA guidelines on greenwashing, introduced in 2024, use recognisably the same reasoning. So does ASCI. Different regulator, different aisle, same test — can you substantiate the specific thing the buyer will understand you to have said?
+
+Food is easier to enforce. The claims sit on physical packaging, the products are tested anyway, and the harm is legible to a consumer.
+
+Environmental claims are harder. Verifying a recycled-content percentage or a carbon-neutral claim means auditing a supply chain, not reading a label. That difficulty has bought green claims some time.
+
+We would argue it has bought time rather than immunity. The machinery being built for food — notices, prohibition orders, named brands in the trade press — is the same machinery, at the same agencies, that will handle green claims as verification gets cheaper.
+
+If you carry a 100% recycled claim, ask what the 100% attaches to. The bottle? The label? The carton it shipped in? If the honest answer needs a footnote, the footnote is the claim.
+
+If you use natural, clean or responsible on pack, you are relying on the reader supplying a definition you have not given them. That was the specific issue in the hazelnut spread notice.
+
+And if your sustainability claim would survive being read by someone actively hunting for the gap between the words and the evidence, then it will probably survive the test now being applied to food.
+
+The competitive advantage is no longer making stronger claims. It is making claims that survive verification.
+
+We do not know the timeline. Enforcement on green claims in India has been slower and far less public than on food, and we have no basis for saying when that changes.
+
+We are also not certain the approach transfers cleanly. Food claims are largely verifiable from the product itself; environmental claims usually are not. That may mean enforcement lands differently rather than simply later.
+
+There is a risk in the other direction too. Our own survey found roughly a third of Indian sustainability claims go out with no independent check — but it also found that seventy per cent of companies with genuinely strong credentials say nothing at all, from fear of scrutiny. A crackdown that pushes more brands into silence is not a good outcome either.
+
+The food industry is getting a live demonstration of what happens when a claim outruns its evidence. The words are the same. The regulations rhyme. The main difference is that green claims have not had their turn yet.
+
+The next decade of marketing will not belong to brands with the loudest sustainability stories. It will belong to the ones that can demonstrate them.
+
+Closing your own Verification Vacuum is slower work than writing a better line. It is also the only version that holds.
+
+If you are looking at your own pack copy and are not sure which lines would survive that reading, that is a conversation we are always up for.
+
+ },
+          ],
+       },
+       {
+          title: 
+
+
+## We Asked Indian Marketers How They Verify Green Claims. 15% Said They Don't.
+URL: https://www.hooop.in/thinking/how-indian-brands-verify-sustainability-claims
+Published: July 29, 2026
+
+When we ran the survey behind our Green Is the New Lie whitepaper, we expected to find a gap between what brands claim and what they can prove. What we did not expect was how many teams already know the gap exists and publish anyway.
+
+We asked Indian marketing professionals a deliberately plain question: how are your sustainability claims usually verified? The answers were more candid than we anticipated.
+
+Thirty per cent said third-party certifications. Twenty-two per cent said legal team approval. Twenty per cent said internal team assessment. Thirteen per cent said supplier data. And fifteen per cent told us, plainly, that they do not verify them at all.
+
+That last number gets the headline, and it should. But the number we keep returning to is thirty-five per cent — internal assessment plus no verification combined. That is the share of claims reaching the public with no independent check behind them at all. Roughly one in three.
+
+An internal assessment is not nothing. Someone looked. But it is the same organisation marking its own homework, and under India's current rules that is no longer a defensible position if a claim is challenged.
+
+It would be easy to read thirty-five per cent as evidence that a third of Indian brands are deliberately misleading people. We do not think that is what is happening, and the rest of the data does not support it either.
+
+Seventy per cent of companies with genuinely strong sustainability credentials told us they hold back from talking about them — what the industry has started calling greenhushing. These are not bad actors. They are teams who are doing real work and are frightened of being picked apart for the parts they have not solved yet.
+
+The most common barrier cited was not cost or cynicism. It was data. Marketers are asked to make claims about supply chains they cannot see into, using figures that sit with procurement, or with a supplier, or nowhere at all. The claim goes out because a campaign has a deadline and the substantiation does not have an owner.
+
+That is a process problem. Process problems are fixable, which is the more useful way to look at this.
+
+Until recently, a vague green claim was a reputational risk. Since the CCPA's 2024 guidelines it is a legal one. Greenwashing is now classified as a misleading practice, liability extends to the brand, the agency and the endorser, and penalties run to ten lakh rupees for a first offence and fifty lakh for a repeat.
+
+ASCI has tightened alongside it, requiring that the scope of a claim be defined — product, packaging, process or company — and that evidence be verifiable and independent. SEBI has started scrutinising ESG claims in BRSR filings, which quietly links what marketing says to what the business reports.
+
+We have written up the full regulatory picture, including what each body now expects and where the common failure points sit.
+
+### What good verification actually looks like
+
+The teams handling this well are not necessarily the ones with the biggest sustainability budgets. They tend to have three unglamorous things in place.
+
+First, someone owns substantiation. Not the campaign, the claim. One named person who can produce the evidence behind a line of copy without a three-day search.
+
+Second, the claim is scoped before it is written. Whether the recycled content refers to the bottle or the label is decided at brief stage, not in a legal review a week before launch.
+
+Third, the language is checked against the specific patterns regulators look for — absolutes, unqualified comparatives, future commitments without interim milestones. Most claims that get flagged are not lies. They are true statements phrased in a way that cannot be defended.
+
+If you are not sure where your own messaging sits, the fastest check is to read your live claims the way a regulator would rather than the way a marketer does. That means asking, for each one: what specifically is being claimed, about what, and what evidence exists that someone outside this building could examine.
+
+We built Sense for exactly that first pass. It scans your wording against the patterns that attract scrutiny and tells you which phrases would need substantiation. It is not legal advice and it will not tell you whether your claim is true — only you have that. But it will tell you which sentences are going to be asked about.
+
+The rules here are new for everyone, ourselves included, and the guidance is still settling. We would rather compare notes with people working through the same questions than pretend we have this fully mapped. If you are wrestling with a claim you cannot quite substantiate, we are always up for that conversation.
+
+Ocean Plastic, Seaweed and the Blue Economy: What Marine Claims Can Actually Be Proved
+
+
+## Ocean Plastic, Seaweed and the Blue Economy: What Marine Claims Can Actually Be Proved
+URL: https://www.hooop.in/thinking/marine-circularity-india
+Published: August 12, 2026
+
+A sea turtle in a plastic ring changed consumer behaviour more effectively than three decades of policy. Marketing noticed. Ocean-Friendly, Reef-Safe and Made from Ocean Plastic went onto packs, and a genuine industry started forming underneath them.
+
+We work on the claims end of this, so most of what reaches us is a version of the same question: what can we actually say? This is where we have got to across four related problems. We have tried to be clear about which parts are established and which are still our opinion.
+
+### Ocean-bound plastic has a definition, and most people are not using it
+
+Ocean-bound plastic is a specific term. The working definition is plastic waste recovered within roughly 50 kilometres of a coastline, in areas without formal waste management, where it would otherwise have reached the sea.
+
+That is a narrow category. It is not the same as recovered marine plastic, which is collected from the water itself and is rarer and more expensive. It is not the same as recycled content generally.
+
+The gap between those definitions is where the trouble starts. A brand collecting waste hundreds of kilometres inland, then putting a blue wave on the pack, is making a marine claim it cannot support. Nobody in that chain necessarily lied. The logo did the work.
+
+The first is vagueness. Reef-Safe has no regulatory definition in India. Without naming a specific standard — avoiding the UV-blocking compounds associated with coral bleaching, say — it is a feeling rather than a claim.
+
+The second is the hidden trade-off. Fifteen per cent recycled ocean-bound plastic in a bottle is a real achievement and worth saying. It becomes a problem when the remaining eighty-five per cent is virgin plastic and the bottle is unrecyclable at end of life. The marine benefit is true. The impression is not.
+
+The third is the misleading source above — inland waste presented as marine recovery.
+
+None of these require bad intent, which is what makes them common. They require someone in the approval chain to ask what the reader will conclude, rather than whether each word is defensible on its own. That question is the whole job.
+
+### Why the supply chain is the actual constraint
+
+Collection is the part everyone photographs. It is also the easy part.
+
+The difficulty is what happens next: sorting, washing, processing and certifying degraded material until it meets the specification of a global FMCG or fashion buyer. Ocean-bound plastic has usually been in sun and salt. It is contaminated and inconsistent in ways that virgin polymer is not.
+
+A recycler cannot fund a high-capacity extrusion line without knowing someone will buy the pellets. A brand cannot commit to volume until it has seen consistent quality. We have watched that circle stall more than once, and we would argue it is a commercial coordination problem rather than a technical one — which is a more solvable kind of problem, if less interesting to write about.
+
+Traceability is the other half. Washed up on a beach is not a provenance record. Buyers increasingly want tracking from collection point to factory floor, and the brands that will still be making marine claims in five years are the ones building that now.
+
+### Seaweed: genuinely promising, genuinely not ready
+
+Seaweed grows fast, needs no fresh water or fertiliser, absorbs carbon as it grows, and produces materials that are home-compostable. On paper it is the most attractive packaging material anyone has proposed in a long time.
+
+Walk down an Indian supermarket aisle and you will not find it.
+
+The lab is not the constraint. Edible sachets and biodegradable films work. Getting them through the high-speed, high-heat packaging lines of a large FMCG manufacturer is an engineering problem nobody has fully solved, and it needs machinery makers at the table, not just material scientists. Then there is regulatory clearance, because an edible film is a food contact material and FSSAI treats it accordingly.
+
+And scaling seaweed packaging means scaling seaweed farming — which is its own supply chain, with its own coastal communities, its own ecological limits, and a real risk of repeating extractive patterns in a new material.
+
+We think this arrives. We do not think it arrives on the timeline the pitch decks suggest.
+
+Climate finance concentrates on land and sky: solar, EVs, agriculture. The ocean absorbs roughly a third of human carbon dioxide emissions and receives a fraction of the attention.
+
+Marine ventures are capital-intensive, heavily regulated, and slower than a standard ten-year fund cycle likes. That is a genuine mismatch, not investor stupidity. It does mean the businesses that get funded are often the ones with the clearest offtake agreements rather than the best technology, which is worth knowing if you are building one.
+
+We do not know whether regulatory attention reaches marine claims soon. Enforcement in India has focused on food labelling, where verification is cheap. Checking a marine provenance claim means auditing a supply chain across several countries, and that difficulty has bought these claims time.
+
+We are also not certain consolidation helps. It is possible that a smaller number of well-substantiated marine claims is worse for the ocean than a larger number of imperfect ones, if the imperfect ones are funding actual collection. We genuinely do not know, and we would be interested in evidence either way.
+
+And we are conscious that we mostly see the claims, not the operations. Our view of this sector is shaped by who asks us for help, which is not a representative sample.
+
+If you are using marine materials, the useful discipline is to state the percentage, name the standard, and say where the material came from. Those three facts survive scrutiny. The blue wave does not.
+
+If you are considering it, the question worth asking your supplier first is not what it costs but whether they can show you the chain of custody. The answer tells you most of what you need to know.
+
+We are still working out where the lines fall here ourselves, and the sector is young enough that most of it is unsettled. If you are looking at a marine claim and are not sure it holds, we would genuinely like to compare notes.
+
+ },
+          ],
+       },
+      {
+          title: 
+
+
+## The Commercialisation Gap: Why Circular Products Stall Before They Scale
+URL: https://www.hooop.in/thinking/commercialisation-gap-circular-economy-india
+Published: May 28, 2026
+
+We have sat in a lot of rooms where a sustainable material worked, everyone agreed it worked, and nothing was ordered.
+
+That gap — between a pilot that succeeds and a purchase order that follows — is where most circular economy businesses in India actually die. It is rarely the technology.
+
+### Procurement is a different department with a different job
+
+A sustainability officer is measured on targets. A procurement officer is measured on cost, continuity of supply and risk. Those are not the same incentive, and a new biomaterial threatens all three of the second set.
+
+So the meeting where everyone is enthusiastic is often not the meeting that decides. We would argue most founders in this space are pitching the wrong department, brilliantly.
+
+What changes the answer is usually boring: a second source of supply, a quality specification that matches the existing one, a pilot that does not require the line to stop, and someone willing to carry the risk of the first order.
+
+### The money is available but the shape is wrong
+
+Venture capital funds growth. The commercialisation gap needs something else — capital that de-risks a buyer's first order rather than a seller's next hire.
+
+Blended finance, demonstration grants and government pilot funding exist for exactly this, and in our experience are under-used because they are administratively tedious rather than unavailable. That is an unglamorous thing to be good at, and it is often the difference.
+
+### Credibility is a procurement requirement now
+
+A buyer cannot adopt a material that might later be called greenwashing. The reputational risk transfers to them the moment it goes on their pack.
+
+This is the part founders most often underestimate. Third-party verified lifecycle data is not a marketing asset. It is a prerequisite for the conversation, and the absence of it is a legitimate reason for a buyer to say no.
+
+We do not know how much of this is specific to India. Procurement conservatism looks similar in the UK and EU markets we work in, but the financing environment is different enough that the same business can stall for different reasons in each.
+
+We are also aware that we see the businesses that come to us for help with the commercial side, which are disproportionately the ones already struggling with it. There may be a quieter set who never had this problem and whom we never meet.
+
+The founders we have watched cross this gap did not have better technology than the ones who did not. They had a better answer to the question of who carries the risk of going first.
+
+If you are stuck between a successful pilot and a purchase order, we would be interested to hear where it is jamming — it is the part of this work we find most useful to compare notes on.
+
+The ESG Passport: What Indian Exporters Now Have to Prove
+
+
+## The ESG Passport: What Indian Exporters Now Have to Prove
+URL: https://www.hooop.in/thinking/cross-border-market-entry-esg-compliance-india-uk
+Published: May 10, 2026
+
+A textile manufacturer in Tiruppur exporting to a London retailer is now effectively selling two things: the fabric, and the data proving how it was made.
+
+The second one is newer, and a lot of businesses are not resourced for it.
+
+Trade barriers used to be tariffs. The ones that matter now are disclosure requirements: the Carbon Border Adjustment Mechanism, supply chain due diligence rules, and the buyer's own Scope 3 reporting obligations, which get pushed down to suppliers as questionnaires.
+
+None of these are trade barriers in name. In effect, an exporter who cannot answer them does not get shortlisted.
+
+In our experience the requests cluster: energy source and intensity at the production site, traceability far enough up the chain to identify the raw material origin, labour standards documentation, and an environmental claim that will survive the buyer's own legal review.
+
+That last one catches people out. An Indian supplier's marketing language becomes the buyer's legal exposure the moment it appears on a European pack, so buyers increasingly vet supplier claims as carefully as their own.
+
+Compliance reads like cost. We would argue that for a mid-sized Indian exporter it is closer to a moat, because most of your competitors are not doing it and the ones who are get a shortlist position they do not have to compete for on price alone.
+
+That argument only holds while it is rare. It is getting less rare.
+
+We cannot tell you how quickly enforcement tightens. CBAM's reporting phase has been considerably gentler than its eventual financial phase will be, and the gap between the two is where a lot of planning assumptions currently sit.
+
+We are also unsure how much of the compliance burden ultimately lands on Indian suppliers versus being absorbed by buyers. Right now it is being pushed down the chain. That may not be stable.
+
+The businesses we see doing this well started before they had to, usually because one large customer asked and they decided to build the answer properly rather than once.
+
+If you are working out what a UK or EU buyer will ask you for next year, that is a conversation we are always glad to have.
+
+Greenwashing Is a Valuation Problem, Not a PR Problem
+
+
+## Greenwashing Is a Valuation Problem, Not a PR Problem
+URL: https://www.hooop.in/thinking/alpha-in-authenticity-greenwashing-kills-valuation
+Published: October 12, 2025
+
+The cost of a bad environmental claim used to be embarrassment. That has changed, and the change is showing up in places finance teams care about.
+
+Funds used to accept a slide about net-zero aspirations. Several we have spoken to now put environmental claims through the same treatment as revenue recognition — asking what the number counts, who verified it, and what happens to it under a stricter definition.
+
+A brand narrative that runs ahead of what operations can evidence reads, in that room, as a governance signal. It suggests a management team comfortable with optimistic reporting, and that inference travels beyond sustainability.
+
+### The trust discount is the expensive part
+
+Fines are visible and usually survivable. What follows is not.
+
+Once a brand has been publicly corrected on a green claim, the market applies a discount to everything it says next. Acquisition costs rise because scepticism rises. Talent that joined for the mission becomes harder to keep. None of that appears as a line item, and all of it compounds.
+
+We want to be fair about this. The pressure to overstate is real and it comes from good places as often as bad ones — a founder who believes in the product, a marketing team asked to differentiate, a category where everyone else is claiming more than you.
+
+Our own survey found that around a third of Indian sustainability claims reach the public with no independent check. Very few of those were deceptions. Most were deadlines meeting an absent owner for substantiation.
+
+We do not know how much of the valuation effect is priced in yet in India. The clearest evidence comes from European and US markets with longer enforcement histories, and we are extrapolating.
+
+It is also possible we overstate the diligence shift. The funds who talk to us about it are self-selecting for caring about it.
+
+The competitive advantage is no longer making the strongest claim. It is making the claim that still stands after someone has gone looking for the gap between the words and the evidence.
+
+If you are trying to work out which of your claims would survive that reading, we would be glad to look at them with you.
+
+Brand Strategy When Your Audience Assumes You Are Lying
+
+
+## Brand Strategy When Your Audience Assumes You Are Lying
+URL: https://www.hooop.in/thinking/brand-strategy-age-of-cynical-consumer
+Published: September 28, 2025
+
+The consumer scepticism everyone describes is not apathy. It is exhaustion.
+
+People have watched oil companies position themselves as climate champions and fast fashion launch conscious collections while raising volumes. The reasonable response to that is disbelief, and disbelief is now the starting position.
+
+The instinct is to communicate harder — a better story, a cleaner narrative. We would argue that makes it worse.
+
+A brand claiming to have solved a problem that everybody knows is unsolved is, to a sceptical reader, evidence of dishonesty rather than progress. The polish is the giveaway.
+
+The brands we have watched hold up publish the parts that are not finished. Packaging that is eighty per cent recyclable, and a plain explanation of why the last twenty per cent has no solution at scale yet. The carbon cost of their logistics, stated rather than omitted.
+
+This works, we think, because it validates the reader's scepticism instead of arguing with it. It moves the brand from preaching to reporting, and reporting is a much easier position to defend.
+
+The practical version of this is unglamorous. Better for the planet is not a claim; it is a mood. Forty per cent less water than our previous process is a claim, and it can be checked.
+
+Every adjective you replace with a figure and a baseline reduces the surface area someone can attack. It also, in our experience, makes the copy better.
+
+There is a version of transparency that becomes its own performance — the confessional sustainability report that lists small failures to distract from a large one. We have seen that too, and readers detect it about as fast as they detect the original problem.
+
+We also do not know how far this generalises. Most of our evidence is from categories where the consumer already cares. In a category where nobody is asking, publishing your failures may just be handing critics material.
+
+The brands we would bet on are the ones that have stopped trying to sound finished.
+
+If you are rewriting a narrative that has started to feel defensive, we would be interested to see it — that particular problem is one we enjoy.
+
+Sustainable Media Planning in India: How Cutting Carbon Cuts Wasted Spend
+
+
+## Sustainable Media Planning in India: How Cutting Carbon Cuts Wasted Spend
+URL: https://www.hooop.in/thinking/sustainable-media-planning-india
+Published: July 30, 2026
+
+Two publishers can serve the same creative to the same person. One does it at roughly three times the emissions of the other.
+
+That is a fact about the internet. What makes it useful is that the heavy one is usually also the expensive one.
+
+The reason one placement burns more energy is rarely its content. It is the ad clutter on the page. The programmatic supply path with six intermediaries each taking a margin. The made-for-advertising site built to harvest impressions no human will ever look at. The invalid traffic. The ad that technically served but never entered anyone's viewport.
+
+Every one of those burns electricity. Every one of those was also paid for out of your budget, and returned nothing.
+
+So when you strip out the inventory inflating a campaign's footprint, you are mostly stripping out inventory that was never going to perform. Fewer intermediaries means more of each rupee reaching actual media. Higher viewability means you are paying for ads that were seen. Less invalid traffic means fewer impressions served to bots.
+
+None of that is a climate argument. It is a media efficiency argument that happens to have a climate consequence.
+
+Marketing budgets are under a kind of scrutiny they have not faced in a while. Every line is being asked what it returned. In that room, sustainability is usually the first thing cut, read as a cost you carry for reputational reasons rather than a lever that moves the number.
+
+We would argue that gets it backwards, and that the framing is what is wrong rather than the spend.
+
+If you told a CFO you had found a way to stop paying for impressions no human sees, that is not a sustainability initiative. That is competent buying. The fact that the same decision cuts emissions is real and worth reporting, but it is the second-order benefit, not the reason to do it.
+
+Carbon intensity, supply path length, inventory quality, invalid traffic rates, publisher governance. All of it is knowable before you commit budget. Used at planning stage they behave like performance signals. Used after the campaign they are just reporting.
+
+That is the whole shift: sustainability data as a planning input rather than a post-campaign PDF.
+
+We do not have a defensible benchmark for what good looks like on an Indian media plan yet. The market average we are seeing sits around 45 out of 100 on the index we are building with The GoodNet. That is an early read on a small sample, and we would treat it as a starting point rather than a standard.
+
+We are also not certain how far the correlation holds. On the plans we have looked at, cleaner inventory has consistently been better inventory. Whether that stays true at every budget level and in every category, we genuinely do not know yet.
+
+Enough plans in to think the trade-off most marketers assume, that responsible media costs you performance, mostly is not real. Not enough to call it settled.
+
+If you are weighing the same question, or you have seen data pointing the other way, we would like to hear it. Send us a site list and we will tell you what we see, including if the honest answer is that there is not much to gain.
+
+ },
+          ],
+       },
+      {
+          title: 
+
+
+## The India-UK Climate Corridor: Who It Actually Opens For
+URL: https://www.hooop.in/thinking/decoding-india-uk-climate-corridor
+Published: August 30, 2025
+
+The India-UK trading relationship is being rebuilt with sustainability standards near the middle of it. That creates a corridor, and corridors have entry requirements.
+
+An Indian exporter can no longer compete on cost alone into this market. Carbon intensity, supply chain traceability and disclosure quality now sit alongside price in the decision.
+
+Which means the product being sold is partly informational. Businesses that have this data assembled move quickly. Businesses that do not spend six months assembling it while the buyer talks to someone else.
+
+Large Indian corporates have sustainability teams. Small exporters are often outside the scope of the requirements altogether.
+
+The businesses caught in between — mid-sized manufacturers who form the backbone of most Indian supply chains — carry the full compliance burden with none of the infrastructure. Transitioning energy, auditing suppliers and obtaining certification all require capital before they produce any return.
+
+Global climate finance has been slow to reach them, we would argue less from unwillingness than from verification cost: a UK fund cannot cheaply confirm the ESG credentials of an Indian mid-cap, so it does not try.
+
+Prvaah exists to reduce exactly that verification cost — standardising compliance data so an Indian business can present a credible position to UK capital without rebuilding it for every counterparty.
+
+We should be honest that this is a thesis we are testing rather than a result we can report. It is early.
+
+We do not know how the agreement's sustainability provisions will be enforced in practice, and the gap between the text and the implementation is wide enough to matter.
+
+We are also not certain the missing middle is best served by compliance support rather than by aggregation — several mid-caps presenting jointly might solve the verification problem more cheaply than each solving it alone. We have not tested that.
+
+The corridor is open, but it is open to businesses that can evidence where they stand rather than describe where they are heading.
+
+If you are exporting into the UK or planning to, we would be glad to compare notes on what your buyers are actually asking for.
+
+
+## Awareness Is Not the Problem Any More
+URL: https://www.hooop.in/thinking/from-storytelling-to-storydoing
+Published: August 10, 2025
+
+Awareness of climate change in India is high. Purchasing behaviour has barely moved.
+
+That gap has a name — the value-action gap — and a great deal of marketing money is still being spent as though the problem were awareness.
+
+People are not failing to buy sustainable products because they have not understood the argument. They are failing to buy them because the products cost more, are harder to find, or require a change of habit for a benefit that arrives somewhere else, later, to someone else.
+
+You cannot argue somebody out of that. We would argue the honest response is to change the offer rather than the messaging.
+
+The interventions we have seen work are usually product decisions wearing marketing clothes. A shampoo bar that costs less per wash. An electric two-wheeler cheaper to run than the petrol equivalent. A repair service more convenient than replacement.
+
+None of those ask the customer to make a sacrifice for the planet. They make the better option the easier option, and the environmental benefit arrives as a consequence rather than a request.
+
+Behavioural research is consistent on this: distant, diffuse benefits lose to immediate, personal ones almost every time.
+
+So the most effective sustainability communication we see rarely leads with the planet. It leads with money saved, time saved, health, or status — and lets the environmental case sit underneath, available to anyone who wants it.
+
+This feels uncomfortable to a lot of people in this field. We understand why. We would still rather a purchase happened for a slightly self-interested reason than not happen for a noble one.
+
+We do not know how far this scales to categories where there is no personal benefit to lead with. Some sustainable choices genuinely cost the buyer more and always will, and we do not have a good answer for those beyond regulation.
+
+We are also aware this argument can be used to justify saying nothing about sustainability at all, which is not what we mean and would be a bad outcome.
+
+The brands making measurable behavioural progress have mostly stopped explaining the problem and started removing the friction.
+
+If you are working on something where the intention is there and the behaviour is not, we would be interested to hear about it.
+
+Circular Fashion: How Brands Make Money Selling Less
+
+
+## Circular Fashion: How Brands Make Money Selling Less
+URL: https://www.hooop.in/thinking/circular-economy-playbook-fashion
+Published: July 22, 2025
+
+The objection we hear most from mass-market fashion brands is straightforward: if we sell clothes that last, we sell fewer clothes.
+
+It is a reasonable worry and we think it misreads what circularity actually does to the revenue model.
+
+### Extended producer responsibility changes the arithmetic
+
+EPR rules make a brand financially responsible for its garments at end of life. Once that cost lands on the balance sheet, the calculation behind durability changes — a product you will pay to dispose of is different from one you will not.
+
+That is the mechanism worth understanding. Circularity stops being a values argument at the point where the linear model starts carrying a fee.
+
+Resale is the clearest version. Second-hand transactions in your product are already happening on someone else's platform, and the margin is going there.
+
+A branded resale channel captures that margin and converts a one-time sale into a recurring asset. It also gives you a data relationship with the second and third owner, which most brands currently have no visibility of at all.
+
+Repair works similarly, and does something resale does not. A repair is a service interaction — the customer arrives with a problem and leaves with it solved, which is a considerably stronger loyalty event than a discount code.
+
+### Design decides whether any of it is possible
+
+None of this works if the garment cannot be taken apart. A mono-material shirt can be recycled; a blended one with bonded trims largely cannot, whatever the label says.
+
+Which makes design for disassembly the least visible and most decisive part of the playbook. It is also the hardest to sell internally, because the cost is immediate and the benefit is years away and lands in a different department.
+
+We do not know whether resale genuinely reduces production or simply adds a second revenue stream to the same volume. The honest answer is that the evidence is mixed and depends heavily on whether resale displaces a new purchase or adds one.
+
+If it turns out to be mostly additive, a lot of circular fashion marketing is overclaiming, including some we would have been sympathetic to.
+
+The brands we would watch are the ones treating circularity as a change to the business model rather than a line in the sustainability report.
+
+If you are trying to make that case internally and the numbers are not landing, we would be glad to think it through with you.
 
