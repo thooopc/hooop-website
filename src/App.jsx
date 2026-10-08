@@ -1649,12 +1649,32 @@ Greenwashing Tool
                    <p className="text-gray-500 text-sm md:text-base font-medium mb-6 leading-relaxed">
 Sense is a greenwashing checker for climate language and ESG messaging. It flags wording that tends to attract regulatory attention, so you can rethink it before you publish rather than after someone else does. It's a guiding light, not a verdict — and we're still learning where the lines fall too. These rules are new for all of us.
 </p>
-                    <div className="flex flex-wrap gap-2 mb-2">
-                        {["Reputation", "Legal Compliance", "Trust", "ESG Credibility"].map((v, i) => (
-                            <span key={i} className="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-bold text-gray-600 shadow-sm flex items-center gap-1">
-                                <ShieldCheck size={12} className="text-green-600" /> {v}
-                            </span>
+                    {/* Was four white pills, each with the same green shield-check.
+                        Four identical trust badges is the most generic pattern on the
+                        web, and asserting "Trust" as a floating noun is the sort of
+                        unevidenced abstraction this very tool flags.
+
+                        Now it uses the label idiom the site already has — the small
+                        uppercase wide-tracked run used for the locations line and for
+                        "Detection Active" — set into a pressed neumorphic track, which
+                        reads as part of the scanner rather than a sticker. One shield,
+                        not four. Wraps to two lines at 375px. */}
+                    <div
+                      className="mb-2 flex items-start gap-3 rounded-2xl px-4 py-3"
+                      style={{
+                        background: "#E3E7EE",
+                        boxShadow: "inset 3px 3px 7px #c6cad1, inset -3px -3px 7px #ffffff",
+                      }}
+                    >
+                      <ShieldCheck size={15} className="text-green-600 shrink-0 mt-[1px]" />
+                      <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-gray-500 leading-[1.7] m-0">
+                        {["Reputation", "Legal compliance", "Trust", "ESG credibility"].map((v, i) => (
+                          <React.Fragment key={v}>
+                            {i > 0 && <span className="text-gray-400/60 mx-1.5">&middot;</span>}
+                            {v}
+                          </React.Fragment>
                         ))}
+                      </p>
                     </div>
                 </div>
                 <div className="hidden md:flex justify-center items-center h-64 relative">
