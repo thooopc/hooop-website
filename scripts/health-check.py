@@ -55,8 +55,9 @@ REDIRECTS = {
 }
 
 MIN_INTERNAL_LINKS = 12   # sitewide footer nav; below this, linking has regressed
-MIN_POST_LINKS = 11       # /thinking must link to every post. Was 14 before the
-                          # four marine posts were consolidated on 15 Aug 2026.
+MIN_POST_LINKS = 12       # /thinking must link to every post. 14 before the four
+                          # marine posts were consolidated on 15 Aug 2026, 11 until
+                          # the made-for-advertising post landed on 8 Oct 2026.
 MAX_PAGE_BYTES = 400_000  # a single HTML document
 MAX_ASSET_BYTES = 400_000 # any one image or script
 

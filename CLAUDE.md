@@ -238,6 +238,45 @@ When the marketing claims a behaviour, test the behaviour.
   buyers actually search (wasted ad spend, made-for-advertising sites, media
   quality audit, ad fraud India — nobody searches "ESG media index"), and
   outbound, where the ET Brand Equity and ExchangeWire coverage is the opener.
+  **First of that content shipped 17 Sep** — see below.
+
+## The made-for-advertising post (17 Sep 2026)
+
+`/thinking/made-for-advertising-programmatic-waste-india`, ~1,300 words — more
+than double the blog average and the first post written to rank rather than to
+exist. It is the first attempt at the buyer-language content named above.
+
+Argument: MFA fell from 15% of programmatic spend (ANA, Jun 2023) to a 1.1%
+median (Q1 2026) with no regulation and no campaign — log-level data did it.
+Carbon per ad dollar fell alongside, as a by-product. The honest counterweight,
+stated in the post: total waste rose $20.0B → $26.8B over the same period, and
+the top/bottom advertiser gap is widening ($7.46 vs $19.04 TrueCPM).
+
+The India hook is the differentiator, and it is not written down anywhere else
+we could find: **India has the lowest invalid traffic rate of ten major markets
+— 5.50% against an 8.51% global average** (Lunio, Global Invalid Traffic Report
+2026, 2.7bn clicks, Aug 2024–Aug 2025). The post says in its own text that Lunio
+sells IVT protection and that IVT and MFA are different measures that must not
+be added — necessary on a site that runs a greenwashing checker.
+
+**Every figure is sourced and checkable.** If any of it needs revisiting, the
+sources are the ANA Programmatic Transparency Benchmark releases (Jun 2023,
+Q2 2025, Q1 2026) and the Lunio report. Nothing here came from a client deck,
+so none of it is under the GoodNet clearance constraint.
+
+Also fixed on the way through, all pre-existing and affecting **every** post:
+
+- `POST_FIGURES` SVGs used a 640-wide viewBox, rendering at 179px on a 375px
+  screen — 12px labels came out at ~3px. New figures should use a **360-wide
+  viewBox** and treat the numbers as the graphic, not the axis.
+- The post date sat underneath the absolutely positioned close button on mobile.
+  Padding the flex row does not fix it (the date is a flex item that overflows
+  the padded box); the header gets `pt-12 md:pt-0` instead.
+- The LinkedIn share button was a `<button>` with no handler. Now opens the
+  share dialog against the canonical URL.
+
+LinkedIn copy for it — page post, Arvind's reshare, and his native Thursday
+post — is at `~/Desktop/HOOOP Creatives/linkedin-mfa-post.md`.
 
 **Handled in a separate conversation**
 
@@ -253,14 +292,56 @@ LinkedIn company About (drafted, never shipped), the GoodNet carbon post
 - `/thinking/era-of-green-media-buying` still draws the odd impression on the
   old 301'd slug. Expected to decay; no action unless it persists past September.
 
-## Current numbers (15 Aug 2026)
+## Current numbers (23 Aug 2026)
 
-- **25 indexed, 7 not** — 3 of those 7 are intentional 301s, plus the 4 marine ones.
-- Search: **8 clicks, branded queries only** (`hooop`, plus junk and one
-  misspelling). No commercial toehold yet.
-- The honest read: crawlability and content quality are fixed; **rankings are
-  not**, and will not move on this timescale. Authority and depth are what is
-  left. Do not read three days of data as a trend at this volume.
+Health check: 14 pages, 0 failures, 0 warnings.
+
+- **26 indexed, 7 not** — 3 intentional 301s, 2 crawled–not–indexed, 2
+  discovered–not–indexed. Nothing there needs action.
+- Search, **28 days**: 4 clicks, 92 impressions, avg position 32.1.
+- Search, **90 days**: 11 clicks, 252 impressions, avg position 14.5.
+- **Always state the window.** The two averages look like a collapse and are
+  not: more pages indexed means we surface for more marginal queries, which
+  drags the average down while impressions/day actually rose (2.8 → 3.3).
+- **Every click in 90 days came from a brand query.** `hooop` (7), plus
+  `aravind nair hooop` (29 impressions, 0 clicks), `yes`, `greenwashing upsc`,
+  `looop marketing`. **Zero non-brand clicks, ever.**
+- The crawl fix is visibly working: 17 pages earned impressions this month, and
+  `/offerings` — never fetched by Google before the fix — is now the best
+  performing page on the site (2 clicks, 28 impressions).
+- The blog earned ~8 impressions and 0 clicks in 28 days. The rewrite improved
+  quality; quality without authority does not rank.
+- The honest read is unchanged: crawlability and content quality are fixed;
+  **rankings are not.** Authority is the only remaining constraint.
+
+## Ranking for "sustainable / ESG marketing" (23 Aug 2026)
+
+Arvind asked to feature for these terms. Checked, and there is nothing to fix
+on-page — `/` and `/offerings` already carry them in the `<title>`:
+
+```
+/           HOOOP Collective — Sustainable Marketing & Growth Strategy for Indian Brands
+/offerings  What We Do — Sustainable Marketing, Media & ESG Consulting | HOOOP
+```
+
+**Do not "fix" the titles.** `SITE_CONTENT` also has `title:` fields — those are
+page *headings*, not HTML titles, and reading them instead led me to a wrong
+conclusion I caught only by checking the served HTML. Verify against
+`curl https://www.hooop.in/ | grep '<title>'`.
+
+The SERP for these terms is owned by **listicles**, not agencies — Sortlist,
+Norvell Jefferson, Thooja, The Sustainable Agency. Google wants options, not one
+agency's homepage, so the route in is **being listed**, not out-ranking them.
+Each listing is also a relevant backlink, which is the actual constraint.
+
+Indian competitors in the space: Meraki Digital (has claimed "India's First
+Climate-Conscious Marketing Agency"), On Purpose Consulting, HavStrategy,
+UrbanPIE.
+
+**"ESG marketing" appears 0 times on the site**; "sustainable marketing" 9 times.
+Adding it is a positioning decision, not an SEO one — it pulls a corporate and
+investor-reporting audience, where "sustainable marketing" pulls brand and CMO
+people. Awaiting Arvind's call.
 
 ## What I can and cannot reach
 
