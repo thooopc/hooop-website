@@ -3462,13 +3462,19 @@ const App = React.forwardRef((props, ref) => {
                              {/* Fixed height so the six cards stay on one baseline whether or
                                  not a member carries a years figure or a note. */}
                              <div className="min-h-[5rem] flex flex-col justify-center gap-2 mb-3">
-                               <div className="flex flex-wrap justify-center gap-1">
+                               {/* Same change as the Sense hero: these were rounded-full
+                                   teal chips, which is the generic tag-pill look. Now the
+                                   site's own label idiom — small, uppercase, wide-tracked,
+                                   middot-separated. Used in both places so it reads as one
+                                   system rather than two separate decisions. */}
+                               <p className="text-center text-[9px] font-bold uppercase tracking-[0.12em] text-teal-700 leading-[1.9] m-0 px-1">
                                  {(member.expertise || []).map((area, i) => (
-                                   <span key={i} className="px-2 py-0.5 rounded-full bg-teal-50 border border-teal-100 text-[9px] font-bold text-teal-700">
+                                   <React.Fragment key={area}>
+                                     {i > 0 && <span className="text-teal-600/35 mx-1">&middot;</span>}
                                      {area}
-                                   </span>
+                                   </React.Fragment>
                                  ))}
-                               </div>
+                               </p>
                                {member.note && (
                                  <p className="text-gray-400 text-[10px] italic leading-snug">{member.note}</p>
                                )}
