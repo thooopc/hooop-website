@@ -1205,11 +1205,12 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
   return (
   <div className="min-h-screen pt-24 pb-20 px-6 animate-fade-in-up">
     <div className="max-w-3xl mx-auto bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-gray-100 relative">
-      <button 
+      <button
         onClick={onBack}
+        aria-label="Back to all articles"
         className="absolute top-8 right-8 p-3 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 transition-colors z-10"
       >
-        <X size={20} />
+        <X size={20} aria-hidden="true" />
       </button>
 
       <div className="mb-8">
@@ -1249,8 +1250,19 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
       <div className="mt-12 pt-12 border-t border-gray-100 text-center">
          <p className="text-sm text-gray-400 font-bold uppercase tracking-widest mb-4">Share this perspective</p>
          <div className="flex justify-center gap-4">
-            <button className="p-3 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"><Linkedin size={20} /></button>
-            <button className="p-3 rounded-full bg-gray-50 text-gray-600 hover:bg-gray-100 transition-colors" onClick={() => navigator.clipboard.writeText(window.location.href)}><Copy size={20} /></button>
+            {/* This one had no onClick at all — a share button that shared nothing.
+                Labelling it without wiring it would have been worse than leaving it
+                unnamed, so it now opens LinkedIn's share dialog. */}
+            <button
+              aria-label="Share this article on LinkedIn"
+              className="p-3 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
+              onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank', 'noopener,noreferrer')}
+            ><Linkedin size={20} aria-hidden="true" /></button>
+            <button
+              aria-label="Copy a link to this article"
+              className="p-3 rounded-full bg-gray-50 text-gray-600 hover:bg-gray-100 transition-colors"
+              onClick={() => navigator.clipboard.writeText(window.location.href)}
+            ><Copy size={20} aria-hidden="true" /></button>
          </div>
       </div>
     </div>

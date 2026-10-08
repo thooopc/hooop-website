@@ -1,24 +1,81 @@
 {
   "articles": [
     {
-      "title": "Commercialising Ocean Bound Plastic Supply Chains",
-      "url": "https://www.hooop.in/thinking/commercialising-ocean-bound-plastic-supply-chains",
-      "topics": [
-        "Circular Economy",
-        "Ocean Plastics",
-        "Fishing Nets",
-        "Ghost Nets",
-        "Supply Chains"
-      ]
+      "title": "FSSAI Is Deleting \"100%\" and \"Natural\" From Food Labels. Green Claims Use the Same Words.",
+      "url": "https://www.hooop.in/thinking/fssai-label-crackdown-sustainability-claims",
+      "category": "Greenwashing",
+      "published": "August 1, 2026",
+      "summary": "FSSAI has spent months stripping words like 100%, natural and healthy off Indian food packaging. The reasoning it is using applies almost word for word to sustainability claims."
     },
     {
-      "title": "Scaling Seaweed",
-      "url": "https://www.hooop.in/thinking/scaling-seaweed-marine-biomaterials-plastic-alternatives",
-      "topics": [
-        "Blue Economy",
-        "Seaweed",
-        "Biomaterials"
-      ]
+      "title": "We Asked Indian Marketers How They Verify Green Claims. 15% Said They Don't.",
+      "url": "https://www.hooop.in/thinking/how-indian-brands-verify-sustainability-claims",
+      "category": "Greenwashing",
+      "published": "July 29, 2026",
+      "summary": "Our survey of Indian marketing professionals found that around a third of sustainability claims reach the public without any independent check. The interesting part is why — it is far more often process than intent."
+    },
+    {
+      "title": "Ocean Plastic, Seaweed and the Blue Economy: What Marine Claims Can Actually Be Proved",
+      "url": "https://www.hooop.in/thinking/marine-circularity-india",
+      "category": "Circular Economy",
+      "published": "August 12, 2026",
+      "summary": "Four things we keep being asked about marine circularity — what ocean-bound plastic actually means, why the claims get brands into trouble, whether seaweed packaging is real yet, and where the money is. Our current thinking, including what we are still unsure about."
+    },
+    {
+      "title": "The Commercialisation Gap: Why Circular Products Stall Before They Scale",
+      "url": "https://www.hooop.in/thinking/commercialisation-gap-circular-economy-india",
+      "category": "Scale-Up Strategy",
+      "published": "May 28, 2026",
+      "summary": "Most sustainable products that fail do not fail on technology. They fail in procurement. What we have learned about the gap between a successful pilot and a purchase order."
+    },
+    {
+      "title": "The ESG Passport: What Indian Exporters Now Have to Prove",
+      "url": "https://www.hooop.in/thinking/cross-border-market-entry-esg-compliance-india-uk",
+      "category": "Market Access",
+      "published": "May 10, 2026",
+      "summary": "Tariffs used to be the barrier to the UK and EU. Increasingly it is disclosure — carbon, labour, traceability. What that changes for an Indian business planning to export."
+    },
+    {
+      "title": "Greenwashing Is a Valuation Problem, Not a PR Problem",
+      "url": "https://www.hooop.in/thinking/alpha-in-authenticity-greenwashing-kills-valuation",
+      "category": "Climate Finance",
+      "published": "October 12, 2025",
+      "summary": "Misleading environmental claims used to cost a brand some goodwill. They now show up in diligence, in customer acquisition cost, and in what an acquirer is willing to pay."
+    },
+    {
+      "title": "Brand Strategy When Your Audience Assumes You Are Lying",
+      "url": "https://www.hooop.in/thinking/brand-strategy-age-of-cynical-consumer",
+      "category": "Brand Strategy",
+      "published": "September 28, 2025",
+      "summary": "A decade of eco-friendly, natural and sustainable has produced a default setting of disbelief. What we think actually works now, and why perfection reads as suspicious."
+    },
+    {
+      "title": "Sustainable Media Planning in India: How Cutting Carbon Cuts Wasted Spend",
+      "url": "https://www.hooop.in/thinking/sustainable-media-planning-india",
+      "category": "Sustainable Media",
+      "published": "July 30, 2026",
+      "summary": "Every rupee is being asked to justify itself. The inventory inflating your campaign's carbon footprint is usually the same inventory that was never going to perform."
+    },
+    {
+      "title": "The India-UK Climate Corridor: Who It Actually Opens For",
+      "url": "https://www.hooop.in/thinking/decoding-india-uk-climate-corridor",
+      "category": "Climate Funding",
+      "published": "August 30, 2025",
+      "summary": "The trade agreement puts sustainability standards at the centre of a large trading relationship. That is an opportunity for Indian businesses that can evidence their position, and a problem for the mid-sized ones that cannot."
+    },
+    {
+      "title": "Awareness Is Not the Problem Any More",
+      "url": "https://www.hooop.in/thinking/from-storytelling-to-storydoing",
+      "category": "Climate Communication",
+      "published": "August 10, 2025",
+      "summary": "Climate communication has spent decades raising awareness, and awareness is now high. Behaviour has not followed. We think the gap is a design problem rather than a persuasion one."
+    },
+    {
+      "title": "Circular Fashion: How Brands Make Money Selling Less",
+      "url": "https://www.hooop.in/thinking/circular-economy-playbook-fashion",
+      "category": "Sustainable Marketing",
+      "published": "July 22, 2025",
+      "summary": "EPR rules are making brands financially responsible for garments after they are sold. That sounds like a cost. We would argue it is the moment resale and repair start making commercial sense."
     }
   ]
 }
