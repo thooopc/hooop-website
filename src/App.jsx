@@ -17,7 +17,12 @@ const SITE_CONTENT = {
   hero: {
     titleLine1: "Marketing Science",
     titleLine2: "for Circular and Sustainable Commerce.",
-    subtitle: "A marketing and strategy collective helping climate and circular businesses bridge the gap between innovation and commercial adoption.",
+    // The old sub-line — "helping climate and circular businesses bridge the gap
+    // between innovation and commercial adoption" — would have fitted a VC, an
+    // incubator or a management consultancy equally well. A prospect told us in
+    // October 2026 they had read the site and could not work out what we do.
+    subtitle: "We set up the marketing side of climate and circular businesses — and run it with you until you can run it without us.",
+    subtitleSupport: "Brand and positioning, media and budgets, measurement. We work inside the business, not as an agency on the outside.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
@@ -2945,17 +2950,23 @@ const App = React.forwardRef((props, ref) => {
                       </span>
                     </h1>
                 </div>
-                <p className="text-lg lg:text-xl text-gray-500 leading-relaxed font-medium max-w-md">{SITE_CONTENT.hero.subtitle}</p>
-                
+                <div className="space-y-4 max-w-md">
+                  <p className="text-lg lg:text-xl text-[#313b4e] leading-relaxed font-semibold">{SITE_CONTENT.hero.subtitle}</p>
+                  <p className="text-base text-gray-500 leading-relaxed font-medium">{SITE_CONTENT.hero.subtitleSupport}</p>
+                </div>
+
                 <div className="mt-4 space-y-6">
                 <div className="flex flex-wrap gap-4 sm:gap-6 items-center">
 
-  <AppLink href={pathForSection('manifesto')} onNavigate={() => navigateTo('manifesto')} className="no-underline">
+  {/* Was "Read Our Manifesto". A manifesto is for people who already care; a
+      stranger needs the work. /offerings is the best-performing page on the
+      site and had no link from the hero at all. */}
+  <AppLink href={pathForSection('offerings')} onNavigate={() => navigateTo('offerings')} className="no-underline">
   <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-black font-bold group cursor-pointer hover:scale-[1.02]"
   >
-    <span>Read Our Manifesto</span>
-    <BookOpen size={18} className="group-hover:scale-110 transition-transform"/>
+    <span>See What We Do</span>
+    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
   </SoftCard>
   </AppLink>
 
@@ -3000,6 +3011,48 @@ const App = React.forwardRef((props, ref) => {
                  </div>
               </div>
             </section>
+
+              {/* WHAT WE DO — the four practices, on the homepage.
+                  Until October 2026 not one of them appeared here: the services
+                  lived only on /offerings and a visitor had to guess that "What
+                  We Do" in the nav was where they were. Driven off
+                  SITE_CONTENT.offerings so there is still one source of truth.
+                  Placed above Partners and As Featured On deliberately — proof
+                  means nothing until the reader knows what is being proved. */}
+              <section className="py-20 border-t border-gray-200/50">
+                <div className="max-w-6xl mx-auto px-4 lg:px-12">
+                  <h2 className="text-2xl lg:text-3xl font-black text-[#313b4e] mb-3">What we do</h2>
+                  <p className="text-gray-500 font-medium mb-10 max-w-2xl">
+                    Four practices that overlap more often than not. Most engagements start in one and pull in the others.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {SITE_CONTENT.offerings.map((practice, idx) => (
+                      <AppLink
+                        key={idx}
+                        href={pathForSection('offerings')}
+                        onNavigate={() => navigateTo('offerings')}
+                        className="no-underline"
+                      >
+                        <SoftCard className="p-6 h-full flex flex-col gap-2 group cursor-pointer hover:scale-[1.01]">
+                          <h3 className="text-lg font-bold text-black">{practice.title}</h3>
+                          <p className="text-sm text-gray-500 leading-relaxed">{practice.desc}</p>
+                        </SoftCard>
+                      </AppLink>
+                    ))}
+                  </div>
+                  <div className="mt-8">
+                    <AppLink
+                      href={pathForSection('offerings')}
+                      onNavigate={() => navigateTo('offerings')}
+                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-teal-600 transition-colors no-underline"
+                    >
+                      See all four in detail
+                      <ArrowRight size={16} />
+                    </AppLink>
+                  </div>
+                </div>
+              </section>
+
               <section className="py-20 border-t border-gray-200/50">
                 <div className="max-w-6xl mx-auto px-4 lg:px-12">
 
