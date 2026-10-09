@@ -503,6 +503,7 @@ const SITE_CONTENT = {
   offerings: [
     {
       title: "Marketing-Led Consulting",
+      outcome: "You end up with sustainability claims that survive scrutiny, and a brand that gets commercial credit for the work you are already doing.",
       desc: "Strategy and communication for businesses whose growth depends on being believed, not just heard. We connect business strategy, brand, and behaviour to turn credibility into commercial value.",
       items: [
         "Building brands in a digital-first world",
@@ -516,6 +517,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Media Sustainability",
+      outcome: "You find out what your media budget is costing in carbon and in waste, and you spend less of both without losing reach.",
       desc: "Media planning that accounts for both campaign performance and environmental impact. We help businesses understand the footprint of their media investments and use that intelligence to make better decisions.",
       items: [
         "Planning and managing media budgets at scale",
@@ -529,6 +531,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Policy, Advocacy & Stakeholder Engagement",
+      outcome: "Regulators, investors and the communities you operate in hear a consistent account of your business that you can stand behind.",
       desc: "Sustainability is shaped beyond the marketing function. We help businesses navigate policy, build stakeholder alignment, and engage the regulators, communities and institutions that influence their ability to grow.",
       items: [
         "Stakeholder engagement, PR and communications",
@@ -539,6 +542,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Venture Growth & Market Access",
+      outcome: "A product that works in a pilot reaches real buyers in new markets, with the positioning and the commercial route to get there.",
       desc: "For climate and circular ventures ready to move beyond the pilot. We help build the positioning, market strategy and commercial pathways needed to turn promising solutions into scalable businesses.",
       items: [
         "Investment and funding readiness",
@@ -2742,16 +2746,26 @@ const APP_SECTION_SEO = {
 };
 
 // --- Main App ---
+// Order is the priority order: what we do, then the tools, then thinking, then
+// a way to get in touch. Sense, Greenwashing, Media Index and Prvaah used to sit
+// loose at the top of the list competing with everything else; `group` puts a
+// heading above them in the desktop sidebar so they read as a set rather than as
+// four more destinations.
+//
+// `hidden` only hides an item from the three top navs. The sitewide footer block
+// renders every item regardless, which is what keeps every page linked from
+// every other — see the crawlability note in CLAUDE.md. Do not make the footer
+// respect `hidden`.
 const NAV_ITEMS = [
   { id: 'home', label: 'Home' },
-  { id: 'sense', label: 'Sense' },
-  { id: 'prvaah', label: 'Prvaah' },
-  { id: 'greenwashing', label: 'Greenwashing'},
-  { id: 'esg-media-index', label: 'Media Index' },
   { id: 'offerings', label: 'What We Do' },
+  { id: 'sense', label: 'Sense', group: 'Tools' },
+  { id: 'greenwashing', label: 'Greenwashing', group: 'Tools' },
+  { id: 'esg-media-index', label: 'Media Index', group: 'Tools' },
+  { id: 'prvaah', label: 'Prvaah', group: 'Tools' },
   { id: 'thinking', label: 'Our Thinking' },
   { id: 'collective', label: 'Collective' },
-  { id: 'contact', label: 'Contact', hidden: true },
+  { id: 'contact', label: 'Contact' },
   { id: 'manifesto', label: 'Manifesto', hidden: true },
   { id: 'research', label: 'Research', hidden: true },
   { id: 'privacy', label: 'Privacy', hidden: true }
@@ -2881,14 +2895,28 @@ const App = React.forwardRef((props, ref) => {
              </SoftCard>
          </AppLink>
          <div className="flex flex-col gap-6 pointer-events-auto w-full">
-            {navItems.filter(item => !item.hidden).map((item) => ( 
-                <AppLink key={item.id} href={pathForSection(item.id)} onNavigate={() => navigateTo(item.id)} className="group flex items-center gap-4 w-full text-left focus:outline-none no-underline">
-                    <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-black scale-125' : 'bg-gray-300 group-hover:bg-gray-400'}`} />
-                    <span className={`text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 ${activeSection === item.id ? 'text-black translate-x-1' : 'text-gray-400 group-hover:text-gray-600'}`}>
-                        {item.label}
-                    </span>
-                </AppLink>
-            ))}
+            {navItems.filter(item => !item.hidden).map((item, i, list) => {
+                // A heading above the first item of a group, so the tools read as
+                // a set. No dropdown: a vertical sidebar can group by position,
+                // and a hover menu would be one more thing to break on touch.
+                const startsGroup = item.group && list[i - 1]?.group !== item.group;
+                return (
+                  <React.Fragment key={item.id}>
+                    {startsGroup && (
+                      <div className="flex items-center gap-3 mt-2 -mb-2 pl-[2px]" aria-hidden="true">
+                        <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-300">{item.group}</span>
+                        <span className="h-[1px] flex-1 bg-gray-300/50" />
+                      </div>
+                    )}
+                    <AppLink href={pathForSection(item.id)} onNavigate={() => navigateTo(item.id)} className={`group flex items-center gap-4 w-full text-left focus:outline-none no-underline ${item.group ? 'pl-3' : ''}`}>
+                        <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-black scale-125' : 'bg-gray-300 group-hover:bg-gray-400'}`} />
+                        <span className={`text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 ${activeSection === item.id ? 'text-black translate-x-1' : 'text-gray-400 group-hover:text-gray-600'}`}>
+                            {item.label}
+                        </span>
+                    </AppLink>
+                  </React.Fragment>
+                );
+            })}
          </div>
          <div className="pointer-events-auto mt-auto">
             <VerticalPill height="h-24" className="w-2 !rounded-full bg-gray-300" />
@@ -2970,26 +2998,20 @@ const App = React.forwardRef((props, ref) => {
   <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-black font-bold group cursor-pointer hover:scale-[1.02]"
   >
-    <span>See What We Do</span>
+    <span>Explore Our Capabilities</span>
     <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
   </SoftCard>
   </AppLink>
 
-  <AppLink href={pathForSection('sense')} onNavigate={() => navigateTo('sense')} className="no-underline">
-  <SoftCard
-    className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-green-600 hover:scale-[1.02]"
-  >
-    <span>Test Sustainability Claims</span>
-    <ScanLine size={18} className="group-hover:scale-110 transition-transform"/>
-  </SoftCard>
-  </AppLink>
-
-  <AppLink href={pathForSection('collective')} onNavigate={() => navigateTo('collective')} className="no-underline">
+  {/* Two actions, not three. Three gave a first-time visitor a choice to make
+      before they knew what we sold. Sense and the Collective are both a click
+      away in the nav. */}
+  <AppLink href={pathForSection('contact')} onNavigate={() => navigateTo('contact')} className="no-underline">
   <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-teal-600 hover:scale-[1.02]"
   >
-    <span>{SITE_CONTENT.hero.collectiveButtonText}</span>
-    <Users size={18} className="group-hover:scale-110 transition-transform"/>
+    <span>Start a Conversation</span>
+    <Mail size={18} className="group-hover:scale-110 transition-transform"/>
   </SoftCard>
   </AppLink>
 </div>
@@ -3038,9 +3060,13 @@ const App = React.forwardRef((props, ref) => {
                         onNavigate={() => navigateTo('offerings')}
                         className="no-underline"
                       >
+                        {/* The outcome line, not the description. A visitor
+                            scanning the homepage wants to know what they end up
+                            with; the fuller description of each practice is one
+                            click away on /offerings. */}
                         <SoftCard className="p-6 h-full flex flex-col gap-2 group cursor-pointer hover:scale-[1.01]">
                           <h3 className="text-lg font-bold text-black">{practice.title}</h3>
-                          <p className="text-sm text-gray-500 leading-relaxed">{practice.desc}</p>
+                          <p className="text-sm text-gray-500 leading-relaxed">{practice.outcome || practice.desc}</p>
                         </SoftCard>
                       </AppLink>
                     ))}
