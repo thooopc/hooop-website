@@ -3483,13 +3483,13 @@ const App = React.forwardRef((props, ref) => {
             <section className="relative min-h-screen py-24 animate-fade-in-up">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-20">
-                        <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">{SITE_CONTENT.researchProof.title}</h1>
-                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">{SITE_CONTENT.researchProof.subtitle}</p>
-                        <p className="text-md text-gray-400 mt-2 max-w-2xl mx-auto">{SITE_CONTENT.researchProof.intro}</p>
+                        <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">{SITE_CONTENT.research.title}</h1>
+                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">{SITE_CONTENT.research.subtitle}</p>
+                        <p className="text-md text-gray-400 mt-2 max-w-2xl mx-auto">{SITE_CONTENT.research.intro}</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {SITE_CONTENT.researchProof.reports.map((item, idx) => {
+                        {SITE_CONTENT.research.reports.map((item, idx) => {
                             const Icon = getIconComponent('chart');
                             return (
                             <SoftCard key={idx} className="p-8 flex flex-col justify-between h-80 group hover:-translate-y-2">
