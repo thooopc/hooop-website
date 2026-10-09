@@ -46,7 +46,7 @@ const SITE_CONTENT = {
       { figure: "70%", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
       { figure: "#1", line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
     ],
-    credit: "Green Is the New Lie. A survey and interviews with 150 Indian marketers, with research and guidance from TERI School of Advanced Studies and claim analysis from ASCI.",
+    credit: "Green Is the New Lie, with TERI School of Advanced Studies and claim analysis from ASCI.",
     coverage: "Covered by ET Brand Equity, afaqs!, Exchange4Media and Manifest.",
     linkLabel: "Read the research",
   },
@@ -521,7 +521,7 @@ const SITE_CONTENT = {
   offerings: [
     {
       title: "Marketing-Led Consulting",
-      outcome: "You end up with sustainability claims that survive scrutiny, and a brand that gets commercial credit for the work you are already doing.",
+      outcome: "Claims that survive scrutiny, and credit for work you already do.",
       desc: "Strategy and communication for businesses whose growth depends on being believed, not just heard. We connect business strategy, brand, and behaviour to turn credibility into commercial value.",
       items: [
         "Building brands in a digital-first world",
@@ -535,7 +535,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Media Sustainability",
-      outcome: "You find out what your media budget is costing in carbon and in waste, and you spend less of both without losing reach.",
+      outcome: "What your media spend costs in carbon and waste, and how to cut both.",
       desc: "Media planning that accounts for both campaign performance and environmental impact. We help businesses understand the footprint of their media investments and use that intelligence to make better decisions.",
       items: [
         "Planning and managing media budgets at scale",
@@ -549,7 +549,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Policy, Advocacy & Stakeholder Engagement",
-      outcome: "Regulators, investors and the communities you operate in hear a consistent account of your business that you can stand behind.",
+      outcome: "One account of the business that holds with regulators and investors.",
       desc: "Sustainability is shaped beyond the marketing function. We help businesses navigate policy, build stakeholder alignment, and engage the regulators, communities and institutions that influence their ability to grow.",
       items: [
         "Stakeholder engagement, PR and communications",
@@ -560,7 +560,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Venture Growth & Market Access",
-      outcome: "A product that works in a pilot reaches real buyers in new markets, with the positioning and the commercial route to get there.",
+      outcome: "A product that worked in a pilot, in front of buyers who can scale it.",
       desc: "For climate and circular ventures ready to move beyond the pilot. We help build the positioning, market strategy and commercial pathways needed to turn promising solutions into scalable businesses.",
       items: [
         "Investment and funding readiness",
@@ -3118,7 +3118,7 @@ const App = React.forwardRef((props, ref) => {
                 <div className="max-w-6xl mx-auto px-4 lg:px-12">
                   <h2 className="text-2xl lg:text-3xl font-black text-[#313b4e] mb-3">What we do</h2>
                   <p className="text-gray-500 font-medium mb-10 max-w-2xl">
-                    Four practices, connected by a common purpose: helping businesses turn sustainability into growth. Most engagements start in one and draw on the others.
+                    Four practices. Most engagements start in one and draw on the others.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     {SITE_CONTENT.offerings.map((practice, idx) => (
@@ -3210,19 +3210,18 @@ const App = React.forwardRef((props, ref) => {
                   <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
                     <span className="w-8 h-[1px] bg-gray-400"></span> As Featured On
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1">
+                  {/* Outlet names only. Seven full headlines stacked here were 341
+                      words, more than half the reading on the page, and on a phone
+                      they were most of the scroll. The headline moves to the link
+                      title so it is still there on hover and still in the markup
+                      for a crawler; the link itself goes to the article. */}
+                  <div className="flex flex-wrap gap-3">
                     {SITE_CONTENT.homeExtras.featured.map((feature, idx) => (
                       <a key={idx} href={feature.url} target="_blank" rel="noopener noreferrer"
-                         className="group flex items-start gap-4 py-5 border-b border-gray-200/60 hover:border-teal-200 transition-colors">
-                        <div className="flex-grow min-w-0">
-                          <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-teal-600/80 mb-1.5">
-                            {feature.name}
-                          </p>
-                          <p className="text-sm text-gray-600 group-hover:text-gray-900 leading-snug transition-colors">
-                            {feature.headline || feature.name}
-                          </p>
-                        </div>
-                        <ExternalLink size={14} className="text-gray-300 group-hover:text-teal-500 shrink-0 mt-5 transition-colors" />
+                         title={feature.headline || feature.name}
+                         className="group inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#E0E5EC] shadow-[4px_4px_9px_#c8ccd3,-4px_-4px_9px_#ffffff] text-xs font-bold text-gray-500 hover:text-teal-600 transition-colors no-underline">
+                        {feature.name}
+                        <ExternalLink size={12} className="text-gray-300 group-hover:text-teal-500 shrink-0 transition-colors" />
                       </a>
                     ))}
                   </div>
@@ -3524,7 +3523,7 @@ const App = React.forwardRef((props, ref) => {
                   <div className="flex flex-col lg:flex-row justify-between items-end mb-14">
                      <div>
                          <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">What We Do</h1>
-                         <p className="text-gray-500 max-w-xl">Four practices, connected by a common purpose: helping businesses turn sustainability into growth. Most engagements start in one and draw on the others.</p>
+                         <p className="text-gray-500 max-w-xl">Four practices. Most engagements start in one and draw on the others.</p>
                      </div>
                      <VerticalPill height="h-2" className="w-32 !rotate-0 hidden lg:block" />
                   </div>
