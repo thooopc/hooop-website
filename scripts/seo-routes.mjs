@@ -15,7 +15,7 @@ const post = (slug, title, description) => [
 
 export const ROUTES = Object.fromEntries([
   ["/", {
-    title: "HOOOP Collective — Sustainable Marketing & Growth Strategy for Indian Brands",
+    title: "HOOOP Collective: Sustainable Marketing & Growth Strategy for Indian Brands",
     description: "A marketing and strategy collective for climate and circular businesses — sustainable marketing, brand strategy, market intelligence and behavioural insight.",
   }],
   ["/manifesto", {
@@ -23,7 +23,7 @@ export const ROUTES = Object.fromEntries([
     description: "Marketing has the power to change behaviour. HOOOP partners with businesses that push the world forward while helping brands outpace the market.",
   }],
   ["/sense", {
-    title: "Sense — Free Greenwashing Checker for Indian Brands | HOOOP",
+    title: "Sense: Free Greenwashing Checker for Indian Brands | HOOOP",
     description: "Paste any sustainability claim and Sense scans it against CCPA 2024 and ASCI greenwashing rules, flagging vague, absolute, or unsubstantiated environmental language before you publish it.",
   }],
   ["/greenwashing", {
@@ -31,23 +31,23 @@ export const ROUTES = Object.fromEntries([
     description: "Why greenwashing is now a legal and financial risk in India, how CCPA and ASCI enforce green claims, and a practical playbook for honest sustainability communication.",
   }],
   ["/esg-media-index", {
-    title: "ESG Media Index India — Sustainable Media Planning | HOOOP × The GoodNet",
+    title: "ESG Media Index India: Sustainable Media Planning | HOOOP × The GoodNet",
     description: "India's first ESG Media Index. Score every placement on carbon, content and corporate signals — and use them to cut CPC and wasted spend, not just to report afterwards.",
   }],
   ["/prvaah", {
-    title: "Prvaah — India, UK & EU ESG Market Entry Program | HOOOP",
+    title: "Prvaah: India, UK & EU ESG Market Entry Program | HOOOP",
     description: "Prvaah guides enterprises across India, the EU, and the UK through ESG compliance, funding readiness, and responsible market expansion.",
   }],
   ["/offerings", {
-    title: "What We Do — Sustainable Marketing, Media & ESG Consulting | HOOOP",
+    title: "What We Do: Sustainable Marketing, Media & ESG Consulting | HOOOP",
     description: "Marketing-led consulting, ESG media planning and measurement, policy and stakeholder engagement, and market access for climate and circular businesses in India.",
   }],
   ["/thinking", {
-    title: "Our Thinking — Climate, Capital & Culture | HOOOP Blog",
+    title: "Our Thinking: Climate, Capital & Culture | HOOOP Blog",
     description: "Essays on greenwashing, circular economy, climate finance, and India-UK ESG market entry from the HOOOP Collective.",
   }],
   ["/collective", {
-    title: "The Collective — Our Sustainability & Brand Strategy Team | HOOOP",
+    title: "The Collective: Our Sustainability & Brand Strategy Team | HOOOP",
     description: "Meet the thinkers, technologists, communicators, and policy experts behind HOOOP's sustainable marketing and strategy work.",
   }],
   ["/research", {

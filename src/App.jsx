@@ -1570,7 +1570,7 @@ const SenseConsentModal = ({ onGranted, onCancel }) => {
 // --- NEW SENSE PAGE COMPONENTS ---
 const SenseAnalysisView = () => {
     useSeo({
-      title: "Sense — Free Greenwashing Checker for Indian Brands | HOOOP",
+      title: "Sense: Free Greenwashing Checker for Indian Brands | HOOOP",
       description: "Paste any sustainability claim and Sense scans it against CCPA 2024 and ASCI greenwashing rules, flagging vague, absolute, or unsubstantiated environmental language before you publish it.",
       path: "/sense",
       jsonLd: {
@@ -2025,7 +2025,7 @@ const INDEX_BRANDS = ["Amazon", "Mastercard", "Lego", "UNICEF", "Nestlé", "Dyso
 
 const EsgMediaIndexView = ({ navigateTo }) => {
   useSeo({
-    title: "ESG Media Index India — Sustainable Media Planning | HOOOP × The GoodNet",
+    title: "ESG Media Index India: Sustainable Media Planning | HOOOP × The GoodNet",
     description: "India's first ESG Media Index. Score every placement on carbon, content and corporate signals — and use them to cut CPC and wasted spend, not just to report afterwards.",
     path: "/esg-media-index",
     jsonLd: {
@@ -2732,7 +2732,7 @@ const GreenwashingView = ({ navigateTo }) => {
 // only touches title/description when a truthy value is passed).
 const APP_SECTION_SEO = {
   home: {
-    title: "HOOOP Collective — Sustainable Marketing & Growth Strategy for Indian Brands",
+    title: "HOOOP Collective: Sustainable Marketing & Growth Strategy for Indian Brands",
     // Explicit rather than derived from the hero: the on-page line is now
     // deliberately short, which makes a thin search snippet.
     description: "A marketing and strategy collective for climate and circular businesses — sustainable marketing, brand strategy, market intelligence and behavioural insight.",
@@ -2744,7 +2744,7 @@ const APP_SECTION_SEO = {
     path: "/manifesto"
   },
   prvaah: {
-    title: "Prvaah — India, UK & EU ESG Market Entry Program | HOOOP",
+    title: "Prvaah: India, UK & EU ESG Market Entry Program | HOOOP",
     description: "Prvaah guides enterprises across India, the EU, and the UK through ESG compliance, funding readiness, and responsible market expansion.",
     path: "/prvaah",
     jsonLd: {
@@ -2757,17 +2757,17 @@ const APP_SECTION_SEO = {
     }
   },
   offerings: {
-    title: "What We Do — Sustainable Marketing, Media & ESG Consulting | HOOOP",
+    title: "What We Do: Sustainable Marketing, Media & ESG Consulting | HOOOP",
     description: "Marketing-led consulting, ESG media planning and measurement, policy and stakeholder engagement, and market access for climate and circular businesses in India.",
     path: "/offerings"
   },
   collective: {
-    title: "The Collective — Our Sustainability & Brand Strategy Team | HOOOP",
+    title: "The Collective: Our Sustainability & Brand Strategy Team | HOOOP",
     description: "Meet the thinkers, technologists, communicators, and policy experts behind HOOOP's sustainable marketing and strategy work.",
     path: "/collective"
   },
   thinking: {
-    title: "Our Thinking — Climate, Capital & Culture | HOOOP Blog",
+    title: "Our Thinking: Climate, Capital & Culture | HOOOP Blog",
     description: "Essays on greenwashing, circular economy, climate finance, and India-UK ESG market entry from the HOOOP Collective.",
     path: "/thinking"
   },
