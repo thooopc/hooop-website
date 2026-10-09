@@ -44,9 +44,9 @@ const SITE_CONTENT = {
     stats: [
       { figure: "35%", line: "of sustainability claims reach the public with no independent check behind them" },
       { figure: "70%", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
-      { figure: "#1", line: "barrier is missing data, not bad intent — marketers are asked to prove what they cannot see" },
+      { figure: "#1", line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
     ],
-    credit: "Green Is the New Lie — a survey and interviews with 150 Indian marketers, with research and guidance from TERI School of Advanced Studies and claim analysis from ASCI.",
+    credit: "Green Is the New Lie. A survey and interviews with 150 Indian marketers, with research and guidance from TERI School of Advanced Studies and claim analysis from ASCI.",
     coverage: "Covered by ET Brand Equity, afaqs!, Exchange4Media and Manifest.",
     linkLabel: "Read the research",
   },
