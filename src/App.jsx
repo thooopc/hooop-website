@@ -2951,7 +2951,11 @@ const App = React.forwardRef((props, ref) => {
                     <AppLink
                       href={pathForSection(item.id)}
                       onNavigate={() => navigateTo(item.id)}
-                      className={`group flex items-center gap-4 w-full text-left focus:outline-none no-underline ${item.group ? 'pl-3' : ''} ${collapsed ? 'sr-only' : ''}`}
+                      className={`group flex items-center gap-4 w-full text-left focus:outline-none no-underline ${item.group ? 'pl-3' : ''}`}
+                      // Inline display:none, not a utility class. `sr-only` lost to
+                      // `w-full` in the cascade and the group rendered open. The link
+                      // stays in the markup either way, which is what a crawler reads.
+                      style={collapsed ? { display: 'none' } : undefined}
                     >
                         <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-black scale-125' : 'bg-gray-300 group-hover:bg-gray-400'}`} />
                         <span className={`text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 ${activeSection === item.id ? 'text-black translate-x-1' : 'text-gray-400 group-hover:text-gray-600'}`}>
