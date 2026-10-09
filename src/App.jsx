@@ -35,7 +35,10 @@ const SITE_CONTENT = {
   // Proof that is unambiguously ours and already public: our own study, our own
   // sample, our own partners, covered by four trade titles. No client results
   // here — those stay in the emailed credentials deck.
-  research: {
+  // NB: not `research` — SITE_CONTENT already has a `research` key for the
+  // research page further down this object, and a duplicate key is silently
+  // won by the later one. That shipped a blank homepage once.
+  researchProof: {
     eyebrow: "Our research",
     headline: "We asked 150 Indian marketers how green claims actually get verified.",
     stats: [
@@ -3131,13 +3134,13 @@ const App = React.forwardRef((props, ref) => {
               <section className="py-20 border-t border-gray-200/50">
                 <div className="max-w-6xl mx-auto px-4 lg:px-12">
                   <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
-                    <span className="w-8 h-[1px] bg-gray-400"></span> {SITE_CONTENT.research.eyebrow}
+                    <span className="w-8 h-[1px] bg-gray-400"></span> {SITE_CONTENT.researchProof.eyebrow}
                   </h3>
                   <p className="text-xl lg:text-2xl font-bold text-[#313b4e] max-w-2xl mb-10 leading-snug">
-                    {SITE_CONTENT.research.headline}
+                    {SITE_CONTENT.researchProof.headline}
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
-                    {SITE_CONTENT.research.stats.map((s) => (
+                    {SITE_CONTENT.researchProof.stats.map((s) => (
                       <SoftCard key={s.figure} className="p-6 flex flex-col gap-2" hoverEffect={false}>
                         <span className="text-3xl lg:text-4xl font-black text-teal-600 leading-none">{s.figure}</span>
                         <span className="text-sm text-gray-500 leading-relaxed">{s.line}</span>
@@ -3145,8 +3148,8 @@ const App = React.forwardRef((props, ref) => {
                     ))}
                   </div>
                   <p className="text-xs text-gray-400 leading-relaxed max-w-3xl">
-                    {SITE_CONTENT.research.credit}{" "}
-                    <span className="text-gray-500 font-semibold">{SITE_CONTENT.research.coverage}</span>
+                    {SITE_CONTENT.researchProof.credit}{" "}
+                    <span className="text-gray-500 font-semibold">{SITE_CONTENT.researchProof.coverage}</span>
                   </p>
                   <div className="mt-6">
                     <AppLink
@@ -3154,7 +3157,7 @@ const App = React.forwardRef((props, ref) => {
                       onNavigate={() => navigateTo('research')}
                       className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-teal-600 transition-colors no-underline"
                     >
-                      {SITE_CONTENT.research.linkLabel}
+                      {SITE_CONTENT.researchProof.linkLabel}
                       <ArrowRight size={16} />
                     </AppLink>
                   </div>
@@ -3456,13 +3459,13 @@ const App = React.forwardRef((props, ref) => {
             <section className="relative min-h-screen py-24 animate-fade-in-up">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-20">
-                        <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">{SITE_CONTENT.research.title}</h1>
-                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">{SITE_CONTENT.research.subtitle}</p>
-                        <p className="text-md text-gray-400 mt-2 max-w-2xl mx-auto">{SITE_CONTENT.research.intro}</p>
+                        <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">{SITE_CONTENT.researchProof.title}</h1>
+                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">{SITE_CONTENT.researchProof.subtitle}</p>
+                        <p className="text-md text-gray-400 mt-2 max-w-2xl mx-auto">{SITE_CONTENT.researchProof.intro}</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {SITE_CONTENT.research.reports.map((item, idx) => {
+                        {SITE_CONTENT.researchProof.reports.map((item, idx) => {
                             const Icon = getIconComponent('chart');
                             return (
                             <SoftCard key={idx} className="p-8 flex flex-col justify-between h-80 group hover:-translate-y-2">
