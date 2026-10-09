@@ -498,7 +498,7 @@ const SITE_CONTENT = {
   offerings: [
     {
       title: "Marketing-Led Consulting",
-      desc: "Most of what we do starts here. Strategy and communication for businesses whose growth depends on being believed, not just heard.",
+      desc: "Strategy and communication for businesses whose growth depends on being believed, not just heard. We connect business strategy, brand, and behaviour to turn credibility into commercial value.",
       items: [
         "Building brands in a digital-first world",
         "Brand, creative and narrative strategy",
@@ -511,7 +511,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Media Sustainability",
-      desc: "Media planning that uses sustainability as a live performance signal rather than something you report on once the campaign has ended.",
+      desc: "Media planning that accounts for both campaign performance and environmental impact. We help businesses understand the footprint of their media investments and use that intelligence to make better decisions.",
       items: [
         "Planning and managing media budgets at scale",
         "ESG media planning and green media buying",
@@ -524,7 +524,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Policy, Advocacy & Stakeholder Engagement",
-      desc: "The parts of sustainability that live outside marketing — regulators, communities, boards and the people your business answers to.",
+      desc: "Sustainability is shaped beyond the marketing function. We help businesses navigate policy, build stakeholder alignment, and engage the regulators, communities and institutions that influence their ability to grow.",
       items: [
         "Stakeholder engagement, PR and communications",
         "Environmental law and policy advisory",
@@ -534,7 +534,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Venture Growth & Market Access",
-      desc: "For climate and circular ventures trying to cross the gap between a working pilot and commercial scale.",
+      desc: "For climate and circular ventures ready to move beyond the pilot. We help build the positioning, market strategy and commercial pathways needed to turn promising solutions into scalable businesses.",
       items: [
         "Investment and funding readiness",
         "Market access and commercial partnerships",
@@ -3023,7 +3023,7 @@ const App = React.forwardRef((props, ref) => {
                 <div className="max-w-6xl mx-auto px-4 lg:px-12">
                   <h2 className="text-2xl lg:text-3xl font-black text-[#313b4e] mb-3">What we do</h2>
                   <p className="text-gray-500 font-medium mb-10 max-w-2xl">
-                    Four practices that overlap more often than not. Most engagements start in one and pull in the others.
+                    Four practices, connected by a common purpose: helping businesses turn sustainability into growth. Most engagements start in one and draw on the others.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     {SITE_CONTENT.offerings.map((practice, idx) => (
@@ -3389,7 +3389,7 @@ const App = React.forwardRef((props, ref) => {
                   <div className="flex flex-col lg:flex-row justify-between items-end mb-14">
                      <div>
                          <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">What We Do</h1>
-                         <p className="text-gray-500 max-w-xl">Four practices that overlap more often than not. Most engagements start in one and pull in the others.</p>
+                         <p className="text-gray-500 max-w-xl">Four practices, connected by a common purpose: helping businesses turn sustainability into growth. Most engagements start in one and draw on the others.</p>
                      </div>
                      <VerticalPill height="h-2" className="w-32 !rotate-0 hidden lg:block" />
                   </div>
