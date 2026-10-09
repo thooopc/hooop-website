@@ -21,8 +21,13 @@ const SITE_CONTENT = {
     // between innovation and commercial adoption" — would have fitted a VC, an
     // incubator or a management consultancy equally well. A prospect told us in
     // October 2026 they had read the site and could not work out what we do.
-    subtitle: "We set up the marketing side of climate and circular businesses — and run it with you until you can run it without us.",
-    subtitleSupport: "Brand and positioning, media and budgets, measurement. We work inside the business, not as an agency on the outside.",
+    // Arvind's words, set in two weights rather than one paragraph so the first
+    // sentence carries. The previous draft — "we set up the marketing side… and
+    // run it with you until you can run it without us" — read as startup-specific:
+    // "set up" implies the company has no marketing function yet, which excludes
+    // most of who we actually sell to.
+    subtitle: "We help businesses grow in a world where sustainability matters.",
+    subtitleSupport: "From strategy and brand positioning to media, measurement and market access, we bring the thinking, systems and expertise to make marketing work harder for business and better for the planet.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
