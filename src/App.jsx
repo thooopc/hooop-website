@@ -17,10 +17,38 @@ const SITE_CONTENT = {
   hero: {
     titleLine1: "Marketing Science",
     titleLine2: "for Circular and Sustainable Commerce.",
-    subtitle: "A marketing and strategy collective helping climate and circular businesses bridge the gap between innovation and commercial adoption.",
+    // The old sub-line — "helping climate and circular businesses bridge the gap
+    // between innovation and commercial adoption" — would have fitted a VC, an
+    // incubator or a management consultancy equally well. A prospect told us in
+    // October 2026 they had read the site and could not work out what we do.
+    // Arvind's words, set in two weights rather than one paragraph so the first
+    // sentence carries. The previous draft — "we set up the marketing side… and
+    // run it with you until you can run it without us" — read as startup-specific:
+    // "set up" implies the company has no marketing function yet, which excludes
+    // most of who we actually sell to.
+    subtitle: "We help businesses grow in a world where sustainability matters.",
+    subtitleSupport: "From strategy and brand positioning to media, measurement and market access, we bring the thinking, systems and expertise to make marketing work harder for business and better for the planet.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
+  },
+  // Proof that is unambiguously ours and already public: our own study, our own
+  // sample, our own partners, covered by four trade titles. No client results
+  // here — those stay in the emailed credentials deck.
+  // NB: not `research` — SITE_CONTENT already has a `research` key for the
+  // research page further down this object, and a duplicate key is silently
+  // won by the later one. That shipped a blank homepage once.
+  researchProof: {
+    eyebrow: "Our research",
+    headline: "We asked 150 Indian marketers how green claims actually get verified.",
+    stats: [
+      { figure: "35%", line: "of sustainability claims reach the public with no independent check behind them" },
+      { figure: "70%", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
+      { figure: "#1", line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
+    ],
+    credit: "Green Is the New Lie. A survey and interviews with 150 Indian marketers, with research and guidance from TERI School of Advanced Studies and claim analysis from ASCI.",
+    coverage: "Covered by ET Brand Equity, afaqs!, Exchange4Media and Manifest.",
+    linkLabel: "Read the research",
   },
    // NEW SECTION: Partners & Features
   homeExtras: {
@@ -493,7 +521,8 @@ const SITE_CONTENT = {
   offerings: [
     {
       title: "Marketing-Led Consulting",
-      desc: "Most of what we do starts here. Strategy and communication for businesses whose growth depends on being believed, not just heard.",
+      outcome: "You end up with sustainability claims that survive scrutiny, and a brand that gets commercial credit for the work you are already doing.",
+      desc: "Strategy and communication for businesses whose growth depends on being believed, not just heard. We connect business strategy, brand, and behaviour to turn credibility into commercial value.",
       items: [
         "Building brands in a digital-first world",
         "Brand, creative and narrative strategy",
@@ -506,7 +535,8 @@ const SITE_CONTENT = {
     },
     {
       title: "Media Sustainability",
-      desc: "Media planning that uses sustainability as a live performance signal rather than something you report on once the campaign has ended.",
+      outcome: "You find out what your media budget is costing in carbon and in waste, and you spend less of both without losing reach.",
+      desc: "Media planning that accounts for both campaign performance and environmental impact. We help businesses understand the footprint of their media investments and use that intelligence to make better decisions.",
       items: [
         "Planning and managing media budgets at scale",
         "ESG media planning and green media buying",
@@ -519,7 +549,8 @@ const SITE_CONTENT = {
     },
     {
       title: "Policy, Advocacy & Stakeholder Engagement",
-      desc: "The parts of sustainability that live outside marketing — regulators, communities, boards and the people your business answers to.",
+      outcome: "Regulators, investors and the communities you operate in hear a consistent account of your business that you can stand behind.",
+      desc: "Sustainability is shaped beyond the marketing function. We help businesses navigate policy, build stakeholder alignment, and engage the regulators, communities and institutions that influence their ability to grow.",
       items: [
         "Stakeholder engagement, PR and communications",
         "Environmental law and policy advisory",
@@ -529,7 +560,8 @@ const SITE_CONTENT = {
     },
     {
       title: "Venture Growth & Market Access",
-      desc: "For climate and circular ventures trying to cross the gap between a working pilot and commercial scale.",
+      outcome: "A product that works in a pilot reaches real buyers in new markets, with the positioning and the commercial route to get there.",
+      desc: "For climate and circular ventures ready to move beyond the pilot. We help build the positioning, market strategy and commercial pathways needed to turn promising solutions into scalable businesses.",
       items: [
         "Investment and funding readiness",
         "Market access and commercial partnerships",
@@ -2752,16 +2784,26 @@ const APP_SECTION_SEO = {
 };
 
 // --- Main App ---
+// Order is the priority order: what we do, then the tools, then thinking, then
+// a way to get in touch. Sense, Greenwashing, Media Index and Prvaah used to sit
+// loose at the top of the list competing with everything else; `group` puts a
+// heading above them in the desktop sidebar so they read as a set rather than as
+// four more destinations.
+//
+// `hidden` only hides an item from the three top navs. The sitewide footer block
+// renders every item regardless, which is what keeps every page linked from
+// every other — see the crawlability note in CLAUDE.md. Do not make the footer
+// respect `hidden`.
 const NAV_ITEMS = [
   { id: 'home', label: 'Home' },
-  { id: 'sense', label: 'Sense' },
-  { id: 'prvaah', label: 'Prvaah' },
-  { id: 'greenwashing', label: 'Greenwashing'},
-  { id: 'esg-media-index', label: 'Media Index' },
   { id: 'offerings', label: 'What We Do' },
+  { id: 'sense', label: 'Sense', group: 'Tools' },
+  { id: 'greenwashing', label: 'Greenwashing', group: 'Tools' },
+  { id: 'esg-media-index', label: 'Media Index', group: 'Tools' },
+  { id: 'prvaah', label: 'Prvaah', group: 'Tools' },
   { id: 'thinking', label: 'Our Thinking' },
   { id: 'collective', label: 'Collective' },
-  { id: 'contact', label: 'Contact', hidden: true },
+  { id: 'contact', label: 'Contact' },
   { id: 'manifesto', label: 'Manifesto', hidden: true },
   { id: 'research', label: 'Research', hidden: true },
   { id: 'privacy', label: 'Privacy', hidden: true }
@@ -2795,6 +2837,16 @@ const App = React.forwardRef((props, ref) => {
 
   const [activeSection, setActiveSection] = useState(initialRoute.section);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Which sidebar nav groups are open. Seeded from the route, not from an effect,
+  // so the group containing the page you are on is already open during the
+  // build-time prerender as well as in the browser. Effects never run in
+  // renderToString — see the prerendering note in CLAUDE.md.
+  const [openNavGroups, setOpenNavGroups] = useState(
+    () => {
+      const current = NAV_ITEMS.find(i => i.id === initialRoute.section);
+      return current?.group ? [current.group] : [];
+    }
+  );
   const [showSenseTool, setShowSenseTool] = useState(false);
   const [senseTab, setSenseTab] = useState('analyzer');
   const [selectedPost, setSelectedPost] = useState(initialRoute.post); // New state for selected blog post
@@ -2891,14 +2943,48 @@ const App = React.forwardRef((props, ref) => {
              </SoftCard>
          </AppLink>
          <div className="flex flex-col gap-6 pointer-events-auto w-full">
-            {navItems.filter(item => !item.hidden).map((item) => ( 
-                <AppLink key={item.id} href={pathForSection(item.id)} onNavigate={() => navigateTo(item.id)} className="group flex items-center gap-4 w-full text-left focus:outline-none no-underline">
-                    <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-black scale-125' : 'bg-gray-300 group-hover:bg-gray-400'}`} />
-                    <span className={`text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 ${activeSection === item.id ? 'text-black translate-x-1' : 'text-gray-400 group-hover:text-gray-600'}`}>
-                        {item.label}
-                    </span>
-                </AppLink>
-            ))}
+            {navItems.filter(item => !item.hidden).map((item, i, list) => {
+                const startsGroup = item.group && list[i - 1]?.group !== item.group;
+                // Collapsed items stay in the DOM and are hidden with a class
+                // rather than unmounted. A crawler following this nav still sees
+                // every link, which is the whole point of the AppLink work.
+                const collapsed = item.group && !openNavGroups.includes(item.group);
+                return (
+                  <React.Fragment key={item.id}>
+                    {startsGroup && (
+                      <button
+                        type="button"
+                        onClick={() => setOpenNavGroups(g =>
+                          g.includes(item.group) ? g.filter(x => x !== item.group) : [...g, item.group]
+                        )}
+                        aria-expanded={openNavGroups.includes(item.group)}
+                        className="flex items-center gap-3 mt-2 -mb-2 pl-[2px] w-full text-left group/hdr focus:outline-none"
+                      >
+                        <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover/hdr:text-gray-600 transition-colors">{item.group}</span>
+                        <ChevronDown
+                          size={12}
+                          className={`text-gray-400 shrink-0 transition-transform duration-300 ${openNavGroups.includes(item.group) ? 'rotate-180' : ''}`}
+                        />
+                        <span className="h-[1px] flex-1 bg-gray-300/50" />
+                      </button>
+                    )}
+                    <AppLink
+                      href={pathForSection(item.id)}
+                      onNavigate={() => navigateTo(item.id)}
+                      className={`group flex items-center gap-4 w-full text-left focus:outline-none no-underline ${item.group ? 'pl-3' : ''}`}
+                      // Inline display:none, not a utility class. `sr-only` lost to
+                      // `w-full` in the cascade and the group rendered open. The link
+                      // stays in the markup either way, which is what a crawler reads.
+                      style={collapsed ? { display: 'none' } : undefined}
+                    >
+                        <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-black scale-125' : 'bg-gray-300 group-hover:bg-gray-400'}`} />
+                        <span className={`text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 ${activeSection === item.id ? 'text-black translate-x-1' : 'text-gray-400 group-hover:text-gray-600'}`}>
+                            {item.label}
+                        </span>
+                    </AppLink>
+                  </React.Fragment>
+                );
+            })}
          </div>
          <div className="pointer-events-auto mt-auto">
             <VerticalPill height="h-24" className="w-2 !rounded-full bg-gray-300" />
@@ -2965,35 +3051,35 @@ const App = React.forwardRef((props, ref) => {
                       </span>
                     </h1>
                 </div>
-                <p className="text-lg lg:text-xl text-gray-500 leading-relaxed font-medium max-w-md">{SITE_CONTENT.hero.subtitle}</p>
-                
+                <div className="space-y-4 max-w-md">
+                  <p className="text-lg lg:text-xl text-[#313b4e] leading-relaxed font-semibold">{SITE_CONTENT.hero.subtitle}</p>
+                  <p className="text-base text-gray-500 leading-relaxed font-medium">{SITE_CONTENT.hero.subtitleSupport}</p>
+                </div>
+
                 <div className="mt-4 space-y-6">
                 <div className="flex flex-wrap gap-4 sm:gap-6 items-center">
 
-  <AppLink href={pathForSection('manifesto')} onNavigate={() => navigateTo('manifesto')} className="no-underline">
+  {/* Was "Read Our Manifesto". A manifesto is for people who already care; a
+      stranger needs the work. /offerings is the best-performing page on the
+      site and had no link from the hero at all. */}
+  <AppLink href={pathForSection('offerings')} onNavigate={() => navigateTo('offerings')} className="no-underline">
   <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-black font-bold group cursor-pointer hover:scale-[1.02]"
   >
-    <span>Read Our Manifesto</span>
-    <BookOpen size={18} className="group-hover:scale-110 transition-transform"/>
+    <span>Explore Our Capabilities</span>
+    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
   </SoftCard>
   </AppLink>
 
-  <AppLink href={pathForSection('sense')} onNavigate={() => navigateTo('sense')} className="no-underline">
-  <SoftCard
-    className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-green-600 hover:scale-[1.02]"
-  >
-    <span>Test Sustainability Claims</span>
-    <ScanLine size={18} className="group-hover:scale-110 transition-transform"/>
-  </SoftCard>
-  </AppLink>
-
-  <AppLink href={pathForSection('collective')} onNavigate={() => navigateTo('collective')} className="no-underline">
+  {/* Two actions, not three. Three gave a first-time visitor a choice to make
+      before they knew what we sold. Sense and the Collective are both a click
+      away in the nav. */}
+  <AppLink href={pathForSection('contact')} onNavigate={() => navigateTo('contact')} className="no-underline">
   <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-teal-600 hover:scale-[1.02]"
   >
-    <span>{SITE_CONTENT.hero.collectiveButtonText}</span>
-    <Users size={18} className="group-hover:scale-110 transition-transform"/>
+    <span>Start a Conversation</span>
+    <Mail size={18} className="group-hover:scale-110 transition-transform"/>
   </SoftCard>
   </AppLink>
 </div>
@@ -3020,6 +3106,88 @@ const App = React.forwardRef((props, ref) => {
                  </div>
               </div>
             </section>
+
+              {/* WHAT WE DO — the four practices, on the homepage.
+                  Until October 2026 not one of them appeared here: the services
+                  lived only on /offerings and a visitor had to guess that "What
+                  We Do" in the nav was where they were. Driven off
+                  SITE_CONTENT.offerings so there is still one source of truth.
+                  Placed above Partners and As Featured On deliberately — proof
+                  means nothing until the reader knows what is being proved. */}
+              <section className="py-20 border-t border-gray-200/50">
+                <div className="max-w-6xl mx-auto px-4 lg:px-12">
+                  <h2 className="text-2xl lg:text-3xl font-black text-[#313b4e] mb-3">What we do</h2>
+                  <p className="text-gray-500 font-medium mb-10 max-w-2xl">
+                    Four practices, connected by a common purpose: helping businesses turn sustainability into growth. Most engagements start in one and draw on the others.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {SITE_CONTENT.offerings.map((practice, idx) => (
+                      <AppLink
+                        key={idx}
+                        href={pathForSection('offerings')}
+                        onNavigate={() => navigateTo('offerings')}
+                        className="no-underline"
+                      >
+                        {/* The outcome line, not the description. A visitor
+                            scanning the homepage wants to know what they end up
+                            with; the fuller description of each practice is one
+                            click away on /offerings. */}
+                        <SoftCard className="p-6 h-full flex flex-col gap-2 group cursor-pointer hover:scale-[1.01]">
+                          <h3 className="text-lg font-bold text-black">{practice.title}</h3>
+                          <p className="text-sm text-gray-500 leading-relaxed">{practice.outcome || practice.desc}</p>
+                        </SoftCard>
+                      </AppLink>
+                    ))}
+                  </div>
+                  <div className="mt-8">
+                    <AppLink
+                      href={pathForSection('offerings')}
+                      onNavigate={() => navigateTo('offerings')}
+                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-teal-600 transition-colors no-underline"
+                    >
+                      See all four in detail
+                      <ArrowRight size={16} />
+                    </AppLink>
+                  </div>
+                </div>
+              </section>
+
+              {/* OUR RESEARCH — proof before the logos. Everything here is our own
+                  study and already public, so nothing in this block touches the rule
+                  that client results go in the emailed deck and never on the site. */}
+              <section className="py-20 border-t border-gray-200/50">
+                <div className="max-w-6xl mx-auto px-4 lg:px-12">
+                  <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                    <span className="w-8 h-[1px] bg-gray-400"></span> {SITE_CONTENT.researchProof.eyebrow}
+                  </h3>
+                  <p className="text-xl lg:text-2xl font-bold text-[#313b4e] max-w-2xl mb-10 leading-snug">
+                    {SITE_CONTENT.researchProof.headline}
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+                    {SITE_CONTENT.researchProof.stats.map((s) => (
+                      <SoftCard key={s.figure} className="p-6 flex flex-col gap-2" hoverEffect={false}>
+                        <span className="text-3xl lg:text-4xl font-black text-teal-600 leading-none">{s.figure}</span>
+                        <span className="text-sm text-gray-500 leading-relaxed">{s.line}</span>
+                      </SoftCard>
+                    ))}
+                  </div>
+                  <p className="text-xs text-gray-400 leading-relaxed max-w-3xl">
+                    {SITE_CONTENT.researchProof.credit}{" "}
+                    <span className="text-gray-500 font-semibold">{SITE_CONTENT.researchProof.coverage}</span>
+                  </p>
+                  <div className="mt-6">
+                    <AppLink
+                      href={pathForSection('research')}
+                      onNavigate={() => navigateTo('research')}
+                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-teal-600 transition-colors no-underline"
+                    >
+                      {SITE_CONTENT.researchProof.linkLabel}
+                      <ArrowRight size={16} />
+                    </AppLink>
+                  </div>
+                </div>
+              </section>
+
               <section className="py-20 border-t border-gray-200/50">
                 <div className="max-w-6xl mx-auto px-4 lg:px-12">
 
@@ -3315,13 +3483,13 @@ const App = React.forwardRef((props, ref) => {
             <section className="relative min-h-screen py-24 animate-fade-in-up">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-20">
-                        <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">{SITE_CONTENT.research.title}</h1>
-                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">{SITE_CONTENT.research.subtitle}</p>
-                        <p className="text-md text-gray-400 mt-2 max-w-2xl mx-auto">{SITE_CONTENT.research.intro}</p>
+                        <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">{SITE_CONTENT.researchProof.title}</h1>
+                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">{SITE_CONTENT.researchProof.subtitle}</p>
+                        <p className="text-md text-gray-400 mt-2 max-w-2xl mx-auto">{SITE_CONTENT.researchProof.intro}</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {SITE_CONTENT.research.reports.map((item, idx) => {
+                        {SITE_CONTENT.researchProof.reports.map((item, idx) => {
                             const Icon = getIconComponent('chart');
                             return (
                             <SoftCard key={idx} className="p-8 flex flex-col justify-between h-80 group hover:-translate-y-2">
@@ -3356,7 +3524,7 @@ const App = React.forwardRef((props, ref) => {
                   <div className="flex flex-col lg:flex-row justify-between items-end mb-14">
                      <div>
                          <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">What We Do</h1>
-                         <p className="text-gray-500 max-w-xl">Four practices that overlap more often than not. Most engagements start in one and pull in the others.</p>
+                         <p className="text-gray-500 max-w-xl">Four practices, connected by a common purpose: helping businesses turn sustainability into growth. Most engagements start in one and draw on the others.</p>
                      </div>
                      <VerticalPill height="h-2" className="w-32 !rotate-0 hidden lg:block" />
                   </div>
