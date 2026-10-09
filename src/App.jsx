@@ -27,7 +27,7 @@ const SITE_CONTENT = {
     // "set up" implies the company has no marketing function yet, which excludes
     // most of who we actually sell to.
     subtitle: "We help businesses grow in a world where sustainability matters.",
-    subtitleSupport: "From strategy and brand positioning to media, measurement and market access, we bring the thinking, systems and expertise to make marketing work harder for business and better for the planet.",
+    subtitleSupport: "Strategy, brand, media, measurement and market access. Marketing that works harder for the business and better for the planet.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
