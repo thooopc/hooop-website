@@ -32,6 +32,21 @@ const SITE_CONTENT = {
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
   },
+  // Proof that is unambiguously ours and already public: our own study, our own
+  // sample, our own partners, covered by four trade titles. No client results
+  // here — those stay in the emailed credentials deck.
+  research: {
+    eyebrow: "Our research",
+    headline: "We asked 150 Indian marketers how green claims actually get verified.",
+    stats: [
+      { figure: "35%", line: "of sustainability claims reach the public with no independent check behind them" },
+      { figure: "70%", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
+      { figure: "#1", line: "barrier is missing data, not bad intent — marketers are asked to prove what they cannot see" },
+    ],
+    credit: "Green Is the New Lie — a survey and interviews with 150 Indian marketers, with research and guidance from TERI School of Advanced Studies and claim analysis from ASCI.",
+    coverage: "Covered by ET Brand Equity, afaqs!, Exchange4Media and Manifest.",
+    linkLabel: "Read the research",
+  },
    // NEW SECTION: Partners & Features
   homeExtras: {
     partners: [
@@ -2799,6 +2814,16 @@ const App = React.forwardRef((props, ref) => {
 
   const [activeSection, setActiveSection] = useState(initialRoute.section);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Which sidebar nav groups are open. Seeded from the route, not from an effect,
+  // so the group containing the page you are on is already open during the
+  // build-time prerender as well as in the browser. Effects never run in
+  // renderToString — see the prerendering note in CLAUDE.md.
+  const [openNavGroups, setOpenNavGroups] = useState(
+    () => {
+      const current = NAV_ITEMS.find(i => i.id === initialRoute.section);
+      return current?.group ? [current.group] : [];
+    }
+  );
   const [showSenseTool, setShowSenseTool] = useState(false);
   const [senseTab, setSenseTab] = useState('analyzer');
   const [selectedPost, setSelectedPost] = useState(initialRoute.post); // New state for selected blog post
@@ -2896,19 +2921,35 @@ const App = React.forwardRef((props, ref) => {
          </AppLink>
          <div className="flex flex-col gap-6 pointer-events-auto w-full">
             {navItems.filter(item => !item.hidden).map((item, i, list) => {
-                // A heading above the first item of a group, so the tools read as
-                // a set. No dropdown: a vertical sidebar can group by position,
-                // and a hover menu would be one more thing to break on touch.
                 const startsGroup = item.group && list[i - 1]?.group !== item.group;
+                // Collapsed items stay in the DOM and are hidden with a class
+                // rather than unmounted. A crawler following this nav still sees
+                // every link, which is the whole point of the AppLink work.
+                const collapsed = item.group && !openNavGroups.includes(item.group);
                 return (
                   <React.Fragment key={item.id}>
                     {startsGroup && (
-                      <div className="flex items-center gap-3 mt-2 -mb-2 pl-[2px]" aria-hidden="true">
-                        <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-300">{item.group}</span>
+                      <button
+                        type="button"
+                        onClick={() => setOpenNavGroups(g =>
+                          g.includes(item.group) ? g.filter(x => x !== item.group) : [...g, item.group]
+                        )}
+                        aria-expanded={openNavGroups.includes(item.group)}
+                        className="flex items-center gap-3 mt-2 -mb-2 pl-[2px] w-full text-left group/hdr focus:outline-none"
+                      >
+                        <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover/hdr:text-gray-600 transition-colors">{item.group}</span>
+                        <ChevronDown
+                          size={12}
+                          className={`text-gray-400 shrink-0 transition-transform duration-300 ${openNavGroups.includes(item.group) ? 'rotate-180' : ''}`}
+                        />
                         <span className="h-[1px] flex-1 bg-gray-300/50" />
-                      </div>
+                      </button>
                     )}
-                    <AppLink href={pathForSection(item.id)} onNavigate={() => navigateTo(item.id)} className={`group flex items-center gap-4 w-full text-left focus:outline-none no-underline ${item.group ? 'pl-3' : ''}`}>
+                    <AppLink
+                      href={pathForSection(item.id)}
+                      onNavigate={() => navigateTo(item.id)}
+                      className={`group flex items-center gap-4 w-full text-left focus:outline-none no-underline ${item.group ? 'pl-3' : ''} ${collapsed ? 'sr-only' : ''}`}
+                    >
                         <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-black scale-125' : 'bg-gray-300 group-hover:bg-gray-400'}`} />
                         <span className={`text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 ${activeSection === item.id ? 'text-black translate-x-1' : 'text-gray-400 group-hover:text-gray-600'}`}>
                             {item.label}
@@ -3078,6 +3119,42 @@ const App = React.forwardRef((props, ref) => {
                       className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-teal-600 transition-colors no-underline"
                     >
                       See all four in detail
+                      <ArrowRight size={16} />
+                    </AppLink>
+                  </div>
+                </div>
+              </section>
+
+              {/* OUR RESEARCH — proof before the logos. Everything here is our own
+                  study and already public, so nothing in this block touches the rule
+                  that client results go in the emailed deck and never on the site. */}
+              <section className="py-20 border-t border-gray-200/50">
+                <div className="max-w-6xl mx-auto px-4 lg:px-12">
+                  <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                    <span className="w-8 h-[1px] bg-gray-400"></span> {SITE_CONTENT.research.eyebrow}
+                  </h3>
+                  <p className="text-xl lg:text-2xl font-bold text-[#313b4e] max-w-2xl mb-10 leading-snug">
+                    {SITE_CONTENT.research.headline}
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+                    {SITE_CONTENT.research.stats.map((s) => (
+                      <SoftCard key={s.figure} className="p-6 flex flex-col gap-2" hoverEffect={false}>
+                        <span className="text-3xl lg:text-4xl font-black text-teal-600 leading-none">{s.figure}</span>
+                        <span className="text-sm text-gray-500 leading-relaxed">{s.line}</span>
+                      </SoftCard>
+                    ))}
+                  </div>
+                  <p className="text-xs text-gray-400 leading-relaxed max-w-3xl">
+                    {SITE_CONTENT.research.credit}{" "}
+                    <span className="text-gray-500 font-semibold">{SITE_CONTENT.research.coverage}</span>
+                  </p>
+                  <div className="mt-6">
+                    <AppLink
+                      href={pathForSection('research')}
+                      onNavigate={() => navigateTo('research')}
+                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-teal-600 transition-colors no-underline"
+                    >
+                      {SITE_CONTENT.research.linkLabel}
                       <ArrowRight size={16} />
                     </AppLink>
                   </div>
