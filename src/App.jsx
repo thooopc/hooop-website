@@ -3467,10 +3467,17 @@ const App = React.forwardRef((props, ref) => {
                                    site's own label idiom — small, uppercase, wide-tracked,
                                    middot-separated. Used in both places so it reads as one
                                    system rather than two separate decisions. */}
-                               <p className="text-center text-[9px] font-bold uppercase tracking-[0.12em] text-teal-700 leading-[1.9] m-0 px-1">
+                               {/* Sentence case, not uppercase. The role line directly above
+                                   is already a small uppercase tracked run, and on several
+                                   cards it repeats these words almost exactly — Radhika's
+                                   role and expertise both open "Stakeholder Engagement, PR &
+                                   Communications". Two uppercase runs stacked read as one
+                                   grey block; the pills had been doing that separating work.
+                                   Sentence case restores the contrast without the chrome. */}
+                               <p className="text-center text-[11px] font-semibold text-teal-700 leading-[1.6] m-0 px-1">
                                  {(member.expertise || []).map((area, i) => (
                                    <React.Fragment key={area}>
-                                     {i > 0 && <span className="text-teal-600/35 mx-1">&middot;</span>}
+                                     {i > 0 && <span className="text-teal-600/35 mx-1.5">&middot;</span>}
                                      {area}
                                    </React.Fragment>
                                  ))}
