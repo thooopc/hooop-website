@@ -1649,12 +1649,32 @@ Greenwashing Tool
                    <p className="text-gray-500 text-sm md:text-base font-medium mb-6 leading-relaxed">
 Sense is a greenwashing checker for climate language and ESG messaging. It flags wording that tends to attract regulatory attention, so you can rethink it before you publish rather than after someone else does. It's a guiding light, not a verdict — and we're still learning where the lines fall too. These rules are new for all of us.
 </p>
-                    <div className="flex flex-wrap gap-2 mb-2">
-                        {["Reputation", "Legal Compliance", "Trust", "ESG Credibility"].map((v, i) => (
-                            <span key={i} className="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-bold text-gray-600 shadow-sm flex items-center gap-1">
-                                <ShieldCheck size={12} className="text-green-600" /> {v}
-                            </span>
+                    {/* Was four white pills, each with the same green shield-check.
+                        Four identical trust badges is the most generic pattern on the
+                        web, and asserting "Trust" as a floating noun is the sort of
+                        unevidenced abstraction this very tool flags.
+
+                        Now it uses the label idiom the site already has — the small
+                        uppercase wide-tracked run used for the locations line and for
+                        "Detection Active" — set into a pressed neumorphic track, which
+                        reads as part of the scanner rather than a sticker. One shield,
+                        not four. Wraps to two lines at 375px. */}
+                    <div
+                      className="mb-2 flex items-start gap-3 rounded-2xl px-4 py-3"
+                      style={{
+                        background: "#E3E7EE",
+                        boxShadow: "inset 3px 3px 7px #c6cad1, inset -3px -3px 7px #ffffff",
+                      }}
+                    >
+                      <ShieldCheck size={15} className="text-green-600 shrink-0 mt-[1px]" />
+                      <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-gray-500 leading-[1.7] m-0">
+                        {["Reputation", "Legal compliance", "Trust", "ESG credibility"].map((v, i) => (
+                          <React.Fragment key={v}>
+                            {i > 0 && <span className="text-gray-400/60 mx-1.5">&middot;</span>}
+                            {v}
+                          </React.Fragment>
                         ))}
+                      </p>
                     </div>
                 </div>
                 <div className="hidden md:flex justify-center items-center h-64 relative">
@@ -3442,13 +3462,26 @@ const App = React.forwardRef((props, ref) => {
                              {/* Fixed height so the six cards stay on one baseline whether or
                                  not a member carries a years figure or a note. */}
                              <div className="min-h-[5rem] flex flex-col justify-center gap-2 mb-3">
-                               <div className="flex flex-wrap justify-center gap-1">
+                               {/* Same change as the Sense hero: these were rounded-full
+                                   teal chips, which is the generic tag-pill look. Now the
+                                   site's own label idiom — small, uppercase, wide-tracked,
+                                   middot-separated. Used in both places so it reads as one
+                                   system rather than two separate decisions. */}
+                               {/* Sentence case, not uppercase. The role line directly above
+                                   is already a small uppercase tracked run, and on several
+                                   cards it repeats these words almost exactly — Radhika's
+                                   role and expertise both open "Stakeholder Engagement, PR &
+                                   Communications". Two uppercase runs stacked read as one
+                                   grey block; the pills had been doing that separating work.
+                                   Sentence case restores the contrast without the chrome. */}
+                               <p className="text-center text-[11px] font-semibold text-teal-700 leading-[1.6] m-0 px-1">
                                  {(member.expertise || []).map((area, i) => (
-                                   <span key={i} className="px-2 py-0.5 rounded-full bg-teal-50 border border-teal-100 text-[9px] font-bold text-teal-700">
+                                   <React.Fragment key={area}>
+                                     {i > 0 && <span className="text-teal-600/35 mx-1.5">&middot;</span>}
                                      {area}
-                                   </span>
+                                   </React.Fragment>
                                  ))}
-                               </div>
+                               </p>
                                {member.note && (
                                  <p className="text-gray-400 text-[10px] italic leading-snug">{member.note}</p>
                                )}
