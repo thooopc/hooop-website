@@ -2837,6 +2837,10 @@ const App = React.forwardRef((props, ref) => {
 
   const [activeSection, setActiveSection] = useState(initialRoute.section);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Which practice cards on the homepage are expanded. Collapsed copy stays in
+  // the markup and is toggled with display, so the crawler reads all four in
+  // full whatever a visitor has clicked.
+  const [openPractices, setOpenPractices] = useState([]);
   // Which sidebar nav groups are open. Seeded from the route, not from an effect,
   // so the group containing the page you are on is already open during the
   // build-time prerender as well as in the browser. Effects never run in
@@ -3139,24 +3143,48 @@ const App = React.forwardRef((props, ref) => {
                   <p className="text-gray-500 font-medium mb-10 max-w-2xl">
                     Four practices. Most engagements start in one and draw on the others.
                   </p>
+                  {/* Same shape as the research block, which is the one section
+                      Arvind says draws his eye: one large element per card, one
+                      short line under it. There the large element is a figure; here
+                      it is the practice name, because inventing a number for each
+                      practice would be making one up.
+
+                      Read more expands the full description and what the practice
+                      covers, so the detail is available without leaving the page.
+                      The expanded copy is always in the markup and toggled with
+                      display, so a crawler reads all of it. */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {SITE_CONTENT.offerings.map((practice, idx) => (
-                      <AppLink
-                        key={idx}
-                        href={pathForSection('offerings')}
-                        onNavigate={() => navigateTo('offerings')}
-                        className="no-underline"
-                      >
-                        {/* The outcome line, not the description. A visitor
-                            scanning the homepage wants to know what they end up
-                            with; the fuller description of each practice is one
-                            click away on /offerings. */}
-                        <SoftCard className="p-6 h-full flex flex-col gap-2 group cursor-pointer hover:scale-[1.01]">
-                          <h3 className="text-lg font-bold text-black">{practice.title}</h3>
-                          <p className="text-sm text-gray-500 leading-relaxed">{practice.outcome || practice.desc}</p>
+                    {SITE_CONTENT.offerings.map((practice, idx) => {
+                      const open = openPractices.includes(idx);
+                      return (
+                        <SoftCard key={idx} className="p-7 h-full flex flex-col gap-3" hoverEffect={false}>
+                          <h3 className="text-xl lg:text-2xl font-black text-[#313b4e] leading-tight">{practice.title}</h3>
+                          <p className="text-[15px] text-gray-500 leading-relaxed">{practice.outcome || practice.desc}</p>
+
+                          <div style={open ? undefined : { display: 'none' }} className="pt-1">
+                            <p className="text-sm text-gray-500 leading-relaxed mb-3">{practice.desc}</p>
+                            <ul className="space-y-1.5">
+                              {(practice.items || []).map((it) => (
+                                <li key={it} className="text-sm text-gray-500 flex items-start gap-2">
+                                  <span className="text-teal-600 mt-[2px] shrink-0">&middot;</span>
+                                  <span>{it}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => setOpenPractices(p => open ? p.filter(x => x !== idx) : [...p, idx])}
+                            aria-expanded={open}
+                            className="mt-auto pt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-gray-400 hover:text-teal-600 transition-colors focus:outline-none self-start"
+                          >
+                            {open ? 'Show less' : 'Read more'}
+                            <ChevronDown size={13} className={`transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
+                          </button>
                         </SoftCard>
-                      </AppLink>
-                    ))}
+                      );
+                    })}
                   </div>
                   <div className="mt-8">
                     <AppLink
