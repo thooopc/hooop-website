@@ -2185,32 +2185,11 @@ const EsgMediaIndexView = ({ navigateTo }) => {
         </ScrollReveal>
       </section>
 
-      {/* CTA */}
-      <section className="py-14 border-t border-gray-200/60">
-        <ScrollReveal>
-          <div className="soft-card p-8 md:p-12 bg-gray-900 text-white">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-teal-400 mb-3">No charge, no pitch</p>
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Your top 20 domains, scored.</h2>
-            <p className="text-gray-300 leading-relaxed max-w-2xl mb-6">
-              Send a site list and we'll send back a one-page read: how each domain scores across carbon, content and
-              corporate signals, where the waste sits, and the three placements we'd cut first. Usually about a week.
-            </p>
-            <ul className="text-gray-300 text-sm leading-relaxed max-w-2xl mb-8 space-y-2">
-              <li className="flex gap-3"><span className="text-teal-400 font-bold shrink-0">→</span> A score per domain, and what moved it</li>
-              <li className="flex gap-3"><span className="text-teal-400 font-bold shrink-0">→</span> The three placements we'd drop, with the reasoning</li>
-              <li className="flex gap-3"><span className="text-teal-400 font-bold shrink-0">→</span> An honest view on whether the upside is worth your time — including when it isn't</li>
-            </ul>
-            <a href="mailto:hello@hooop.in?subject=ESG%20Media%20Index%20-%20score%20my%20top%2020%20domains&body=Paste%20or%20attach%20your%20domain%20list%20below%20and%20we%27ll%20come%20back%20within%20about%20a%20week.%0A%0ADomains%3A%0A%0AMarket%2Fcategory%3A%0A%0AApprox%20monthly%20spend%20(optional)%3A%0A"
-               className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform">
-              <Mail size={18} /> Send us your list
-            </a>
-            <p className="text-gray-500 text-xs mt-4">
-              Opens your mail client with the questions pre-filled. We're still mapping this market ourselves and we
-              learn something from every plan we look at.
-            </p>
-          </div>
-        </ScrollReveal>
-      </section>
+      {/* The "Your top 20 domains, scored" offer block was removed on Arvind's
+          instruction, 12 Oct 2026. It was the bounded free-audit offer built in
+          August: no charge no pitch, three bullets, and a mailto that pre-filled
+          domains, market and monthly spend. Nothing replaces it for now, so this
+          page ends on the brand wall. */}
     </div>
   );
 };
