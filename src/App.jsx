@@ -3105,6 +3105,25 @@ const App = React.forwardRef((props, ref) => {
                      </SoftCard>
                  </div>
               </div>
+
+              {/* The hero is min-h-screen, so on most screens there is a stretch of
+                  empty ground under the CTAs and nothing telling anyone the page
+                  continues. This names what is below rather than being a bare
+                  chevron, so it is a signpost and not decoration, and it scrolls
+                  there on click. Honours prefers-reduced-motion. */}
+              <button
+                type="button"
+                onClick={() => document.getElementById('what-we-do')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 group flex flex-col items-center gap-2 focus:outline-none"
+                aria-label="Scroll to what we do"
+              >
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-gray-600 transition-colors">
+                  What we do
+                </span>
+                <span className="w-10 h-10 rounded-full bg-[#E0E5EC] shadow-[4px_4px_9px_#c8ccd3,-4px_-4px_9px_#ffffff] flex items-center justify-center text-gray-400 group-hover:text-teal-600 transition-colors animate-nudge">
+                  <ChevronDown size={18} />
+                </span>
+              </button>
             </section>
 
               {/* WHAT WE DO — the four practices, on the homepage.
@@ -3114,7 +3133,7 @@ const App = React.forwardRef((props, ref) => {
                   SITE_CONTENT.offerings so there is still one source of truth.
                   Placed above Partners and As Featured On deliberately — proof
                   means nothing until the reader knows what is being proved. */}
-              <section className="py-20 border-t border-gray-200/50">
+              <section id="what-we-do" className="py-20 border-t border-gray-200/50 scroll-mt-24">
                 <div className="max-w-6xl mx-auto px-4 lg:px-12">
                   <h2 className="text-2xl lg:text-3xl font-black text-[#313b4e] mb-3">What we do</h2>
                   <p className="text-gray-500 font-medium mb-10 max-w-2xl">
@@ -3729,6 +3748,9 @@ const App = React.forwardRef((props, ref) => {
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
         @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
         .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes nudge { 0%, 70%, 100% { transform: translateY(0); } 80% { transform: translateY(5px); } 90% { transform: translateY(2px); } }
+        .animate-nudge { animation: nudge 2.6s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) { .animate-nudge { animation: none; } }
         .animate-scan { animation: scan 3s linear infinite; }
         .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
