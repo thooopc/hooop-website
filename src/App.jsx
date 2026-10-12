@@ -3042,14 +3042,17 @@ const App = React.forwardRef((props, ref) => {
                 <div className="mt-4 space-y-6">
                 <div className="flex flex-wrap gap-4 sm:gap-6 items-center">
 
-  {/* Was "Read Our Manifesto". A manifesto is for people who already care; a
-      stranger needs the work. /offerings is the best-performing page on the
-      site and had no link from the hero at all. */}
-  <AppLink href={pathForSection('offerings')} onNavigate={() => navigateTo('offerings')} className="no-underline">
+  {/* Back to the manifesto, on Arvind's note. This pointed at /offerings when
+      nothing on the homepage said what we do; now the four practices sit
+      directly below and the scroll cue already goes there, so sending the
+      button to the same place was spending the strongest slot on a duplicate.
+      The hero now splits three ways with no overlap: what we believe here,
+      what we do on scroll, and a way to talk to us. */}
+  <AppLink href={pathForSection('manifesto')} onNavigate={() => navigateTo('manifesto')} className="no-underline">
   <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-black font-bold group cursor-pointer hover:scale-[1.02]"
   >
-    <span>Explore Our Capabilities</span>
+    <span>Read our manifesto</span>
     <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
   </SoftCard>
   </AppLink>
@@ -3061,7 +3064,7 @@ const App = React.forwardRef((props, ref) => {
   <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-teal-600 hover:scale-[1.02]"
   >
-    <span>Start a Conversation</span>
+    <span>Start a conversation</span>
     <Mail size={18} className="group-hover:scale-110 transition-transform"/>
   </SoftCard>
   </AppLink>
