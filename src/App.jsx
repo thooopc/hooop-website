@@ -27,7 +27,7 @@ const SITE_CONTENT = {
     // "set up" implies the company has no marketing function yet, which excludes
     // most of who we actually sell to.
     subtitle: "We help businesses grow in a world where sustainability matters.",
-    subtitleSupport: "From strategy and brand positioning to media, measurement and market access, we bring the thinking, systems and expertise to make marketing work harder for business and better for the planet.",
+    subtitleSupport: "Strategy, brand, media, measurement and market access. Marketing that works harder for the business and better for the planet.",
     buttonText: "Our Offerings",
     collectiveButtonText: "Meet the Collective", // Added this new text
     linkText: "Read our manifesto"
@@ -46,7 +46,7 @@ const SITE_CONTENT = {
       { figure: "70%", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
       { figure: "#1", line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
     ],
-    credit: "Green Is the New Lie. A survey and interviews with 150 Indian marketers, with research and guidance from TERI School of Advanced Studies and claim analysis from ASCI.",
+    credit: "Green Is the New Lie, with TERI School of Advanced Studies and claim analysis from ASCI.",
     coverage: "Covered by ET Brand Equity, afaqs!, Exchange4Media and Manifest.",
     linkLabel: "Read the research",
   },
@@ -521,7 +521,7 @@ const SITE_CONTENT = {
   offerings: [
     {
       title: "Marketing-Led Consulting",
-      outcome: "You end up with sustainability claims that survive scrutiny, and a brand that gets commercial credit for the work you are already doing.",
+      outcome: "Claims that survive scrutiny, and credit for work you already do.",
       desc: "Strategy and communication for businesses whose growth depends on being believed, not just heard. We connect business strategy, brand, and behaviour to turn credibility into commercial value.",
       items: [
         "Building brands in a digital-first world",
@@ -535,7 +535,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Media Sustainability",
-      outcome: "You find out what your media budget is costing in carbon and in waste, and you spend less of both without losing reach.",
+      outcome: "What your media spend costs in carbon and waste, and how to cut both.",
       desc: "Media planning that accounts for both campaign performance and environmental impact. We help businesses understand the footprint of their media investments and use that intelligence to make better decisions.",
       items: [
         "Planning and managing media budgets at scale",
@@ -549,7 +549,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Policy, Advocacy & Stakeholder Engagement",
-      outcome: "Regulators, investors and the communities you operate in hear a consistent account of your business that you can stand behind.",
+      outcome: "One account of the business that holds with regulators and investors.",
       desc: "Sustainability is shaped beyond the marketing function. We help businesses navigate policy, build stakeholder alignment, and engage the regulators, communities and institutions that influence their ability to grow.",
       items: [
         "Stakeholder engagement, PR and communications",
@@ -560,7 +560,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Venture Growth & Market Access",
-      outcome: "A product that works in a pilot reaches real buyers in new markets, with the positioning and the commercial route to get there.",
+      outcome: "A product that worked in a pilot, in front of buyers who can scale it.",
       desc: "For climate and circular ventures ready to move beyond the pilot. We help build the positioning, market strategy and commercial pathways needed to turn promising solutions into scalable businesses.",
       items: [
         "Investment and funding readiness",
@@ -2185,32 +2185,11 @@ const EsgMediaIndexView = ({ navigateTo }) => {
         </ScrollReveal>
       </section>
 
-      {/* CTA */}
-      <section className="py-14 border-t border-gray-200/60">
-        <ScrollReveal>
-          <div className="soft-card p-8 md:p-12 bg-gray-900 text-white">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-teal-400 mb-3">No charge, no pitch</p>
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Your top 20 domains, scored.</h2>
-            <p className="text-gray-300 leading-relaxed max-w-2xl mb-6">
-              Send a site list and we'll send back a one-page read: how each domain scores across carbon, content and
-              corporate signals, where the waste sits, and the three placements we'd cut first. Usually about a week.
-            </p>
-            <ul className="text-gray-300 text-sm leading-relaxed max-w-2xl mb-8 space-y-2">
-              <li className="flex gap-3"><span className="text-teal-400 font-bold shrink-0">→</span> A score per domain, and what moved it</li>
-              <li className="flex gap-3"><span className="text-teal-400 font-bold shrink-0">→</span> The three placements we'd drop, with the reasoning</li>
-              <li className="flex gap-3"><span className="text-teal-400 font-bold shrink-0">→</span> An honest view on whether the upside is worth your time — including when it isn't</li>
-            </ul>
-            <a href="mailto:hello@hooop.in?subject=ESG%20Media%20Index%20-%20score%20my%20top%2020%20domains&body=Paste%20or%20attach%20your%20domain%20list%20below%20and%20we%27ll%20come%20back%20within%20about%20a%20week.%0A%0ADomains%3A%0A%0AMarket%2Fcategory%3A%0A%0AApprox%20monthly%20spend%20(optional)%3A%0A"
-               className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform">
-              <Mail size={18} /> Send us your list
-            </a>
-            <p className="text-gray-500 text-xs mt-4">
-              Opens your mail client with the questions pre-filled. We're still mapping this market ourselves and we
-              learn something from every plan we look at.
-            </p>
-          </div>
-        </ScrollReveal>
-      </section>
+      {/* The "Your top 20 domains, scored" offer block was removed on Arvind's
+          instruction, 12 Oct 2026. It was the bounded free-audit offer built in
+          August: no charge no pitch, three bullets, and a mailto that pre-filled
+          domains, market and monthly spend. Nothing replaces it for now, so this
+          page ends on the brand wall. */}
     </div>
   );
 };
@@ -2837,6 +2816,10 @@ const App = React.forwardRef((props, ref) => {
 
   const [activeSection, setActiveSection] = useState(initialRoute.section);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Which practice cards on the homepage are expanded. Collapsed copy stays in
+  // the markup and is toggled with display, so the crawler reads all four in
+  // full whatever a visitor has clicked.
+  const [openPractices, setOpenPractices] = useState([]);
   // Which sidebar nav groups are open. Seeded from the route, not from an effect,
   // so the group containing the page you are on is already open during the
   // build-time prerender as well as in the browser. Effects never run in
@@ -3059,14 +3042,17 @@ const App = React.forwardRef((props, ref) => {
                 <div className="mt-4 space-y-6">
                 <div className="flex flex-wrap gap-4 sm:gap-6 items-center">
 
-  {/* Was "Read Our Manifesto". A manifesto is for people who already care; a
-      stranger needs the work. /offerings is the best-performing page on the
-      site and had no link from the hero at all. */}
-  <AppLink href={pathForSection('offerings')} onNavigate={() => navigateTo('offerings')} className="no-underline">
+  {/* Back to the manifesto, on Arvind's note. This pointed at /offerings when
+      nothing on the homepage said what we do; now the four practices sit
+      directly below and the scroll cue already goes there, so sending the
+      button to the same place was spending the strongest slot on a duplicate.
+      The hero now splits three ways with no overlap: what we believe here,
+      what we do on scroll, and a way to talk to us. */}
+  <AppLink href={pathForSection('manifesto')} onNavigate={() => navigateTo('manifesto')} className="no-underline">
   <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-black font-bold group cursor-pointer hover:scale-[1.02]"
   >
-    <span>Explore Our Capabilities</span>
+    <span>Read our manifesto</span>
     <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
   </SoftCard>
   </AppLink>
@@ -3078,7 +3064,7 @@ const App = React.forwardRef((props, ref) => {
   <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-teal-600 hover:scale-[1.02]"
   >
-    <span>Start a Conversation</span>
+    <span>Start a conversation</span>
     <Mail size={18} className="group-hover:scale-110 transition-transform"/>
   </SoftCard>
   </AppLink>
@@ -3105,6 +3091,25 @@ const App = React.forwardRef((props, ref) => {
                      </SoftCard>
                  </div>
               </div>
+
+              {/* The hero is min-h-screen, so on most screens there is a stretch of
+                  empty ground under the CTAs and nothing telling anyone the page
+                  continues. This names what is below rather than being a bare
+                  chevron, so it is a signpost and not decoration, and it scrolls
+                  there on click. Honours prefers-reduced-motion. */}
+              <button
+                type="button"
+                onClick={() => document.getElementById('what-we-do')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 group flex flex-col items-center gap-2 focus:outline-none"
+                aria-label="Scroll to what we do"
+              >
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-gray-600 transition-colors">
+                  What we do
+                </span>
+                <span className="w-10 h-10 rounded-full bg-[#E0E5EC] shadow-[4px_4px_9px_#c8ccd3,-4px_-4px_9px_#ffffff] flex items-center justify-center text-gray-400 group-hover:text-teal-600 transition-colors animate-nudge">
+                  <ChevronDown size={18} />
+                </span>
+              </button>
             </section>
 
               {/* WHAT WE DO — the four practices, on the homepage.
@@ -3114,30 +3119,54 @@ const App = React.forwardRef((props, ref) => {
                   SITE_CONTENT.offerings so there is still one source of truth.
                   Placed above Partners and As Featured On deliberately — proof
                   means nothing until the reader knows what is being proved. */}
-              <section className="py-20 border-t border-gray-200/50">
+              <section id="what-we-do" className="py-20 border-t border-gray-200/50 scroll-mt-24">
                 <div className="max-w-6xl mx-auto px-4 lg:px-12">
                   <h2 className="text-2xl lg:text-3xl font-black text-[#313b4e] mb-3">What we do</h2>
                   <p className="text-gray-500 font-medium mb-10 max-w-2xl">
-                    Four practices, connected by a common purpose: helping businesses turn sustainability into growth. Most engagements start in one and draw on the others.
+                    Four practices. Most engagements start in one and draw on the others.
                   </p>
+                  {/* Same shape as the research block, which is the one section
+                      Arvind says draws his eye: one large element per card, one
+                      short line under it. There the large element is a figure; here
+                      it is the practice name, because inventing a number for each
+                      practice would be making one up.
+
+                      Read more expands the full description and what the practice
+                      covers, so the detail is available without leaving the page.
+                      The expanded copy is always in the markup and toggled with
+                      display, so a crawler reads all of it. */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {SITE_CONTENT.offerings.map((practice, idx) => (
-                      <AppLink
-                        key={idx}
-                        href={pathForSection('offerings')}
-                        onNavigate={() => navigateTo('offerings')}
-                        className="no-underline"
-                      >
-                        {/* The outcome line, not the description. A visitor
-                            scanning the homepage wants to know what they end up
-                            with; the fuller description of each practice is one
-                            click away on /offerings. */}
-                        <SoftCard className="p-6 h-full flex flex-col gap-2 group cursor-pointer hover:scale-[1.01]">
-                          <h3 className="text-lg font-bold text-black">{practice.title}</h3>
-                          <p className="text-sm text-gray-500 leading-relaxed">{practice.outcome || practice.desc}</p>
+                    {SITE_CONTENT.offerings.map((practice, idx) => {
+                      const open = openPractices.includes(idx);
+                      return (
+                        <SoftCard key={idx} className="p-7 h-full flex flex-col gap-3" hoverEffect={false}>
+                          <h3 className="text-xl lg:text-2xl font-black text-[#313b4e] leading-tight">{practice.title}</h3>
+                          <p className="text-[15px] text-gray-500 leading-relaxed">{practice.outcome || practice.desc}</p>
+
+                          <div style={open ? undefined : { display: 'none' }} className="pt-1">
+                            <p className="text-sm text-gray-500 leading-relaxed mb-3">{practice.desc}</p>
+                            <ul className="space-y-1.5">
+                              {(practice.items || []).map((it) => (
+                                <li key={it} className="text-sm text-gray-500 flex items-start gap-2">
+                                  <span className="text-teal-600 mt-[2px] shrink-0">&middot;</span>
+                                  <span>{it}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => setOpenPractices(p => open ? p.filter(x => x !== idx) : [...p, idx])}
+                            aria-expanded={open}
+                            className="mt-auto pt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-gray-400 hover:text-teal-600 transition-colors focus:outline-none self-start"
+                          >
+                            {open ? 'Show less' : 'Read more'}
+                            <ChevronDown size={13} className={`transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
+                          </button>
                         </SoftCard>
-                      </AppLink>
-                    ))}
+                      );
+                    })}
                   </div>
                   <div className="mt-8">
                     <AppLink
@@ -3210,19 +3239,18 @@ const App = React.forwardRef((props, ref) => {
                   <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
                     <span className="w-8 h-[1px] bg-gray-400"></span> As Featured On
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1">
+                  {/* Outlet names only. Seven full headlines stacked here were 341
+                      words, more than half the reading on the page, and on a phone
+                      they were most of the scroll. The headline moves to the link
+                      title so it is still there on hover and still in the markup
+                      for a crawler; the link itself goes to the article. */}
+                  <div className="flex flex-wrap gap-3">
                     {SITE_CONTENT.homeExtras.featured.map((feature, idx) => (
                       <a key={idx} href={feature.url} target="_blank" rel="noopener noreferrer"
-                         className="group flex items-start gap-4 py-5 border-b border-gray-200/60 hover:border-teal-200 transition-colors">
-                        <div className="flex-grow min-w-0">
-                          <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-teal-600/80 mb-1.5">
-                            {feature.name}
-                          </p>
-                          <p className="text-sm text-gray-600 group-hover:text-gray-900 leading-snug transition-colors">
-                            {feature.headline || feature.name}
-                          </p>
-                        </div>
-                        <ExternalLink size={14} className="text-gray-300 group-hover:text-teal-500 shrink-0 mt-5 transition-colors" />
+                         title={feature.headline || feature.name}
+                         className="group inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#E0E5EC] shadow-[4px_4px_9px_#c8ccd3,-4px_-4px_9px_#ffffff] text-xs font-bold text-gray-500 hover:text-teal-600 transition-colors no-underline">
+                        {feature.name}
+                        <ExternalLink size={12} className="text-gray-300 group-hover:text-teal-500 shrink-0 transition-colors" />
                       </a>
                     ))}
                   </div>
@@ -3524,7 +3552,7 @@ const App = React.forwardRef((props, ref) => {
                   <div className="flex flex-col lg:flex-row justify-between items-end mb-14">
                      <div>
                          <h1 className="text-4xl lg:text-6xl font-black text-[#313b4e] mb-4">What We Do</h1>
-                         <p className="text-gray-500 max-w-xl">Four practices, connected by a common purpose: helping businesses turn sustainability into growth. Most engagements start in one and draw on the others.</p>
+                         <p className="text-gray-500 max-w-xl">Four practices. Most engagements start in one and draw on the others.</p>
                      </div>
                      <VerticalPill height="h-2" className="w-32 !rotate-0 hidden lg:block" />
                   </div>
@@ -3730,6 +3758,9 @@ const App = React.forwardRef((props, ref) => {
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
         @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
         .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes nudge { 0%, 70%, 100% { transform: translateY(0); } 80% { transform: translateY(5px); } 90% { transform: translateY(2px); } }
+        .animate-nudge { animation: nudge 2.6s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) { .animate-nudge { animation: none; } }
         .animate-scan { animation: scan 3s linear infinite; }
         .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
