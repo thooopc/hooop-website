@@ -63,6 +63,9 @@ export const ROUTES = Object.fromEntries([
     description: "How the HOOOP Collective collects, uses, and protects personal data provided through Sense, in line with India's Digital Personal Data Protection Act, 2023.",
   }],
 
+  post("era-of-loilty-circular-loyalty",
+    "The Era of L-oil-ty Is Over",
+    "Most loyalty programmes were never really about loyalty. They were built around the linear economy: buy more, consume more, earn more. Why circular loyalty is the shift, and what it looks like in practice. By Arvind Nair, first published in ET BrandEquity."),
   post("made-for-advertising-programmatic-waste-india",
     "Made-for-Advertising Went From 15% of Programmatic Spend to Under 1%",
     "Made-for-advertising sites took 15% of programmatic budgets in 2023 and around 1% today. What fixed it, why carbon per ad dollar fell with it, and why India — the lowest invalid traffic rate of ten major markets — is not yet running the same checks."),

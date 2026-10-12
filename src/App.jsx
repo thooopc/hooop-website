@@ -78,6 +78,41 @@ const SITE_CONTENT = {
     },
     posts: [
        {
+          // Arvind's own bylined piece. First ran in ET BrandEquity, so this is
+          // an extract in his words with the credit up front and the full piece
+          // linked twice - not a full republication, which would compete with
+          // ET for the same terms and lose.
+          title: "The Era of L-oil-ty Is Over",
+          slug: "era-of-loilty-circular-loyalty",
+          category: "Circular Economy",
+          date: "May 2026",
+          desc: "Most loyalty programmes were never really about loyalty. They were built around oil. Buy more, consume more, earn more. First published in ET BrandEquity.",
+          content: [
+            "For the last two decades, marketing has been obsessed with building loyalty programmes. But let’s be honest: most of them were never really about loyalty. They were built around oil.",
+            { link: "First published in ET BrandEquity. Read the full piece", href: "https://brandequity.economictimes.indiatimes.com/news/marketing/the-era-of-l-oil-ty-is-over/131171175" },
+            "I use the term L-oil-ty intentionally, because traditional rewards systems are deeply tied to the logic of the linear economy. Buy more. Consume more. Earn more.",
+            "Consumption is now frequently seen as our principal role in the world. The more resources extracted, shipped, replaced and discarded, the more customers are rewarded. But a transactional purchase was never true loyalty.",
+            "When the only bond between a brand and a customer is a transaction, a competitor only needs to offer a slightly bigger discount to steal that loyalty.",
+            { heading: "The exhausted consumer" },
+            "People are fatigued by the constant pressure to accumulate points for things they do not really need. The average consumer is enrolled in several rewards programmes and actively engages with one.",
+            "Retention is no longer driven purely by discounts. Brand value is increasingly shaped by factors beyond price: ethics, transparency and environmental responsibility among them. More than half of global consumers say they have reduced or stopped buying certain products because of environmental or social concerns.",
+            "Buying the same product ten times to unlock a 10% discount is not devotion. It is just maths.",
+            { heading: "The shift in questions" },
+            "Consumers understand that endless extraction is fragile. It is time to stop treating consumption as the primary metric of success. If your loyalty programme only rewards people for consuming more resources, is it not fundamentally broken?",
+            "The better question is this: how do we build ecosystems people actually want to stay inside?",
+            "That requires a shift toward circular loyalty. The brands that will build durable moats over the next decade are the ones embedding circular economy principles directly into customer retention.",
+            { heading: "What that looks like in practice" },
+            "Rewarding customers for returning packaging and used products, so materials re-enter the value chain instead of landfill. Goa’s Deposit Refund System is a working example close to home.",
+            "Incentivising repair and refurbishment instead of replacement. Ikea’s Circular Hub is the most visible version of it.",
+            "Building subscription and access models that reduce dependence on virgin materials.",
+            "Creating resale, swap and peer-to-peer ecosystems where customers take part in extending the life of a product.",
+            { heading: "Where we have got to" },
+            "None of this removes the need for a rewards programme. It changes what the programme counts.",
+            "If you are looking at a scheme that rewards volume and wondering what else it could reward, that is a conversation we enjoy.",
+            { link: "Read the full piece in ET BrandEquity", href: "https://brandequity.economictimes.indiatimes.com/news/marketing/the-era-of-l-oil-ty-is-over/131171175" },
+          ],
+       },
+       {
           title: "Made-for-Advertising Went From 15% of Programmatic Spend to Under 1%. Measurement Did That, Not Outrage.",
           slug: "made-for-advertising-programmatic-waste-india",
           category: "Sustainable Media",
@@ -1361,6 +1396,19 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
               <h2 key={idx} className="text-2xl font-bold text-gray-900 !mt-10 !mb-3">{item.heading}</h2>
             );
             if (item.figure) return <PostFigure key={idx} name={item.figure} />;
+            {/* External credit link, for pieces that first ran somewhere else. */}
+            if (item.link) return (
+              <p key={idx}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-bold text-teal-600 hover:text-teal-800 transition-colors no-underline"
+                >
+                  {item.link} <ArrowRight size={15} />
+                </a>
+              </p>
+            );
             if (item.cta) return (
               <p key={idx}>
                 <AppLink
