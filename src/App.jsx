@@ -2185,11 +2185,30 @@ const EsgMediaIndexView = ({ navigateTo }) => {
         </ScrollReveal>
       </section>
 
-      {/* The "Your top 20 domains, scored" offer block was removed on Arvind's
-          instruction, 12 Oct 2026. It was the bounded free-audit offer built in
-          August: no charge no pitch, three bullets, and a mailto that pre-filled
-          domains, market and monthly spend. Nothing replaces it for now, so this
-          page ends on the brand wall. */}
+      {/* The "Your top 20 domains, scored" free-audit offer that used to close this
+          page was removed on 12 Oct 2026. It was the page's only way to get in
+          touch, so this replaces it with a plain line through to /contact rather
+          than another offer. Deliberately not a mailto and not a promise of free
+          work. */}
+      <section className="py-14 border-t border-gray-200/60">
+        <ScrollReveal>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <p className="text-lg md:text-xl font-bold text-gray-900 max-w-xl leading-snug">
+              Wondering how your own media plan would score?
+            </p>
+            <AppLink
+              href={pathForSection('contact')}
+              onNavigate={() => navigateTo('contact')}
+              className="no-underline shrink-0"
+            >
+              <span className="soft-card inline-flex items-center gap-3 px-8 py-4 font-bold text-gray-900 hover:text-teal-600 transition-colors cursor-pointer">
+                Talk to us
+                <ArrowRight size={18} />
+              </span>
+            </AppLink>
+          </div>
+        </ScrollReveal>
+      </section>
     </div>
   );
 };
