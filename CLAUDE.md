@@ -313,6 +313,19 @@ green and looked fine in logs.
    hit an assertion on a later substitution and exited before writing the file.
    The log said success and nothing had changed. Caught in a screenshot.
 
+5. **The in-app Browser pane renders tabs as HIDDEN, so CSS animations never
+   run.** `document.visibilityState` is `"hidden"` and `document.timeline.currentTime`
+   stays at 0, so anything with `animation: ... forwards` is frozen on its 0%
+   keyframe. Every section wrapped in `.animate-fade-in-up` therefore screenshots
+   as `opacity: 0` — a blank page that looks exactly like a broken one. This cost
+   an hour twice, once as "a repaint artefact" and once as a suspected production
+   outage on `/esg-media-index`.
+
+   **Before reporting blank or invisible content, check `document.hidden`.** If
+   it is true, the page is fine and the pane is not. Verify animated content by
+   reading the accessibility tree, `getComputedStyle` on a non-animated ancestor,
+   or the served HTML — not by screenshot.
+
 The health check caught #2 where the build did not. That is what it is for —
 **run `python3 scripts/health-check.py` after every production merge.**
 
