@@ -292,6 +292,77 @@ LinkedIn company About (drafted, never shipped), the GoodNet carbon post
 - `/thinking/era-of-green-media-buying` still draws the odd impression on the
   old 301'd slug. Expected to decay; no action unless it persists past September.
 
+## Traps that have actually bitten (add to this list)
+
+Four of these were hit in a single week in October 2026. All four deployed
+green and looked fine in logs.
+
+1. **A duplicate key in `SITE_CONTENT` is silent.** A second `research:` key was
+   added while one already existed further down. JavaScript keeps the later one,
+   so the new block's `.stats` was undefined, `.map` threw, and the homepage went
+   blank. The build reported READY. Check for a key before adding one.
+2. **Never blanket-replace a `SITE_CONTENT.x.` prefix.** Renaming
+   `SITE_CONTENT.research.` to `researchProof.` also caught the research page's
+   own four references, and `/research` served an empty body on production for
+   about an hour. Replace by property name, not by prefix.
+3. **`sr-only` loses to `w-full`.** Both are Tailwind utilities; which wins is
+   decided by order in the generated stylesheet, not by order in the class
+   attribute. A nav group rendered open whatever the state said. Use an inline
+   `display:none` when it must be unambiguous.
+4. **Print after the write, not before.** A script logged `30 -> 19 words`, then
+   hit an assertion on a later substitution and exited before writing the file.
+   The log said success and nothing had changed. Caught in a screenshot.
+
+The health check caught #2 where the build did not. That is what it is for —
+**run `python3 scripts/health-check.py` after every production merge.**
+
+A 200 from this site never proves a file exists: the SPA catch-all rewrite
+serves `index.html` for every unmatched path, so `/anything.json` returns 200
+with HTML. Check the content type.
+
+## AI discoverability (Oct 2026)
+
+Lighthouse 13.5 scores an **Agentic Browsing** category. hooop.in was 2/4 and
+both failures were real.
+
+- `public/.well-known/ai-catalog.json` is the ARD manifest, spec v1.0, nine
+  entries. Declared three ways: the `Agentmap:` line in `robots.txt`,
+  `<link rel="ai-catalog">` in `index.html`, and the well-known path itself.
+  `/ai-catalog.json` rewrites to it in `vercel.json`.
+- `public/llms-full.txt` was a 1-byte file serving blank since July; it is now
+  generated from the post bodies.
+- **`public/knowledge/` is what AI assistants read, and it was wrong.**
+  `organisation.json` and `overview.md` described HOOOP as a "venture lab",
+  retired in July 2026; `taxonomy.json` and `topics.json` carried "Venture
+  Building" and "Scale-up Strategy"; `articles.json` listed two posts
+  consolidated away in August and none of the eleven live ones; `services.json`
+  named four practices that were not the four practices. All corrected.
+  **Keep `knowledge/` and `llms.txt` in sync with positioning changes** — this
+  is the second time this exact drift has shipped.
+- Icon-only buttons need an accessible name. The accessibility tree is what an
+  agent reads, and it is half the Agentic Browsing score.
+
+## Page density — the standing direction
+
+Arvind's repeated instruction through October: **key points, not paragraphs,
+with the detail behind a link or an in-place expand.** The pattern he points at
+is the homepage research block — one large element per card, one short line
+under it.
+
+- Homepage 994 words → ~490 visible. `/offerings` 701 → 514.
+- Most of the bulk both times was **the same thing said twice**: a bold summary
+  line followed by a paragraph restating it, or a description followed by
+  bullets covering the same ground.
+- Expanded copy stays in the markup, toggled with `display`, so the crawl keeps
+  everything. Never unmount it.
+- Where there is no real figure to make large, scale the name instead. **Do not
+  invent a number** on a site that runs a greenwashing checker.
+
+**All user-facing copy goes to Kahlo for QC before it ships, and no em dashes.**
+Check `<title>` strings too — they live in both `scripts/seo-routes.mjs` and
+`APP_SECTION_SEO`, and must agree or the prerendered head and the client head
+disagree.
+
 ## Current numbers (23 Aug 2026)
 
 Health check: 14 pages, 0 failures, 0 warnings.
