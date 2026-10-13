@@ -9,6 +9,21 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Typefaces. Until Oct 2026 the site declared no font at all: Tailwind's
+         stock font-sans/serif/mono stacks resolved to whatever the visitor's OS
+         supplied, so the brand read differently on every device and matched
+         neither the credentials deck nor the poster system. These three are the
+         poster system's faces, which makes the social work and the site agree.
+         Loaded here rather than via @import so they start downloading with the
+         document; prerender.mjs strips only the title/description/canonical/og
+         tags, so this survives into every route's static HTML. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Merriweather:ital,wght@0,400;0,700;1,300&family=Space+Mono:wght@400;700&display=swap"
+    />
+
     <!-- Title -->
     <title>HOOOP Collective | Sustainable Marketing, ESG & Growth Strategy</title>
 
