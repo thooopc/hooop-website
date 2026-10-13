@@ -1105,6 +1105,13 @@ const HooopLogo = ({ className = "w-10 h-10" }) => (
 );
 
 // Build a URL from a section id. The mirror of resolveRoute(), which parses one.
+// Takes the opening sentence of a description. Used where the bullets under it
+// already carry the detail, so the rest of the paragraph only repeats them.
+const firstSentence = (text = "") => {
+  const m = String(text).match(/^[^.!?]+[.!?]/);
+  return m ? m[0].trim() : text;
+};
+
 const pathForSection = (id) => (!id || id === "home" ? "/" : `/${id}`);
 
 // A real anchor that still navigates client-side.
@@ -3589,9 +3596,10 @@ const App = React.forwardRef((props, ref) => {
                             <div className="w-12 h-12 rounded-full bg-[#E0E5EC] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center mb-5">
                               <Icon size={20} className="text-gray-400 group-hover:text-teal-600 transition-colors" />
                             </div>
+                            {/* The desc paragraph is gone. It restated the headline at
+                                three times the length on all three cards. */}
                             <h3 className="text-sm font-black tracking-widest text-[#313b4e] mb-3">{model.title}</h3>
-                            <p className="text-sm font-bold text-gray-800 mb-2 leading-snug">{model.headline}</p>
-                            <p className="text-xs text-gray-500 leading-relaxed">{model.desc}</p>
+                            <p className="text-sm font-semibold text-gray-600 leading-snug">{model.headline}</p>
                           </SoftCard>
                         );
                       })}
@@ -3603,16 +3611,30 @@ const App = React.forwardRef((props, ref) => {
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                      {SITE_CONTENT.offerings.map((card, idx) => (
-                       <SoftCard key={idx} className="p-8 lg:p-10 flex flex-col h-full group">
-                          <div className="w-12 h-12 rounded-2xl bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] flex items-center justify-center mb-6 text-black font-bold text-xl group-hover:text-white group-hover:bg-black transition-colors duration-300">
-                             {idx + 1}
-                          </div>
-                          <h2 className="text-2xl font-bold text-[#313b4e] mb-3">{card.title}</h2>
-                          <p className="text-gray-500 text-sm leading-relaxed mb-6">{card.desc}</p>
-                          <ul className="space-y-2.5 mb-6">
+                       <SoftCard key={idx} className="relative overflow-hidden p-8 lg:p-10 flex flex-col h-full group">
+                          {/* The number as a graphic rather than a badge. It was a
+                              12px chip doing nothing; at this size it gives each
+                              card something to look at and the page a rhythm, which
+                              is what was missing. Decorative, so hidden from
+                              assistive tech. */}
+                          <span
+                            aria-hidden="true"
+                            className="pointer-events-none absolute -top-4 right-2 text-[7rem] leading-none font-black text-[#313b4e]/[0.045] select-none"
+                          >
+                            {idx + 1}
+                          </span>
+                          <h2 className="text-2xl font-bold text-[#313b4e] mb-3 relative">{card.title}</h2>
+                          <span className="block w-10 h-[3px] rounded-full bg-teal-400/70 mb-4" />
+                          {/* First sentence only. The bullets below carry the
+                              specifics; the rest of the paragraph restated them in
+                              prose. Arvind's own words, just the opening clause. */}
+                          <p className="text-gray-500 text-sm leading-relaxed mb-6 relative">{firstSentence(card.desc)}</p>
+                          {/* Two columns from sm up. Same items, roughly half the
+                              height, which is most of what made this page feel long. */}
+                          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 mb-6 relative">
                             {card.items.map((item, i) => (
-                              <li key={i} className="flex gap-3 text-sm text-gray-600">
-                                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0 mt-[7px]" />
+                              <li key={i} className="flex gap-2.5 text-sm text-gray-600 leading-snug">
+                                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0 mt-[6px]" />
                                 {item}
                               </li>
                             ))}
