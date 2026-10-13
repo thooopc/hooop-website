@@ -3161,11 +3161,16 @@ const App = React.forwardRef((props, ref) => {
                       covers, so the detail is available without leaving the page.
                       The expanded copy is always in the markup and toggled with
                       display, so a crawler reads all of it. */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  {/* A rail on a phone, a grid from md up. Stacked, these four
+                      cards ran to a screen and a half on a 375px viewport, which
+                      is what made the mobile site feel like the desktop one poured
+                      into a column. Each card is 82vw so the next one peeks and
+                      people know to swipe. */}
+                  <div className="flex md:grid md:grid-cols-2 gap-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory items-start no-scrollbar -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0">
                     {SITE_CONTENT.offerings.map((practice, idx) => {
                       const open = openPractices.includes(idx);
                       return (
-                        <SoftCard key={idx} className="p-7 h-full flex flex-col gap-3" hoverEffect={false}>
+                        <SoftCard key={idx} className="p-7 w-[82vw] sm:w-[60vw] md:w-auto shrink-0 md:shrink snap-start flex flex-col gap-3" hoverEffect={false}>
                           <h3 className="text-xl lg:text-2xl font-black text-[#313b4e] leading-tight">{practice.title}</h3>
                           <p className="text-[15px] text-gray-500 leading-relaxed">{practice.outcome || practice.desc}</p>
 
@@ -3218,9 +3223,9 @@ const App = React.forwardRef((props, ref) => {
                   <p className="text-xl lg:text-2xl font-bold text-[#313b4e] max-w-2xl mb-10 leading-snug">
                     {SITE_CONTENT.researchProof.headline}
                   </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+                  <div className="flex sm:grid sm:grid-cols-3 gap-5 mb-8 overflow-x-auto sm:overflow-visible snap-x snap-mandatory items-start no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0">
                     {SITE_CONTENT.researchProof.stats.map((s) => (
-                      <SoftCard key={s.figure} className="p-6 flex flex-col gap-2" hoverEffect={false}>
+                      <SoftCard key={s.figure} className="p-6 w-[72vw] sm:w-auto shrink-0 sm:shrink snap-start flex flex-col gap-2" hoverEffect={false}>
                         <span className="text-3xl lg:text-4xl font-black text-teal-600 leading-none">{s.figure}</span>
                         <span className="text-sm text-gray-500 leading-relaxed">{s.line}</span>
                       </SoftCard>
