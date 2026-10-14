@@ -1148,14 +1148,48 @@ const VerticalPill = ({ height = "h-64", className = "" }) => (
   <div className={`w-16 ${height} bg-[#E0E5EC] rounded-full shadow-[9px_9px_16px_rgb(163,177,198,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] ${className}`} />
 );
 
+// Reveal-on-scroll, with three fixes over the original.
+//
+// It used to do setIsVisible(entry.isIntersecting), which also set visible back
+// to FALSE on the way out, so content faded away again once you scrolled past
+// it and stayed blank if you scrolled back. It now reveals once and stops
+// observing.
+//
+// It also starts at opacity 0, so anything that stops the observer firing — a
+// browser without IntersectionObserver, a thrown error, a headless capture —
+// leaves real content invisible on the page. A timeout now reveals it
+// regardless, which is the safe direction to fail in.
+//
+// And it honours prefers-reduced-motion by rendering visible from the start
+// rather than animating.
+const prefersReducedMotion = () =>
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 const ScrollReveal = ({ children, className = "", delay = 0 }) => {
     const [isVisible, setIsVisible] = useState(false);
     const domRef = useRef();
     useEffect(() => {
-        const observer = new IntersectionObserver(entries => entries.forEach(entry => setIsVisible(entry.isIntersecting)));
+        if (prefersReducedMotion() || typeof IntersectionObserver === "undefined") {
+            setIsVisible(true);
+            return;
+        }
         const currentRef = domRef.current;
-        if (currentRef) observer.observe(currentRef);
-        return () => { if (currentRef) observer.unobserve(currentRef); };
+        let observer;
+        // Safety net: if the observer never reports, show the content anyway.
+        const failsafe = setTimeout(() => setIsVisible(true), 1500);
+        if (currentRef) {
+            observer = new IntersectionObserver((entries) => {
+                if (entries.some((e) => e.isIntersecting)) {
+                    setIsVisible(true);
+                    clearTimeout(failsafe);
+                    observer.disconnect();
+                }
+            }, { rootMargin: "0px 0px -40px 0px" });
+            observer.observe(currentRef);
+        }
+        return () => { clearTimeout(failsafe); if (observer) observer.disconnect(); };
     }, []);
     return <div ref={domRef} style={{ transitionDelay: `${delay}ms` }} className={`transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} ${className}`}>{children}</div>;
 };
@@ -2906,19 +2940,32 @@ const App = React.forwardRef((props, ref) => {
     jsonLd: seoConfig?.jsonLd || null
   });
 
+  // Wraps a state change in a View Transition where the browser has one, so
+  // moving between sections cross-fades instead of snapping. Same-document
+  // transitions are the well-supported half of the API; anywhere without it the
+  // callback simply runs and nothing is lost. Skipped under reduced motion.
+  const withViewTransition = (fn) => {
+    if (typeof document !== "undefined" && document.startViewTransition && !prefersReducedMotion()) {
+      document.startViewTransition(fn);
+    } else {
+      fn();
+    }
+  };
+
   const navigateTo = (id) => {
     const next = id || "home";
 
-    setActiveSection(next);
-    setSelectedPost(null);
-    setIsMenuOpen(false);
+    withViewTransition(() => {
+      setActiveSection(next);
+      setSelectedPost(null);
+      setIsMenuOpen(false);
+      if (next !== "research") setShowSenseTool(false);
+    });
 
     const path = next === "home" ? "/" : `/${next}`;
     window.history.pushState({}, "", path);
 
     window.scrollTo({ top: 0, behavior: "smooth" });
-
-    if (next !== "research") setShowSenseTool(false);
   };
 
   // Blog posts now get a real, shareable, bookmarkable URL:
@@ -3806,10 +3853,31 @@ const App = React.forwardRef((props, ref) => {
         .animate-float { animation: float 6s ease-in-out infinite; }
         @keyframes nudge { 0%, 70%, 100% { transform: translateY(0); } 80% { transform: translateY(5px); } 90% { transform: translateY(2px); } }
         .animate-nudge { animation: nudge 2.6s ease-in-out infinite; }
-        @media (prefers-reduced-motion: reduce) { .animate-nudge { animation: none; } }
+        /* Everything, not just the nudge. The 6s floating logo, the radar ping,
+           the hero entrance and the scan line all ran regardless until Oct 2026.
+           Transitions are shortened rather than removed so state changes still
+           read as changes. */
+        @media (prefers-reduced-motion: reduce) {
+          .animate-nudge, .animate-float, .animate-scan, .radar-circle, .animate-fade-in-up {
+            animation: none !important;
+          }
+          .animate-fade-in-up { opacity: 1 !important; transform: none !important; }
+          html { scroll-behavior: auto; }
+          *, *::before, *::after {
+            transition-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+          }
+        }
         .animate-scan { animation: scan 3s linear infinite; }
         .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        @media (prefers-reduced-motion: no-preference) {
+          ::view-transition-old(root) { animation: 120ms ease-out both vt-out; }
+          ::view-transition-new(root) { animation: 200ms ease-out both vt-in; }
+        }
+        @keyframes vt-out { to { opacity: 0; } }
+        @keyframes vt-in { from { opacity: 0; transform: translateY(8px); } }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         html { scroll-behavior: smooth; }
