@@ -3705,15 +3705,9 @@ const App = React.forwardRef((props, ref) => {
                   </div>
               </div>
 
-              <div className="max-w-6xl mx-auto px-6">
-                 <div className="text-center max-w-3xl mx-auto pt-4">
-                     <div className="inline-block px-8 py-3 rounded-full bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] mb-6">
-                         <span className="text-teal-600 font-bold uppercase tracking-widest text-sm">Transparent</span>
-                     </div>
-                     <h4 className="text-2xl font-bold text-gray-800 mb-4">No hidden fees, no markups.</h4>
-                     <p className="text-gray-500">We work hand-in-hand with brands, agencies, funds and sustainability consultancies to align brand &amp; sustainability strategy.</p>
-                 </div>
-              </div>
+              {/* The "Transparent / No hidden fees, no markups" block was removed on
+                  Arvind's instruction, 21 Oct 2026. /offerings now ends on the four
+                  practices. */}
             </section>
           )}
 
