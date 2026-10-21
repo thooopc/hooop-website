@@ -1210,7 +1210,7 @@ const StatBar = ({ label, percentage, color }) => (
 const FlipCard = ({ frontTitle, frontIcon: FrontIcon, backText, backStat, color }) => {
     const [isFlipped, setIsFlipped] = useState(false);
     return (
-        <div className="relative w-full h-64 perspective-1000 cursor-pointer group" onClick={() => setIsFlipped(!isFlipped)} onMouseEnter={() => setIsFlipped(true)} onMouseLeave={() => setIsFlipped(false)}>
+        <div className="relative w-full h-64 perspective-1000 cursor-pointer group" onClick={() => setIsFlipped(!isFlipped)}>
             <div className={`w-full h-full relative preserve-3d transition-all duration-700 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
                 <div className="absolute inset-0 backface-hidden bg-[#F0F0F3] rounded-2xl shadow-[-5px_-5px_10px_#FFFFFF,5px_5px_10px_#AEAEC040] flex flex-col items-center justify-center p-6 text-center border-2 border-transparent hover:border-gray-200 transition-colors">
                     <div className={`p-4 rounded-full mb-4 text-white shadow-lg`} style={{backgroundColor: color}}><FrontIcon size={32} /></div>
@@ -3609,10 +3609,17 @@ const App = React.forwardRef((props, ref) => {
                                     <h2 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h2>
                                     <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
                                 </div>
-                                <div className="mt-6 pt-6 border-t border-gray-200/50 flex items-center justify-between text-gray-400 group-hover:text-teal-600 transition-colors cursor-pointer">
-                                    <span className="text-xs font-bold uppercase tracking-widest">Download</span>
-                                    <Download size={18} />
-                                </div>
+                                {/* Was a "Download" label with no href and no handler, on all
+                                    five cards. There is no file behind these reports, so the
+                                    button was promising something that did not exist. It now
+                                    asks for the report by name. */}
+                                <a
+                                  href={`mailto:hello@hooop.in?subject=${encodeURIComponent('Report request: ' + item.title)}&body=${encodeURIComponent('Please could you send me ' + item.title + '.\n\nName:\nCompany:\n')}`}
+                                  className="mt-6 pt-6 border-t border-gray-200/50 flex items-center justify-between text-gray-400 group-hover:text-teal-600 transition-colors no-underline"
+                                >
+                                    <span className="text-xs font-bold uppercase tracking-widest">Request the report</span>
+                                    <Mail size={18} />
+                                </a>
                             </SoftCard>
                         )})}
                     </div>
@@ -3776,7 +3783,6 @@ const App = React.forwardRef((props, ref) => {
                                     <Linkedin size={18} className="text-gray-400 hover:text-black cursor-pointer transition-colors"/>
                                 </a>
                                 )}
-                                <Globe size={18} className="text-gray-400 hover:text-black cursor-pointer transition-colors"/>
                              </div>
                           </div>
                        </SoftCard>
