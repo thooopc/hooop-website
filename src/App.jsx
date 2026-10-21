@@ -46,7 +46,11 @@ const SITE_CONTENT = {
       { figure: "70%", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
       { figure: "#1", line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
     ],
-    credit: "Green Is the New Lie, with TERI School of Advanced Studies and claim analysis from ASCI.",
+    // ASCI removed 21 Oct 2026 on Arvind's instruction: "we are not involving
+    // asci anymore". This was the only place ASCI was credited as a
+    // collaborator. Every other ASCI reference on the site describes them as a
+    // regulator whose code Sense checks against, which stays.
+    credit: "Green Is the New Lie, with TERI School of Advanced Studies.",
     coverage: "Covered by ET Brand Equity, afaqs!, Exchange4Media and Manifest.",
     linkLabel: "Read the research",
   },
