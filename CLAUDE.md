@@ -108,21 +108,52 @@ Search Console notification emails are not readable — use the GSC message cent
 Images: check weight before committing. A 5.2 MB portrait was rendering in a
 40px circle, sixteen times the weight of the entire JS bundle.
 
-## Positioning (settled July 2026)
+## Positioning (two tracks, settled 21 Oct 2026)
 
-**Marketing Science for Circular and Sustainable Commerce** — the hero H1, taken
-from their own credentials deck.
+**Read this before "correcting" any venture language.** This is the third move
+for these words and the previous two reversals happened by accident, so the
+history matters.
 
-> A marketing and strategy collective helping climate and circular businesses
-> bridge the gap between innovation and commercial adoption.
+HOOOP runs **two tracks side by side**. Arvind, 21 Oct 2026: *"venture studio
+and marketing led consulting is the way I am seeing this."*
 
-**Words that were deliberately removed. Do not reintroduce:**
+| Track | What it is | Who it speaks to |
+|---|---|---|
+| **Marketing-led consulting** | The marketing function, or alongside one | Clients who hire us |
+| **Venture studio** | Our own ventures, and partnering into others | Partners, co-founders, investors |
 
-- *venture lab*, *venture studio*, *venture building*, *valley of death*, *cohorts*
+Neither replaces the other. The credentials deck stays marketing-led, because
+that is what Marriott and Bayer are hiring.
+
+### Why "venture studio" came back
+
+It was retired on 30 July 2026 (commit `ec6a502`), in Arvind's own words:
+*"Marketing leads, which matches how the team describes itself internally and
+what it is actually hired for."* That was correct in July.
+
+**The facts changed.** HOOOP now runs real ventures: coir turf infill went live
+25 Sep 2026, with the Goa marine track, climate property risk and the shelf-life
+punnet behind it. In July the term was aspirational. It is now descriptive.
+
+**It was already on the site, unnamed.** The PARTNER engagement model says we
+bring "strategy, investment and network to drive growth and scale alongside
+you, rather than working to a brief", and practice four carries funding
+readiness, market access and offtake support. Bringing the term back labels
+what is already there.
+
+**Marketing Science for Circular and Sustainable Commerce** remains the hero H1.
+Do not swap it for venture language: it is the one non-brand phrase the site has
+any search surface on.
+
+**Still removed. Do not reintroduce:**
+
+- *venture lab*, *venture building*, *valley of death*, *cohorts*
 - *ESG consulting* — a domain they explicitly do not operate in
 - *established* businesses — rejected as a qualifier
 - *scale-ups* / *startups* in positioning copy. They are senior practitioners
   (two decades each) serving operating businesses, not a startup accelerator.
+
+Only **venture studio** came back. The rest of that list stands.
 
 Blog **articles** about the climate-tech sector may still use "startup" and
 "valley of death" — those are the subject matter, not claims about HOOOP.

@@ -639,8 +639,8 @@ const SITE_CONTENT = {
     },
      {
       title: "PARTNER",
-      headline: "Sometimes we partner rather than consult.",
-      desc: "When an idea is genuinely interesting, we get involved at a more fundamental level — bringing strategy, investment and network to drive growth and scale alongside you, rather than working to a brief.",
+      headline: "Our venture studio. Sometimes we partner rather than consult.",
+      desc: "When an idea is genuinely interesting we get involved at a more fundamental level, bringing strategy, investment and network to drive growth alongside you rather than working to a brief. We build ventures of our own on the same terms.",
       iconType: "trending"
     },
     {
