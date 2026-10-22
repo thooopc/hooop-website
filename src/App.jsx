@@ -3841,21 +3841,39 @@ const App = React.forwardRef((props, ref) => {
                     <Instagram size={20} />
                 </a>
             </div>
-            <p className="text-gray-400 text-xs font-medium uppercase tracking-widest">
-                We are always open for a good conversation, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors lowercase font-bold ml-1">hello@hooop.in</a>
+            {/* The closing line was a small uppercase sentence, the same weight
+                as a legal notice, asking for the most valuable action on the
+                site. Arvind's copy, 22 Oct 2026: it is a question and it gets
+                question scale, with the one action under it. The email stays,
+                because some people would rather write than click. */}
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#313b4e] tracking-tight px-6">
+                Ready to reimagine growth?
+            </h2>
+            {/* Not on /contact itself, where the button would point at the page
+                the reader is already on. */}
+            {activeSection !== 'contact' && (
+            <div className="mt-7 flex justify-center px-6">
+                <AppLink href={pathForSection('contact')} onNavigate={() => navigateTo('contact')} className="no-underline">
+                    <SoftCard className="px-8 py-4 flex items-center gap-3 text-black font-bold group cursor-pointer hover:scale-[1.02]">
+                        <span>Start a conversation</span>
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </SoftCard>
+                </AppLink>
+            </div>
+            )}
+            <p className="mt-6 text-gray-400 text-xs font-medium uppercase tracking-widest px-6">
+                Or write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors lowercase font-bold ml-1">hello@hooop.in</a>
             </p>
             {/* Sitewide link block, removed on Arvind's instruction 22 Oct 2026
-                ("lets remove this navigation at the bottom") so the page ends on
-                the email rather than on a second copy of the nav.
+                ("lets remove this navigation at the bottom").
 
-                KNOWN COST, not a side effect: this block is the crawlability fix
-                from August. Every page linking to every other page is the only
-                path a crawler has through this site; before it existed the sole
-                route in was sitemap.xml and five pages had never been fetched
-                once. Removing it drops the homepage from 12 internal links to
-                four, which fails MIN_INTERNAL_LINKS in scripts/health-check.py
-                by design. Preview only. Do not merge without a decision on the
-                replacement. */}
+                This block was the August crawlability fix, so check before
+                merging rather than assuming: the built page still exposes 24
+                internal links through the sidebar and the mobile nav strip, so
+                MIN_INTERNAL_LINKS in scripts/health-check.py may well still
+                pass. What is genuinely lost is the guarantee that every page
+                links to every other, Privacy and Manifesto among them. Run the
+                health check against the preview before this goes to main. */}
         </footer>
       </main>
 
