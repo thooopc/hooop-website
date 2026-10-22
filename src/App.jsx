@@ -39,7 +39,11 @@ const SITE_CONTENT = {
   // research page further down this object, and a duplicate key is silently
   // won by the later one. That shipped a blank homepage once.
   researchProof: {
-    eyebrow: "Our research",
+    // "Our research" when this block sat below the practices and read as a
+    // credential. It now sits above them and has to name the problem, so the
+    // eyebrow says what the figures are rather than where they came from. The
+    // attribution still runs underneath in `credit`. Not Kahlo-checked yet.
+    eyebrow: "The problem, measured",
     headline: "We asked 150 Indian marketers how green claims actually get verified.",
     stats: [
       { figure: "35%", line: "of sustainability claims reach the public with no independent check behind them" },
@@ -3120,11 +3124,12 @@ const App = React.forwardRef((props, ref) => {
                 <div className="flex flex-wrap gap-4 sm:gap-6 items-center">
 
   {/* Back to the manifesto, on Arvind's note. This pointed at /offerings when
-      nothing on the homepage said what we do; now the four practices sit
-      directly below and the scroll cue already goes there, so sending the
-      button to the same place was spending the strongest slot on a duplicate.
-      The hero now splits three ways with no overlap: what we believe here,
-      what we do on scroll, and a way to talk to us. */}
+      nothing on the homepage said what we do; now the problem block and the
+      four practices both sit directly below and the scroll cue already goes
+      there, so sending the button to the same place was spending the strongest
+      slot on a duplicate. The hero splits three ways with no overlap: what we
+      believe here, the problem and the practices on scroll, and a way to talk
+      to us. */}
   <AppLink href={pathForSection('manifesto')} onNavigate={() => navigateTo('manifesto')} className="no-underline">
   <SoftCard
     className="px-6 py-4 sm:px-8 flex items-center gap-3 text-black font-bold group cursor-pointer hover:scale-[1.02]"
@@ -3176,12 +3181,12 @@ const App = React.forwardRef((props, ref) => {
                   there on click. Honours prefers-reduced-motion. */}
               <button
                 type="button"
-                onClick={() => document.getElementById('what-we-do')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                onClick={() => document.getElementById('the-problem')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                 className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 group flex flex-col items-center gap-2 focus:outline-none"
-                aria-label="Scroll to what we do"
+                aria-label="Scroll to the problem we work on"
               >
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-gray-600 transition-colors">
-                  What we do
+                  The problem
                 </span>
                 <span className="w-10 h-10 rounded-full bg-[#E0E5EC] shadow-[4px_4px_9px_#c8ccd3,-4px_-4px_9px_#ffffff] flex items-center justify-center text-gray-400 group-hover:text-teal-600 transition-colors animate-nudge">
                   <ChevronDown size={18} />
@@ -3189,13 +3194,56 @@ const App = React.forwardRef((props, ref) => {
               </button>
             </section>
 
+              {/* THE PROBLEM, MEASURED — moved above the four practices on
+                  22 Oct 2026. Read cold, the page used to hand over the solution
+                  before naming the problem: a visitor met four practices, then
+                  scrolled past them to find the only part of the page that says
+                  what is actually broken. Problem, then practices, then proof.
+
+                  Everything in this block is our own study and already public, so
+                  nothing here touches the rule that client results go in the
+                  emailed deck and never on the site. */}
+              <section id="the-problem" className="py-20 border-t border-gray-200/50 scroll-mt-24">
+                <div className="max-w-6xl mx-auto px-4 lg:px-12">
+                  <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                    <span className="w-8 h-[1px] bg-gray-400"></span> {SITE_CONTENT.researchProof.eyebrow}
+                  </h3>
+                  <p className="text-xl lg:text-2xl font-bold text-[#313b4e] max-w-2xl mb-10 leading-snug">
+                    {SITE_CONTENT.researchProof.headline}
+                  </p>
+                  <div className="flex sm:grid sm:grid-cols-3 gap-5 mb-8 overflow-x-auto sm:overflow-visible snap-x snap-mandatory items-start no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0">
+                    {SITE_CONTENT.researchProof.stats.map((s) => (
+                      <SoftCard key={s.figure} className="p-6 w-[72vw] sm:w-auto shrink-0 sm:shrink snap-start flex flex-col gap-2" hoverEffect={false}>
+                        <span className="text-3xl lg:text-4xl font-black text-teal-600 leading-none">{s.figure}</span>
+                        <span className="text-sm text-gray-500 leading-relaxed">{s.line}</span>
+                      </SoftCard>
+                    ))}
+                  </div>
+                  <p className="text-xs text-gray-400 leading-relaxed max-w-3xl">
+                    {SITE_CONTENT.researchProof.credit}{" "}
+                    <span className="text-gray-500 font-semibold">{SITE_CONTENT.researchProof.coverage}</span>
+                  </p>
+                  <div className="mt-6">
+                    <AppLink
+                      href={pathForSection('research')}
+                      onNavigate={() => navigateTo('research')}
+                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-teal-600 transition-colors no-underline"
+                    >
+                      {SITE_CONTENT.researchProof.linkLabel}
+                      <ArrowRight size={16} />
+                    </AppLink>
+                  </div>
+                </div>
+              </section>
+
               {/* WHAT WE DO — the four practices, on the homepage.
                   Until October 2026 not one of them appeared here: the services
                   lived only on /offerings and a visitor had to guess that "What
                   We Do" in the nav was where they were. Driven off
                   SITE_CONTENT.offerings so there is still one source of truth.
-                  Placed above Partners and As Featured On deliberately — proof
-                  means nothing until the reader knows what is being proved. */}
+                  Sits between the problem block and the logos: the reader meets
+                  what is broken, then what we do about it, then who vouches for
+                  us. */}
               <section id="what-we-do" className="py-20 border-t border-gray-200/50 scroll-mt-24">
                 <div className="max-w-6xl mx-auto px-4 lg:px-12">
                   <h2 className="text-2xl lg:text-3xl font-black text-[#313b4e] mb-3">What we do</h2>
@@ -3257,42 +3305,6 @@ const App = React.forwardRef((props, ref) => {
                       className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-teal-600 transition-colors no-underline"
                     >
                       See all four in detail
-                      <ArrowRight size={16} />
-                    </AppLink>
-                  </div>
-                </div>
-              </section>
-
-              {/* OUR RESEARCH — proof before the logos. Everything here is our own
-                  study and already public, so nothing in this block touches the rule
-                  that client results go in the emailed deck and never on the site. */}
-              <section className="py-20 border-t border-gray-200/50">
-                <div className="max-w-6xl mx-auto px-4 lg:px-12">
-                  <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
-                    <span className="w-8 h-[1px] bg-gray-400"></span> {SITE_CONTENT.researchProof.eyebrow}
-                  </h3>
-                  <p className="text-xl lg:text-2xl font-bold text-[#313b4e] max-w-2xl mb-10 leading-snug">
-                    {SITE_CONTENT.researchProof.headline}
-                  </p>
-                  <div className="flex sm:grid sm:grid-cols-3 gap-5 mb-8 overflow-x-auto sm:overflow-visible snap-x snap-mandatory items-start no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0">
-                    {SITE_CONTENT.researchProof.stats.map((s) => (
-                      <SoftCard key={s.figure} className="p-6 w-[72vw] sm:w-auto shrink-0 sm:shrink snap-start flex flex-col gap-2" hoverEffect={false}>
-                        <span className="text-3xl lg:text-4xl font-black text-teal-600 leading-none">{s.figure}</span>
-                        <span className="text-sm text-gray-500 leading-relaxed">{s.line}</span>
-                      </SoftCard>
-                    ))}
-                  </div>
-                  <p className="text-xs text-gray-400 leading-relaxed max-w-3xl">
-                    {SITE_CONTENT.researchProof.credit}{" "}
-                    <span className="text-gray-500 font-semibold">{SITE_CONTENT.researchProof.coverage}</span>
-                  </p>
-                  <div className="mt-6">
-                    <AppLink
-                      href={pathForSection('research')}
-                      onNavigate={() => navigateTo('research')}
-                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-teal-600 transition-colors no-underline"
-                    >
-                      {SITE_CONTENT.researchProof.linkLabel}
                       <ArrowRight size={16} />
                     </AppLink>
                   </div>
