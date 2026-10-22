@@ -3844,22 +3844,18 @@ const App = React.forwardRef((props, ref) => {
             <p className="text-gray-400 text-xs font-medium uppercase tracking-widest">
                 We are always open for a good conversation, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors lowercase font-bold ml-1">hello@hooop.in</a>
             </p>
-            {/* Sitewide link block. Every page linking to every other page is what
-                gives a crawler a path through the site at all — before this, the
-                only route in was sitemap.xml, and half the site was never
-                fetched once. */}
-            <nav aria-label="Site" className="mt-10 pt-8 border-t border-gray-200/70 w-full max-w-3xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-3">
-                {NAV_ITEMS.map((item) => (
-                    <AppLink
-                        key={item.id}
-                        href={pathForSection(item.id)}
-                        onNavigate={() => navigateTo(item.id)}
-                        className="text-gray-400 text-[10px] uppercase tracking-widest font-bold hover:text-teal-600 transition-colors no-underline"
-                    >
-                        {item.label}
-                    </AppLink>
-                ))}
-            </nav>
+            {/* Sitewide link block, removed on Arvind's instruction 22 Oct 2026
+                ("lets remove this navigation at the bottom") so the page ends on
+                the email rather than on a second copy of the nav.
+
+                KNOWN COST, not a side effect: this block is the crawlability fix
+                from August. Every page linking to every other page is the only
+                path a crawler has through this site; before it existed the sole
+                route in was sitemap.xml and five pages had never been fetched
+                once. Removing it drops the homepage from 12 internal links to
+                four, which fails MIN_INTERNAL_LINKS in scripts/health-check.py
+                by design. Preview only. Do not merge without a decision on the
+                replacement. */}
         </footer>
       </main>
 
