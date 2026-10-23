@@ -3833,14 +3833,6 @@ const App = React.forwardRef((props, ref) => {
         </div>
 
         <footer className="w-full py-12 mt-auto border-t border-gray-200/40 text-center">
-            <div className="flex justify-center gap-6 mb-6">
-                <a href="https://www.linkedin.com/company/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#0077b5] hover:scale-110 transition-all duration-300" aria-label="Follow us on LinkedIn">
-                    <Linkedin size={20} />
-                </a>
-                <a href="https://www.instagram.com/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#E1306C] hover:scale-110 transition-all duration-300" aria-label="Follow us on Instagram">
-                    <Instagram size={20} />
-                </a>
-            </div>
             {/* The closing line was a small uppercase sentence, the same weight
                 as a legal notice, asking for the most valuable action on the
                 site. Arvind's copy, 22 Oct 2026: it is a question and it gets
@@ -3864,6 +3856,17 @@ const App = React.forwardRef((props, ref) => {
             <p className="mt-6 text-gray-400 text-xs font-medium uppercase tracking-widest px-6">
                 Or write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors lowercase font-bold ml-1">hello@hooop.in</a>
             </p>
+            {/* The social icons used to sit at the top of the footer, which put
+                two small circles above the question instead of under it. They
+                follow the ask now. */}
+            <div className="mt-8 flex justify-center gap-6">
+                <a href="https://www.linkedin.com/company/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#0077b5] hover:scale-110 transition-all duration-300" aria-label="Follow us on LinkedIn">
+                    <Linkedin size={20} />
+                </a>
+                <a href="https://www.instagram.com/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#E1306C] hover:scale-110 transition-all duration-300" aria-label="Follow us on Instagram">
+                    <Instagram size={20} />
+                </a>
+            </div>
             {/* One link, not a nav. Checked against the built page: with the
                 footer block gone the homepage exposes 11 internal links instead
                 of 12, and the single page that lost every inbound link on the
