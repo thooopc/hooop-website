@@ -3816,8 +3816,12 @@ const App = React.forwardRef((props, ref) => {
           {activeSection === 'contact' && (
              <section className="py-24 min-h-screen flex flex-col items-center justify-center animate-fade-in-up px-6">
                 <div className="max-w-4xl w-full text-center">
-                    <h1 className="text-5xl lg:text-7xl font-black text-[#313b4e] mb-6 tracking-tighter">Let's Talk.</h1>
-                    <p className="text-xl text-gray-500 mb-16 font-light">Ready to reimagine growth?</p>
+                    {/* "Ready to reimagine growth?" sat here until 23 Oct 2026.
+                        Removed on Arvind's instruction: he does not want us
+                        saying "reimagine" anywhere. Nothing replaces it, because
+                        the card directly below already carries the line we use
+                        sitewide. */}
+                    <h1 className="text-5xl lg:text-7xl font-black text-[#313b4e] mb-10 tracking-tighter">Let's Talk.</h1>
 
                     <div className="bg-[#F0F0F3] p-10 md:p-16 rounded-[3rem] shadow-[-10px_-10px_30px_#FFFFFF,10px_10px_30px_#AEAEC040] transform hover:scale-[1.01] transition-transform duration-300">
                         <p className="text-xl md:text-2xl text-gray-600 font-medium mb-8 leading-relaxed">
@@ -3833,14 +3837,19 @@ const App = React.forwardRef((props, ref) => {
         </div>
 
         <footer className="w-full py-12 mt-auto border-t border-gray-200/40 text-center">
-            {/* The closing line was a small uppercase sentence, the same weight
-                as a legal notice, asking for the most valuable action on the
-                site. Arvind's copy, 22 Oct 2026: it is a question and it gets
-                question scale, with the one action under it. The email stays,
-                because some people would rather write than click. */}
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#313b4e] tracking-tight px-6">
-                Ready to reimagine growth?
-            </h2>
+            {/* One closing line, the same one on every page, and no "reimagine"
+                anywhere. Arvind, 23 Oct 2026: "keep as same line everywhere".
+                It briefly carried "Ready to reimagine growth?" above it; that is
+                gone here and on /contact.
+
+                Same words it has always had. What changed is the size. It used
+                to be set in small grey uppercase, the weight of a legal notice,
+                which is an odd way to ask for the most valuable action on the
+                site. */}
+            <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#313b4e] tracking-tight px-6 max-w-3xl mx-auto leading-snug">
+                We are always open for a good conversation, write to us at{" "}
+                <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors">hello@hooop.in</a>
+            </p>
             {/* Not on /contact itself, where the button would point at the page
                 the reader is already on. */}
             {activeSection !== 'contact' && (
@@ -3853,11 +3862,8 @@ const App = React.forwardRef((props, ref) => {
                 </AppLink>
             </div>
             )}
-            <p className="mt-6 text-gray-400 text-xs font-medium uppercase tracking-widest px-6">
-                Or write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors lowercase font-bold ml-1">hello@hooop.in</a>
-            </p>
             {/* The social icons used to sit at the top of the footer, which put
-                two small circles above the question instead of under it. They
+                two small circles above the line instead of under it. They
                 follow the ask now. */}
             <div className="mt-8 flex justify-center gap-6">
                 <a href="https://www.linkedin.com/company/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#0077b5] hover:scale-110 transition-all duration-300" aria-label="Follow us on LinkedIn">
