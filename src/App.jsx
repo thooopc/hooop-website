@@ -3864,6 +3864,21 @@ const App = React.forwardRef((props, ref) => {
             <p className="mt-6 text-gray-400 text-xs font-medium uppercase tracking-widest px-6">
                 Or write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors lowercase font-bold ml-1">hello@hooop.in</a>
             </p>
+            {/* One link, not a nav. Checked against the built page: with the
+                footer block gone the homepage exposes 11 internal links instead
+                of 12, and the single page that lost every inbound link on the
+                whole site is /privacy, which is hidden from all three top navs
+                and so was reachable only from here. This keeps it crawlable and
+                holds MIN_INTERNAL_LINKS at 12. */}
+            <p className="mt-6">
+                <AppLink
+                    href={pathForSection('privacy')}
+                    onNavigate={() => navigateTo('privacy')}
+                    className="text-gray-400/80 text-[10px] uppercase tracking-widest font-bold hover:text-teal-600 transition-colors no-underline"
+                >
+                    Privacy
+                </AppLink>
+            </p>
             {/* Sitewide link block, removed on Arvind's instruction 22 Oct 2026
                 ("lets remove this navigation at the bottom").
 
