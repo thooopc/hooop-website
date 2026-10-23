@@ -119,6 +119,8 @@ from their own credentials deck.
 **Words that were deliberately removed. Do not reintroduce:**
 
 - *venture lab*, *venture studio*, *venture building*, *valley of death*, *cohorts*
+- *reimagine*, in any form. Arvind, 23 Oct 2026: "i dont want anyone to say
+  reimagine." It had been the /contact subtitle since the site was built
 - *ESG consulting* — a domain they explicitly do not operate in
 - *established* businesses — rejected as a qualifier
 - *scale-ups* / *startups* in positioning copy. They are senior practitioners
@@ -370,6 +372,12 @@ under it.
   everything. Never unmount it.
 - Where there is no real figure to make large, scale the name instead. **Do not
   invent a number** on a site that runs a greenwashing checker.
+
+**The closing line is the same on every page** and lives in the sitewide footer:
+"We are always open for a good conversation, write to us at hello@hooop.in".
+Arvind, 23 Oct 2026: "keep as same line everywhere". Do not write a page its own
+sign-off, and do not shrink this one back to small grey uppercase, which is what
+made it read as a legal notice rather than an invitation.
 
 **All user-facing copy goes to Kahlo for QC before it ships, and no em dashes.**
 Check `<title>` strings too — they live in both `scripts/seo-routes.mjs` and
