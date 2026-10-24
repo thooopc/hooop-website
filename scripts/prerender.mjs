@@ -58,23 +58,34 @@ const headFor = (path, meta) => {
   ].join("\n    ");
 };
 
-// Load the SSR bundle. If it is missing or unloadable we still emit the
-// head-only pages rather than failing the build — a site with correct metadata
-// beats no deploy — but say so loudly, because silent degradation to head-only
-// is exactly the state this script was written to get out of.
+// Load the SSR bundle. This used to fall back to head-only output and let the
+// build pass, on the reasoning that a site with correct metadata beats no
+// deploy. That reasoning was wrong twice over, and on 24 Oct 2026 it cost us a
+// deployment that reported READY while every page served 4.5 KB of head and an
+// empty <div id="root">.
+//
+// Wrong first because the same module error that stops the SSR bundle loading
+// usually stops the browser bundle too, so the fallback ships a blank page
+// rather than a JS-only one. Wrong second because a failed build leaves the
+// previous good deployment serving, which beats a green deploy of nothing.
+//
+// So this is now fatal. If you are tempted to soften it again, read the two
+// incidents in CLAUDE.md first.
 let renderRoute = null;
 const ssrEntry = join(root, "dist-ssr", "entry-server.js");
 if (existsSync(ssrEntry)) {
   try {
     ({ render: renderRoute } = await import(pathToFileURL(ssrEntry).href));
   } catch (err) {
-    console.warn(`\n  prerender: could not load the SSR bundle — ${err.message}`);
+    console.error(`\n  prerender: could not load the SSR bundle — ${err.message}`);
   }
 } else {
-  console.warn(`\n  prerender: no SSR bundle at dist-ssr/entry-server.js`);
+  console.error(`\n  prerender: no SSR bundle at dist-ssr/entry-server.js`);
 }
 if (!renderRoute) {
-  console.warn("  prerender: falling back to head-only output. Body content will be invisible to non-JS crawlers.\n");
+  console.error("  prerender: refusing to emit head-only pages. Body content would be invisible to non-JS crawlers,");
+  console.error("  and a module-level error here usually means the browser bundle is broken too.\n");
+  process.exit(1);
 }
 
 const ROOT_DIV = /<div id="root">\s*<\/div>/;

@@ -6,6 +6,39 @@ import { Menu, X, ArrowRight, ArrowLeft, Globe, Shield, Zap, TrendingUp, FileTex
 // 🛠️ EASY EDIT SECTION - CHANGE CONTENT HERE
 // ==========================================
 
+// The chip palette, read off the Microsoft Build poster Arvind sent.
+//
+// The correction that produced it: that poster is not one accent. It is a vast
+// pale field carrying five or six DIFFERENT saturated chips, each one small,
+// each floating with its own shadow and a faint glow beneath. I had collapsed
+// to a single periwinkle on Kahlo's advice and the site went blue, which is the
+// opposite failure to the green one it replaced.
+//
+// So: several colours, each used once or twice, each tiny. Saturated rather
+// than pastel, because on that poster the chips are amber and violet and mint
+// at full strength and they still read as subtle. Subtle is the four per cent
+// of canvas they occupy, not a washed out hue. No dark metallic, so the
+// poster's deep indigo chip is deliberately not here.
+//
+// Colour lives in the chips. Type and controls stay ink, the way the poster
+// sets "Microsoft Build" in plain black against all that pale ground.
+// Palette read off the second reference, the thin-line infographic: a pale
+// blue cloud, a salmon bar, a butter arc, a mint arc. True pastels, four of
+// them, each appearing once or twice as a small stroke on an otherwise white
+// page. That is "a palette of pastels" and it is not the same as the single
+// washed hue I had, nor the saturated Build chips I had just built.
+const CHIP_SKY    = "#A8D8E8";
+const CHIP_SALMON = "#F5A9A0";
+const CHIP_BUTTER = "#F7DF85";
+const CHIP_MINT   = "#A9DCD4";
+
+// A chip is an object: a soft neumorphic shadow pair plus a faint bloom of its
+// own colour underneath, which is what gives the poster's chips their lift.
+const chipStyle = (c) => ({
+  backgroundColor: c,
+  boxShadow: `5px 6px 14px rgba(150,158,178,0.40), -3px -3px 8px rgba(255,255,255,0.9), 0 5px 14px ${c}66`,
+});
+
 const SITE_CONTENT = {
   brand: {
     name: "HOOOP",
@@ -1157,39 +1190,6 @@ const AppLink = ({ href, onNavigate, className = "", children, ...rest }) => (
     {children}
   </a>
 );
-
-// The chip palette, read off the Microsoft Build poster Arvind sent.
-//
-// The correction that produced it: that poster is not one accent. It is a vast
-// pale field carrying five or six DIFFERENT saturated chips, each one small,
-// each floating with its own shadow and a faint glow beneath. I had collapsed
-// to a single periwinkle on Kahlo's advice and the site went blue, which is the
-// opposite failure to the green one it replaced.
-//
-// So: several colours, each used once or twice, each tiny. Saturated rather
-// than pastel, because on that poster the chips are amber and violet and mint
-// at full strength and they still read as subtle. Subtle is the four per cent
-// of canvas they occupy, not a washed out hue. No dark metallic, so the
-// poster's deep indigo chip is deliberately not here.
-//
-// Colour lives in the chips. Type and controls stay ink, the way the poster
-// sets "Microsoft Build" in plain black against all that pale ground.
-// Palette read off the second reference, the thin-line infographic: a pale
-// blue cloud, a salmon bar, a butter arc, a mint arc. True pastels, four of
-// them, each appearing once or twice as a small stroke on an otherwise white
-// page. That is "a palette of pastels" and it is not the same as the single
-// washed hue I had, nor the saturated Build chips I had just built.
-const CHIP_SKY    = "#A8D8E8";
-const CHIP_SALMON = "#F5A9A0";
-const CHIP_BUTTER = "#F7DF85";
-const CHIP_MINT   = "#A9DCD4";
-
-// A chip is an object: a soft neumorphic shadow pair plus a faint bloom of its
-// own colour underneath, which is what gives the poster's chips their lift.
-const chipStyle = (c) => ({
-  backgroundColor: c,
-  boxShadow: `5px 6px 14px rgba(150,158,178,0.40), -3px -3px 8px rgba(255,255,255,0.9), 0 5px 14px ${c}66`,
-});
 
 const SoftCard = ({ children, className = "", onClick, hoverEffect = true, id = "" }) => (
   <div id={id} onClick={onClick} className={`bg-[#F6F6F2] rounded-[30px] shadow-[9px_9px_16px_rgb(214,214,206,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] ${hoverEffect ? 'hover:shadow-[inset_9px_9px_16px_rgb(214,214,206,0.6),inset_-9px_-9px_16px_rgba(255,255,255,0.5)] cursor-pointer' : ''} transition-all duration-300 ease-in-out ${className}`}>
