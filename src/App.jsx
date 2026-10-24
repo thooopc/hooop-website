@@ -3877,7 +3877,12 @@ const App = React.forwardRef((props, ref) => {
                 to be set in small grey uppercase, the weight of a legal notice,
                 which is an odd way to ask for the most valuable action on the
                 site. */}
-            <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#313b4e] tracking-tight px-6 max-w-3xl mx-auto leading-snug">
+            {/* Pulled back from 3xl on Kahlo's QC, 24 Oct 2026. Her reading,
+                which I agree with: these words are a courtesy, not a claim. No
+                verb doing work, and the sentence ends on an email address. At
+                headline scale we were asking a polite aside to close the page.
+                Same words, as Arvind instructed, at a size they can carry. */}
+            <p className="text-lg sm:text-xl font-bold text-[#313b4e] tracking-tight px-6 max-w-2xl mx-auto leading-snug">
                 We are always open for a good conversation, write to us at{" "}
                 <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors">hello@hooop.in</a>
             </p>
