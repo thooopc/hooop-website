@@ -48,9 +48,9 @@ const SITE_CONTENT = {
     stats: [
       // Three figures, three colours, drawn from the practice palette above.
       // All three were teal, which made them read as one number repeated.
-      { figure: "35%", accent: "#F2B4C2", line: "of sustainability claims reach the public with no independent check behind them" },
-      { figure: "70%", accent: "#A9D2E8", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
-      { figure: "#1", accent: "#C7BCEC", line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
+      { figure: "35%", accent: "#ACBBF6", line: "of sustainability claims reach the public with no independent check behind them" },
+      { figure: "70%", accent: "#ACBBF6", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
+      { figure: "#1", accent: "#ACBBF6", line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
     ],
     // ASCI removed 21 Oct 2026 on Arvind's instruction: "we are not involving
     // asci anymore". This was the only place ASCI was credited as a
@@ -537,7 +537,7 @@ const SITE_CONTENT = {
   offerings: [
     {
       title: "Marketing-Led Consulting",
-      accent: "#F2B4C2",
+      accent: "#ACBBF6",
       outcome: "Claims that survive scrutiny, and credit for work you already do.",
       desc: "Strategy and communication for businesses whose growth depends on being believed, not just heard. We connect business strategy, brand, and behaviour to turn credibility into commercial value.",
       items: [
@@ -552,7 +552,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Media Sustainability",
-      accent: "#A9D2E8",
+      accent: "#ACBBF6",
       outcome: "What your media spend costs in carbon and waste, and how to cut both.",
       desc: "Media planning that accounts for both campaign performance and environmental impact. We help businesses understand the footprint of their media investments and use that intelligence to make better decisions.",
       items: [
@@ -567,7 +567,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Policy, Advocacy & Stakeholder Engagement",
-      accent: "#C7BCEC",
+      accent: "#ACBBF6",
       outcome: "One account of the business that holds with regulators and investors.",
       desc: "Sustainability is shaped beyond the marketing function. We help businesses navigate policy, build stakeholder alignment, and engage the regulators, communities and institutions that influence their ability to grow.",
       items: [
@@ -579,7 +579,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Venture Growth & Market Access",
-      accent: "#F6CDA2",
+      accent: "#ACBBF6",
       outcome: "A product that worked in a pilot, in front of buyers who can scale it.",
       desc: "For climate and circular ventures ready to move beyond the pilot. We help build the positioning, market strategy and commercial pathways needed to turn promising solutions into scalable businesses.",
       items: [
@@ -1159,13 +1159,13 @@ const AppLink = ({ href, onNavigate, className = "", children, ...rest }) => (
 );
 
 const SoftCard = ({ children, className = "", onClick, hoverEffect = true, id = "" }) => (
-  <div id={id} onClick={onClick} className={`bg-[#E0E5EC] rounded-[30px] shadow-[9px_9px_16px_rgb(163,177,198,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] ${hoverEffect ? 'hover:shadow-[inset_9px_9px_16px_rgb(163,177,198,0.6),inset_-9px_-9px_16px_rgba(255,255,255,0.5)] cursor-pointer' : ''} transition-all duration-300 ease-in-out ${className}`}>
+  <div id={id} onClick={onClick} className={`bg-[#F6F6F2] rounded-[30px] shadow-[9px_9px_16px_rgb(214,214,206,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] ${hoverEffect ? 'hover:shadow-[inset_9px_9px_16px_rgb(214,214,206,0.6),inset_-9px_-9px_16px_rgba(255,255,255,0.5)] cursor-pointer' : ''} transition-all duration-300 ease-in-out ${className}`}>
     {children}
   </div>
 );
 
 const VerticalPill = ({ height = "h-64", className = "" }) => (
-  <div className={`w-16 ${height} bg-[#E0E5EC] rounded-full shadow-[9px_9px_16px_rgb(163,177,198,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] ${className}`} />
+  <div className={`w-16 ${height} bg-[#F6F6F2] rounded-full shadow-[9px_9px_16px_rgb(214,214,206,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] ${className}`} />
 );
 
 // Reveal-on-scroll, with three fixes over the original.
@@ -1232,7 +1232,7 @@ const FlipCard = ({ frontTitle, frontIcon: FrontIcon, backText, backStat, color 
     return (
         <div className="relative w-full h-64 perspective-1000 cursor-pointer group" onClick={() => setIsFlipped(!isFlipped)}>
             <div className={`w-full h-full relative preserve-3d transition-all duration-700 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
-                <div className="absolute inset-0 backface-hidden bg-[#F0F0F3] rounded-2xl shadow-[-5px_-5px_10px_#FFFFFF,5px_5px_10px_#AEAEC040] flex flex-col items-center justify-center p-6 text-center border-2 border-transparent hover:border-gray-200 transition-colors">
+                <div className="absolute inset-0 backface-hidden bg-[#FBFBF9] rounded-2xl shadow-[-5px_-5px_10px_#FFFFFF,5px_5px_10px_#D8D8D040] flex flex-col items-center justify-center p-6 text-center border-2 border-transparent hover:border-gray-200 transition-colors">
                     <div className={`p-4 rounded-full mb-4 text-white shadow-lg`} style={{backgroundColor: color}}><FrontIcon size={32} /></div>
                     <h3 className="text-lg font-bold text-gray-800">{frontTitle}</h3>
                     <p className="text-xs text-gray-400 mt-2 uppercase tracking-widest flex items-center gap-1">Tap to Reveal <ArrowRight size={12} /></p>
@@ -1247,7 +1247,7 @@ const FlipCard = ({ frontTitle, frontIcon: FrontIcon, backText, backStat, color 
 };
 
 const ArchetypeCard = ({ title, type, icon: Icon, description, color, subtext, stat }) => (
-    <div className="relative w-full h-full min-h-[420px] bg-[#F0F0F3] rounded-[2.5rem] p-8 shadow-[-10px_-10px_30px_#FFFFFF,10px_10px_30px_#AEAEC040] flex flex-col justify-between items-start transition-all duration-500 hover:shadow-xl border border-transparent" style={{ borderColor: color }}>
+    <div className="relative w-full h-full min-h-[420px] bg-[#FBFBF9] rounded-[2.5rem] p-8 shadow-[-10px_-10px_30px_#FFFFFF,10px_10px_30px_#D8D8D040] flex flex-col justify-between items-start transition-all duration-500 hover:shadow-xl border border-transparent" style={{ borderColor: color }}>
         <div className="w-full flex flex-col h-full">
             <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg shrink-0`} style={{ backgroundColor: color }}><Icon size={24} /></div>
             <h3 className="text-2xl font-bold text-gray-800 mb-2">{title}</h3>
@@ -2060,7 +2060,7 @@ const PillButton = ({ children, primary = false, onClick }) => (
         flex items-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1
         ${primary 
             ? 'bg-black text-white shadow-lg hover:shadow-xl' 
-            : 'bg-[#F0F0F3] text-gray-700 shadow-[-5px_-5px_10px_#FFFFFF,5px_5px_10px_#AEAEC040] hover:shadow-[-2px_-2px_5px_#FFFFFF,2px_2px_5px_#AEAEC040]'
+            : 'bg-[#FBFBF9] text-gray-700 shadow-[-5px_-5px_10px_#FFFFFF,5px_5px_10px_#D8D8D040] hover:shadow-[-2px_-2px_5px_#FFFFFF,2px_2px_5px_#D8D8D040]'
         }
         `}
     >
@@ -2338,7 +2338,7 @@ const GreenwashingView = ({ navigateTo }) => {
 
                 <div className="order-1 lg:order-2 flex justify-center lg:justify-end relative h-[300px] lg:h-auto">
                     <div className="relative w-full h-full flex items-center justify-center">
-                        <div className="absolute top-1/2 left-1/2 -translate-x-3/4 -translate-y-1/2 w-48 h-48 md:w-80 md:h-80 bg-[#E0E5EC] rounded-full shadow-[inset_-10px_-10px_30px_#FFFFFF,inset_10px_10px_30px_#AEAEC040] flex items-center justify-center z-10"><span className="text-gray-400 font-bold text-lg md:text-xl">Perception</span></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-3/4 -translate-y-1/2 w-48 h-48 md:w-80 md:h-80 bg-[#F6F6F2] rounded-full shadow-[inset_-10px_-10px_30px_#FFFFFF,inset_10px_10px_30px_#D8D8D040] flex items-center justify-center z-10"><span className="text-gray-400 font-bold text-lg md:text-xl">Perception</span></div>
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/2 w-48 h-48 md:w-80 md:h-80 bg-green-500 rounded-full shadow-2xl flex items-center justify-center opacity-90 z-20 mix-blend-multiply transition-all duration-1000 hover:translate-x-[-30%] cursor-pointer"><span className="text-white font-bold text-lg md:text-xl">Reality</span></div>
                     </div>
                 </div>
@@ -3008,7 +3008,7 @@ const App = React.forwardRef((props, ref) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#E0E5EC] font-sans text-[#4A5568] selection:bg-black selection:text-white overflow-x-hidden relative">
+    <div className="min-h-screen bg-[#F6F6F2] font-sans text-[#4A5568] selection:bg-black selection:text-white overflow-x-hidden relative">
       <ConcentricCircles />
 
       {/* --- DESKTOP SIDEBAR --- */}
@@ -3069,16 +3069,16 @@ const App = React.forwardRef((props, ref) => {
 
       {/* --- MOBILE NAV --- */}
       <div className="fixed top-0 left-0 right-0 z-50">
-          <div className="h-20 flex items-center justify-between px-6 lg:hidden bg-[#E0E5EC]/90 backdrop-blur-md shadow-sm border-b border-white/50">
+          <div className="h-20 flex items-center justify-between px-6 lg:hidden bg-[#F6F6F2]/90 backdrop-blur-md shadow-sm border-b border-white/50">
             <AppLink href="/" onNavigate={() => navigateTo('home')} className="font-bold text-2xl tracking-tighter flex items-center gap-3 no-underline text-black">
                 <HooopLogo className="w-12 h-12" />
                 <span className="text-black">{SITE_CONTENT.brand.name}</span>
             </AppLink>
-            <button onClick={() => setIsMenuOpen(true)} className="p-3 rounded-xl bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-black active:shadow-inner">
+            <button onClick={() => setIsMenuOpen(true)} className="p-3 rounded-xl bg-[#F6F6F2] shadow-[5px_5px_10px_#e3e3dd,-5px_-5px_10px_#ffffff] text-black active:shadow-inner">
               <Menu size={24} />
             </button>
           </div>
-          <div className="lg:hidden bg-[#E0E5EC]/95 backdrop-blur-md border-b border-white/20 overflow-x-auto flex items-center gap-6 px-6 py-3 no-scrollbar shadow-inner">
+          <div className="lg:hidden bg-[#F6F6F2]/95 backdrop-blur-md border-b border-white/20 overflow-x-auto flex items-center gap-6 px-6 py-3 no-scrollbar shadow-inner">
              {navItems.filter(item => !item.hidden).map(item => (
                  <AppLink key={item.id} href={pathForSection(item.id)} onNavigate={() => navigateTo(item.id)} className={`whitespace-nowrap text-[10px] font-bold uppercase tracking-widest flex-shrink-0 transition-colors no-underline ${activeSection === item.id ? 'text-teal-600' : 'text-gray-500'}`}>{item.label}</AppLink>
              ))}
@@ -3086,8 +3086,8 @@ const App = React.forwardRef((props, ref) => {
       </div>
 
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[60] bg-[#E0E5EC] flex flex-col items-center justify-center space-y-8 animate-fade-in lg:hidden">
-          <button onClick={() => setIsMenuOpen(false)} className="absolute top-6 right-6 p-4 rounded-full bg-[#E0E5EC] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-black">
+        <div className="fixed inset-0 z-[60] bg-[#F6F6F2] flex flex-col items-center justify-center space-y-8 animate-fade-in lg:hidden">
+          <button onClick={() => setIsMenuOpen(false)} className="absolute top-6 right-6 p-4 rounded-full bg-[#F6F6F2] shadow-[5px_5px_10px_#e3e3dd,-5px_-5px_10px_#ffffff] text-black">
             <X size={24} />
           </button>
           {navItems.filter(item => !item.hidden).map((item) => (
@@ -3174,8 +3174,8 @@ const App = React.forwardRef((props, ref) => {
 </div>
                 <div className="w-full lg:w-1/2 h-[50vh] lg:h-full flex items-center justify-center relative mt-12 lg:mt-0">
                  <div className="relative w-[300px] h-[300px] lg:w-[500px] lg:h-[500px]">
-                     <div className="absolute inset-0 rounded-full border-[40px] border-[#E0E5EC] shadow-[20px_20px_60px_#bebebe,-20px_-20px_60px_#ffffff] flex items-center justify-center animate-float">
-                        <div className="w-full h-full rounded-full shadow-[inset_10px_10px_20px_#bebebe,inset_-10px_-10px_20px_#ffffff] flex items-center justify-center p-12">
+                     <div className="absolute inset-0 rounded-full border-[40px] border-[#F6F6F2] shadow-[20px_20px_60px_#e3e3dd,-20px_-20px_60px_#ffffff] flex items-center justify-center animate-float">
+                        <div className="w-full h-full rounded-full shadow-[inset_10px_10px_20px_#e3e3dd,inset_-10px_-10px_20px_#ffffff] flex items-center justify-center p-12">
                              <HooopLogo className="w-full h-full object-contain opacity-90" />
                         </div>
                      </div>
@@ -3200,7 +3200,7 @@ const App = React.forwardRef((props, ref) => {
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-gray-600 transition-colors">
                   The problem
                 </span>
-                <span className="w-10 h-10 rounded-full bg-[#E0E5EC] shadow-[4px_4px_9px_#c8ccd3,-4px_-4px_9px_#ffffff] flex items-center justify-center text-gray-400 group-hover:text-teal-600 transition-colors animate-nudge">
+                <span className="w-10 h-10 rounded-full bg-[#F6F6F2] shadow-[4px_4px_9px_#e6e6e0,-4px_-4px_9px_#ffffff] flex items-center justify-center text-gray-400 group-hover:text-teal-600 transition-colors animate-nudge">
                   <ChevronDown size={18} />
                 </span>
               </button>
@@ -3369,7 +3369,7 @@ const App = React.forwardRef((props, ref) => {
                     {SITE_CONTENT.homeExtras.featured.map((feature, idx) => (
                       <a key={idx} href={feature.url} target="_blank" rel="noopener noreferrer"
                          title={feature.headline || feature.name}
-                         className="group inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#E0E5EC] shadow-[4px_4px_9px_#c8ccd3,-4px_-4px_9px_#ffffff] text-xs font-bold text-gray-500 hover:text-teal-600 transition-colors no-underline">
+                         className="group inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#F6F6F2] shadow-[4px_4px_9px_#e6e6e0,-4px_-4px_9px_#ffffff] text-xs font-bold text-gray-500 hover:text-teal-600 transition-colors no-underline">
                         {feature.name}
                         <ExternalLink size={12} className="text-gray-300 group-hover:text-teal-500 shrink-0 transition-colors" />
                       </a>
@@ -3581,7 +3581,7 @@ const App = React.forwardRef((props, ref) => {
 
                     {/* CIRCULARITY — a service, not a stage */}
                     <SoftCard className="p-8 md:p-10 mb-20 flex flex-col md:flex-row gap-8 items-start">
-                      <div className="w-14 h-14 rounded-2xl bg-[#E0E5EC] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center shrink-0 text-teal-600">
+                      <div className="w-14 h-14 rounded-2xl bg-[#F6F6F2] shadow-[inset_4px_4px_8px_#e3e3dd,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center shrink-0 text-teal-600">
                         {(() => { const I = getIconComponent(SITE_CONTENT.prvaah.circularity.icon); return <I size={26} />; })()}
                       </div>
                       <div>
@@ -3644,7 +3644,7 @@ const App = React.forwardRef((props, ref) => {
                             <SoftCard key={idx} className="p-8 flex flex-col justify-between h-80 group hover:-translate-y-2">
                                 <div>
                                     <div className="flex justify-between items-start mb-6">
-                                        <div className="p-3 rounded-2xl bg-[#E0E5EC] shadow-[inset_3px_3px_6px_#bebebe,inset_-3px_-3px_6px_#ffffff]">
+                                        <div className="p-3 rounded-2xl bg-[#F6F6F2] shadow-[inset_3px_3px_6px_#e3e3dd,inset_-3px_-3px_6px_#ffffff]">
                                             <Icon size={24} className="text-gray-600" />
                                         </div>
                                         <span className="text-xs font-bold uppercase tracking-widest text-teal-600 bg-teal-50 px-3 py-1 rounded-full">{item.category}</span>
@@ -3695,7 +3695,7 @@ const App = React.forwardRef((props, ref) => {
                         const Icon = getIconComponent(model.iconType);
                         return (
                           <SoftCard key={idx} className="p-7 flex flex-col group hover:-translate-y-1 transition-transform duration-300">
-                            <div className="w-12 h-12 rounded-full bg-[#E0E5EC] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center mb-5">
+                            <div className="w-12 h-12 rounded-full bg-[#F6F6F2] shadow-[inset_4px_4px_8px_#e3e3dd,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center mb-5">
                               <Icon size={20} className="text-gray-400 group-hover:text-teal-600 transition-colors" />
                             </div>
                             {/* The desc paragraph is gone. It restated the headline at
@@ -3777,7 +3777,7 @@ const App = React.forwardRef((props, ref) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                    {SITE_CONTENT.collective.map((member, idx) => (
                        <SoftCard key={idx} className="p-5 flex flex-col items-center text-center group">
-                          <div className="w-20 h-20 rounded-full bg-[#E0E5EC] shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff] p-1.5 flex-shrink-0 mb-3">
+                          <div className="w-20 h-20 rounded-full bg-[#F6F6F2] shadow-[inset_5px_5px_10px_#e3e3dd,inset_-5px_-5px_10px_#ffffff] p-1.5 flex-shrink-0 mb-3">
                              <ImageWithFallback src={member.img} alt={member.name} className="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500"/>
                           </div>
                           <div>
@@ -3854,7 +3854,7 @@ const App = React.forwardRef((props, ref) => {
                         sitewide. */}
                     <h1 className="text-5xl lg:text-7xl font-black text-[#313b4e] mb-10 tracking-tighter">Let's Talk.</h1>
 
-                    <div className="bg-[#F0F0F3] p-10 md:p-16 rounded-[3rem] shadow-[-10px_-10px_30px_#FFFFFF,10px_10px_30px_#AEAEC040] transform hover:scale-[1.01] transition-transform duration-300">
+                    <div className="bg-[#FBFBF9] p-10 md:p-16 rounded-[3rem] shadow-[-10px_-10px_30px_#FFFFFF,10px_10px_30px_#D8D8D040] transform hover:scale-[1.01] transition-transform duration-300">
                         <p className="text-xl md:text-2xl text-gray-600 font-medium mb-8 leading-relaxed">
                            We are always open for a good conversation.
                         </p>
@@ -3902,10 +3902,10 @@ const App = React.forwardRef((props, ref) => {
                 two small circles above the line instead of under it. They
                 follow the ask now. */}
             <div className="mt-8 flex justify-center gap-6">
-                <a href="https://www.linkedin.com/company/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#0077b5] hover:scale-110 transition-all duration-300" aria-label="Follow us on LinkedIn">
+                <a href="https://www.linkedin.com/company/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#F6F6F2] rounded-full shadow-[5px_5px_10px_#e3e3dd,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#0077b5] hover:scale-110 transition-all duration-300" aria-label="Follow us on LinkedIn">
                     <Linkedin size={20} />
                 </a>
-                <a href="https://www.instagram.com/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#E0E5EC] rounded-full shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#E1306C] hover:scale-110 transition-all duration-300" aria-label="Follow us on Instagram">
+                <a href="https://www.instagram.com/hooopcollective/" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#F6F6F2] rounded-full shadow-[5px_5px_10px_#e3e3dd,-5px_-5px_10px_#ffffff] text-gray-500 hover:text-[#E1306C] hover:scale-110 transition-all duration-300" aria-label="Follow us on Instagram">
                     <Instagram size={20} />
                 </a>
             </div>
