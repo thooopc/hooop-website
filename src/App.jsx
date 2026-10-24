@@ -46,9 +46,11 @@ const SITE_CONTENT = {
     eyebrow: "The problem, measured",
     headline: "We asked 150 Indian marketers how green claims actually get verified.",
     stats: [
-      { figure: "35%", line: "of sustainability claims reach the public with no independent check behind them" },
-      { figure: "70%", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
-      { figure: "#1", line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
+      // Three figures, three colours, drawn from the practice palette above.
+      // All three were teal, which made them read as one number repeated.
+      { figure: "35%", accent: "#9B2C3F", line: "of sustainability claims reach the public with no independent check behind them" },
+      { figure: "70%", accent: "#2A7FA8", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
+      { figure: "#1", accent: "#6B5BA8", line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
     ],
     // ASCI removed 21 Oct 2026 on Arvind's instruction: "we are not involving
     // asci anymore". This was the only place ASCI was credited as a
@@ -526,9 +528,16 @@ const SITE_CONTENT = {
       }
     ]
   },
+  // One quiet colour per practice, used on a short rule above the name and
+  // nowhere else. Taken from the way collabfund.com works, which Arvind pointed
+  // at on 23 Oct 2026: that site is not colourful, it is a near-white page with
+  // black type and a handful of saturated marks used four to eight times each.
+  // The point is that colour identifies a thing, it does not decorate the page.
+  // Deliberately not eco-green, per the Creative Playbook.
   offerings: [
     {
       title: "Marketing-Led Consulting",
+      accent: "#9B2C3F",
       outcome: "Claims that survive scrutiny, and credit for work you already do.",
       desc: "Strategy and communication for businesses whose growth depends on being believed, not just heard. We connect business strategy, brand, and behaviour to turn credibility into commercial value.",
       items: [
@@ -543,6 +552,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Media Sustainability",
+      accent: "#2A7FA8",
       outcome: "What your media spend costs in carbon and waste, and how to cut both.",
       desc: "Media planning that accounts for both campaign performance and environmental impact. We help businesses understand the footprint of their media investments and use that intelligence to make better decisions.",
       items: [
@@ -557,6 +567,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Policy, Advocacy & Stakeholder Engagement",
+      accent: "#6B5BA8",
       outcome: "One account of the business that holds with regulators and investors.",
       desc: "Sustainability is shaped beyond the marketing function. We help businesses navigate policy, build stakeholder alignment, and engage the regulators, communities and institutions that influence their ability to grow.",
       items: [
@@ -568,6 +579,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Venture Growth & Market Access",
+      accent: "#B07C2E",
       outcome: "A product that worked in a pilot, in front of buyers who can scale it.",
       desc: "For climate and circular ventures ready to move beyond the pilot. We help build the positioning, market strategy and commercial pathways needed to turn promising solutions into scalable businesses.",
       items: [
@@ -3214,7 +3226,7 @@ const App = React.forwardRef((props, ref) => {
                   <div className="flex sm:grid sm:grid-cols-3 gap-5 mb-8 overflow-x-auto sm:overflow-visible snap-x snap-mandatory items-start no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0">
                     {SITE_CONTENT.researchProof.stats.map((s) => (
                       <SoftCard key={s.figure} className="p-6 w-[72vw] sm:w-auto shrink-0 sm:shrink snap-start flex flex-col gap-2" hoverEffect={false}>
-                        <span className="text-3xl lg:text-4xl font-black text-teal-600 leading-none">{s.figure}</span>
+                        <span className="text-3xl lg:text-4xl font-black leading-none" style={{ color: s.accent }}>{s.figure}</span>
                         <span className="text-sm text-gray-500 leading-relaxed">{s.line}</span>
                       </SoftCard>
                     ))}
@@ -3270,6 +3282,12 @@ const App = React.forwardRef((props, ref) => {
                       const open = openPractices.includes(idx);
                       return (
                         <SoftCard key={idx} className="p-7 w-[82vw] sm:w-[60vw] md:w-auto shrink-0 md:shrink snap-start flex flex-col gap-3" hoverEffect={false}>
+                          {/* The practice's own colour, and the only place it
+                              appears on this card. Decorative, so hidden from
+                              the accessibility tree: the name below carries the
+                              meaning, and nothing here is conveyed by colour
+                              alone. */}
+                          <span aria-hidden="true" className="block w-10 h-[3px] rounded-full" style={{ backgroundColor: practice.accent }}></span>
                           <h3 className="text-xl lg:text-2xl font-black text-[#313b4e] leading-tight">{practice.title}</h3>
                           <p className="text-[15px] text-gray-500 leading-relaxed">{practice.outcome || practice.desc}</p>
 
@@ -3694,12 +3712,16 @@ const App = React.forwardRef((props, ref) => {
                               assistive tech. */}
                           <span
                             aria-hidden="true"
-                            className="pointer-events-none absolute -top-4 right-2 text-[7rem] leading-none font-black text-[#313b4e]/[0.045] select-none"
+                            className="pointer-events-none absolute -top-4 right-2 text-[7rem] leading-none font-black select-none"
+                            style={{ color: card.accent, opacity: 0.07 }}
                           >
                             {idx + 1}
                           </span>
                           <h2 className="text-2xl font-bold text-[#313b4e] mb-3 relative">{card.title}</h2>
-                          <span className="block w-10 h-[3px] rounded-full bg-teal-400/70 mb-4" />
+                          {/* Was teal on all four, so the rule read as a divider.
+                              It is the practice's own colour now, the same one
+                              its card carries on the homepage. */}
+                          <span className="block w-10 h-[3px] rounded-full mb-4" style={{ backgroundColor: card.accent }} />
                           {/* First sentence only. The bullets below carry the
                               specifics; the rest of the paragraph restated them in
                               prose. Arvind's own words, just the opening clause. */}
