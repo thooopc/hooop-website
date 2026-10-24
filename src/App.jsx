@@ -496,7 +496,7 @@ const SITE_CONTENT = {
     sanskritMeaning: "flow in Sanskrit",
     description1: (
       <span>
-        Created by <a href="https://www.everloop.agency/" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">Everloop.Agency</a> and <a href="https://www.hooop.in" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-bold">HOOOP Collective</a>, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.
+        Created by <a href="https://www.everloop.agency/" target="_blank" rel="noreferrer" className="text-[#6B92E5] hover:underline font-bold">Everloop.Agency</a> and <a href="https://www.hooop.in" target="_blank" rel="noreferrer" className="text-[#6B92E5] hover:underline font-bold">HOOOP Collective</a>, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.
       </span>
     ),
     // The five stages are a sequence — the page is named "flow" — so they render
@@ -1254,7 +1254,7 @@ const FlipCard = ({ frontTitle, frontIcon: FrontIcon, backText, backStat, color 
                     <p className="text-xs text-gray-400 mt-2 uppercase tracking-widest flex items-center gap-1">Tap to Reveal <ArrowRight size={12} /></p>
                 </div>
                 <div className="absolute inset-0 backface-hidden rotate-y-180 bg-gray-900 rounded-2xl shadow-xl flex flex-col items-center justify-center p-6 text-center text-white">
-                    <p className="text-3xl font-bold text-green-400 mb-2">{backStat}</p>
+                    <p className="text-3xl font-bold text-[#ACBBF6] mb-2">{backStat}</p>
                     <p className="text-sm text-gray-300 leading-relaxed">{backText}</p>
                 </div>
             </div>
@@ -1320,16 +1320,16 @@ const POST_FIGURES = {
         <rect x="20" y="46" width="600" height="46" fill="#111111" />
         <text x="20" y="140" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="13"
               fontWeight="700" letterSpacing="2.4" fill="#9CA3AF">WHAT YOU CAN PROVE</text>
-        <rect x="20" y="152" width="252" height="46" fill="#0D9488" />
-        <rect x="272" y="152" width="348" height="46" fill="none" stroke="#0D9488"
+        <rect x="20" y="152" width="252" height="46" fill="#6B92E5" />
+        <rect x="272" y="152" width="348" height="46" fill="none" stroke="#6B92E5"
               strokeWidth="1.5" strokeDasharray="6 5" />
         <text x="290" y="181" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="14"
-              fontWeight="700" letterSpacing="2" fill="#0D9488">THE VERIFICATION VACUUM</text>
+              fontWeight="700" letterSpacing="2" fill="#6B92E5">THE VERIFICATION VACUUM</text>
         <line x1="272" y1="92" x2="272" y2="152" stroke="#D1D5DB" strokeWidth="1" strokeDasharray="4 4" />
         <line x1="620" y1="92" x2="620" y2="152" stroke="#D1D5DB" strokeWidth="1" strokeDasharray="4 4" />
-        <line x1="272" y1="222" x2="620" y2="222" stroke="#0D9488" strokeWidth="1.5" />
-        <line x1="272" y1="216" x2="272" y2="228" stroke="#0D9488" strokeWidth="1.5" />
-        <line x1="620" y1="216" x2="620" y2="228" stroke="#0D9488" strokeWidth="1.5" />
+        <line x1="272" y1="222" x2="620" y2="222" stroke="#6B92E5" strokeWidth="1.5" />
+        <line x1="272" y1="216" x2="272" y2="228" stroke="#6B92E5" strokeWidth="1.5" />
+        <line x1="620" y1="216" x2="620" y2="228" stroke="#6B92E5" strokeWidth="1.5" />
         <text x="446" y="243" textAnchor="middle" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace"
               fontSize="11.5" letterSpacing="1.4" fill="#9CA3AF">EVERYTHING YOU CANNOT SUBSTANTIATE</text>
       </svg>
@@ -1348,13 +1348,13 @@ const POST_FIGURES = {
         <line x1="130" y1="70" x2="172" y2="70" stroke="#D1D5DB" strokeWidth="2.5" />
         <polygon points="172,63 186,70 172,77" fill="#D1D5DB" />
         <text x="200" y="86" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="46"
-              fontWeight="700" fill="#0D9488">1.1%</text>
+              fontWeight="700" fill="#6B92E5">1.1%</text>
         <text x="16" y="112" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="18"
               fill="#9CA3AF">2023</text>
         <text x="200" y="112" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="18"
               fill="#9CA3AF">2026</text>
         <rect x="16" y="122" width="130" height="9" fill="#111111" />
-        <rect x="200" y="122" width="10" height="9" fill="#0D9488" />
+        <rect x="200" y="122" width="10" height="9" fill="#6B92E5" />
 
         <line x1="16" y1="160" x2="344" y2="160" stroke="#E5E7EB" strokeWidth="1" />
 
@@ -1421,11 +1421,11 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
 
       <div className="mb-8 pt-12 md:pt-0">
         <div className="flex items-center gap-3 mb-4">
-           <span className="px-3 py-1 bg-teal-50 text-teal-600 rounded-full text-xs font-bold uppercase tracking-widest">{post.category}</span>
+           <span className="px-3 py-1 bg-[#EEF2FD] text-[#6B92E5] rounded-full text-xs font-bold uppercase tracking-widest">{post.category}</span>
            <span className="text-gray-400 text-xs font-mono">{post.date}</span>
         </div>
         <h1 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">{post.title}</h1>
-        <p className="text-xl text-gray-500 font-medium leading-relaxed border-l-4 border-teal-500 pl-4">{post.desc}</p>
+        <p className="text-xl text-gray-500 font-medium leading-relaxed border-l-4 border-[#6B92E5] pl-4">{post.desc}</p>
       </div>
 
       {/* Content items are plain strings (paragraphs) for backwards compatibility,
@@ -1443,7 +1443,7 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
                 <AppLink
                   href={pathForSection(item.to)}
                   onNavigate={() => navigateTo && navigateTo(item.to)}
-                  className="inline-flex items-center gap-2 font-bold text-teal-600 hover:text-teal-800 transition-colors no-underline"
+                  className="inline-flex items-center gap-2 font-bold text-[#6B92E5] hover:text-[#4F76C9] transition-colors no-underline"
                 >
                   {item.cta} <ArrowRight size={15} />
                 </AppLink>
@@ -1515,7 +1515,7 @@ const PrivacyView = () => {
       <H>Who is collecting your data</H>
       <p>
         This site and the Sense tool are operated by The HOOOP Collective ("HOOOP", "we", "us"),
-        reachable at <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a>.
+        reachable at <a href="mailto:hello@hooop.in" className="text-[#6B92E5] font-bold hover:underline">hello@hooop.in</a>.
         Under India's Digital Personal Data Protection Act, 2023 (DPDP Act), HOOOP is the Data
         Fiduciary for the personal data described below.
       </p>
@@ -1538,7 +1538,7 @@ const PrivacyView = () => {
       <p>
         We collect your email only if you tick the consent box and submit it. The box is never
         pre-ticked. You can withdraw your consent at any time, as easily as you gave it, by emailing{" "}
-        <a href="mailto:hello@hooop.in?subject=Withdraw%20consent%20-%20Sense" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a>{" "}
+        <a href="mailto:hello@hooop.in?subject=Withdraw%20consent%20-%20Sense" className="text-[#6B92E5] font-bold hover:underline">hello@hooop.in</a>{" "}
         with the subject "Withdraw consent - Sense". We will delete your email within 30 days of such a request.
       </p>
 
@@ -1550,13 +1550,13 @@ const PrivacyView = () => {
         Under the DPDP Act you have the right to access, correct, update, or erase your personal
         data, to withdraw consent, and to nominate another person to exercise these rights on your
         behalf. To exercise any of these, email{" "}
-        <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a>.
+        <a href="mailto:hello@hooop.in" className="text-[#6B92E5] font-bold hover:underline">hello@hooop.in</a>.
       </p>
 
       <H>Grievance contact</H>
       <p>
         If you have a complaint about how your data is handled, contact{" "}
-        <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a>.
+        <a href="mailto:hello@hooop.in" className="text-[#6B92E5] font-bold hover:underline">hello@hooop.in</a>.
         We aim to respond within 7 business days.
       </p>
     </div>
@@ -1775,7 +1775,7 @@ Sense is a greenwashing checker for climate language and ESG messaging. It flags
                         boxShadow: "inset 3px 3px 7px #c6cad1, inset -3px -3px 7px #ffffff",
                       }}
                     >
-                      <ShieldCheck size={15} className="text-green-600 shrink-0 mt-[1px]" />
+                      <ShieldCheck size={15} className="text-gray-400 shrink-0 mt-[1px]" />
                       <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-gray-500 leading-[1.7] m-0">
                         {["Reputation", "Legal compliance", "Trust", "ESG credibility"].map((v, i) => (
                           <React.Fragment key={v}>
@@ -1787,12 +1787,12 @@ Sense is a greenwashing checker for climate language and ESG messaging. It flags
                     </div>
                 </div>
                 <div className="hidden md:flex justify-center items-center h-64 relative">
-                    <div className="absolute w-64 h-64 border border-green-100 rounded-full flex items-center justify-center">
-                        <div className="absolute w-48 h-48 border border-green-200 rounded-full"></div>
-                        <div className="absolute w-32 h-32 border border-green-300 rounded-full bg-green-50/30"></div>
-                        <div className="absolute w-32 h-32 rounded-full border-2 border-green-400 radar-circle"></div>
+                    <div className="absolute w-64 h-64 border border-gray-100 rounded-full flex items-center justify-center">
+                        <div className="absolute w-48 h-48 border border-gray-200 rounded-full"></div>
+                        <div className="absolute w-32 h-32 border border-gray-200 rounded-full bg-gray-50/30"></div>
+                        <div className="absolute w-32 h-32 rounded-full border-2 border-gray-300 radar-circle"></div>
                         <div className="z-10 bg-white p-4 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center">
-                            <ScanLine size={32} className="text-green-600 mb-2" />
+                            <ScanLine size={32} className="text-gray-400 mb-2" />
                             <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Detection Active</span>
                         </div>
                     </div>
@@ -1842,7 +1842,7 @@ Sense is a greenwashing checker for climate language and ESG messaging. It flags
       .getElementById("philosophy")
       ?.scrollIntoView({ behavior: "smooth" })
   }
-  className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-green-600 border border-green-50 hover:bg-green-50 transition-colors"
+  className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 border border-gray-100 hover:bg-gray-50 transition-colors"
 >
   <Leaf size={18} />
 </button>
@@ -1869,7 +1869,7 @@ Sense is a greenwashing checker for climate language and ESG messaging. It flags
 
                     {result.length === 0 ? (
                         <div className="soft-card p-6 md:p-8 flex items-center gap-5 text-left">
-                            <div className="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0">
+                            <div className="w-12 h-12 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center shrink-0">
                                 <Check size={24} />
                             </div>
                             <div>
@@ -1943,12 +1943,12 @@ and environmental marketing guidelines.
                 </div>
                 <div className="grid md:grid-cols-2 gap-5 mb-8">
                     <div className="soft-card p-6">
-                        <ScanLine className="mb-3 text-green-600" size={24} />
+                        <ScanLine className="mb-3 text-gray-400" size={24} />
                         <h4 className="font-bold text-gray-900 text-lg">Traceability</h4>
                         <p className="text-xs text-gray-500 mt-2 leading-relaxed">Tech-enabled tracking beats promises. Know exactly where your product comes from.</p>
                     </div>
                     <div className="soft-card p-6">
-                        <Tag className="mb-3 text-green-600" size={24} />
+                        <Tag className="mb-3 text-gray-400" size={24} />
                         <h4 className="font-bold text-gray-900 text-lg">Clear Labeling</h4>
                         <p className="text-xs text-gray-500 mt-2 leading-relaxed">Simple language labels. No 'farm fresh' fluff. Just exactly what is in the product.</p>
                     </div>
@@ -1961,7 +1961,7 @@ and environmental marketing guidelines.
                         </div>
                         <div className="pt-4 border-t border-gray-200">
                             <p className="text-xs text-gray-500 mb-1">Need to understand deeper and get trained on greenwashing further?</p>
-                            <a href="mailto:hello@hooop.in" className="inline-flex items-center gap-1.5 font-bold text-gray-900 hover:text-green-600 transition-colors text-sm"><Mail size={14} /> hello@hooop.in</a>
+                            <a href="mailto:hello@hooop.in" className="inline-flex items-center gap-1.5 font-bold text-gray-900 hover:text-[#6B92E5] transition-colors text-sm"><Mail size={14} /> hello@hooop.in</a>
                         </div>
                     </div>
                 </div>
@@ -2041,7 +2041,7 @@ const ResourcesView = () => {
                     <h4 className="font-bold text-lg text-gray-900 mb-1">ASCI Code</h4><p className="text-xs text-gray-500">Advertising Standards Council of India's rules on honesty.</p>
                 </a>
                 <a href="https://www.wwf.org.uk/learn/environment/guide-to-greenwashing" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
-                    <div className="flex justify-between items-start mb-4"><div className="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center"><Leaf size={18} /></div><ExternalLink size={16} className="text-gray-300 group-hover:text-gray-600 transition-colors" /></div>
+                    <div className="flex justify-between items-start mb-4"><div className="w-10 h-10 rounded-xl bg-gray-50 text-gray-400 flex items-center justify-center"><Leaf size={18} /></div><ExternalLink size={16} className="text-gray-300 group-hover:text-gray-600 transition-colors" /></div>
                     <h4 className="font-bold text-lg text-gray-900 mb-1">WWF Guide</h4><p className="text-xs text-gray-500">Global best practices on identifying greenwashing traps.</p>
                 </a>
                 <a href="https://www.oneplanetnetwork.org/knowledge-centre/resources/green-marketing-challenge" target="_blank" rel="noopener noreferrer" className="soft-card p-6 block hover:scale-[1.02] transition-transform group bg-white">
@@ -2121,7 +2121,7 @@ const EsgMediaIndexView = ({ navigateTo }) => {
       <section className="pt-8 pb-16 md:pb-24">
         <ScrollReveal>
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 rounded-full mb-8 border border-white/60 shadow-sm">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" />
             <span className="text-xs font-bold tracking-widest uppercase text-gray-600">HOOOP × The GoodNet</span>
           </div>
         </ScrollReveal>
@@ -2137,7 +2137,7 @@ const EsgMediaIndexView = ({ navigateTo }) => {
             missed opportunity — because the signals that make media cleaner are largely the same ones that make it work harder.
           </p>
           <p className="text-base text-gray-500 max-w-2xl leading-relaxed mb-10">
-            India's first ESG Media Index, built with <a href="https://wearethegoodnet.com/" target="_blank" rel="noopener noreferrer" className="text-teal-600 font-bold hover:underline">The GoodNet</a>.
+            India's first ESG Media Index, built with <a href="https://wearethegoodnet.com/" target="_blank" rel="noopener noreferrer" className="text-[#6B92E5] font-bold hover:underline">The GoodNet</a>.
           </p>
         </ScrollReveal>
         <ScrollReveal delay={450}>
@@ -2174,11 +2174,11 @@ const EsgMediaIndexView = ({ navigateTo }) => {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={200}>
-            <div className="soft-card p-6 h-full bg-green-50/40">
-              <p className="text-[10px] uppercase tracking-widest font-bold text-green-700 mb-3">What tends to follow</p>
+            <div className="soft-card p-6 h-full bg-gray-50/40">
+              <p className="text-[10px] uppercase tracking-widest font-bold text-gray-500 mb-3">What tends to follow</p>
               <ul className="space-y-2 text-sm text-gray-700">
                 {["Higher viewability and completion rates", "Lower cost per click and per acquisition", "Meaningfully lower carbon per impression", "Placements you'd be comfortable showing a client"].map((t, i) => (
-                  <li key={i} className="flex gap-2"><Check size={14} className="text-green-600 shrink-0 mt-1" />{t}</li>
+                  <li key={i} className="flex gap-2"><Check size={14} className="text-gray-400 shrink-0 mt-1" />{t}</li>
                 ))}
               </ul>
             </div>
@@ -2199,7 +2199,7 @@ const EsgMediaIndexView = ({ navigateTo }) => {
           {INDEX_PILLARS.map((p, i) => (
             <ScrollReveal key={p.name} delay={i * 120}>
               <div className="soft-card p-6 h-full">
-                <p.icon className="text-green-600 mb-3" size={24} />
+                <p.icon className="text-gray-400 mb-3" size={24} />
                 <h3 className="font-bold text-gray-900 text-lg mb-2">{p.name}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{p.copy}</p>
               </div>
@@ -2278,7 +2278,7 @@ const EsgMediaIndexView = ({ navigateTo }) => {
               onNavigate={() => navigateTo('contact')}
               className="no-underline shrink-0"
             >
-              <span className="soft-card inline-flex items-center gap-3 px-8 py-4 font-bold text-gray-900 hover:text-teal-600 transition-colors cursor-pointer">
+              <span className="soft-card inline-flex items-center gap-3 px-8 py-4 font-bold text-gray-900 hover:text-[#6B92E5] transition-colors cursor-pointer">
                 Talk to us
                 <ArrowRight size={18} />
               </span>
@@ -2313,13 +2313,13 @@ const GreenwashingView = ({ navigateTo }) => {
      <div className="w-full">
             {/* SECTION 1: HERO */}
             <section id="gw-home" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-gradient-to-bl from-green-300/30 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-gradient-to-bl from-gray-300/30 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
                 
                 <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="z-10 order-2 lg:order-1 pt-10 md:pt-0">
                     <ScrollReveal>
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/50 rounded-full mb-8 backdrop-blur-sm border border-white/50 shadow-sm">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
                         <span className="text-xs font-bold tracking-widest uppercase text-gray-600">Strategic Briefing for Marketers</span>
                         </div>
                     </ScrollReveal>
@@ -2328,7 +2328,7 @@ const GreenwashingView = ({ navigateTo }) => {
                         <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black text-gray-900 leading-[0.9] tracking-tighter mb-8">
                         Green <br/>
                         Is The <br/>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">New Lie.</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-400">New Lie.</span>
                         </h1>
                     </ScrollReveal>
                     
@@ -2355,7 +2355,7 @@ const GreenwashingView = ({ navigateTo }) => {
                 <div className="order-1 lg:order-2 flex justify-center lg:justify-end relative h-[300px] lg:h-auto">
                     <div className="relative w-full h-full flex items-center justify-center">
                         <div className="absolute top-1/2 left-1/2 -translate-x-3/4 -translate-y-1/2 w-48 h-48 md:w-80 md:h-80 bg-[#F6F6F2] rounded-full shadow-[inset_-10px_-10px_30px_#FFFFFF,inset_10px_10px_30px_#D8D8D040] flex items-center justify-center z-10"><span className="text-gray-400 font-bold text-lg md:text-xl">Perception</span></div>
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/2 w-48 h-48 md:w-80 md:h-80 bg-green-500 rounded-full shadow-2xl flex items-center justify-center opacity-90 z-20 mix-blend-multiply transition-all duration-1000 hover:translate-x-[-30%] cursor-pointer"><span className="text-white font-bold text-lg md:text-xl">Reality</span></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/2 w-48 h-48 md:w-80 md:h-80 bg-gray-400 rounded-full shadow-2xl flex items-center justify-center opacity-90 z-20 mix-blend-multiply transition-all duration-1000 hover:translate-x-[-30%] cursor-pointer"><span className="text-white font-bold text-lg md:text-xl">Reality</span></div>
                     </div>
                 </div>
                 </div>
@@ -2367,7 +2367,7 @@ const GreenwashingView = ({ navigateTo }) => {
                     <div className="mb-12">
                         <ScrollReveal>
                             <h2 className="text-4xl md:text-5xl font-bold mb-6">The Central Challenge</h2>
-                            <div className="w-20 h-2 bg-green-500 rounded-full mb-8"></div>
+                            <div className="w-20 h-2 bg-gray-400 rounded-full mb-8"></div>
                             <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mb-8">
                                 The result is a <span className="font-bold text-gray-800">'Sustainability Gap'</span>—or as <span className="font-bold text-gray-900">Brand Finance</span> defines it, the <span className="font-bold text-gray-900">Sustainability Perceptions Gap (SPG)</span>.
                             </p>
@@ -2379,7 +2379,7 @@ const GreenwashingView = ({ navigateTo }) => {
                         <ScrollReveal delay={200}>
                             <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-lg border border-gray-100 h-full">
                                 <div className="flex items-center gap-3 mb-6">
-                                    <Search className="text-green-600" size={28} />
+                                    <Search className="text-gray-400" size={28} />
                                     <h3 className="text-2xl font-bold text-gray-800">The Verification Gap</h3>
                                 </div>
                                 <p className="text-sm text-gray-500 mb-6">
@@ -2408,7 +2408,7 @@ const GreenwashingView = ({ navigateTo }) => {
                                 <SoftCard className="flex-1 flex flex-col justify-center">
                                     <div className="flex justify-between items-center mb-4">
                                         <h3 className="text-xl font-bold">SPV</h3>
-                                        <span className="text-green-600 font-bold text-[10px] bg-green-100 px-2 py-1 rounded-full uppercase">Brand Finance Metric</span>
+                                        <span className="text-gray-400 font-bold text-[10px] bg-gray-100 px-2 py-1 rounded-full uppercase">Brand Finance Metric</span>
                                     </div>
                                     <h4 className="font-bold text-gray-800 mb-2">Sustainability Perceptions Value</h4>
                                     <p className="text-gray-500 text-sm mb-3">
@@ -2577,7 +2577,7 @@ const GreenwashingView = ({ navigateTo }) => {
                 </div>
             </section>
 
-             <section id="gw-sins" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 bg-green-50/50 overflow-x-hidden">
+             <section id="gw-sins" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 bg-gray-50/50 overflow-x-hidden">
                 <div className="max-w-6xl mx-auto w-full">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
                         <div>
@@ -2634,17 +2634,17 @@ const GreenwashingView = ({ navigateTo }) => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                         <div className="bg-white rounded-[2rem] p-8 border border-gray-200 shadow-sm hover:shadow-md transition-all">
                             <div className="flex items-center gap-3 mb-6">
-                                <Scale className="text-green-600" size={32} />
+                                <Scale className="text-gray-400" size={32} />
                                 <h3 className="text-2xl font-bold">CCPA Guidelines (2024)</h3>
                             </div>
                             
                             <ul className="space-y-4 text-sm text-gray-700">
                                 <li className="flex items-start gap-3">
-                                    <span className="mt-1 w-2 h-2 bg-green-500 rounded-full shrink-0"></span>
+                                    <span className="mt-1 w-2 h-2 bg-gray-400 rounded-full shrink-0"></span>
                                     <strong>Legal Definition:</strong> Greenwashing is now classified as a "misleading practice".
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="mt-1 w-2 h-2 bg-green-500 rounded-full shrink-0"></span>
+                                    <span className="mt-1 w-2 h-2 bg-gray-400 rounded-full shrink-0"></span>
                                     <strong>Liability:</strong> Extends to the brand, the ad agency, and the endorser.
                                 </li>
                                 <li className="bg-red-50 p-3 rounded-lg border border-red-100 mt-2">
@@ -2708,7 +2708,7 @@ const GreenwashingView = ({ navigateTo }) => {
              <section id="gw-playbook" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 bg-black text-white rounded-t-[3rem] mt-10">
                 <div className="max-w-5xl mx-auto w-full py-10">
                     <div className="text-center mb-16">
-                        <div className="inline-block px-4 py-1 rounded-full border border-green-500/50 text-green-400 text-xs font-bold uppercase tracking-widest mb-4">
+                        <div className="inline-block px-4 py-1 rounded-full border border-[#ACBBF6]/50 text-[#ACBBF6] text-xs font-bold uppercase tracking-widest mb-4">
                             Action Plan
                         </div>
                         <h2 className="text-4xl md:text-6xl font-bold mb-4">The Playbook</h2>
@@ -2719,7 +2719,7 @@ const GreenwashingView = ({ navigateTo }) => {
                         <div>
                             <div className="mb-12">
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-8 h-8 rounded-full bg-green-500 text-black flex items-center justify-center font-bold">1</div>
+                                    <div className="w-8 h-8 rounded-full bg-[#6B92E5] text-white flex items-center justify-center font-bold">1</div>
                                     <h3 className="text-2xl font-bold">Set the Tone & Policy</h3>
                                 </div>
                                 <p className="text-gray-400 leading-relaxed pl-12">
@@ -2729,7 +2729,7 @@ const GreenwashingView = ({ navigateTo }) => {
 
                             <div className="mb-12">
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-8 h-8 rounded-full bg-green-500 text-black flex items-center justify-center font-bold">2</div>
+                                    <div className="w-8 h-8 rounded-full bg-[#6B92E5] text-white flex items-center justify-center font-bold">2</div>
                                     <h3 className="text-2xl font-bold">Champion Alignment</h3>
                                 </div>
                                 <p className="text-gray-400 leading-relaxed pl-12">
@@ -2741,7 +2741,7 @@ const GreenwashingView = ({ navigateTo }) => {
                         <div>
                             <div className="mb-12">
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-8 h-8 rounded-full bg-green-500 text-black flex items-center justify-center font-bold">3</div>
+                                    <div className="w-8 h-8 rounded-full bg-[#6B92E5] text-white flex items-center justify-center font-bold">3</div>
                                     <h3 className="text-2xl font-bold">Lead with Transparency</h3>
                                 </div>
                                 <p className="text-gray-400 leading-relaxed pl-12">
@@ -2751,7 +2751,7 @@ const GreenwashingView = ({ navigateTo }) => {
 
                             <div className="mb-12">
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-8 h-8 rounded-full bg-green-500 text-black flex items-center justify-center font-bold">4</div>
+                                    <div className="w-8 h-8 rounded-full bg-[#6B92E5] text-white flex items-center justify-center font-bold">4</div>
                                     <h3 className="text-2xl font-bold">Integrate to Core Strategy</h3>
                                 </div>
                                 <p className="text-gray-400 leading-relaxed pl-12">
@@ -2762,13 +2762,13 @@ const GreenwashingView = ({ navigateTo }) => {
                     </div>
 
                     <div className="mt-12 p-8 md:p-16 bg-white/5 rounded-[3rem] backdrop-blur-md border border-white/10 text-center relative overflow-hidden group">
-                        <div className="absolute inset-0 bg-green-500/10 blur-3xl rounded-full transform scale-0 group-hover:scale-150 transition-transform duration-1000"></div>
+                        <div className="absolute inset-0 bg-[#6B92E5]/10 blur-3xl rounded-full transform scale-0 group-hover:scale-150 transition-transform duration-1000"></div>
                         
                         <h4 className="text-3xl md:text-5xl font-black mb-6 relative z-10">"Honesty is the new green."</h4>
                         <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg relative z-10 leading-relaxed">
                             If you've been silent, start talking. If you've overstated, course-correct. Authenticity is your greatest competitive advantage.
                         </p>
-                        <button onClick={() => navigateTo('sense')} className="relative z-10 bg-green-500 hover:bg-green-400 text-black px-12 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(74,222,128,0.4)]">
+                        <button onClick={() => navigateTo('sense')} className="relative z-10 bg-[#6B92E5] hover:bg-[#4F76C9] text-white px-12 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(74,222,128,0.4)]">
                             Start The Journey
                         </button>
                     </div>
@@ -2790,7 +2790,7 @@ const GreenwashingView = ({ navigateTo }) => {
                             <div className="mt-8 pt-8 border-t border-gray-300/30 flex justify-center items-center gap-2 opacity-40 hover:opacity-100 transition-opacity">
                                 <span>Sense App Design</span>
                                 <span>•</span>
-                                <span className="cursor-pointer hover:text-green-600" onClick={() => window.open('https://www.hooop.in/g', '_blank')}>HOOOP</span>
+                                <span className="cursor-pointer hover:text-[#6B92E5]" onClick={() => window.open('https://www.hooop.in/g', '_blank')}>HOOOP</span>
                             </div>
                         </div>
                     </footer>
@@ -3096,7 +3096,7 @@ const App = React.forwardRef((props, ref) => {
           </div>
           <div className="lg:hidden bg-[#F6F6F2]/95 backdrop-blur-md border-b border-white/20 overflow-x-auto flex items-center gap-6 px-6 py-3 no-scrollbar shadow-inner">
              {navItems.filter(item => !item.hidden).map(item => (
-                 <AppLink key={item.id} href={pathForSection(item.id)} onNavigate={() => navigateTo(item.id)} className={`whitespace-nowrap text-[10px] font-bold uppercase tracking-widest flex-shrink-0 transition-colors no-underline ${activeSection === item.id ? 'text-teal-600' : 'text-gray-500'}`}>{item.label}</AppLink>
+                 <AppLink key={item.id} href={pathForSection(item.id)} onNavigate={() => navigateTo(item.id)} className={`whitespace-nowrap text-[10px] font-bold uppercase tracking-widest flex-shrink-0 transition-colors no-underline ${activeSection === item.id ? 'text-[#6B92E5]' : 'text-gray-500'}`}>{item.label}</AppLink>
              ))}
           </div>
       </div>
@@ -3172,7 +3172,7 @@ const App = React.forwardRef((props, ref) => {
       away in the nav. */}
   <AppLink href={pathForSection('contact')} onNavigate={() => navigateTo('contact')} className="no-underline">
   <SoftCard
-    className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-teal-600 hover:scale-[1.02]"
+    className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-[#6B92E5] hover:scale-[1.02]"
   >
     <span>Start a conversation</span>
     <Mail size={18} className="group-hover:scale-110 transition-transform"/>
@@ -3216,7 +3216,7 @@ const App = React.forwardRef((props, ref) => {
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-gray-600 transition-colors">
                   The problem
                 </span>
-                <span className="w-10 h-10 rounded-full bg-[#F6F6F2] shadow-[4px_4px_9px_#e6e6e0,-4px_-4px_9px_#ffffff] flex items-center justify-center text-gray-400 group-hover:text-teal-600 transition-colors animate-nudge">
+                <span className="w-10 h-10 rounded-full bg-[#F6F6F2] shadow-[4px_4px_9px_#e6e6e0,-4px_-4px_9px_#ffffff] flex items-center justify-center text-gray-400 group-hover:text-[#6B92E5] transition-colors animate-nudge">
                   <ChevronDown size={18} />
                 </span>
               </button>
@@ -3264,7 +3264,7 @@ const App = React.forwardRef((props, ref) => {
                     <AppLink
                       href={pathForSection('research')}
                       onNavigate={() => navigateTo('research')}
-                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-teal-600 transition-colors no-underline"
+                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-[#6B92E5] transition-colors no-underline"
                     >
                       {SITE_CONTENT.researchProof.linkLabel}
                       <ArrowRight size={16} />
@@ -3332,7 +3332,7 @@ const App = React.forwardRef((props, ref) => {
                             type="button"
                             onClick={() => setOpenPractices(p => open ? p.filter(x => x !== idx) : [...p, idx])}
                             aria-expanded={open}
-                            className="mt-auto pt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-gray-400 hover:text-teal-600 transition-colors focus:outline-none self-start"
+                            className="mt-auto pt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-gray-400 hover:text-[#6B92E5] transition-colors focus:outline-none self-start"
                           >
                             {open ? 'Show less' : 'Read more'}
                             <ChevronDown size={13} className={`transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
@@ -3345,7 +3345,7 @@ const App = React.forwardRef((props, ref) => {
                     <AppLink
                       href={pathForSection('offerings')}
                       onNavigate={() => navigateTo('offerings')}
-                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-teal-600 transition-colors no-underline"
+                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-[#6B92E5] transition-colors no-underline"
                     >
                       See all four in detail
                       <ArrowRight size={16} />
@@ -3365,7 +3365,7 @@ const App = React.forwardRef((props, ref) => {
                     {SITE_CONTENT.homeExtras.partners.map((partner, idx) => (
                       <a key={idx} href={partner.url} target="_blank" rel="noopener noreferrer"
                          className="group rounded-2xl bg-white/50 border border-white/70 px-6 py-6 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                        <span className="font-bold text-gray-500 group-hover:text-teal-600 transition-colors tracking-wide">
+                        <span className="font-bold text-gray-500 group-hover:text-[#6B92E5] transition-colors tracking-wide">
                           {partner.name}
                         </span>
                       </a>
@@ -3385,9 +3385,9 @@ const App = React.forwardRef((props, ref) => {
                     {SITE_CONTENT.homeExtras.featured.map((feature, idx) => (
                       <a key={idx} href={feature.url} target="_blank" rel="noopener noreferrer"
                          title={feature.headline || feature.name}
-                         className="group inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#F6F6F2] shadow-[4px_4px_9px_#e6e6e0,-4px_-4px_9px_#ffffff] text-xs font-bold text-gray-500 hover:text-teal-600 transition-colors no-underline">
+                         className="group inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#F6F6F2] shadow-[4px_4px_9px_#e6e6e0,-4px_-4px_9px_#ffffff] text-xs font-bold text-gray-500 hover:text-[#6B92E5] transition-colors no-underline">
                         {feature.name}
-                        <ExternalLink size={12} className="text-gray-300 group-hover:text-teal-500 shrink-0 transition-colors" />
+                        <ExternalLink size={12} className="text-gray-300 group-hover:text-[#6B92E5] shrink-0 transition-colors" />
                       </a>
                     ))}
                   </div>
@@ -3421,12 +3421,12 @@ const App = React.forwardRef((props, ref) => {
                         It's time for us to now drive positive human behaviour.
                     </p>
                     <p>
-                        At <span className="text-teal-600 font-bold">HOOOP</span>, we are focused on partnering with businesses that push the world forward, even as we help you outpace the market.
+                        At <span className="text-[#6B92E5] font-bold">HOOOP</span>, we are focused on partnering with businesses that push the world forward, even as we help you outpace the market.
                     </p>
                     <p>
                         A new generation of consumers has emerged that follows its conscience as it spends, but also does not sacrifice its material wants.
                     </p>
-                    <div className="pl-6 border-l-4 border-teal-400 italic text-gray-800">
+                    <div className="pl-6 border-l-4 border-[#ACBBF6] italic text-gray-800">
                         It is at this intersection that the greatest opportunities lie.
                         <br/><br/>
                         This is a time of conscious choices.
@@ -3453,23 +3453,23 @@ const App = React.forwardRef((props, ref) => {
 
                         <div className="mb-20">
                             <div className="bg-gray-900 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-xl group cursor-pointer" onClick={() => { setShowSenseTool(true); navigateTo('sense'); }}>
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-green-500 to-transparent opacity-20 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-gray-400 to-transparent opacity-20 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
                                 <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
                                     <div>
                                         <div className="flex items-center gap-2 mb-4">
-                                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                                            <span className="text-xs font-bold tracking-widest uppercase text-green-400">Featured Intelligence</span>
+                                            <div className="w-2 h-2 bg-[#ACBBF6] rounded-full animate-pulse"></div>
+                                            <span className="text-xs font-bold tracking-widest uppercase text-[#ACBBF6]">Featured Intelligence</span>
                                         </div>
                                         <h3 className="text-3xl font-bold mb-3">{SITE_CONTENT.thinking.featuredTool.title}</h3>
                                         <p className="text-gray-400 max-w-md text-sm leading-relaxed mb-6">
                                             {SITE_CONTENT.thinking.featuredTool.desc}
                                         </p>
-                                        <span className="inline-flex items-center gap-2 text-sm font-bold border-b border-green-500 pb-1 hover:text-green-400 transition-colors">
+                                        <span className="inline-flex items-center gap-2 text-sm font-bold border-b border-gray-300 pb-1 hover:text-[#C9D6FA] transition-colors">
                                             {SITE_CONTENT.thinking.featuredTool.cta} <ArrowRight size={16} />
                                         </span>
                                     </div>
                                     <div className="bg-white/10 p-4 rounded-2xl border border-white/10 backdrop-blur-sm">
-                                        <ScanLine size={48} className="text-green-400" />
+                                        <ScanLine size={48} className="text-[#ACBBF6]" />
                                     </div>
                                 </div>
                             </div>
@@ -3480,16 +3480,16 @@ const App = React.forwardRef((props, ref) => {
                                 <AppLink key={index} href={`/thinking/${post.slug}`} onNavigate={() => openBlogPost(post)} className="group cursor-pointer block no-underline text-inherit">
                                   <article>
                                     <div className="flex flex-col md:flex-row gap-2 md:items-baseline justify-between mb-2">
-                                        <span className="text-xs font-bold tracking-widest uppercase text-teal-600">{post.category}</span>
+                                        <span className="text-xs font-bold tracking-widest uppercase text-[#6B92E5]">{post.category}</span>
                                         <span className="text-xs text-gray-400 font-mono">{post.date}</span>
                                     </div>
-                                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors duration-300">
+                                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-[#6B92E5] transition-colors duration-300">
                                         {post.title}
                                     </h2>
                                     <p className="text-gray-500 leading-relaxed max-w-2xl text-lg">
                                         {post.desc}
                                     </p>
-                                    <div className="mt-4 flex items-center gap-2 text-sm font-bold text-gray-400 group-hover:text-teal-600 transition-colors">
+                                    <div className="mt-4 flex items-center gap-2 text-sm font-bold text-gray-400 group-hover:text-[#6B92E5] transition-colors">
                                         Read Article <ArrowRight size={14} />
                                     </div>
                                   </article>
@@ -3572,19 +3572,19 @@ const App = React.forwardRef((props, ref) => {
 
                     <div className="relative mb-20">
                       {/* connector: horizontal on desktop, vertical on mobile */}
-                      <div className="hidden md:block absolute left-0 right-0 top-7 h-[2px] bg-gradient-to-r from-teal-200 via-teal-300 to-teal-200" />
-                      <div className="md:hidden absolute left-7 top-0 bottom-0 w-[2px] bg-gradient-to-b from-teal-200 via-teal-300 to-teal-200" />
+                      <div className="hidden md:block absolute left-0 right-0 top-7 h-[2px] bg-gradient-to-r from-[#C9D6FA] via-[#ACBBF6] to-[#C9D6FA]" />
+                      <div className="md:hidden absolute left-7 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#C9D6FA] via-[#ACBBF6] to-[#C9D6FA]" />
 
                       <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-5 relative">
                         {SITE_CONTENT.prvaah.stages.map((stage, idx) => {
                           const Icon = getIconComponent(stage.icon);
                           return (
                             <div key={idx} className="flex md:flex-col gap-5 md:gap-0 items-start group">
-                              <div className="w-14 h-14 rounded-full bg-[#E4E8EF] border-2 border-white shadow-[4px_4px_10px_rgba(163,177,198,0.5),-4px_-4px_10px_rgba(255,255,255,0.8)] flex items-center justify-center shrink-0 text-teal-600 group-hover:scale-110 transition-transform duration-300 relative z-10">
+                              <div className="w-14 h-14 rounded-full bg-[#E4E8EF] border-2 border-white shadow-[4px_4px_10px_rgba(163,177,198,0.5),-4px_-4px_10px_rgba(255,255,255,0.8)] flex items-center justify-center shrink-0 text-[#6B92E5] group-hover:scale-110 transition-transform duration-300 relative z-10">
                                 <Icon size={22} />
                               </div>
                               <div className="md:mt-6">
-                                <p className="text-[10px] font-bold uppercase tracking-widest text-teal-600/70 mb-1">Step {idx + 1}</p>
+                                <p className="text-[10px] font-bold uppercase tracking-widest text-[#6B92E5]/70 mb-1">Step {idx + 1}</p>
                                 <h3 className="text-lg font-bold text-[#313b4e] leading-tight">{stage.label}</h3>
                                 <p className="text-xs font-bold text-gray-500 mt-1">{stage.short}</p>
                                 <p className="text-xs text-gray-500 leading-relaxed mt-2">{stage.desc}</p>
@@ -3597,7 +3597,7 @@ const App = React.forwardRef((props, ref) => {
 
                     {/* CIRCULARITY — a service, not a stage */}
                     <SoftCard className="p-8 md:p-10 mb-20 flex flex-col md:flex-row gap-8 items-start">
-                      <div className="w-14 h-14 rounded-2xl bg-[#F6F6F2] shadow-[inset_4px_4px_8px_#e3e3dd,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center shrink-0 text-teal-600">
+                      <div className="w-14 h-14 rounded-2xl bg-[#F6F6F2] shadow-[inset_4px_4px_8px_#e3e3dd,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center shrink-0 text-[#6B92E5]">
                         {(() => { const I = getIconComponent(SITE_CONTENT.prvaah.circularity.icon); return <I size={26} />; })()}
                       </div>
                       <div>
@@ -3663,7 +3663,7 @@ const App = React.forwardRef((props, ref) => {
                                         <div className="p-3 rounded-2xl bg-[#F6F6F2] shadow-[inset_3px_3px_6px_#e3e3dd,inset_-3px_-3px_6px_#ffffff]">
                                             <Icon size={24} className="text-gray-600" />
                                         </div>
-                                        <span className="text-xs font-bold uppercase tracking-widest text-teal-600 bg-teal-50 px-3 py-1 rounded-full">{item.category}</span>
+                                        <span className="text-xs font-bold uppercase tracking-widest text-[#6B92E5] bg-[#EEF2FD] px-3 py-1 rounded-full">{item.category}</span>
                                     </div>
                                     <h2 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h2>
                                     <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
@@ -3674,7 +3674,7 @@ const App = React.forwardRef((props, ref) => {
                                     asks for the report by name. */}
                                 <a
                                   href={`mailto:hello@hooop.in?subject=${encodeURIComponent('Report request: ' + item.title)}&body=${encodeURIComponent('Please could you send me ' + item.title + '.\n\nName:\nCompany:\n')}`}
-                                  className="mt-6 pt-6 border-t border-gray-200/50 flex items-center justify-between text-gray-400 group-hover:text-teal-600 transition-colors no-underline"
+                                  className="mt-6 pt-6 border-t border-gray-200/50 flex items-center justify-between text-gray-400 group-hover:text-[#6B92E5] transition-colors no-underline"
                                 >
                                     <span className="text-xs font-bold uppercase tracking-widest">Request the report</span>
                                     <Mail size={18} />
@@ -3712,7 +3712,7 @@ const App = React.forwardRef((props, ref) => {
                         return (
                           <SoftCard key={idx} className="p-7 flex flex-col group hover:-translate-y-1 transition-transform duration-300">
                             <div className="w-12 h-12 rounded-full bg-[#F6F6F2] shadow-[inset_4px_4px_8px_#e3e3dd,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center mb-5">
-                              <Icon size={20} className="text-gray-400 group-hover:text-teal-600 transition-colors" />
+                              <Icon size={20} className="text-gray-400 group-hover:text-[#6B92E5] transition-colors" />
                             </div>
                             {/* The desc paragraph is gone. It restated the headline at
                                 three times the length on all three cards. */}
@@ -3765,7 +3765,7 @@ const App = React.forwardRef((props, ref) => {
                             <AppLink
                               href={pathForSection(card.linkTo)}
                               onNavigate={() => navigateTo(card.linkTo)}
-                              className="mt-auto self-start inline-flex items-center gap-2 text-sm font-bold text-teal-600 hover:text-teal-800 transition-colors no-underline"
+                              className="mt-auto self-start inline-flex items-center gap-2 text-sm font-bold text-[#6B92E5] hover:text-[#4F76C9] transition-colors no-underline"
                             >
                               {card.linkLabel} <ArrowRight size={15} />
                             </AppLink>
@@ -3805,7 +3805,7 @@ const App = React.forwardRef((props, ref) => {
                                  break the row's shared baseline. */}
                              <div className="h-5 mb-2">
                                {member.years && (
-                                 <p className="text-teal-600 font-black text-sm leading-none">
+                                 <p className="text-[#6B92E5] font-black text-sm leading-none">
                                    {member.years}
                                    <span className="text-gray-400 font-bold text-[9px] uppercase tracking-widest ml-1">Years</span>
                                  </p>
@@ -3827,10 +3827,10 @@ const App = React.forwardRef((props, ref) => {
                                    Communications". Two uppercase runs stacked read as one
                                    grey block; the pills had been doing that separating work.
                                    Sentence case restores the contrast without the chrome. */}
-                               <p className="text-center text-[11px] font-semibold text-teal-700 leading-[1.6] m-0 px-1">
+                               <p className="text-center text-[11px] font-semibold text-[#4F76C9] leading-[1.6] m-0 px-1">
                                  {(member.expertise || []).map((area, i) => (
                                    <React.Fragment key={area}>
-                                     {i > 0 && <span className="text-teal-600/35 mx-1.5">&middot;</span>}
+                                     {i > 0 && <span className="text-[#6B92E5]/35 mx-1.5">&middot;</span>}
                                      {area}
                                    </React.Fragment>
                                  ))}
@@ -3853,7 +3853,7 @@ const App = React.forwardRef((props, ref) => {
                 </div>
                 <div className="mt-16 text-center">
                     <p className="text-gray-600 text-lg">
-                        If our purpose resonates with you, write to us at <a href="mailto:hello@hooop.in" className="text-teal-600 font-bold hover:underline">hello@hooop.in</a> to join the collective.
+                        If our purpose resonates with you, write to us at <a href="mailto:hello@hooop.in" className="text-[#6B92E5] font-bold hover:underline">hello@hooop.in</a> to join the collective.
                     </p>
                 </div>
              </section>
@@ -3874,7 +3874,7 @@ const App = React.forwardRef((props, ref) => {
                         <p className="text-xl md:text-2xl text-gray-600 font-medium mb-8 leading-relaxed">
                            We are always open for a good conversation.
                         </p>
-                        <a href="mailto:hello@hooop.in" className="inline-flex items-center gap-3 text-3xl md:text-5xl font-black text-teal-600 hover:text-teal-500 transition-colors tracking-tight border-b-4 border-transparent hover:border-teal-200">
+                        <a href="mailto:hello@hooop.in" className="inline-flex items-center gap-3 text-3xl md:text-5xl font-black text-[#6B92E5] hover:text-[#6B92E5] transition-colors tracking-tight border-b-4 border-transparent hover:border-[#C9D6FA]">
                            hello@hooop.in
                         </a>
                     </div>
@@ -3900,7 +3900,7 @@ const App = React.forwardRef((props, ref) => {
                 Same words, as Arvind instructed, at a size they can carry. */}
             <p className="text-lg sm:text-xl font-bold text-[#313b4e] tracking-tight px-6 max-w-2xl mx-auto leading-snug">
                 We are always open for a good conversation, write to us at{" "}
-                <a href="mailto:hello@hooop.in" className="text-teal-600 hover:text-teal-800 transition-colors">hello@hooop.in</a>
+                <a href="mailto:hello@hooop.in" className="text-[#6B92E5] hover:text-[#4F76C9] transition-colors">hello@hooop.in</a>
             </p>
             {/* Not on /contact itself, where the button would point at the page
                 the reader is already on. */}
@@ -3935,7 +3935,7 @@ const App = React.forwardRef((props, ref) => {
                 <AppLink
                     href={pathForSection('privacy')}
                     onNavigate={() => navigateTo('privacy')}
-                    className="text-gray-400/80 text-[10px] uppercase tracking-widest font-bold hover:text-teal-600 transition-colors no-underline"
+                    className="text-gray-400/80 text-[10px] uppercase tracking-widest font-bold hover:text-[#6B92E5] transition-colors no-underline"
                 >
                     Privacy
                 </AppLink>
