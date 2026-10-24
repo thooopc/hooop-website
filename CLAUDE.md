@@ -328,8 +328,24 @@ green and looked fine in logs.
    reading the accessibility tree, `getComputedStyle` on a non-animated ancestor,
    or the served HTML — not by screenshot.
 
+6. **A constant used by `SITE_CONTENT` must be declared above it.** Design tokens
+   were added next to `SoftCard`, about 1,100 lines below `SITE_CONTENT`, which
+   referenced them. Module evaluation hit the temporal dead zone — *"Cannot
+   access 'CHIP_SKY' before initialization"* — the SSR bundle would not load,
+   and **every route deployed as 4.5 KB of head with an empty `<div id="root">`
+   while Vercel reported READY.** `SITE_CONTENT` is evaluated at import time, so
+   anything it names has to exist by then. Put tokens above it.
+
+   The fallback that allowed this is now gone: `scripts/prerender.mjs` exits 1
+   rather than emitting head-only pages, so the deployment fails and the
+   previous good one keeps serving. **Do not soften that back to a warning.**
+   Head-only has shipped twice and looked healthy both times.
+
 The health check caught #2 where the build did not. That is what it is for —
 **run `python3 scripts/health-check.py` after every production merge.**
+
+A deployment reporting READY proves nothing about the body. Check the byte
+count: a real page is 18 KB to 66 KB, a head-only page is about 4.5 KB.
 
 A 200 from this site never proves a file exists: the SPA catch-all rewrite
 serves `index.html` for every unmatched path, so `/anything.json` returns 200
