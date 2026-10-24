@@ -1158,6 +1158,22 @@ const AppLink = ({ href, onNavigate, className = "", children, ...rest }) => (
   </a>
 );
 
+// One accent, two weights, chosen by how much canvas the mark covers.
+//
+// ACCENT_WASH is the periwinkle measured off the HOOOP x The GoodNet card, used
+// where the colour covers real area: the highlighter band behind a figure.
+// ACCENT_SOLID is its saturated sibling, for marks small enough to take full
+// strength. The Microsoft Build poster and the neumorphic style guide Arvind
+// sent both work this way: the chips are saturated, and they read as subtle
+// because they occupy a few per cent of the canvas, not because they are pale.
+//
+// CHIP_SHADOW makes the mark an object rather than a sticker. Flat colour on a
+// neumorphic ground is a category error, and this site has been neumorphic from
+// the start: 23 shadow declarations and 27 insets before any of this work.
+const ACCENT_WASH = "#ACBBF6";
+const ACCENT_SOLID = "#6B92E5";
+const CHIP_SHADOW = "5px 5px 11px rgba(150,158,178,0.45), -4px -4px 9px rgba(255,255,255,0.9)";
+
 const SoftCard = ({ children, className = "", onClick, hoverEffect = true, id = "" }) => (
   <div id={id} onClick={onClick} className={`bg-[#F6F6F2] rounded-[30px] shadow-[9px_9px_16px_rgb(214,214,206,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] ${hoverEffect ? 'hover:shadow-[inset_9px_9px_16px_rgb(214,214,206,0.6),inset_-9px_-9px_16px_rgba(255,255,255,0.5)] cursor-pointer' : ''} transition-all duration-300 ease-in-out ${className}`}>
     {children}
@@ -3234,7 +3250,7 @@ const App = React.forwardRef((props, ref) => {
                             That mechanic is the Creative Playbook's own. */}
                         <span
                           className="self-start text-3xl lg:text-4xl font-black leading-none text-[#313b4e] px-1 -mx-1"
-                          style={{ background: `linear-gradient(180deg, transparent 58%, ${s.accent} 58%)` }}
+                          style={{ background: `linear-gradient(180deg, transparent 58%, ${ACCENT_WASH} 58%)` }}
                         >{s.figure}</span>
                         <span className="text-sm text-gray-500 leading-relaxed">{s.line}</span>
                       </SoftCard>
@@ -3296,7 +3312,7 @@ const App = React.forwardRef((props, ref) => {
                               the accessibility tree: the name below carries the
                               meaning, and nothing here is conveyed by colour
                               alone. */}
-                          <span aria-hidden="true" className="block w-10 h-[4px] rounded-full" style={{ backgroundColor: practice.accent }}></span>
+                          <span aria-hidden="true" className="block w-9 h-9 rounded-2xl" style={{ backgroundColor: ACCENT_SOLID, boxShadow: CHIP_SHADOW }}></span>
                           <h3 className="text-xl lg:text-2xl font-black text-[#313b4e] leading-tight">{practice.title}</h3>
                           <p className="text-[15px] text-gray-500 leading-relaxed">{practice.outcome || practice.desc}</p>
 
@@ -3305,7 +3321,7 @@ const App = React.forwardRef((props, ref) => {
                             <ul className="space-y-1.5">
                               {(practice.items || []).map((it) => (
                                 <li key={it} className="text-sm text-gray-500 flex items-start gap-2">
-                                  <span className="mt-[2px] shrink-0" style={{ color: practice.accent }}>&middot;</span>
+                                  <span className="mt-[7px] shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: ACCENT_SOLID, boxShadow: "1.5px 1.5px 3px rgba(150,158,178,0.55), -1px -1px 2px rgba(255,255,255,0.9)" }}></span>
                                   <span>{it}</span>
                                 </li>
                               ))}
@@ -3722,7 +3738,7 @@ const App = React.forwardRef((props, ref) => {
                           <span
                             aria-hidden="true"
                             className="pointer-events-none absolute -top-4 right-2 text-[7rem] leading-none font-black select-none"
-                            style={{ color: card.accent, opacity: 0.45 }}
+                            style={{ color: ACCENT_WASH, opacity: 0.55 }}
                           >
                             {idx + 1}
                           </span>
@@ -3730,7 +3746,7 @@ const App = React.forwardRef((props, ref) => {
                           {/* Was teal on all four, so the rule read as a divider.
                               It is the practice's own colour now, the same one
                               its card carries on the homepage. */}
-                          <span className="block w-10 h-[4px] rounded-full mb-4" style={{ backgroundColor: card.accent }} />
+                          <span aria-hidden="true" className="block w-9 h-9 rounded-2xl mb-5" style={{ backgroundColor: ACCENT_SOLID, boxShadow: CHIP_SHADOW }} />
                           {/* First sentence only. The bullets below carry the
                               specifics; the rest of the paragraph restated them in
                               prose. Arvind's own words, just the opening clause. */}
@@ -3740,7 +3756,7 @@ const App = React.forwardRef((props, ref) => {
                           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 mb-6 relative">
                             {card.items.map((item, i) => (
                               <li key={i} className="flex gap-2.5 text-sm text-gray-600 leading-snug">
-                                <span className="w-1.5 h-1.5 rounded-full shrink-0 mt-[6px]" style={{ backgroundColor: card.accent }} />
+                                <span className="w-2 h-2 rounded-full shrink-0 mt-[5px]" style={{ backgroundColor: ACCENT_SOLID, boxShadow: "1.5px 1.5px 3px rgba(150,158,178,0.55), -1px -1px 2px rgba(255,255,255,0.9)" }} />
                                 {item}
                               </li>
                             ))}
