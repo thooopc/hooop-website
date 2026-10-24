@@ -48,9 +48,9 @@ const SITE_CONTENT = {
     stats: [
       // Three figures, three colours, drawn from the practice palette above.
       // All three were teal, which made them read as one number repeated.
-      { figure: "35%", accent: "#9B2C3F", line: "of sustainability claims reach the public with no independent check behind them" },
-      { figure: "70%", accent: "#2A7FA8", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
-      { figure: "#1", accent: "#6B5BA8", line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
+      { figure: "35%", accent: "#F2B4C2", line: "of sustainability claims reach the public with no independent check behind them" },
+      { figure: "70%", accent: "#A9D2E8", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
+      { figure: "#1", accent: "#C7BCEC", line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
     ],
     // ASCI removed 21 Oct 2026 on Arvind's instruction: "we are not involving
     // asci anymore". This was the only place ASCI was credited as a
@@ -537,7 +537,7 @@ const SITE_CONTENT = {
   offerings: [
     {
       title: "Marketing-Led Consulting",
-      accent: "#9B2C3F",
+      accent: "#F2B4C2",
       outcome: "Claims that survive scrutiny, and credit for work you already do.",
       desc: "Strategy and communication for businesses whose growth depends on being believed, not just heard. We connect business strategy, brand, and behaviour to turn credibility into commercial value.",
       items: [
@@ -552,7 +552,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Media Sustainability",
-      accent: "#2A7FA8",
+      accent: "#A9D2E8",
       outcome: "What your media spend costs in carbon and waste, and how to cut both.",
       desc: "Media planning that accounts for both campaign performance and environmental impact. We help businesses understand the footprint of their media investments and use that intelligence to make better decisions.",
       items: [
@@ -567,7 +567,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Policy, Advocacy & Stakeholder Engagement",
-      accent: "#6B5BA8",
+      accent: "#C7BCEC",
       outcome: "One account of the business that holds with regulators and investors.",
       desc: "Sustainability is shaped beyond the marketing function. We help businesses navigate policy, build stakeholder alignment, and engage the regulators, communities and institutions that influence their ability to grow.",
       items: [
@@ -579,7 +579,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Venture Growth & Market Access",
-      accent: "#B07C2E",
+      accent: "#F6CDA2",
       outcome: "A product that worked in a pilot, in front of buyers who can scale it.",
       desc: "For climate and circular ventures ready to move beyond the pilot. We help build the positioning, market strategy and commercial pathways needed to turn promising solutions into scalable businesses.",
       items: [
@@ -3226,7 +3226,16 @@ const App = React.forwardRef((props, ref) => {
                   <div className="flex sm:grid sm:grid-cols-3 gap-5 mb-8 overflow-x-auto sm:overflow-visible snap-x snap-mandatory items-start no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0">
                     {SITE_CONTENT.researchProof.stats.map((s) => (
                       <SoftCard key={s.figure} className="p-6 w-[72vw] sm:w-auto shrink-0 sm:shrink snap-start flex flex-col gap-2" hoverEffect={false}>
-                        <span className="text-3xl lg:text-4xl font-black leading-none" style={{ color: s.accent }}>{s.figure}</span>
+                        {/* The pastel sits behind the figure, not in it. As a
+                            text colour these shades come out at roughly 2:1
+                            against the card, under the 3:1 that large text
+                            needs, so the number stays dark ink and the colour
+                            becomes a highlighter band across its lower third.
+                            That mechanic is the Creative Playbook's own. */}
+                        <span
+                          className="self-start text-3xl lg:text-4xl font-black leading-none text-[#313b4e] px-1 -mx-1"
+                          style={{ background: `linear-gradient(180deg, transparent 58%, ${s.accent} 58%)` }}
+                        >{s.figure}</span>
                         <span className="text-sm text-gray-500 leading-relaxed">{s.line}</span>
                       </SoftCard>
                     ))}
@@ -3287,7 +3296,7 @@ const App = React.forwardRef((props, ref) => {
                               the accessibility tree: the name below carries the
                               meaning, and nothing here is conveyed by colour
                               alone. */}
-                          <span aria-hidden="true" className="block w-10 h-[3px] rounded-full" style={{ backgroundColor: practice.accent }}></span>
+                          <span aria-hidden="true" className="block w-10 h-[4px] rounded-full" style={{ backgroundColor: practice.accent }}></span>
                           <h3 className="text-xl lg:text-2xl font-black text-[#313b4e] leading-tight">{practice.title}</h3>
                           <p className="text-[15px] text-gray-500 leading-relaxed">{practice.outcome || practice.desc}</p>
 
@@ -3713,7 +3722,7 @@ const App = React.forwardRef((props, ref) => {
                           <span
                             aria-hidden="true"
                             className="pointer-events-none absolute -top-4 right-2 text-[7rem] leading-none font-black select-none"
-                            style={{ color: card.accent, opacity: 0.07 }}
+                            style={{ color: card.accent, opacity: 0.45 }}
                           >
                             {idx + 1}
                           </span>
@@ -3721,7 +3730,7 @@ const App = React.forwardRef((props, ref) => {
                           {/* Was teal on all four, so the rule read as a divider.
                               It is the practice's own colour now, the same one
                               its card carries on the homepage. */}
-                          <span className="block w-10 h-[3px] rounded-full mb-4" style={{ backgroundColor: card.accent }} />
+                          <span className="block w-10 h-[4px] rounded-full mb-4" style={{ backgroundColor: card.accent }} />
                           {/* First sentence only. The bullets below carry the
                               specifics; the rest of the paragraph restated them in
                               prose. Arvind's own words, just the opening clause. */}
@@ -3731,7 +3740,7 @@ const App = React.forwardRef((props, ref) => {
                           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 mb-6 relative">
                             {card.items.map((item, i) => (
                               <li key={i} className="flex gap-2.5 text-sm text-gray-600 leading-snug">
-                                <span className="w-1.5 h-1.5 rounded-full shrink-0 mt-[6px]" style={{ backgroundColor: card.accent, opacity: 0.75 }} />
+                                <span className="w-1.5 h-1.5 rounded-full shrink-0 mt-[6px]" style={{ backgroundColor: card.accent }} />
                                 {item}
                               </li>
                             ))}
