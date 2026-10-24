@@ -48,9 +48,9 @@ const SITE_CONTENT = {
     stats: [
       // Three figures, three colours, drawn from the practice palette above.
       // All three were teal, which made them read as one number repeated.
-      { figure: "35%", accent: "#ACBBF6", line: "of sustainability claims reach the public with no independent check behind them" },
-      { figure: "70%", accent: "#ACBBF6", line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
-      { figure: "#1", accent: "#ACBBF6", line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
+      { figure: "35%", accent: CHIP_SKY, line: "of sustainability claims reach the public with no independent check behind them" },
+      { figure: "70%", accent: CHIP_SALMON, line: "of companies with strong credentials stay quiet about them rather than risk the scrutiny" },
+      { figure: "#1", accent: CHIP_BUTTER, line: "barrier is missing data, not bad intent. Marketers are asked to prove what they cannot see" },
     ],
     // ASCI removed 21 Oct 2026 on Arvind's instruction: "we are not involving
     // asci anymore". This was the only place ASCI was credited as a
@@ -496,7 +496,7 @@ const SITE_CONTENT = {
     sanskritMeaning: "flow in Sanskrit",
     description1: (
       <span>
-        Created by <a href="https://www.everloop.agency/" target="_blank" rel="noreferrer" className="text-[#6B92E5] hover:underline font-bold">Everloop.Agency</a> and <a href="https://www.hooop.in" target="_blank" rel="noreferrer" className="text-[#6B92E5] hover:underline font-bold">HOOOP Collective</a>, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.
+        Created by <a href="https://www.everloop.agency/" target="_blank" rel="noreferrer" className="text-[#313b4e] hover:underline font-bold">Everloop.Agency</a> and <a href="https://www.hooop.in" target="_blank" rel="noreferrer" className="text-[#313b4e] hover:underline font-bold">HOOOP Collective</a>, Prvaah guides enterprises across India, EU, and the UK in ESG compliance and responsible expansion.
       </span>
     ),
     // The five stages are a sequence — the page is named "flow" — so they render
@@ -537,7 +537,7 @@ const SITE_CONTENT = {
   offerings: [
     {
       title: "Marketing-Led Consulting",
-      accent: "#ACBBF6",
+      accent: CHIP_MINT,
       outcome: "Claims that survive scrutiny, and credit for work you already do.",
       desc: "Strategy and communication for businesses whose growth depends on being believed, not just heard. We connect business strategy, brand, and behaviour to turn credibility into commercial value.",
       items: [
@@ -552,7 +552,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Media Sustainability",
-      accent: "#ACBBF6",
+      accent: CHIP_SKY,
       outcome: "What your media spend costs in carbon and waste, and how to cut both.",
       desc: "Media planning that accounts for both campaign performance and environmental impact. We help businesses understand the footprint of their media investments and use that intelligence to make better decisions.",
       items: [
@@ -567,7 +567,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Policy, Advocacy & Stakeholder Engagement",
-      accent: "#ACBBF6",
+      accent: CHIP_BUTTER,
       outcome: "One account of the business that holds with regulators and investors.",
       desc: "Sustainability is shaped beyond the marketing function. We help businesses navigate policy, build stakeholder alignment, and engage the regulators, communities and institutions that influence their ability to grow.",
       items: [
@@ -579,7 +579,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Venture Growth & Market Access",
-      accent: "#ACBBF6",
+      accent: CHIP_MINT,
       outcome: "A product that worked in a pilot, in front of buyers who can scale it.",
       desc: "For climate and circular ventures ready to move beyond the pilot. We help build the positioning, market strategy and commercial pathways needed to turn promising solutions into scalable businesses.",
       items: [
@@ -1158,21 +1158,38 @@ const AppLink = ({ href, onNavigate, className = "", children, ...rest }) => (
   </a>
 );
 
-// One accent, two weights, chosen by how much canvas the mark covers.
+// The chip palette, read off the Microsoft Build poster Arvind sent.
 //
-// ACCENT_WASH is the periwinkle measured off the HOOOP x The GoodNet card, used
-// where the colour covers real area: the highlighter band behind a figure.
-// ACCENT_SOLID is its saturated sibling, for marks small enough to take full
-// strength. The Microsoft Build poster and the neumorphic style guide Arvind
-// sent both work this way: the chips are saturated, and they read as subtle
-// because they occupy a few per cent of the canvas, not because they are pale.
+// The correction that produced it: that poster is not one accent. It is a vast
+// pale field carrying five or six DIFFERENT saturated chips, each one small,
+// each floating with its own shadow and a faint glow beneath. I had collapsed
+// to a single periwinkle on Kahlo's advice and the site went blue, which is the
+// opposite failure to the green one it replaced.
 //
-// CHIP_SHADOW makes the mark an object rather than a sticker. Flat colour on a
-// neumorphic ground is a category error, and this site has been neumorphic from
-// the start: 23 shadow declarations and 27 insets before any of this work.
-const ACCENT_WASH = "#ACBBF6";
-const ACCENT_SOLID = "#6B92E5";
-const CHIP_SHADOW = "5px 5px 11px rgba(150,158,178,0.45), -4px -4px 9px rgba(255,255,255,0.9)";
+// So: several colours, each used once or twice, each tiny. Saturated rather
+// than pastel, because on that poster the chips are amber and violet and mint
+// at full strength and they still read as subtle. Subtle is the four per cent
+// of canvas they occupy, not a washed out hue. No dark metallic, so the
+// poster's deep indigo chip is deliberately not here.
+//
+// Colour lives in the chips. Type and controls stay ink, the way the poster
+// sets "Microsoft Build" in plain black against all that pale ground.
+// Palette read off the second reference, the thin-line infographic: a pale
+// blue cloud, a salmon bar, a butter arc, a mint arc. True pastels, four of
+// them, each appearing once or twice as a small stroke on an otherwise white
+// page. That is "a palette of pastels" and it is not the same as the single
+// washed hue I had, nor the saturated Build chips I had just built.
+const CHIP_SKY    = "#A8D8E8";
+const CHIP_SALMON = "#F5A9A0";
+const CHIP_BUTTER = "#F7DF85";
+const CHIP_MINT   = "#A9DCD4";
+
+// A chip is an object: a soft neumorphic shadow pair plus a faint bloom of its
+// own colour underneath, which is what gives the poster's chips their lift.
+const chipStyle = (c) => ({
+  backgroundColor: c,
+  boxShadow: `5px 6px 14px rgba(150,158,178,0.40), -3px -3px 8px rgba(255,255,255,0.9), 0 5px 14px ${c}66`,
+});
 
 const SoftCard = ({ children, className = "", onClick, hoverEffect = true, id = "" }) => (
   <div id={id} onClick={onClick} className={`bg-[#F6F6F2] rounded-[30px] shadow-[9px_9px_16px_rgb(214,214,206,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] ${hoverEffect ? 'hover:shadow-[inset_9px_9px_16px_rgb(214,214,206,0.6),inset_-9px_-9px_16px_rgba(255,255,255,0.5)] cursor-pointer' : ''} transition-all duration-300 ease-in-out ${className}`}>
@@ -1254,7 +1271,7 @@ const FlipCard = ({ frontTitle, frontIcon: FrontIcon, backText, backStat, color 
                     <p className="text-xs text-gray-400 mt-2 uppercase tracking-widest flex items-center gap-1">Tap to Reveal <ArrowRight size={12} /></p>
                 </div>
                 <div className="absolute inset-0 backface-hidden rotate-y-180 bg-gray-900 rounded-2xl shadow-xl flex flex-col items-center justify-center p-6 text-center text-white">
-                    <p className="text-3xl font-bold text-[#ACBBF6] mb-2">{backStat}</p>
+                    <p className="text-3xl font-bold text-gray-300 mb-2">{backStat}</p>
                     <p className="text-sm text-gray-300 leading-relaxed">{backText}</p>
                 </div>
             </div>
@@ -1421,11 +1438,11 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
 
       <div className="mb-8 pt-12 md:pt-0">
         <div className="flex items-center gap-3 mb-4">
-           <span className="px-3 py-1 bg-[#EEF2FD] text-[#6B92E5] rounded-full text-xs font-bold uppercase tracking-widest">{post.category}</span>
+           <span className="px-3 py-1 bg-gray-50 text-[#313b4e] rounded-full text-xs font-bold uppercase tracking-widest">{post.category}</span>
            <span className="text-gray-400 text-xs font-mono">{post.date}</span>
         </div>
         <h1 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">{post.title}</h1>
-        <p className="text-xl text-gray-500 font-medium leading-relaxed border-l-4 border-[#6B92E5] pl-4">{post.desc}</p>
+        <p className="text-xl text-gray-500 font-medium leading-relaxed border-l-4 border-gray-400 pl-4">{post.desc}</p>
       </div>
 
       {/* Content items are plain strings (paragraphs) for backwards compatibility,
@@ -1443,7 +1460,7 @@ const BlogPostView = ({ post, onBack, navigateTo }) => {
                 <AppLink
                   href={pathForSection(item.to)}
                   onNavigate={() => navigateTo && navigateTo(item.to)}
-                  className="inline-flex items-center gap-2 font-bold text-[#6B92E5] hover:text-[#4F76C9] transition-colors no-underline"
+                  className="inline-flex items-center gap-2 font-bold text-[#313b4e] hover:text-black transition-colors no-underline"
                 >
                   {item.cta} <ArrowRight size={15} />
                 </AppLink>
@@ -1515,7 +1532,7 @@ const PrivacyView = () => {
       <H>Who is collecting your data</H>
       <p>
         This site and the Sense tool are operated by The HOOOP Collective ("HOOOP", "we", "us"),
-        reachable at <a href="mailto:hello@hooop.in" className="text-[#6B92E5] font-bold hover:underline">hello@hooop.in</a>.
+        reachable at <a href="mailto:hello@hooop.in" className="text-[#313b4e] font-bold hover:underline">hello@hooop.in</a>.
         Under India's Digital Personal Data Protection Act, 2023 (DPDP Act), HOOOP is the Data
         Fiduciary for the personal data described below.
       </p>
@@ -1538,7 +1555,7 @@ const PrivacyView = () => {
       <p>
         We collect your email only if you tick the consent box and submit it. The box is never
         pre-ticked. You can withdraw your consent at any time, as easily as you gave it, by emailing{" "}
-        <a href="mailto:hello@hooop.in?subject=Withdraw%20consent%20-%20Sense" className="text-[#6B92E5] font-bold hover:underline">hello@hooop.in</a>{" "}
+        <a href="mailto:hello@hooop.in?subject=Withdraw%20consent%20-%20Sense" className="text-[#313b4e] font-bold hover:underline">hello@hooop.in</a>{" "}
         with the subject "Withdraw consent - Sense". We will delete your email within 30 days of such a request.
       </p>
 
@@ -1550,13 +1567,13 @@ const PrivacyView = () => {
         Under the DPDP Act you have the right to access, correct, update, or erase your personal
         data, to withdraw consent, and to nominate another person to exercise these rights on your
         behalf. To exercise any of these, email{" "}
-        <a href="mailto:hello@hooop.in" className="text-[#6B92E5] font-bold hover:underline">hello@hooop.in</a>.
+        <a href="mailto:hello@hooop.in" className="text-[#313b4e] font-bold hover:underline">hello@hooop.in</a>.
       </p>
 
       <H>Grievance contact</H>
       <p>
         If you have a complaint about how your data is handled, contact{" "}
-        <a href="mailto:hello@hooop.in" className="text-[#6B92E5] font-bold hover:underline">hello@hooop.in</a>.
+        <a href="mailto:hello@hooop.in" className="text-[#313b4e] font-bold hover:underline">hello@hooop.in</a>.
         We aim to respond within 7 business days.
       </p>
     </div>
@@ -1961,7 +1978,7 @@ and environmental marketing guidelines.
                         </div>
                         <div className="pt-4 border-t border-gray-200">
                             <p className="text-xs text-gray-500 mb-1">Need to understand deeper and get trained on greenwashing further?</p>
-                            <a href="mailto:hello@hooop.in" className="inline-flex items-center gap-1.5 font-bold text-gray-900 hover:text-[#6B92E5] transition-colors text-sm"><Mail size={14} /> hello@hooop.in</a>
+                            <a href="mailto:hello@hooop.in" className="inline-flex items-center gap-1.5 font-bold text-gray-900 hover:text-[#313b4e] transition-colors text-sm"><Mail size={14} /> hello@hooop.in</a>
                         </div>
                     </div>
                 </div>
@@ -2137,7 +2154,7 @@ const EsgMediaIndexView = ({ navigateTo }) => {
             missed opportunity — because the signals that make media cleaner are largely the same ones that make it work harder.
           </p>
           <p className="text-base text-gray-500 max-w-2xl leading-relaxed mb-10">
-            India's first ESG Media Index, built with <a href="https://wearethegoodnet.com/" target="_blank" rel="noopener noreferrer" className="text-[#6B92E5] font-bold hover:underline">The GoodNet</a>.
+            India's first ESG Media Index, built with <a href="https://wearethegoodnet.com/" target="_blank" rel="noopener noreferrer" className="text-[#313b4e] font-bold hover:underline">The GoodNet</a>.
           </p>
         </ScrollReveal>
         <ScrollReveal delay={450}>
@@ -2278,7 +2295,7 @@ const EsgMediaIndexView = ({ navigateTo }) => {
               onNavigate={() => navigateTo('contact')}
               className="no-underline shrink-0"
             >
-              <span className="soft-card inline-flex items-center gap-3 px-8 py-4 font-bold text-gray-900 hover:text-[#6B92E5] transition-colors cursor-pointer">
+              <span className="soft-card inline-flex items-center gap-3 px-8 py-4 font-bold text-gray-900 hover:text-[#313b4e] transition-colors cursor-pointer">
                 Talk to us
                 <ArrowRight size={18} />
               </span>
@@ -2708,7 +2725,7 @@ const GreenwashingView = ({ navigateTo }) => {
              <section id="gw-playbook" className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 bg-black text-white rounded-t-[3rem] mt-10">
                 <div className="max-w-5xl mx-auto w-full py-10">
                     <div className="text-center mb-16">
-                        <div className="inline-block px-4 py-1 rounded-full border border-[#ACBBF6]/50 text-[#ACBBF6] text-xs font-bold uppercase tracking-widest mb-4">
+                        <div className="inline-block px-4 py-1 rounded-full border border-gray-400/50 text-gray-300 text-xs font-bold uppercase tracking-widest mb-4">
                             Action Plan
                         </div>
                         <h2 className="text-4xl md:text-6xl font-bold mb-4">The Playbook</h2>
@@ -2719,7 +2736,7 @@ const GreenwashingView = ({ navigateTo }) => {
                         <div>
                             <div className="mb-12">
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-8 h-8 rounded-full bg-[#6B92E5] text-white flex items-center justify-center font-bold">1</div>
+                                    <div className="w-8 h-8 rounded-full bg-[#313b4e] text-white flex items-center justify-center font-bold">1</div>
                                     <h3 className="text-2xl font-bold">Set the Tone & Policy</h3>
                                 </div>
                                 <p className="text-gray-400 leading-relaxed pl-12">
@@ -2729,7 +2746,7 @@ const GreenwashingView = ({ navigateTo }) => {
 
                             <div className="mb-12">
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-8 h-8 rounded-full bg-[#6B92E5] text-white flex items-center justify-center font-bold">2</div>
+                                    <div className="w-8 h-8 rounded-full bg-[#313b4e] text-white flex items-center justify-center font-bold">2</div>
                                     <h3 className="text-2xl font-bold">Champion Alignment</h3>
                                 </div>
                                 <p className="text-gray-400 leading-relaxed pl-12">
@@ -2741,7 +2758,7 @@ const GreenwashingView = ({ navigateTo }) => {
                         <div>
                             <div className="mb-12">
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-8 h-8 rounded-full bg-[#6B92E5] text-white flex items-center justify-center font-bold">3</div>
+                                    <div className="w-8 h-8 rounded-full bg-[#313b4e] text-white flex items-center justify-center font-bold">3</div>
                                     <h3 className="text-2xl font-bold">Lead with Transparency</h3>
                                 </div>
                                 <p className="text-gray-400 leading-relaxed pl-12">
@@ -2751,7 +2768,7 @@ const GreenwashingView = ({ navigateTo }) => {
 
                             <div className="mb-12">
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-8 h-8 rounded-full bg-[#6B92E5] text-white flex items-center justify-center font-bold">4</div>
+                                    <div className="w-8 h-8 rounded-full bg-[#313b4e] text-white flex items-center justify-center font-bold">4</div>
                                     <h3 className="text-2xl font-bold">Integrate to Core Strategy</h3>
                                 </div>
                                 <p className="text-gray-400 leading-relaxed pl-12">
@@ -2762,13 +2779,13 @@ const GreenwashingView = ({ navigateTo }) => {
                     </div>
 
                     <div className="mt-12 p-8 md:p-16 bg-white/5 rounded-[3rem] backdrop-blur-md border border-white/10 text-center relative overflow-hidden group">
-                        <div className="absolute inset-0 bg-[#6B92E5]/10 blur-3xl rounded-full transform scale-0 group-hover:scale-150 transition-transform duration-1000"></div>
+                        <div className="absolute inset-0 bg-gray-300/20 blur-3xl rounded-full transform scale-0 group-hover:scale-150 transition-transform duration-1000"></div>
                         
                         <h4 className="text-3xl md:text-5xl font-black mb-6 relative z-10">"Honesty is the new green."</h4>
                         <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg relative z-10 leading-relaxed">
                             If you've been silent, start talking. If you've overstated, course-correct. Authenticity is your greatest competitive advantage.
                         </p>
-                        <button onClick={() => navigateTo('sense')} className="relative z-10 bg-[#6B92E5] hover:bg-[#4F76C9] text-white px-12 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(74,222,128,0.4)]">
+                        <button onClick={() => navigateTo('sense')} className="relative z-10 bg-[#313b4e] hover:bg-black text-white px-12 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(74,222,128,0.4)]">
                             Start The Journey
                         </button>
                     </div>
@@ -2790,7 +2807,7 @@ const GreenwashingView = ({ navigateTo }) => {
                             <div className="mt-8 pt-8 border-t border-gray-300/30 flex justify-center items-center gap-2 opacity-40 hover:opacity-100 transition-opacity">
                                 <span>Sense App Design</span>
                                 <span>•</span>
-                                <span className="cursor-pointer hover:text-[#6B92E5]" onClick={() => window.open('https://www.hooop.in/g', '_blank')}>HOOOP</span>
+                                <span className="cursor-pointer hover:text-[#313b4e]" onClick={() => window.open('https://www.hooop.in/g', '_blank')}>HOOOP</span>
                             </div>
                         </div>
                     </footer>
@@ -3096,7 +3113,7 @@ const App = React.forwardRef((props, ref) => {
           </div>
           <div className="lg:hidden bg-[#F6F6F2]/95 backdrop-blur-md border-b border-white/20 overflow-x-auto flex items-center gap-6 px-6 py-3 no-scrollbar shadow-inner">
              {navItems.filter(item => !item.hidden).map(item => (
-                 <AppLink key={item.id} href={pathForSection(item.id)} onNavigate={() => navigateTo(item.id)} className={`whitespace-nowrap text-[10px] font-bold uppercase tracking-widest flex-shrink-0 transition-colors no-underline ${activeSection === item.id ? 'text-[#6B92E5]' : 'text-gray-500'}`}>{item.label}</AppLink>
+                 <AppLink key={item.id} href={pathForSection(item.id)} onNavigate={() => navigateTo(item.id)} className={`whitespace-nowrap text-[10px] font-bold uppercase tracking-widest flex-shrink-0 transition-colors no-underline ${activeSection === item.id ? 'text-[#313b4e]' : 'text-gray-500'}`}>{item.label}</AppLink>
              ))}
           </div>
       </div>
@@ -3172,7 +3189,7 @@ const App = React.forwardRef((props, ref) => {
       away in the nav. */}
   <AppLink href={pathForSection('contact')} onNavigate={() => navigateTo('contact')} className="no-underline">
   <SoftCard
-    className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-[#6B92E5] hover:scale-[1.02]"
+    className="px-6 py-4 sm:px-8 flex items-center gap-3 text-gray-600 font-bold group cursor-pointer hover:text-[#313b4e] hover:scale-[1.02]"
   >
     <span>Start a conversation</span>
     <Mail size={18} className="group-hover:scale-110 transition-transform"/>
@@ -3216,7 +3233,7 @@ const App = React.forwardRef((props, ref) => {
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-gray-600 transition-colors">
                   The problem
                 </span>
-                <span className="w-10 h-10 rounded-full bg-[#F6F6F2] shadow-[4px_4px_9px_#e6e6e0,-4px_-4px_9px_#ffffff] flex items-center justify-center text-gray-400 group-hover:text-[#6B92E5] transition-colors animate-nudge">
+                <span className="w-10 h-10 rounded-full bg-[#F6F6F2] shadow-[4px_4px_9px_#e6e6e0,-4px_-4px_9px_#ffffff] flex items-center justify-center text-gray-400 group-hover:text-[#313b4e] transition-colors animate-nudge">
                   <ChevronDown size={18} />
                 </span>
               </button>
@@ -3250,7 +3267,7 @@ const App = React.forwardRef((props, ref) => {
                             That mechanic is the Creative Playbook's own. */}
                         <span
                           className="self-start text-3xl lg:text-4xl font-black leading-none text-[#313b4e] px-1 -mx-1"
-                          style={{ background: `linear-gradient(180deg, transparent 58%, ${ACCENT_WASH} 58%)` }}
+                          style={{ background: `linear-gradient(180deg, transparent 58%, ${s.accent} 58%)` }}
                         >{s.figure}</span>
                         <span className="text-sm text-gray-500 leading-relaxed">{s.line}</span>
                       </SoftCard>
@@ -3264,7 +3281,7 @@ const App = React.forwardRef((props, ref) => {
                     <AppLink
                       href={pathForSection('research')}
                       onNavigate={() => navigateTo('research')}
-                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-[#6B92E5] transition-colors no-underline"
+                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-[#313b4e] transition-colors no-underline"
                     >
                       {SITE_CONTENT.researchProof.linkLabel}
                       <ArrowRight size={16} />
@@ -3312,7 +3329,7 @@ const App = React.forwardRef((props, ref) => {
                               the accessibility tree: the name below carries the
                               meaning, and nothing here is conveyed by colour
                               alone. */}
-                          <span aria-hidden="true" className="block w-9 h-9 rounded-2xl" style={{ backgroundColor: ACCENT_SOLID, boxShadow: CHIP_SHADOW }}></span>
+                          <span aria-hidden="true" className="block w-12 h-[26px] rounded-lg" style={chipStyle(practice.accent)}></span>
                           <h3 className="text-xl lg:text-2xl font-black text-[#313b4e] leading-tight">{practice.title}</h3>
                           <p className="text-[15px] text-gray-500 leading-relaxed">{practice.outcome || practice.desc}</p>
 
@@ -3321,7 +3338,7 @@ const App = React.forwardRef((props, ref) => {
                             <ul className="space-y-1.5">
                               {(practice.items || []).map((it) => (
                                 <li key={it} className="text-sm text-gray-500 flex items-start gap-2">
-                                  <span className="mt-[7px] shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: ACCENT_SOLID, boxShadow: "1.5px 1.5px 3px rgba(150,158,178,0.55), -1px -1px 2px rgba(255,255,255,0.9)" }}></span>
+                                  <span className="mt-[7px] shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: practice.accent, boxShadow: "1.5px 1.5px 3px rgba(150,158,178,0.55), -1px -1px 2px rgba(255,255,255,0.9)" }}></span>
                                   <span>{it}</span>
                                 </li>
                               ))}
@@ -3332,7 +3349,7 @@ const App = React.forwardRef((props, ref) => {
                             type="button"
                             onClick={() => setOpenPractices(p => open ? p.filter(x => x !== idx) : [...p, idx])}
                             aria-expanded={open}
-                            className="mt-auto pt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-gray-400 hover:text-[#6B92E5] transition-colors focus:outline-none self-start"
+                            className="mt-auto pt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-gray-400 hover:text-[#313b4e] transition-colors focus:outline-none self-start"
                           >
                             {open ? 'Show less' : 'Read more'}
                             <ChevronDown size={13} className={`transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
@@ -3345,7 +3362,7 @@ const App = React.forwardRef((props, ref) => {
                     <AppLink
                       href={pathForSection('offerings')}
                       onNavigate={() => navigateTo('offerings')}
-                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-[#6B92E5] transition-colors no-underline"
+                      className="inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-[#313b4e] transition-colors no-underline"
                     >
                       See all four in detail
                       <ArrowRight size={16} />
@@ -3365,7 +3382,7 @@ const App = React.forwardRef((props, ref) => {
                     {SITE_CONTENT.homeExtras.partners.map((partner, idx) => (
                       <a key={idx} href={partner.url} target="_blank" rel="noopener noreferrer"
                          className="group rounded-2xl bg-white/50 border border-white/70 px-6 py-6 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                        <span className="font-bold text-gray-500 group-hover:text-[#6B92E5] transition-colors tracking-wide">
+                        <span className="font-bold text-gray-500 group-hover:text-[#313b4e] transition-colors tracking-wide">
                           {partner.name}
                         </span>
                       </a>
@@ -3385,9 +3402,9 @@ const App = React.forwardRef((props, ref) => {
                     {SITE_CONTENT.homeExtras.featured.map((feature, idx) => (
                       <a key={idx} href={feature.url} target="_blank" rel="noopener noreferrer"
                          title={feature.headline || feature.name}
-                         className="group inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#F6F6F2] shadow-[4px_4px_9px_#e6e6e0,-4px_-4px_9px_#ffffff] text-xs font-bold text-gray-500 hover:text-[#6B92E5] transition-colors no-underline">
+                         className="group inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#F6F6F2] shadow-[4px_4px_9px_#e6e6e0,-4px_-4px_9px_#ffffff] text-xs font-bold text-gray-500 hover:text-[#313b4e] transition-colors no-underline">
                         {feature.name}
-                        <ExternalLink size={12} className="text-gray-300 group-hover:text-[#6B92E5] shrink-0 transition-colors" />
+                        <ExternalLink size={12} className="text-gray-300 group-hover:text-[#313b4e] shrink-0 transition-colors" />
                       </a>
                     ))}
                   </div>
@@ -3421,12 +3438,12 @@ const App = React.forwardRef((props, ref) => {
                         It's time for us to now drive positive human behaviour.
                     </p>
                     <p>
-                        At <span className="text-[#6B92E5] font-bold">HOOOP</span>, we are focused on partnering with businesses that push the world forward, even as we help you outpace the market.
+                        At <span className="text-[#313b4e] font-bold">HOOOP</span>, we are focused on partnering with businesses that push the world forward, even as we help you outpace the market.
                     </p>
                     <p>
                         A new generation of consumers has emerged that follows its conscience as it spends, but also does not sacrifice its material wants.
                     </p>
-                    <div className="pl-6 border-l-4 border-[#ACBBF6] italic text-gray-800">
+                    <div className="pl-6 border-l-4 border-gray-400 italic text-gray-800">
                         It is at this intersection that the greatest opportunities lie.
                         <br/><br/>
                         This is a time of conscious choices.
@@ -3457,19 +3474,19 @@ const App = React.forwardRef((props, ref) => {
                                 <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
                                     <div>
                                         <div className="flex items-center gap-2 mb-4">
-                                            <div className="w-2 h-2 bg-[#ACBBF6] rounded-full animate-pulse"></div>
-                                            <span className="text-xs font-bold tracking-widest uppercase text-[#ACBBF6]">Featured Intelligence</span>
+                                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
+                                            <span className="text-xs font-bold tracking-widest uppercase text-gray-300">Featured Intelligence</span>
                                         </div>
                                         <h3 className="text-3xl font-bold mb-3">{SITE_CONTENT.thinking.featuredTool.title}</h3>
                                         <p className="text-gray-400 max-w-md text-sm leading-relaxed mb-6">
                                             {SITE_CONTENT.thinking.featuredTool.desc}
                                         </p>
-                                        <span className="inline-flex items-center gap-2 text-sm font-bold border-b border-gray-300 pb-1 hover:text-[#C9D6FA] transition-colors">
+                                        <span className="inline-flex items-center gap-2 text-sm font-bold border-b border-gray-300 pb-1 hover:text-white transition-colors">
                                             {SITE_CONTENT.thinking.featuredTool.cta} <ArrowRight size={16} />
                                         </span>
                                     </div>
                                     <div className="bg-white/10 p-4 rounded-2xl border border-white/10 backdrop-blur-sm">
-                                        <ScanLine size={48} className="text-[#ACBBF6]" />
+                                        <ScanLine size={48} className="text-gray-300" />
                                     </div>
                                 </div>
                             </div>
@@ -3480,16 +3497,16 @@ const App = React.forwardRef((props, ref) => {
                                 <AppLink key={index} href={`/thinking/${post.slug}`} onNavigate={() => openBlogPost(post)} className="group cursor-pointer block no-underline text-inherit">
                                   <article>
                                     <div className="flex flex-col md:flex-row gap-2 md:items-baseline justify-between mb-2">
-                                        <span className="text-xs font-bold tracking-widest uppercase text-[#6B92E5]">{post.category}</span>
+                                        <span className="text-xs font-bold tracking-widest uppercase text-[#313b4e]">{post.category}</span>
                                         <span className="text-xs text-gray-400 font-mono">{post.date}</span>
                                     </div>
-                                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-[#6B92E5] transition-colors duration-300">
+                                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-[#313b4e] transition-colors duration-300">
                                         {post.title}
                                     </h2>
                                     <p className="text-gray-500 leading-relaxed max-w-2xl text-lg">
                                         {post.desc}
                                     </p>
-                                    <div className="mt-4 flex items-center gap-2 text-sm font-bold text-gray-400 group-hover:text-[#6B92E5] transition-colors">
+                                    <div className="mt-4 flex items-center gap-2 text-sm font-bold text-gray-400 group-hover:text-[#313b4e] transition-colors">
                                         Read Article <ArrowRight size={14} />
                                     </div>
                                   </article>
@@ -3572,19 +3589,19 @@ const App = React.forwardRef((props, ref) => {
 
                     <div className="relative mb-20">
                       {/* connector: horizontal on desktop, vertical on mobile */}
-                      <div className="hidden md:block absolute left-0 right-0 top-7 h-[2px] bg-gradient-to-r from-[#C9D6FA] via-[#ACBBF6] to-[#C9D6FA]" />
-                      <div className="md:hidden absolute left-7 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#C9D6FA] via-[#ACBBF6] to-[#C9D6FA]" />
+                      <div className="hidden md:block absolute left-0 right-0 top-7 h-[2px] bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200" />
+                      <div className="md:hidden absolute left-7 top-0 bottom-0 w-[2px] bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200" />
 
                       <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-5 relative">
                         {SITE_CONTENT.prvaah.stages.map((stage, idx) => {
                           const Icon = getIconComponent(stage.icon);
                           return (
                             <div key={idx} className="flex md:flex-col gap-5 md:gap-0 items-start group">
-                              <div className="w-14 h-14 rounded-full bg-[#E4E8EF] border-2 border-white shadow-[4px_4px_10px_rgba(163,177,198,0.5),-4px_-4px_10px_rgba(255,255,255,0.8)] flex items-center justify-center shrink-0 text-[#6B92E5] group-hover:scale-110 transition-transform duration-300 relative z-10">
+                              <div className="w-14 h-14 rounded-full bg-[#E4E8EF] border-2 border-white shadow-[4px_4px_10px_rgba(163,177,198,0.5),-4px_-4px_10px_rgba(255,255,255,0.8)] flex items-center justify-center shrink-0 text-[#313b4e] group-hover:scale-110 transition-transform duration-300 relative z-10">
                                 <Icon size={22} />
                               </div>
                               <div className="md:mt-6">
-                                <p className="text-[10px] font-bold uppercase tracking-widest text-[#6B92E5]/70 mb-1">Step {idx + 1}</p>
+                                <p className="text-[10px] font-bold uppercase tracking-widest text-[#313b4e]/70 mb-1">Step {idx + 1}</p>
                                 <h3 className="text-lg font-bold text-[#313b4e] leading-tight">{stage.label}</h3>
                                 <p className="text-xs font-bold text-gray-500 mt-1">{stage.short}</p>
                                 <p className="text-xs text-gray-500 leading-relaxed mt-2">{stage.desc}</p>
@@ -3597,7 +3614,7 @@ const App = React.forwardRef((props, ref) => {
 
                     {/* CIRCULARITY — a service, not a stage */}
                     <SoftCard className="p-8 md:p-10 mb-20 flex flex-col md:flex-row gap-8 items-start">
-                      <div className="w-14 h-14 rounded-2xl bg-[#F6F6F2] shadow-[inset_4px_4px_8px_#e3e3dd,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center shrink-0 text-[#6B92E5]">
+                      <div className="w-14 h-14 rounded-2xl bg-[#F6F6F2] shadow-[inset_4px_4px_8px_#e3e3dd,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center shrink-0 text-[#313b4e]">
                         {(() => { const I = getIconComponent(SITE_CONTENT.prvaah.circularity.icon); return <I size={26} />; })()}
                       </div>
                       <div>
@@ -3663,7 +3680,7 @@ const App = React.forwardRef((props, ref) => {
                                         <div className="p-3 rounded-2xl bg-[#F6F6F2] shadow-[inset_3px_3px_6px_#e3e3dd,inset_-3px_-3px_6px_#ffffff]">
                                             <Icon size={24} className="text-gray-600" />
                                         </div>
-                                        <span className="text-xs font-bold uppercase tracking-widest text-[#6B92E5] bg-[#EEF2FD] px-3 py-1 rounded-full">{item.category}</span>
+                                        <span className="text-xs font-bold uppercase tracking-widest text-[#313b4e] bg-gray-50 px-3 py-1 rounded-full">{item.category}</span>
                                     </div>
                                     <h2 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h2>
                                     <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
@@ -3674,7 +3691,7 @@ const App = React.forwardRef((props, ref) => {
                                     asks for the report by name. */}
                                 <a
                                   href={`mailto:hello@hooop.in?subject=${encodeURIComponent('Report request: ' + item.title)}&body=${encodeURIComponent('Please could you send me ' + item.title + '.\n\nName:\nCompany:\n')}`}
-                                  className="mt-6 pt-6 border-t border-gray-200/50 flex items-center justify-between text-gray-400 group-hover:text-[#6B92E5] transition-colors no-underline"
+                                  className="mt-6 pt-6 border-t border-gray-200/50 flex items-center justify-between text-gray-400 group-hover:text-[#313b4e] transition-colors no-underline"
                                 >
                                     <span className="text-xs font-bold uppercase tracking-widest">Request the report</span>
                                     <Mail size={18} />
@@ -3712,7 +3729,7 @@ const App = React.forwardRef((props, ref) => {
                         return (
                           <SoftCard key={idx} className="p-7 flex flex-col group hover:-translate-y-1 transition-transform duration-300">
                             <div className="w-12 h-12 rounded-full bg-[#F6F6F2] shadow-[inset_4px_4px_8px_#e3e3dd,inset_-4px_-4px_8px_#ffffff] flex items-center justify-center mb-5">
-                              <Icon size={20} className="text-gray-400 group-hover:text-[#6B92E5] transition-colors" />
+                              <Icon size={20} className="text-gray-400 group-hover:text-[#313b4e] transition-colors" />
                             </div>
                             {/* The desc paragraph is gone. It restated the headline at
                                 three times the length on all three cards. */}
@@ -3738,7 +3755,7 @@ const App = React.forwardRef((props, ref) => {
                           <span
                             aria-hidden="true"
                             className="pointer-events-none absolute -top-4 right-2 text-[7rem] leading-none font-black select-none"
-                            style={{ color: ACCENT_WASH, opacity: 0.55 }}
+                            style={{ color: card.accent, opacity: 0.30 }}
                           >
                             {idx + 1}
                           </span>
@@ -3746,7 +3763,7 @@ const App = React.forwardRef((props, ref) => {
                           {/* Was teal on all four, so the rule read as a divider.
                               It is the practice's own colour now, the same one
                               its card carries on the homepage. */}
-                          <span aria-hidden="true" className="block w-9 h-9 rounded-2xl mb-5" style={{ backgroundColor: ACCENT_SOLID, boxShadow: CHIP_SHADOW }} />
+                          <span aria-hidden="true" className="block w-12 h-[26px] rounded-lg mb-5" style={chipStyle(card.accent)} />
                           {/* First sentence only. The bullets below carry the
                               specifics; the rest of the paragraph restated them in
                               prose. Arvind's own words, just the opening clause. */}
@@ -3756,7 +3773,7 @@ const App = React.forwardRef((props, ref) => {
                           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 mb-6 relative">
                             {card.items.map((item, i) => (
                               <li key={i} className="flex gap-2.5 text-sm text-gray-600 leading-snug">
-                                <span className="w-2 h-2 rounded-full shrink-0 mt-[5px]" style={{ backgroundColor: ACCENT_SOLID, boxShadow: "1.5px 1.5px 3px rgba(150,158,178,0.55), -1px -1px 2px rgba(255,255,255,0.9)" }} />
+                                <span className="w-2 h-2 rounded-full shrink-0 mt-[5px]" style={{ backgroundColor: card.accent, boxShadow: "1.5px 1.5px 3px rgba(150,158,178,0.55), -1px -1px 2px rgba(255,255,255,0.9)" }} />
                                 {item}
                               </li>
                             ))}
@@ -3765,7 +3782,7 @@ const App = React.forwardRef((props, ref) => {
                             <AppLink
                               href={pathForSection(card.linkTo)}
                               onNavigate={() => navigateTo(card.linkTo)}
-                              className="mt-auto self-start inline-flex items-center gap-2 text-sm font-bold text-[#6B92E5] hover:text-[#4F76C9] transition-colors no-underline"
+                              className="mt-auto self-start inline-flex items-center gap-2 text-sm font-bold text-[#313b4e] hover:text-black transition-colors no-underline"
                             >
                               {card.linkLabel} <ArrowRight size={15} />
                             </AppLink>
@@ -3805,7 +3822,7 @@ const App = React.forwardRef((props, ref) => {
                                  break the row's shared baseline. */}
                              <div className="h-5 mb-2">
                                {member.years && (
-                                 <p className="text-[#6B92E5] font-black text-sm leading-none">
+                                 <p className="text-[#313b4e] font-black text-sm leading-none">
                                    {member.years}
                                    <span className="text-gray-400 font-bold text-[9px] uppercase tracking-widest ml-1">Years</span>
                                  </p>
@@ -3827,10 +3844,10 @@ const App = React.forwardRef((props, ref) => {
                                    Communications". Two uppercase runs stacked read as one
                                    grey block; the pills had been doing that separating work.
                                    Sentence case restores the contrast without the chrome. */}
-                               <p className="text-center text-[11px] font-semibold text-[#4F76C9] leading-[1.6] m-0 px-1">
+                               <p className="text-center text-[11px] font-semibold text-[#313b4e] leading-[1.6] m-0 px-1">
                                  {(member.expertise || []).map((area, i) => (
                                    <React.Fragment key={area}>
-                                     {i > 0 && <span className="text-[#6B92E5]/35 mx-1.5">&middot;</span>}
+                                     {i > 0 && <span className="text-[#313b4e]/35 mx-1.5">&middot;</span>}
                                      {area}
                                    </React.Fragment>
                                  ))}
@@ -3853,7 +3870,7 @@ const App = React.forwardRef((props, ref) => {
                 </div>
                 <div className="mt-16 text-center">
                     <p className="text-gray-600 text-lg">
-                        If our purpose resonates with you, write to us at <a href="mailto:hello@hooop.in" className="text-[#6B92E5] font-bold hover:underline">hello@hooop.in</a> to join the collective.
+                        If our purpose resonates with you, write to us at <a href="mailto:hello@hooop.in" className="text-[#313b4e] font-bold hover:underline">hello@hooop.in</a> to join the collective.
                     </p>
                 </div>
              </section>
@@ -3874,7 +3891,7 @@ const App = React.forwardRef((props, ref) => {
                         <p className="text-xl md:text-2xl text-gray-600 font-medium mb-8 leading-relaxed">
                            We are always open for a good conversation.
                         </p>
-                        <a href="mailto:hello@hooop.in" className="inline-flex items-center gap-3 text-3xl md:text-5xl font-black text-[#6B92E5] hover:text-[#6B92E5] transition-colors tracking-tight border-b-4 border-transparent hover:border-[#C9D6FA]">
+                        <a href="mailto:hello@hooop.in" className="inline-flex items-center gap-3 text-3xl md:text-5xl font-black text-[#313b4e] hover:text-[#313b4e] transition-colors tracking-tight border-b-4 border-transparent hover:border-gray-300">
                            hello@hooop.in
                         </a>
                     </div>
@@ -3900,7 +3917,7 @@ const App = React.forwardRef((props, ref) => {
                 Same words, as Arvind instructed, at a size they can carry. */}
             <p className="text-lg sm:text-xl font-bold text-[#313b4e] tracking-tight px-6 max-w-2xl mx-auto leading-snug">
                 We are always open for a good conversation, write to us at{" "}
-                <a href="mailto:hello@hooop.in" className="text-[#6B92E5] hover:text-[#4F76C9] transition-colors">hello@hooop.in</a>
+                <a href="mailto:hello@hooop.in" className="text-[#313b4e] hover:text-black transition-colors">hello@hooop.in</a>
             </p>
             {/* Not on /contact itself, where the button would point at the page
                 the reader is already on. */}
@@ -3935,7 +3952,7 @@ const App = React.forwardRef((props, ref) => {
                 <AppLink
                     href={pathForSection('privacy')}
                     onNavigate={() => navigateTo('privacy')}
-                    className="text-gray-400/80 text-[10px] uppercase tracking-widest font-bold hover:text-[#6B92E5] transition-colors no-underline"
+                    className="text-gray-400/80 text-[10px] uppercase tracking-widest font-bold hover:text-[#313b4e] transition-colors no-underline"
                 >
                     Privacy
                 </AppLink>
