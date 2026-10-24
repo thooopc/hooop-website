@@ -3296,7 +3296,7 @@ const App = React.forwardRef((props, ref) => {
                             <ul className="space-y-1.5">
                               {(practice.items || []).map((it) => (
                                 <li key={it} className="text-sm text-gray-500 flex items-start gap-2">
-                                  <span className="text-teal-600 mt-[2px] shrink-0">&middot;</span>
+                                  <span className="mt-[2px] shrink-0" style={{ color: practice.accent }}>&middot;</span>
                                   <span>{it}</span>
                                 </li>
                               ))}
@@ -3731,7 +3731,7 @@ const App = React.forwardRef((props, ref) => {
                           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 mb-6 relative">
                             {card.items.map((item, i) => (
                               <li key={i} className="flex gap-2.5 text-sm text-gray-600 leading-snug">
-                                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0 mt-[6px]" />
+                                <span className="w-1.5 h-1.5 rounded-full shrink-0 mt-[6px]" style={{ backgroundColor: card.accent, opacity: 0.75 }} />
                                 {item}
                               </li>
                             ))}
